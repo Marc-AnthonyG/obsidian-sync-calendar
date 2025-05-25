@@ -1,0 +1,1 @@
+export const contentStore = new Map<string, string>();

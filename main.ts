@@ -1,10 +1,10 @@
 import { App, type PluginManifest, Plugin, PluginSettingTab, Setting } from 'obsidian';
 
-import { SyncStatus, NetworkStatus } from 'Syncs/StatusEnumerate';
-import { gfSyncStatus$, gfNetStatus$ } from 'Syncs/StatusEnumerate';
-import { MainSynchronizer } from "Syncs/MainSynchronizer";
-import QueryInjector from 'Injector/QueryInjector';
-import { setDebugLogging } from 'lib/DebugLog';
+import { SyncStatus, NetworkStatus } from 'src/Syncs/StatusEnumerate';
+import { gfSyncStatus$, gfNetStatus$ } from 'src/Syncs/StatusEnumerate';
+import { MainSynchronizer } from "src/Syncs/MainSynchronizer";
+import QueryInjector from 'src/injector/QueryInjector';
+import { setDebugLogging } from 'src/lib/DebugLog';
 
 
 // Remember to rename these classes and interfaces!
