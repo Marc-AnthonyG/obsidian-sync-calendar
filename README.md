@@ -1,12 +1,6 @@
 # Obsidian x Google Calendar Plugin
 
-[中文](./docs/README.zh-Ch.md)
-
 An [Obsidian](https://obsidian.md/) plugin that synchronizes [google events](https://calendar.google.com/) from the calendar and manages them like tasks.
-
-
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/dustinksi/obsidian-sync-calendar/release.yml?style=shield) ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/dustinksi/obsidian-sync-calendar?display_name=tag)
-
 
 **Note**: 
 1. Please be aware that **this plugin relies on the [Dataview](https://github.com/blacksmithgu/obsidian-dataview) plugin** to list tasks within a specific date range. **Please make sure you have the Dataview plugin installed before using this plugin**.
@@ -14,10 +8,6 @@ An [Obsidian](https://obsidian.md/) plugin that synchronizes [google events](htt
 3. To sync tasks from Obsidian to the calendar, you need to attach a start time element to the task (i.e. 🛫 YYYY-MM-DD), then click the sync icon or call the `Sync with Calendar` command.
 4. Our task synchronization is **centered around calendar events**, which means that after syncing tasks from Obsidian to the calendar, modifications to tasks in Obsidian will not be synced to the calendar. To further modify the schedule, you need to modify it directly in the calendar. The changes made in the calendar will be automatically synced back to Obsidian later.
 5. This plugin is still in early alpha and is subject to change at any time!
-
-
-![RELEASE DEMO](./docs/README_DEMO.gif)
-
 
 ## Installation & Usage
 
@@ -42,11 +32,6 @@ An [Obsidian](https://obsidian.md/) plugin that synchronizes [google events](htt
 - Clone this repo.
 - Run `npm i` or `yarn` to install dependencies.
 - Run `npm run dev` to start compilation in watch mode.
-
-
-### ~~From Obsidian Community Plugins Broswer (Not Avaliable for now.)~~
-- ~~Install the plugin through the Obsidian's community plugins browser.~~
-- ~~Enable the plugin in Obsidian.~~
 
 ### Use this Plugin
 - Place a code block like the following in any note:
@@ -84,26 +69,4 @@ Currently, only one command is supported, which is used to manually trigger the 
 
 `Sync with Calendar`:
 
-   This command will fetch tasks with a startDate (i.e. 🛫 YYYY-MM-DD) in Obsidian.
-
-
-## Thanks to  
-
-The brilliant plugins:
-
-[obsidian-todoist](https://github.com/jamiebrynes7/obsidian-todoist-plugin)
-
-[obsidian-tasks](https://github.com/obsidian-tasks-group/obsidian-tasks) 
-
-[obsidian-dataview](https://github.com/blacksmithgu/obsidian-dataview)
-
-This plugin has borrowed a lot of valuable experience from the above plugins.
-
-And I would also like to thank Wang Jiayu for accompanying me through the conception, design, and development of this plugin.
-
-
-## Support
-
-Have you found the obsidian-sync-calendar plugin helpful and want to support it? I accept donations that will go towards future development efforts. I generally do not accept payment for bug bounties/feature requests, as financial incentives add stress/expectations which I want to avoid for a hobby project!
-
-<a href="https://www.buymeacoffee.com/dexin.qi"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a cocacola&emoji=🥤&slug=dexin.qi&button_colour=FF5F5F&font_colour=ffffff&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00" /></a> 
+This command will fetch tasks with a startDate (i.e. 🛫 YYYY-MM-DD) in Obsidian.
