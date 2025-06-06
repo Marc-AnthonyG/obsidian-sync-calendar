@@ -144,7 +144,9 @@ export class MainSynchronizer {
       if (!todo.blockId || !obBlockId2Task.has(todo.blockId)) {
         return;
       }
-      todo.path = obBlockId2Task.get(todo.blockId)!.path;
+      const obTask = obBlockId2Task.get(todo.blockId)!;
+      todo.path = obTask.path;
+      todo.content = obTask.content;
     });
 
     return clTodos;

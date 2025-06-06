@@ -1,7 +1,55 @@
-[2025-06-06T22:02:19.218Z] updateSyncStatusItem 1
-[2025-06-06T22:02:19.435Z] updateSyncStatusItem 3
-[2025-06-06T22:02:19.969Z] updateSyncStatusItem 4
-[2025-06-06T22:02:20.001Z] Rendering task: {
+[2025-06-06T23:10:13.872Z] push Todos: startMoment=Fri May 23 2025 00:00:00 GMT-0400 
+[2025-06-06T23:10:14.213Z] JSON parse error on For details, go here:
+https://www.eventbrite.com/e/code-quebec-tickets-1234867705549: SyntaxError: Unexpected token 'F', "For detail"... is not valid JSON 
+[2025-06-06T23:10:14.213Z] JSON parse error on For details, go here:
+https://www.eventbrite.com/e/code-quebec-tickets-1234867705549: SyntaxError: Unexpected token 'F', "For detail"... is not valid JSON 
+[2025-06-06T23:10:14.213Z] JSON parse error on For details, go here:
+https://www.eventbrite.com/e/code-quebec-tickets-1234867705549: SyntaxError: Unexpected token 'F', "For detail"... is not valid JSON 
+[2025-06-06T23:10:14.213Z] JSON parse error on For details, go here:
+https://www.eventbrite.com/e/code-quebec-tickets-1234867705549: SyntaxError: Unexpected token 'F', "For detail"... is not valid JSON 
+[2025-06-06T23:10:14.213Z] JSON parse error on For details, go here:
+https://www.eventbrite.com/e/code-quebec-tickets-1234867705549: SyntaxError: Unexpected token 'F', "For detail"... is not valid JSON 
+[2025-06-06T23:10:14.213Z] JSON parse error on To see detailed information for automatically created events like this one, use the official Google Calendar app. https://g.co/calendar
+
+This event was created from an email you received in Gmail. https://mail.google.com/mail?extsrc=cal&plid=ACUX6DMDZgSCKAINRSCdlWJSwUyPhYwFLfk-_A0
+: SyntaxError: Unexpected token 'T', "To see det"... is not valid JSON 
+[2025-06-06T23:10:14.213Z] JSON parse error on To see detailed information for automatically created events like this one, use the official Google Calendar app. https://g.co/calendar
+
+This event was created from an email you received in Gmail. https://mail.google.com/mail?extsrc=cal&plid=ACUX6DMDZgSCKAINRSCdlWJSwUyPhYwFLfk-_A0
+: SyntaxError: Unexpected token 'T', "To see det"... is not valid JSON 
+[2025-06-06T23:10:14.213Z] JSON parse error on To see detailed information for automatically created events like this one, use the official Google Calendar app. https://g.co/calendar
+
+This event was created from an email you received in Gmail. https://mail.google.com/mail?extsrc=cal&plid=ACUX6DMDZgSCKAINRSCdlWJSwUyPhYwFLfk-_A0
+: SyntaxError: Unexpected token 'T', "To see det"... is not valid JSON 
+[2025-06-06T23:10:14.213Z] JSON parse error on To see detailed information for automatically created events like this one, use the official Google Calendar app. https://g.co/calendar
+
+This event was created from an email you received in Gmail. https://mail.google.com/mail?extsrc=cal&plid=ACUX6DMDZgSCKAINRSCdlWJSwUyPhYwFLfk-_A0
+: SyntaxError: Unexpected token 'T', "To see det"... is not valid JSON 
+[2025-06-06T23:10:14.213Z] JSON parse error on To see detailed information for automatically created events like this one, use the official Google Calendar app. https://g.co/calendar
+
+This event was created from an email you received in Gmail. https://mail.google.com/mail?extsrc=cal&plid=ACUX6DMDZgSCKAINRSCdlWJSwUyPhYwFLfk-_A0
+: SyntaxError: Unexpected token 'T', "To see det"... is not valid JSON 
+[2025-06-06T23:10:14.299Z] JSON parse error on To see detailed information for automatically created events like this one, use the official Google Calendar app. https://g.co/calendar
+
+This event was created from an email you received in Gmail. https://mail.google.com/mail?extsrc=cal&plid=ACUX6DMDZgSCKAINRSCdlWJSwUyPhYwFLfk-_A0
+: SyntaxError: Unexpected token 'T', "To see det"... is not valid JSON 
+[2025-06-06T23:10:14.299Z] JSON parse error on To see detailed information for automatically created events like this one, use the official Google Calendar app. https://g.co/calendar
+
+This event was created from an email you received in Gmail. https://mail.google.com/mail?extsrc=cal&plid=ACUX6DMDZgSCKAINRSCdlWJSwUyPhYwFLfk-_A0
+: SyntaxError: Unexpected token 'T', "To see det"... is not valid JSON 
+[2025-06-06T23:10:14.299Z] JSON parse error on To see detailed information for automatically created events like this one, use the official Google Calendar app. https://g.co/calendar
+
+This event was created from an email you received in Gmail. https://mail.google.com/mail?extsrc=cal&plid=ACUX6DMDZgSCKAINRSCdlWJSwUyPhYwFLfk-_A0
+: SyntaxError: Unexpected token 'T', "To see det"... is not valid JSON 
+[2025-06-06T23:10:14.299Z] JSON parse error on To see detailed information for automatically created events like this one, use the official Google Calendar app. https://g.co/calendar
+
+This event was created from an email you received in Gmail. https://mail.google.com/mail?extsrc=cal&plid=ACUX6DMDZgSCKAINRSCdlWJSwUyPhYwFLfk-_A0
+: SyntaxError: Unexpected token 'T', "To see det"... is not valid JSON 
+[2025-06-06T23:10:14.299Z] JSON parse error on To see detailed information for automatically created events like this one, use the official Google Calendar app. https://g.co/calendar
+
+This event was created from an email you received in Gmail. https://mail.google.com/mail?extsrc=cal&plid=ACUX6DMDZgSCKAINRSCdlWJSwUyPhYwFLfk-_A0
+: SyntaxError: Unexpected token 'T', "To see det"... is not valid JSON 
+[2025-06-06T23:10:14.311Z] Rendering task: {
   "content": "Meet & Learn | Nexapp | 5 juin",
   "tags": [],
   "startDateTime": "2025-06-05T05:30:00-04:00",
@@ -12,7 +60,7 @@
   "eventHtmlLink": "https://www.google.com/calendar/event?eid=c21odHVqdHNpdHFoMzIzdDIwOTl1NXE2MGcgbWFyY2FudGhvbnkuZ2lyYXJkLnByb3RpY0Bt",
   "updated": "2025-06-03T17:34:09-04:00"
 }
-[2025-06-06T22:02:20.002Z] Rendering task: {
+[2025-06-06T23:10:14.312Z] Rendering task: {
   "content": "Soirée nexapp",
   "tags": [],
   "startDateTime": "2025-06-05T18:00:00-04:00",
@@ -23,7 +71,22 @@
   "eventHtmlLink": "https://www.google.com/calendar/event?eid=Nm9vamdvOW02OHM2Y2JiNmNjcTZjYjlrNnRpMzBiYjE2dGkzNGI5aTYxZ200Y3IyNmNwamljYjFjOCBtYXJjYW50aG9ueS5naXJhcmQucHJvdGljQG0",
   "updated": "2025-05-22T10:07:12-04:00"
 }
-[2025-06-06T22:02:20.002Z] Rendering task: {
+[2025-06-06T23:10:14.312Z] Rendering task: {
+  "content": "Test 2",
+  "priority": null,
+  "tags": [],
+  "startDateTime": "2025-06-06",
+  "dueDateTime": "2025-06-06",
+  "doneDateTime": null,
+  "path": "time management/2025/W23 - June-01.md",
+  "blockId": "OT561B8LS1S0",
+  "eventStatus": " ",
+  "calUId": "msoleqsg8ejf6qrqjh6nlf9kes@google.com",
+  "eventId": "msoleqsg8ejf6qrqjh6nlf9kes",
+  "eventHtmlLink": "https://www.google.com/calendar/event?eid=bXNvbGVxc2c4ZWpmNnFycWpoNm5sZjlrZXMgbWFyY2FudGhvbnkuZ2lyYXJkLnByb3RpY0Bt",
+  "updated": "2025-06-06T19:08:32-04:00"
+}
+[2025-06-06T23:10:14.312Z] Rendering task: {
   "content": "Finir de lire le livre the software engineer's guidebook",
   "priority": null,
   "tags": [],
@@ -33,8 +96,359 @@
   "path": "time management/2025/W23 - June-01.md",
   "blockId": "4EF2U43MECG0",
   "eventStatus": " ",
-  "calUId": "c674mol3j1e4f6srgg8q3s54ok@google.com",
-  "eventId": "c674mol3j1e4f6srgg8q3s54ok",
-  "eventHtmlLink": "https://www.google.com/calendar/event?eid=YzY3NG1vbDNqMWU0ZjZzcmdnOHEzczU0b2sgbWFyY2FudGhvbnkuZ2lyYXJkLnByb3RpY0Bt",
-  "updated": "2025-06-06T17:27:06-04:00"
+  "calUId": "205kmekitj6d8vueech77ul9dk@google.com",
+  "eventId": "205kmekitj6d8vueech77ul9dk",
+  "eventHtmlLink": "https://www.google.com/calendar/event?eid=MjA1a21la2l0ajZkOHZ1ZWVjaDc3dWw5ZGsgbWFyY2FudGhvbnkuZ2lyYXJkLnByb3RpY0Bt",
+  "updated": "2025-06-06T19:02:33-04:00"
 }
+[2025-06-06T23:11:14.011Z] push Todos: startMoment=Fri May 23 2025 00:00:00 GMT-0400 
+[2025-06-06T23:11:14.473Z] JSON parse error on For details, go here:
+https://www.eventbrite.com/e/code-quebec-tickets-1234867705549: SyntaxError: Unexpected token 'F', "For detail"... is not valid JSON 
+[2025-06-06T23:11:14.473Z] JSON parse error on For details, go here:
+https://www.eventbrite.com/e/code-quebec-tickets-1234867705549: SyntaxError: Unexpected token 'F', "For detail"... is not valid JSON 
+[2025-06-06T23:11:14.473Z] JSON parse error on For details, go here:
+https://www.eventbrite.com/e/code-quebec-tickets-1234867705549: SyntaxError: Unexpected token 'F', "For detail"... is not valid JSON 
+[2025-06-06T23:11:14.473Z] JSON parse error on For details, go here:
+https://www.eventbrite.com/e/code-quebec-tickets-1234867705549: SyntaxError: Unexpected token 'F', "For detail"... is not valid JSON 
+[2025-06-06T23:11:14.473Z] JSON parse error on For details, go here:
+https://www.eventbrite.com/e/code-quebec-tickets-1234867705549: SyntaxError: Unexpected token 'F', "For detail"... is not valid JSON 
+[2025-06-06T23:11:14.474Z] JSON parse error on To see detailed information for automatically created events like this one, use the official Google Calendar app. https://g.co/calendar
+
+This event was created from an email you received in Gmail. https://mail.google.com/mail?extsrc=cal&plid=ACUX6DMDZgSCKAINRSCdlWJSwUyPhYwFLfk-_A0
+: SyntaxError: Unexpected token 'T', "To see det"... is not valid JSON 
+[2025-06-06T23:11:14.474Z] JSON parse error on To see detailed information for automatically created events like this one, use the official Google Calendar app. https://g.co/calendar
+
+This event was created from an email you received in Gmail. https://mail.google.com/mail?extsrc=cal&plid=ACUX6DMDZgSCKAINRSCdlWJSwUyPhYwFLfk-_A0
+: SyntaxError: Unexpected token 'T', "To see det"... is not valid JSON 
+[2025-06-06T23:11:14.474Z] JSON parse error on To see detailed information for automatically created events like this one, use the official Google Calendar app. https://g.co/calendar
+
+This event was created from an email you received in Gmail. https://mail.google.com/mail?extsrc=cal&plid=ACUX6DMDZgSCKAINRSCdlWJSwUyPhYwFLfk-_A0
+: SyntaxError: Unexpected token 'T', "To see det"... is not valid JSON 
+[2025-06-06T23:11:14.474Z] JSON parse error on To see detailed information for automatically created events like this one, use the official Google Calendar app. https://g.co/calendar
+
+This event was created from an email you received in Gmail. https://mail.google.com/mail?extsrc=cal&plid=ACUX6DMDZgSCKAINRSCdlWJSwUyPhYwFLfk-_A0
+: SyntaxError: Unexpected token 'T', "To see det"... is not valid JSON 
+[2025-06-06T23:11:14.474Z] JSON parse error on To see detailed information for automatically created events like this one, use the official Google Calendar app. https://g.co/calendar
+
+This event was created from an email you received in Gmail. https://mail.google.com/mail?extsrc=cal&plid=ACUX6DMDZgSCKAINRSCdlWJSwUyPhYwFLfk-_A0
+: SyntaxError: Unexpected token 'T', "To see det"... is not valid JSON 
+[2025-06-06T23:11:14.502Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:14.502Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:14.503Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:14.503Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:15.004Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:15.004Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:15.005Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:15.005Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:16.005Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:16.006Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:16.006Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:16.006Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:17.004Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:17.005Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:17.006Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:17.006Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:18.000Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:18.001Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:18.002Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:18.002Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:19.001Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:19.002Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:19.002Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:19.003Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:20.000Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:20.001Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:20.002Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:20.002Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:21.001Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:21.003Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:21.006Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:21.006Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:22.001Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:22.001Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:22.002Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:22.002Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:23.001Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:23.002Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:23.002Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:23.002Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:24.000Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:24.001Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:24.002Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:24.002Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:25.001Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:25.001Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:25.002Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:25.002Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:26.001Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:26.002Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:26.002Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:26.002Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:27.001Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:27.002Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:27.002Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:27.002Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:28.001Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:28.003Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:28.003Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:28.004Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:29.002Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:29.003Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:29.003Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:29.004Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:30.000Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:30.001Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:30.002Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:30.002Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:31.001Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:31.002Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:31.003Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:31.003Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:32.000Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:32.001Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:32.002Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:32.002Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:33.001Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:33.002Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:33.002Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:11:33.002Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:12:14.002Z] push Todos: startMoment=Fri May 23 2025 00:00:00 GMT-0400 
+[2025-06-06T23:12:14.387Z] JSON parse error on For details, go here:
+https://www.eventbrite.com/e/code-quebec-tickets-1234867705549: SyntaxError: Unexpected token 'F', "For detail"... is not valid JSON 
+[2025-06-06T23:12:14.388Z] JSON parse error on For details, go here:
+https://www.eventbrite.com/e/code-quebec-tickets-1234867705549: SyntaxError: Unexpected token 'F', "For detail"... is not valid JSON 
+[2025-06-06T23:12:14.388Z] JSON parse error on For details, go here:
+https://www.eventbrite.com/e/code-quebec-tickets-1234867705549: SyntaxError: Unexpected token 'F', "For detail"... is not valid JSON 
+[2025-06-06T23:12:14.388Z] JSON parse error on For details, go here:
+https://www.eventbrite.com/e/code-quebec-tickets-1234867705549: SyntaxError: Unexpected token 'F', "For detail"... is not valid JSON 
+[2025-06-06T23:12:14.388Z] JSON parse error on For details, go here:
+https://www.eventbrite.com/e/code-quebec-tickets-1234867705549: SyntaxError: Unexpected token 'F', "For detail"... is not valid JSON 
+[2025-06-06T23:12:14.388Z] JSON parse error on To see detailed information for automatically created events like this one, use the official Google Calendar app. https://g.co/calendar
+
+This event was created from an email you received in Gmail. https://mail.google.com/mail?extsrc=cal&plid=ACUX6DMDZgSCKAINRSCdlWJSwUyPhYwFLfk-_A0
+: SyntaxError: Unexpected token 'T', "To see det"... is not valid JSON 
+[2025-06-06T23:12:14.388Z] JSON parse error on To see detailed information for automatically created events like this one, use the official Google Calendar app. https://g.co/calendar
+
+This event was created from an email you received in Gmail. https://mail.google.com/mail?extsrc=cal&plid=ACUX6DMDZgSCKAINRSCdlWJSwUyPhYwFLfk-_A0
+: SyntaxError: Unexpected token 'T', "To see det"... is not valid JSON 
+[2025-06-06T23:12:14.388Z] JSON parse error on To see detailed information for automatically created events like this one, use the official Google Calendar app. https://g.co/calendar
+
+This event was created from an email you received in Gmail. https://mail.google.com/mail?extsrc=cal&plid=ACUX6DMDZgSCKAINRSCdlWJSwUyPhYwFLfk-_A0
+: SyntaxError: Unexpected token 'T', "To see det"... is not valid JSON 
+[2025-06-06T23:12:14.388Z] JSON parse error on To see detailed information for automatically created events like this one, use the official Google Calendar app. https://g.co/calendar
+
+This event was created from an email you received in Gmail. https://mail.google.com/mail?extsrc=cal&plid=ACUX6DMDZgSCKAINRSCdlWJSwUyPhYwFLfk-_A0
+: SyntaxError: Unexpected token 'T', "To see det"... is not valid JSON 
+[2025-06-06T23:12:14.388Z] JSON parse error on To see detailed information for automatically created events like this one, use the official Google Calendar app. https://g.co/calendar
+
+This event was created from an email you received in Gmail. https://mail.google.com/mail?extsrc=cal&plid=ACUX6DMDZgSCKAINRSCdlWJSwUyPhYwFLfk-_A0
+: SyntaxError: Unexpected token 'T', "To see det"... is not valid JSON 
+[2025-06-06T23:12:14.399Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:12:14.399Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:12:14.399Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:12:14.400Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:12:15.005Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:12:15.005Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:12:15.006Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:12:15.006Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:12:16.000Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:12:16.001Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:12:16.001Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:12:16.001Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:12:17.003Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:12:17.004Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:12:17.004Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:12:17.005Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:12:18.000Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:12:18.000Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:12:18.000Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:12:18.000Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:13:08.002Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:13:08.007Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:13:08.007Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:13:08.008Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:13:14.001Z] push Todos: startMoment=Fri May 23 2025 00:00:00 GMT-0400 
+[2025-06-06T23:13:14.522Z] JSON parse error on For details, go here:
+https://www.eventbrite.com/e/code-quebec-tickets-1234867705549: SyntaxError: Unexpected token 'F', "For detail"... is not valid JSON 
+[2025-06-06T23:13:14.523Z] JSON parse error on For details, go here:
+https://www.eventbrite.com/e/code-quebec-tickets-1234867705549: SyntaxError: Unexpected token 'F', "For detail"... is not valid JSON 
+[2025-06-06T23:13:14.523Z] JSON parse error on For details, go here:
+https://www.eventbrite.com/e/code-quebec-tickets-1234867705549: SyntaxError: Unexpected token 'F', "For detail"... is not valid JSON 
+[2025-06-06T23:13:14.523Z] JSON parse error on For details, go here:
+https://www.eventbrite.com/e/code-quebec-tickets-1234867705549: SyntaxError: Unexpected token 'F', "For detail"... is not valid JSON 
+[2025-06-06T23:13:14.523Z] JSON parse error on For details, go here:
+https://www.eventbrite.com/e/code-quebec-tickets-1234867705549: SyntaxError: Unexpected token 'F', "For detail"... is not valid JSON 
+[2025-06-06T23:13:14.523Z] JSON parse error on To see detailed information for automatically created events like this one, use the official Google Calendar app. https://g.co/calendar
+
+This event was created from an email you received in Gmail. https://mail.google.com/mail?extsrc=cal&plid=ACUX6DMDZgSCKAINRSCdlWJSwUyPhYwFLfk-_A0
+: SyntaxError: Unexpected token 'T', "To see det"... is not valid JSON 
+[2025-06-06T23:13:14.523Z] JSON parse error on To see detailed information for automatically created events like this one, use the official Google Calendar app. https://g.co/calendar
+
+This event was created from an email you received in Gmail. https://mail.google.com/mail?extsrc=cal&plid=ACUX6DMDZgSCKAINRSCdlWJSwUyPhYwFLfk-_A0
+: SyntaxError: Unexpected token 'T', "To see det"... is not valid JSON 
+[2025-06-06T23:13:14.523Z] JSON parse error on To see detailed information for automatically created events like this one, use the official Google Calendar app. https://g.co/calendar
+
+This event was created from an email you received in Gmail. https://mail.google.com/mail?extsrc=cal&plid=ACUX6DMDZgSCKAINRSCdlWJSwUyPhYwFLfk-_A0
+: SyntaxError: Unexpected token 'T', "To see det"... is not valid JSON 
+[2025-06-06T23:13:14.523Z] JSON parse error on To see detailed information for automatically created events like this one, use the official Google Calendar app. https://g.co/calendar
+
+This event was created from an email you received in Gmail. https://mail.google.com/mail?extsrc=cal&plid=ACUX6DMDZgSCKAINRSCdlWJSwUyPhYwFLfk-_A0
+: SyntaxError: Unexpected token 'T', "To see det"... is not valid JSON 
+[2025-06-06T23:13:14.523Z] JSON parse error on To see detailed information for automatically created events like this one, use the official Google Calendar app. https://g.co/calendar
+
+This event was created from an email you received in Gmail. https://mail.google.com/mail?extsrc=cal&plid=ACUX6DMDZgSCKAINRSCdlWJSwUyPhYwFLfk-_A0
+: SyntaxError: Unexpected token 'T', "To see det"... is not valid JSON 
+[2025-06-06T23:13:14.531Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:13:14.532Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:13:14.532Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:13:14.532Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:13:15.004Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:13:15.005Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:13:15.005Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:13:15.006Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:13:16.000Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:13:16.001Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:13:16.001Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:13:16.001Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:13:17.000Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:13:17.001Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:13:17.001Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:13:17.002Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:13:18.002Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:13:18.002Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:13:18.003Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:13:18.003Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:14:07.999Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:14:08.002Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:14:08.003Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:14:08.003Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:14:08.004Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:14:08.004Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:14:08.004Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:14:08.004Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:14:14.001Z] push Todos: startMoment=Fri May 23 2025 00:00:00 GMT-0400 
+[2025-06-06T23:14:14.397Z] JSON parse error on For details, go here:
+https://www.eventbrite.com/e/code-quebec-tickets-1234867705549: SyntaxError: Unexpected token 'F', "For detail"... is not valid JSON 
+[2025-06-06T23:14:14.398Z] JSON parse error on For details, go here:
+https://www.eventbrite.com/e/code-quebec-tickets-1234867705549: SyntaxError: Unexpected token 'F', "For detail"... is not valid JSON 
+[2025-06-06T23:14:14.398Z] JSON parse error on For details, go here:
+https://www.eventbrite.com/e/code-quebec-tickets-1234867705549: SyntaxError: Unexpected token 'F', "For detail"... is not valid JSON 
+[2025-06-06T23:14:14.398Z] JSON parse error on For details, go here:
+https://www.eventbrite.com/e/code-quebec-tickets-1234867705549: SyntaxError: Unexpected token 'F', "For detail"... is not valid JSON 
+[2025-06-06T23:14:14.398Z] JSON parse error on For details, go here:
+https://www.eventbrite.com/e/code-quebec-tickets-1234867705549: SyntaxError: Unexpected token 'F', "For detail"... is not valid JSON 
+[2025-06-06T23:14:14.398Z] JSON parse error on To see detailed information for automatically created events like this one, use the official Google Calendar app. https://g.co/calendar
+
+This event was created from an email you received in Gmail. https://mail.google.com/mail?extsrc=cal&plid=ACUX6DMDZgSCKAINRSCdlWJSwUyPhYwFLfk-_A0
+: SyntaxError: Unexpected token 'T', "To see det"... is not valid JSON 
+[2025-06-06T23:14:14.398Z] JSON parse error on To see detailed information for automatically created events like this one, use the official Google Calendar app. https://g.co/calendar
+
+This event was created from an email you received in Gmail. https://mail.google.com/mail?extsrc=cal&plid=ACUX6DMDZgSCKAINRSCdlWJSwUyPhYwFLfk-_A0
+: SyntaxError: Unexpected token 'T', "To see det"... is not valid JSON 
+[2025-06-06T23:14:14.398Z] JSON parse error on To see detailed information for automatically created events like this one, use the official Google Calendar app. https://g.co/calendar
+
+This event was created from an email you received in Gmail. https://mail.google.com/mail?extsrc=cal&plid=ACUX6DMDZgSCKAINRSCdlWJSwUyPhYwFLfk-_A0
+: SyntaxError: Unexpected token 'T', "To see det"... is not valid JSON 
+[2025-06-06T23:14:14.399Z] JSON parse error on To see detailed information for automatically created events like this one, use the official Google Calendar app. https://g.co/calendar
+
+This event was created from an email you received in Gmail. https://mail.google.com/mail?extsrc=cal&plid=ACUX6DMDZgSCKAINRSCdlWJSwUyPhYwFLfk-_A0
+: SyntaxError: Unexpected token 'T', "To see det"... is not valid JSON 
+[2025-06-06T23:14:14.399Z] JSON parse error on To see detailed information for automatically created events like this one, use the official Google Calendar app. https://g.co/calendar
+
+This event was created from an email you received in Gmail. https://mail.google.com/mail?extsrc=cal&plid=ACUX6DMDZgSCKAINRSCdlWJSwUyPhYwFLfk-_A0
+: SyntaxError: Unexpected token 'T', "To see det"... is not valid JSON 
+[2025-06-06T23:14:14.407Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:14:14.408Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:14:14.409Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:14:14.409Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:14:15.001Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:14:15.001Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:14:15.001Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:14:15.001Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:14:15.999Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:14:15.999Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:14:16.000Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:14:16.000Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:14:16.999Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:14:17.000Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:14:17.000Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:14:17.000Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:14:18.000Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:14:18.001Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:14:18.001Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:14:18.001Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:15:08.003Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:15:08.004Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:15:08.005Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:15:08.005Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:15:08.005Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:15:08.005Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:15:08.005Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:15:08.005Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:15:08.008Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:15:08.008Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:15:08.009Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:15:08.009Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:16:07.999Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:16:08.000Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:16:08.001Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:16:08.001Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:16:08.001Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:16:08.001Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:16:08.001Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:16:08.001Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:16:08.001Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:16:08.002Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:16:08.002Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:16:08.002Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:16:08.004Z] push Todos: startMoment=Fri May 23 2025 00:00:00 GMT-0400 
+[2025-06-06T23:16:08.473Z] JSON parse error on For details, go here:
+https://www.eventbrite.com/e/code-quebec-tickets-1234867705549: SyntaxError: Unexpected token 'F', "For detail"... is not valid JSON 
+[2025-06-06T23:16:08.473Z] JSON parse error on For details, go here:
+https://www.eventbrite.com/e/code-quebec-tickets-1234867705549: SyntaxError: Unexpected token 'F', "For detail"... is not valid JSON 
+[2025-06-06T23:16:08.473Z] JSON parse error on For details, go here:
+https://www.eventbrite.com/e/code-quebec-tickets-1234867705549: SyntaxError: Unexpected token 'F', "For detail"... is not valid JSON 
+[2025-06-06T23:16:08.473Z] JSON parse error on For details, go here:
+https://www.eventbrite.com/e/code-quebec-tickets-1234867705549: SyntaxError: Unexpected token 'F', "For detail"... is not valid JSON 
+[2025-06-06T23:16:08.473Z] JSON parse error on For details, go here:
+https://www.eventbrite.com/e/code-quebec-tickets-1234867705549: SyntaxError: Unexpected token 'F', "For detail"... is not valid JSON 
+[2025-06-06T23:16:08.473Z] JSON parse error on To see detailed information for automatically created events like this one, use the official Google Calendar app. https://g.co/calendar
+
+This event was created from an email you received in Gmail. https://mail.google.com/mail?extsrc=cal&plid=ACUX6DMDZgSCKAINRSCdlWJSwUyPhYwFLfk-_A0
+: SyntaxError: Unexpected token 'T', "To see det"... is not valid JSON 
+[2025-06-06T23:16:08.473Z] JSON parse error on To see detailed information for automatically created events like this one, use the official Google Calendar app. https://g.co/calendar
+
+This event was created from an email you received in Gmail. https://mail.google.com/mail?extsrc=cal&plid=ACUX6DMDZgSCKAINRSCdlWJSwUyPhYwFLfk-_A0
+: SyntaxError: Unexpected token 'T', "To see det"... is not valid JSON 
+[2025-06-06T23:16:08.473Z] JSON parse error on To see detailed information for automatically created events like this one, use the official Google Calendar app. https://g.co/calendar
+
+This event was created from an email you received in Gmail. https://mail.google.com/mail?extsrc=cal&plid=ACUX6DMDZgSCKAINRSCdlWJSwUyPhYwFLfk-_A0
+: SyntaxError: Unexpected token 'T', "To see det"... is not valid JSON 
+[2025-06-06T23:16:08.474Z] JSON parse error on To see detailed information for automatically created events like this one, use the official Google Calendar app. https://g.co/calendar
+
+This event was created from an email you received in Gmail. https://mail.google.com/mail?extsrc=cal&plid=ACUX6DMDZgSCKAINRSCdlWJSwUyPhYwFLfk-_A0
+: SyntaxError: Unexpected token 'T', "To see det"... is not valid JSON 
+[2025-06-06T23:16:08.474Z] JSON parse error on To see detailed information for automatically created events like this one, use the official Google Calendar app. https://g.co/calendar
+
+This event was created from an email you received in Gmail. https://mail.google.com/mail?extsrc=cal&plid=ACUX6DMDZgSCKAINRSCdlWJSwUyPhYwFLfk-_A0
+: SyntaxError: Unexpected token 'T', "To see det"... is not valid JSON 
+[2025-06-06T23:16:08.481Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:16:08.482Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:16:08.482Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:16:08.482Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:16:08.999Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:16:08.999Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:16:09.000Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:16:09.000Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:16:09.999Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:16:09.999Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:16:10.000Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:16:10.000Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:16:10.999Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:16:10.999Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:16:11.000Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:16:11.000Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:16:11.999Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:16:11.999Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:16:11.999Z] Error on patch event: Error: Missing required parameters: eventId 
+[2025-06-06T23:16:12.000Z] Error on patch event: Error: Missing required parameters: eventId 

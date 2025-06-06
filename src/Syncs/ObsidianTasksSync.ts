@@ -1,6 +1,6 @@
 import crypto from "crypto";
 import { Mutex } from 'async-mutex';
-import { App, TFile, Notice } from "obsidian";
+import { App, TFile, Notice, Plugin } from "obsidian";
 import { DataviewApi, getAPI, isPluginEnabled, type STask } from "obsidian-dataview";
 
 import { DEFAULT_SYMBOLS } from "src/TodoSerialization/DefaultSerialization";
