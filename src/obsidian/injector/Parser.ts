@@ -29,15 +29,7 @@ export class ParsingError extends Error {
  * @throws ParsingError if the raw string cannot be parsed
  */
 export function parseQuery(raw: string): Query {
-  let obj: any;
-
-  try {
-    obj = YAML.parse(raw);
-  } catch (e) {
-    throw e;
-  }
-
-  return parseObject(obj);
+  return parseObject(YAML.parse(raw));
 }
 
 /**
@@ -46,6 +38,7 @@ export function parseQuery(raw: string): Query {
  * @returns the parsed Query object
  * @throws ParsingError if the object is not a valid Query object
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function parseObject(query: any): Query {
   if (query.hasOwnProperty("name") && typeof query.name !== "string") {
     throw new ParsingError("'name' field must be a string");

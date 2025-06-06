@@ -2,8 +2,8 @@ import { App, type PluginManifest, Plugin } from 'obsidian';
 
 import { gfSyncStatus$, gfNetStatus$, NetworkStatus } from 'src/obsidian/NetworkMenu';
 import { MainSynchronizer } from "src/Syncs/MainSynchronizer";
-import QueryInjector from 'src/injector/QueryInjector';
-import { Logger } from 'src/lib/Logger';
+import QueryInjector from 'src/obsidian/injector/QueryInjector';
+import { Logger } from 'src/util/Logger';
 import { SyncCalendarPluginSettingTab } from 'src/obsidian/SettingMenu';
 import { updateNetStatusItem, updateSyncStatusItem } from 'src/obsidian/NetworkMenu';
 

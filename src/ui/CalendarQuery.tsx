@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo, useCallback } from "react";
 
 import type SyncCalendarPlugin from "main";
-import type { Query } from "src/injector/Query";
+import type { Query } from "src/obsidian/injector/Query";
 import { Todo } from "src/TodoSerialization/Todo";
 import type { MainSynchronizer } from "src/Syncs/MainSynchronizer";
 
