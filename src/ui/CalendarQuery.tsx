@@ -106,7 +106,6 @@ const CalendarQuery: React.FC<CalendarQueryProps> = ({
 		}
 	}, [
 		api,
-		fetching,
 		plugin.settings.fetchWeeksAgo,
 		plugin.settings.fetchMaximumEvents,
 		query,

@@ -1,7 +1,7 @@
 import type { App } from "obsidian";
 
 import type { Todo } from "src/TodoSerialization/Todo";
-import { debug } from 'src/lib/DebugLog';
+import { logger } from 'main';
 import { GoogleCalendarSync } from './GoogleCalendarSync'
 import { ObsidianTasksSync } from './ObsidianTasksSync';
 
@@ -43,7 +43,7 @@ export class MainSynchronizer {
     maxResults: number = 200,
     triggeredBy: 'auto' | 'mannual' = 'auto'
   ) {
-    debug(`push Todos: startMoment=${startMoment}`);
+    logger.log(`push Todos: startMoment=${startMoment}`);
 
     // 1. list all tasks in Obsidian
     const obTasks = this.obsidianSync.listTasks(startMoment, triggeredBy);
@@ -62,7 +62,7 @@ export class MainSynchronizer {
 
     obTasks.map(async (task) => {
       if (!task.blockId || task.blockId.length === 0) {
-        debug(`Error in construct obBlockId2Todo, ${task.content} does not have a blockId`);
+        logger.log(`Error in construct obBlockId2Todo, ${task.content} does not have a blockId`);
         return;
       }
       if (clBlockId2Event.has(task.blockId)) {
@@ -123,7 +123,7 @@ export class MainSynchronizer {
       let task = obBlockId2Task.get(event.blockId);
 
       if (!task || !task.path || !task.blockId) {
-        debug(`Cannot find file/blockId for updated todo: $ {event.content}`);
+        logger.log(`Cannot find file/blockId for updated todo: $ {event.content}`);
         throw Error(`Cannot find file/blockId for updated todo: $ {event.content}`);
       }
 

@@ -5,7 +5,7 @@ import { authenticate } from '@google-cloud/local-auth';
 import { google, type calendar_v3, Auth } from 'googleapis';
 
 import { Todo } from 'src/TodoSerialization/Todo';
-import { debug } from 'src/lib/DebugLog';
+import { logger } from 'main';
 
 import {
   NetworkStatus,
@@ -108,10 +108,10 @@ export class GoogleCalendarSync {
         )
         .then((event) => {
           isInsertSuccess = true;
-          debug(`Added event: ${todo.content}! link: ${event.data.htmlLink}`);
+          logger.log(`Added event: ${todo.content}! link: ${event.data.htmlLink}`);
           return;
         }).catch(async (error) => {
-          debug(`Error on inserting event: ${error}`);
+          logger.log(`Error on inserting event: ${error}`);
           await new Promise(resolve => setTimeout(resolve, 100));
         });
     }
@@ -151,10 +151,10 @@ export class GoogleCalendarSync {
         } as calendar_v3.Params$Resource$Events$Delete)
         .then(() => {
           isDeleteSuccess = true;
-          debug(`Deleted event: ${todo.content}!`);
+          logger.log(`Deleted event: ${todo.content}!`);
           return;
         }).catch(async (err) => {
-          debug(`Error on delete event: ${err}`);
+          logger.log(`Error on delete event: ${err}`);
           await new Promise(resolve => setTimeout(resolve, 100));
         });
     }
@@ -196,10 +196,10 @@ export class GoogleCalendarSync {
         } as calendar_v3.Params$Resource$Events$Patch)
         .then(() => {
           isPatchSuccess = true;
-          debug(`Patched event: ${todo.content}!`);
+          logger.log(`Patched event: ${todo.content}!`);
           return;
         }).catch(async (err) => {
-          debug(`Error on patch event: ${err}`);
+          logger.log(`Error on patch event: ${err}`);
           await new Promise(resolve => setTimeout(resolve, 100));
         });
     }

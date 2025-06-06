@@ -1,0 +1,40 @@
+[2025-06-06T22:02:19.218Z] updateSyncStatusItem 1
+[2025-06-06T22:02:19.435Z] updateSyncStatusItem 3
+[2025-06-06T22:02:19.969Z] updateSyncStatusItem 4
+[2025-06-06T22:02:20.001Z] Rendering task: {
+  "content": "Meet & Learn | Nexapp | 5 juin",
+  "tags": [],
+  "startDateTime": "2025-06-05T05:30:00-04:00",
+  "dueDateTime": "2025-06-05T06:30:00-04:00",
+  "eventStatus": "",
+  "calUId": "smhtujtsitqh323t2099u5q60g@google.com",
+  "eventId": "smhtujtsitqh323t2099u5q60g",
+  "eventHtmlLink": "https://www.google.com/calendar/event?eid=c21odHVqdHNpdHFoMzIzdDIwOTl1NXE2MGcgbWFyY2FudGhvbnkuZ2lyYXJkLnByb3RpY0Bt",
+  "updated": "2025-06-03T17:34:09-04:00"
+}
+[2025-06-06T22:02:20.002Z] Rendering task: {
+  "content": "Soirée nexapp",
+  "tags": [],
+  "startDateTime": "2025-06-05T18:00:00-04:00",
+  "dueDateTime": "2025-06-05T21:00:00-04:00",
+  "eventStatus": "",
+  "calUId": "6oojgo9m68s6cbb6ccq6cb9k6ti30bb16ti34b9i61gm4cr26cpjicb1c8@google.com",
+  "eventId": "6oojgo9m68s6cbb6ccq6cb9k6ti30bb16ti34b9i61gm4cr26cpjicb1c8",
+  "eventHtmlLink": "https://www.google.com/calendar/event?eid=Nm9vamdvOW02OHM2Y2JiNmNjcTZjYjlrNnRpMzBiYjE2dGkzNGI5aTYxZ200Y3IyNmNwamljYjFjOCBtYXJjYW50aG9ueS5naXJhcmQucHJvdGljQG0",
+  "updated": "2025-05-22T10:07:12-04:00"
+}
+[2025-06-06T22:02:20.002Z] Rendering task: {
+  "content": "Finir de lire le livre the software engineer's guidebook",
+  "priority": null,
+  "tags": [],
+  "startDateTime": "2025-06-06T10:00:00-04:00",
+  "dueDateTime": "2025-06-06T18:30:00-04:00",
+  "doneDateTime": null,
+  "path": "time management/2025/W23 - June-01.md",
+  "blockId": "4EF2U43MECG0",
+  "eventStatus": " ",
+  "calUId": "c674mol3j1e4f6srgg8q3s54ok@google.com",
+  "eventId": "c674mol3j1e4f6srgg8q3s54ok",
+  "eventHtmlLink": "https://www.google.com/calendar/event?eid=YzY3NG1vbDNqMWU0ZjZzcmdnOHEzczU0b2sgbWFyY2FudGhvbnkuZ2lyYXJkLnByb3RpY0Bt",
+  "updated": "2025-06-06T17:27:06-04:00"
+}

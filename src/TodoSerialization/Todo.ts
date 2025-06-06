@@ -1,6 +1,5 @@
-import { debug } from 'src/lib/DebugLog';
-
 import type { calendar_v3 } from 'googleapis';
+import { logger } from 'main';
 
 export class Todo {
   public content: null | string | undefined;
@@ -193,19 +192,19 @@ export class Todo {
       eventMeta.description = eventMeta.description.replace(/<\/?span>/g, '');
       try {
         blockId = JSON.parse(eventMeta.description).blockId;
-      } catch (e) { debug(`JSON parse error on ${eventMeta.description}: ${e}`); }
+      } catch (e) { logger.log(`JSON parse error on ${eventMeta.description}: ${e}`); }
       try {
         priority = JSON.parse(eventMeta.description).priority;
-      } catch (e) { debug(`JSON parse error on ${eventMeta.description}: ${e}`); }
+      } catch (e) { logger.log(`JSON parse error on ${eventMeta.description}: ${e}`); }
       try {
         eventStatus = JSON.parse(eventMeta.description).eventStatus;
-      } catch (e) { debug(`JSON parse error on ${eventMeta.description}: ${e}`); }
+      } catch (e) { logger.log(`JSON parse error on ${eventMeta.description}: ${e}`); }
       try {
         tags = JSON.parse(eventMeta.description).tags;
-      } catch (e) { debug(`JSON parse error on ${eventMeta.description}: ${e}`); }
+      } catch (e) { logger.log(`JSON parse error on ${eventMeta.description}: ${e}`); }
       try {
         doneDateTime = JSON.parse(eventMeta.description).doneDateTime;
-      } catch (e) { debug(`JSON parse error on ${eventMeta.description}: ${e}`); }
+      } catch (e) { logger.log(`JSON parse error on ${eventMeta.description}: ${e}`); }
     }
 
     if (!eventMeta.start || !eventMeta.end) {

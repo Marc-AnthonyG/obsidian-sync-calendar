@@ -6,7 +6,7 @@ import { DataviewApi, getAPI, isPluginEnabled, type STask } from "obsidian-datav
 import { DEFAULT_SYMBOLS } from "src/TodoSerialization/DefaultSerialization";
 import { DefaultTodoSerializer, type TodoDetails } from "src/TodoSerialization";
 import { Todo } from "src/TodoSerialization/Todo";
-import { debug } from "src/lib/DebugLog";
+import { logger } from "main";
 
 /**
  * This class is responsible for syncing tasks between Obsidian and a calendar.
@@ -57,7 +57,7 @@ export class ObsidianTasksSync {
     this.updateFileContent(todo, (fileLines, targetLineNumber) => {
       let matchResult = fileLines[targetLineNumber].match(/.*- \[.\] /);
       if (!matchResult) {
-        debug(`We cannot find a line with pattern - [ ] in ${fileLines[targetLineNumber]}`);;
+        logger.log(`We cannot find a line with pattern - [ ] in ${fileLines[targetLineNumber]}`);;
         return fileLines;
       }
 
@@ -115,7 +115,7 @@ export class ObsidianTasksSync {
         if (triggeredBy == 'auto') {
           const cursorPosition = this.app.workspace.activeEditor?.editor?.getCursor();
           if (cursorPosition?.line === task.position.start.line) {
-            debug("task is on editing, skip it!");
+            logger.log("task is on editing, skip it!");
             return;
           }
         }
@@ -169,8 +169,8 @@ export class ObsidianTasksSync {
   private async updateFileContent(todo: Todo, updateFunc: (fileLines: string[], targetLine: number) => string[]): Promise<void> {
     // Check if todo has valid path and blockId
     if (!todo.path || !todo.blockId) {
-      debug(`${todo.content} todo has invalid path or blockId`);
-      debug(JSON.stringify(todo));
+      logger.log(`${todo.content} todo has invalid path or blockId`);
+      logger.log(JSON.stringify(todo));
       throw Error(`${todo.content} todo has invalid path or blockId`);
     }
 
@@ -194,7 +194,7 @@ export class ObsidianTasksSync {
         }
       });
       if (targetLine === undefined) {
-        debug("Cannot find line/prefix for updated todo: " + todo.content);
+        logger.log("Cannot find line/prefix for updated todo: " + todo.content);
         return;
       }
 

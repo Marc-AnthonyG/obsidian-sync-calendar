@@ -1,13 +1,12 @@
-import { App, type PluginManifest, Plugin, PluginSettingTab, Setting } from 'obsidian';
+import { App, type PluginManifest, Plugin, PluginSettingTab, Setting, FileSystemAdapter } from 'obsidian';
 
 import { SyncStatus, NetworkStatus } from 'src/Syncs/StatusEnumerate';
 import { gfSyncStatus$, gfNetStatus$ } from 'src/Syncs/StatusEnumerate';
 import { MainSynchronizer } from "src/Syncs/MainSynchronizer";
 import QueryInjector from 'src/injector/QueryInjector';
-import { setDebugLogging } from 'src/lib/DebugLog';
+import { Logger } from 'src/lib/Logger';
 
-
-// Remember to rename these classes and interfaces!
+export let logger: Logger;
 
 interface SyncCalendarPluginSettings {
   fetchWeeksAgo: number;
@@ -15,8 +14,6 @@ interface SyncCalendarPluginSettings {
 
   renderDate: boolean;
   renderTags: boolean;
-
-  enableLogging: boolean;
 }
 
 const DEFAULT_SETTINGS: SyncCalendarPluginSettings = {
@@ -25,8 +22,6 @@ const DEFAULT_SETTINGS: SyncCalendarPluginSettings = {
 
   renderDate: true,
   renderTags: true,
-
-  enableLogging: false,
 }
 
 
@@ -48,7 +43,15 @@ export default class SyncCalendarPlugin extends Plugin {
 
   async onload() {
     await this.loadSettings();
-    setDebugLogging(this.settings.enableLogging);
+
+    if (this.app.vault.adapter instanceof FileSystemAdapter) {
+      logger = new Logger("/Users/marc-anthonygirard/repository/obsidian-sync-calendar");
+    } else {
+        // In case of other adapters, we can't get the base path, so we can't log to a file.
+        // We can create a logger that logs to the console instead.
+        console.error("Cannot get base path for logger. Using console logger instead.");
+        logger = { log: console.log } as Logger;
+    }
 
     this.addSettingTab(new SyncCalendarPluginSettingTab(this.app, this));
 
@@ -68,7 +71,6 @@ export default class SyncCalendarPlugin extends Plugin {
       this.queryInjector.onNewBlock.bind(this.queryInjector)
     );
 
-    // Add Ribbons
     const ribbonIconEl = this.addRibbonIcon(
       'sync',
       'Sync Google Calendar',
@@ -83,7 +85,6 @@ export default class SyncCalendarPlugin extends Plugin {
       });
     ribbonIconEl.addClass('my-plugin-ribbon-class');
 
-    // Add Commands
     this.addCommand({
       id: 'sync-google-calendar',
       name: 'Sync Google Calendar',
@@ -219,24 +220,9 @@ class SyncCalendarPluginSettingTab extends PluginSettingTab {
       .controlEl.querySelector("input");
 
     this.createHeader("Debug");
-
-    // Debug logging enabled checkbox
-    new Setting(containerEl)
-      .setName("Enable logging")
-      .setDesc("Enable debug logging might help to locate synchronization issues.")
-      .addToggle(toggle =>
-        toggle.setValue(this.plugin.settings.enableLogging)
-          .onChange(async (value) => {
-            this.plugin.settings.enableLogging = value;
-            setDebugLogging(value);
-            await this.plugin.saveSettings();
-          })
-      )
-      .controlEl.querySelector("input");
   }
 
   private createHeader(header_title: string, header_desc: string | null = null) {
-    // this.containerEl.createEl('h3', { text: "hello" });
     const header = this.containerEl.createDiv();
     header.createEl('p', { text: header_title, cls: 'sync-calendar-setting-header-title' });
     if (header_desc) {
