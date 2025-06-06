@@ -5,10 +5,10 @@ import {
 import type { SvelteComponentDev } from "svelte/internal";
 
 import type SyncCalendarPlugin from "main";
-import type { MainSynchronizer } from "Syncs/MainSynchronizer";
+import type { MainSynchronizer } from "src/Syncs/MainSynchronizer";
 import CalendarQuery from "ui/CalendarQuery.svelte";
 import ErrorDisplay from "ui/ErrorDisplay.svelte";
-import { debug } from "lib/DebugLog";
+import { debug } from "src/lib/DebugLog";
 
 import { parseQuery } from "./Parser";
 import type { Query } from "./Query";

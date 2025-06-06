@@ -3,14 +3,13 @@ import { Mutex } from 'async-mutex';
 import { App, TFile, Notice } from "obsidian";
 import { DataviewApi, getAPI, isPluginEnabled, type STask } from "obsidian-dataview";
 
-import { DEFAULT_SYMBOLS } from "TodoSerialization/DefaultSerialization";
-import { DefaultTodoSerializer, type TodoDetails } from "TodoSerialization";
-import { Todo } from "TodoSerialization/Todo";
-import { debug } from "lib/DebugLog";
+import { DEFAULT_SYMBOLS } from "src/TodoSerialization/DefaultSerialization";
+import { DefaultTodoSerializer, type TodoDetails } from "src/TodoSerialization";
+import { Todo } from "src/TodoSerialization/Todo";
+import { debug } from "src/lib/DebugLog";
 
 /**
  * This class is responsible for syncing tasks between Obsidian and a calendar.
- * 这个类负责在 Obsidian 和日历之间同步任务。
  */
 export class ObsidianTasksSync {
   private app: App;
@@ -35,26 +34,22 @@ export class ObsidianTasksSync {
 
   /**
    * Deletes a todo item from its file.
-   * 从文件中删除待办事项。
    * @param todo - The todo item to delete.
    */
   public async deleteTodo(todo: Todo): Promise<void> {
     this.updateFileContent(todo, (fileLines, targetLineNumber) => {
       // Filter out the line containing the todo item's blockId to delete the todo item from its file.
-      // 通过过滤掉包含待办事项块 ID 的行，从文件中删除待办事项。
       return fileLines.filter((line) => !line.includes(todo.blockId!));
     });
   }
 
   static getStatusDonePatch(todo: Todo, line: string): string {
     // Replace "- [ ] " with "- [x] " to indicate that the task has been completed
-    // 将“- [ ]”替换为“- [x]”，表示任务已完成
     return line.replace(/.*(- \[.\] )/, '- [x] ');
   }
 
   /**
    * Marks a todo item as done in its file.
-   * 在文件中标记待办事项为已完成。
    * @param todo - The todo item to mark as done.
    * @param getTodoPatch - A function that returns the updated line for the todo item.
    */
@@ -77,7 +72,6 @@ export class ObsidianTasksSync {
 
   /**
    * Updates a todo item in its file.
-   * 更新文件中的待办事项。
    * @param todo - The todo item to update.
    */
   public async updateTodo(todo: Todo) {
@@ -99,7 +93,6 @@ export class ObsidianTasksSync {
 
   /**
    * Fetches todos based on a key moment and a time window bias ahead.
-   * 根据关键时刻和时间窗口偏差获取待办事项。
    * @param startMoment - The key moment to fetch todos for.
    * @param triggeredBy - Whether the fetch was triggered automatically or manually.
    * @returns An array of todos.
@@ -115,7 +108,6 @@ export class ObsidianTasksSync {
       });
 
     queriedTasks.values.forEach(async (task: STask) => {
-      //  对抓取到的 tasks，没有指定 blockId 需要创建 hashed blockId。
       let todo_details: TodoDetails | null = null;
       if (task.blockId && task.blockId.length > 0) {
         todo_details = this.deserializer.deserialize(task.text);
@@ -130,7 +122,6 @@ export class ObsidianTasksSync {
 
         const hash = crypto.createHash("sha256").update(task.text).digest();
         let shorternTaskHash = parseInt(hash.toString("hex").slice(0, 16), 16).toString(36).toUpperCase();
-        // TODO: 判断重复性 task id 的重复性
         shorternTaskHash = shorternTaskHash.padStart(8, "0");
 
         await this.fileMutex.runExclusive(async () => {
@@ -140,7 +131,7 @@ export class ObsidianTasksSync {
             return;
           }
 
-          const fileContent = await self.app.vault.read(file);
+          const fileContent = await this.app.vault.read(file);
           const fileLines = fileContent.split('\n');
 
           const updatedFileLines = [
@@ -149,7 +140,7 @@ export class ObsidianTasksSync {
             ...fileLines.slice(task.position.start.line + 1),
           ];
 
-          await self.app.vault.modify(file, updatedFileLines.join('\n'));
+          await this.app.vault.modify(file, updatedFileLines.join('\n'));
         });
         todo_details = this.deserializer.deserialize(`${task.text} ^${shorternTaskHash}`);
       }
@@ -179,7 +170,7 @@ export class ObsidianTasksSync {
     // Check if todo has valid path and blockId
     if (!todo.path || !todo.blockId) {
       debug(`${todo.content} todo has invalid path or blockId`);
-      debug(todo);
+      debug(JSON.stringify(todo));
       throw Error(`${todo.content} todo has invalid path or blockId`);
     }
 
@@ -192,7 +183,7 @@ export class ObsidianTasksSync {
 
     // Update the file content
     await this.fileMutex.runExclusive(async () => {
-      const fileContent = await self.app.vault.read(file);
+      const fileContent = await this.app.vault.read(file);
       const originFileLines = fileContent.split('\n');
 
       let targetLine: number | undefined = undefined;
@@ -208,7 +199,7 @@ export class ObsidianTasksSync {
       }
 
       const updatedFileLines = updateFunc(originFileLines, targetLine!);
-      self.app.vault.modify(file, updatedFileLines.join('\n'));
+      this.app.vault.modify(file, updatedFileLines.join('\n'));
     });
   }
 

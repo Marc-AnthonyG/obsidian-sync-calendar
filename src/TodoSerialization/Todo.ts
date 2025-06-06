@@ -1,4 +1,4 @@
-import { debug } from 'lib/DebugLog';
+import { debug } from 'src/lib/DebugLog';
 
 import type { calendar_v3 } from 'googleapis';
 

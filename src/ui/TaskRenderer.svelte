@@ -129,7 +129,7 @@
 		/>
 		<MarkdownRenderer
 			class="todo-list-todo-content"
-			eventId={todo.eventId}
+			eventId={todo.eventId ?? ""}
 		/>
 	</div>
 	<div class="todo-metadata">

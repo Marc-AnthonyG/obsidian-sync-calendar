@@ -2,7 +2,7 @@
 	import { onMount, onDestroy } from "svelte";
 
 	import type SyncCalendarPlugin from "main";
-	import type { Query } from "Injector/Query";
+	import type { Query } from "injector/Query";
 	import { Todo } from "TodoSerialization/Todo";
 	import type { MainSynchronizer } from "Syncs/MainSynchronizer";
 

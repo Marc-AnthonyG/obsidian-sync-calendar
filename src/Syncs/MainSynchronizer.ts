@@ -1,7 +1,7 @@
-import type { App, Notice, TFile } from "obsidian";
+import type { App } from "obsidian";
 
-import type { Todo } from "TodoSerialization/Todo";
-import { debug } from 'lib/DebugLog';
+import type { Todo } from "src/TodoSerialization/Todo";
+import { debug } from 'src/lib/DebugLog';
 import { GoogleCalendarSync } from './GoogleCalendarSync'
 import { ObsidianTasksSync } from './ObsidianTasksSync';
 

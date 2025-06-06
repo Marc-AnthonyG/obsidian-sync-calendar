@@ -1,13 +1,11 @@
 import * as path from 'path';
 
-import type { App, Vault, Notice, FileSystemAdapter } from 'obsidian';
+import type { App, Vault, FileSystemAdapter } from 'obsidian';
 import { authenticate } from '@google-cloud/local-auth';
-import { google } from 'googleapis';
-import type { OAuth2Client, GaxiosPromise, GaxiosResponse } from 'googleapis-common';
-import type { calendar_v3 } from 'googleapis';
+import { google, type calendar_v3, Auth } from 'googleapis';
 
-import { Todo } from 'TodoSerialization/Todo';
-import { debug } from 'lib/DebugLog';
+import { Todo } from 'src/TodoSerialization/Todo';
+import { debug } from 'src/lib/DebugLog';
 
 import {
   NetworkStatus,
@@ -290,7 +288,7 @@ export class GoogleCalendarSync {
     try {
       const content = await this.vault.adapter.read(this.TOKEN_PATH);
       const credentials = JSON.parse(content);
-      return google.auth.fromJSON(credentials);
+      return google.auth.fromJSON(credentials) as Auth.OAuth2Client;
     } catch (err) {
       return null;
     }
@@ -301,7 +299,7 @@ export class GoogleCalendarSync {
    * @param {OAuth2Client} client The client to serialize.
    * @returns {Promise<void>}
    */
-  async saveCredentials(client: OAuth2Client) {
+  async saveCredentials(client: Auth.OAuth2Client) {
     const content = await this.vault.adapter.read(this.CREDENTIALS_PATH);
     const keys = JSON.parse(content);
     const key = keys.installed || keys.web;
@@ -319,10 +317,10 @@ export class GoogleCalendarSync {
    * Load or request authorization to call APIs.
    * @returns {Promise<OAuth2Client>} The authorized client.
    */
-  public async authorize(): Promise<OAuth2Client> {
-    let client: OAuth2Client;
+  public async authorize(): Promise<Auth.OAuth2Client> {
+    let client: Auth.OAuth2Client;
     if (this.isTokenValid) {
-      client = await this.loadSavedCredentialsIfExist() as OAuth2Client;
+      client = await this.loadSavedCredentialsIfExist() as Auth.OAuth2Client;
       if (client) {
         return client;
       }
@@ -334,7 +332,7 @@ export class GoogleCalendarSync {
     client = await authenticate({
       scopes: this.SCOPES,
       keyfilePath: KEY_FILE,
-    }).catch(err => { throw err; });
+    }) as Auth.OAuth2Client;
 
     if (client.credentials) {
       await this.saveCredentials(client);

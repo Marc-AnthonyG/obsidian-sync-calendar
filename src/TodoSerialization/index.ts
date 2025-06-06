@@ -1,4 +1,4 @@
-import type { Todo } from 'TodoSerialization/Todo';
+import type { Todo } from 'src/TodoSerialization/Todo';
 
 type Writeable<T> = { -readonly [P in keyof T]: T[P] };
 

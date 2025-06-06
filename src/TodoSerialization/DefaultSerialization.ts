@@ -1,4 +1,4 @@
-import type { Todo } from "TodoSerialization/Todo";
+import type { Todo } from "src/TodoSerialization/Todo";
 import type { TodoDetails, TodoSerializer } from ".";
 
 /* Interface describing the symbols that {@link DefaultTodoSerializer}

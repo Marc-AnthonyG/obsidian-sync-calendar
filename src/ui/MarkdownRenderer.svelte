@@ -14,7 +14,7 @@
 	let containerEl: HTMLDivElement;
 
 	async function renderMarkdown() {
-		if (!containerEl) return; // 判断 containerEl 是否已绑定完成
+		if (!containerEl) return; 
 		containerEl.innerHTML = "";
 
 		await MarkdownRenderer.renderMarkdown(content, containerEl, "", null);
