@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useMemo, useCallback } from "react";
 
 import type SyncCalendarPlugin from "main";
-import type { Query } from "src/injector/Query";
-import { Todo } from "src/TodoSerialization/Todo";
-import type { MainSynchronizer } from "src/Syncs/MainSynchronizer";
+import type { Query } from "src/obsidian/injector/Query";
+import { Todo } from "src/sync/Todo";
+import type { MainSynchronizer } from "src/sync/MainSynchronizer";
 
 import ErrorDisplay from "./ErrorDisplay";
 import TaskRenderer from "./TaskRenderer";
@@ -29,7 +29,7 @@ const CalendarQuery: React.FC<CalendarQueryProps> = ({
 		(todoList: Todo[]) => {
 			if (query && query.timeMax) {
 				return todoList.filter((todo: Todo) => {
-					if (Todo.isDatetime(todo.startDateTime!)) {
+					if (Todo.isDatetime(todo.startDateTime ?? "")) {
 						return window
 							.moment(query.timeMax)
 							.isAfter(window.moment(todo.startDateTime));
@@ -99,14 +99,13 @@ const CalendarQuery: React.FC<CalendarQueryProps> = ({
 
 		try {
 			await Promise.race([fetchPromise, timeoutPromise]);
-		} catch (err: any) {
-			setErrorInfo(err);
+		} catch (err: unknown) {
+			setErrorInfo(err as Error);
 		} finally {
 			setFetching(false);
 		}
 	}, [
 		api,
-		fetching,
 		plugin.settings.fetchWeeksAgo,
 		plugin.settings.fetchMaximumEvents,
 		query,

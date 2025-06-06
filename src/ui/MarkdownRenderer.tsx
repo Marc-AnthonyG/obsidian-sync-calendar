@@ -15,7 +15,9 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
 	className,
 }) => {
 	const containerRef = useRef<HTMLDivElement>(null);
-	const [content, setContent] = useState<string>("None");
+	const [content, setContent] = useState<string>(
+		() => contentStore.get(eventId) ?? "None"
+	);
 
 	useEffect(() => {
 		const renderMarkdown = async () => {
@@ -43,13 +45,22 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
 	}, [content]);
 
 	useEffect(() => {
-		if (!contentStore.has(eventId)) {
-			contentStore.set(eventId, "None");
-		}
-		const newContent = contentStore.get(eventId);
-		if (newContent) {
+		const unsubscribe = contentStore.subscribe(eventId, (newContent) => {
 			setContent(newContent);
+		});
+
+		if (contentStore.has(eventId)) {
+			const currentContent = contentStore.get(eventId);
+			if (currentContent) {
+				setContent(currentContent);
+			}
+		} else {
+			setContent("None");
 		}
+
+		return () => {
+			unsubscribe();
+		};
 	}, [eventId]);
 
 	return <div ref={containerRef} className={className} />;
