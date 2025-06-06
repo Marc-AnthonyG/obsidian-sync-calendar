@@ -29,7 +29,7 @@ const CalendarQuery: React.FC<CalendarQueryProps> = ({
 		(todoList: Todo[]) => {
 			if (query && query.timeMax) {
 				return todoList.filter((todo: Todo) => {
-					if (Todo.isDatetime(todo.startDateTime!)) {
+					if (Todo.isDatetime(todo.startDateTime ?? "")) {
 						return window
 							.moment(query.timeMax)
 							.isAfter(window.moment(todo.startDateTime));
@@ -99,8 +99,8 @@ const CalendarQuery: React.FC<CalendarQueryProps> = ({
 
 		try {
 			await Promise.race([fetchPromise, timeoutPromise]);
-		} catch (err: any) {
-			setErrorInfo(err);
+		} catch (err: unknown) {
+			setErrorInfo(err as Error);
 		} finally {
 			setFetching(false);
 		}

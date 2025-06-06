@@ -6,7 +6,6 @@ import { logger } from "main";
 import type SyncCalendarPlugin from "../../main";
 import { contentStore } from "./ContentStore";
 
-import { openExternal } from "../lib/OpenExternal";
 import { Todo } from "../TodoSerialization/Todo";
 import type { MainSynchronizer } from "../Syncs/MainSynchronizer";
 
@@ -57,7 +56,7 @@ const TaskRenderer: React.FC<TaskRendererProps> = ({ api, plugin, todo }) => {
 		evt.stopPropagation();
 		evt.preventDefault();
 
-		let menu = new Menu();
+		const menu = new Menu();
 
 		menu.addItem((menuItem) =>
 			menuItem
@@ -67,25 +66,6 @@ const TaskRenderer: React.FC<TaskRendererProps> = ({ api, plugin, todo }) => {
 					api.deleteTodo(todo);
 				})
 		);
-
-		if (todo.eventHtmlLink) {
-			menu.addItem((menuItem) =>
-				menuItem
-					.setTitle("Edit todo in calendar (web)")
-					.setIcon("popup-open")
-					.onClick(() => {
-						const regExp = /eid=([^&]+)/;
-						const match = todo.eventHtmlLink!.match(regExp);
-						if (match) {
-							const eid = match[1];
-							const editLink = `https://calendar.google.com/calendar/u/0/r/eventedit/${eid}`;
-							openExternal(editLink);
-						} else {
-							openExternal(todo.eventHtmlLink!);
-						}
-					})
-			);
-		}
 
 		menu.showAtPosition({
 			x: evt.pageX,

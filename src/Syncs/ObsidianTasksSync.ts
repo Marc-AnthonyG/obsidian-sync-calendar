@@ -1,6 +1,6 @@
 import crypto from "crypto";
 import { Mutex } from 'async-mutex';
-import { App, TFile, Notice, Plugin } from "obsidian";
+import { App, TFile, Notice } from "obsidian";
 import { DataviewApi, getAPI, isPluginEnabled, type STask } from "obsidian-dataview";
 
 import { DEFAULT_SYMBOLS } from "src/TodoSerialization/DefaultSerialization";
@@ -39,7 +39,7 @@ export class ObsidianTasksSync {
   public async deleteTodo(todo: Todo): Promise<void> {
     this.updateFileContent(todo, (fileLines, targetLineNumber) => {
       // Filter out the line containing the todo item's blockId to delete the todo item from its file.
-      return fileLines.filter((line) => !line.includes(todo.blockId!));
+      return fileLines.filter((line) => !line.includes(todo.blockId ?? ''));
     });
   }
 
@@ -55,7 +55,7 @@ export class ObsidianTasksSync {
    */
   public async patchTodo(todo: Todo, getTodoPatch: (todo: Todo, line: string) => string): Promise<void> {
     this.updateFileContent(todo, (fileLines, targetLineNumber) => {
-      let matchResult = fileLines[targetLineNumber].match(/.*- \[.\] /);
+      const matchResult = fileLines[targetLineNumber].match(/.*- \[.\] /);
       if (!matchResult) {
         logger.log(`We cannot find a line with pattern - [ ] in ${fileLines[targetLineNumber]}`);;
         return fileLines;
@@ -76,12 +76,12 @@ export class ObsidianTasksSync {
    */
   public async updateTodo(todo: Todo) {
     await this.updateFileContent(todo, (fileLines, targetLineNumber) => {
-      let matchResult = fileLines[targetLineNumber].match(/.*- \[.\] /);
+      const matchResult = fileLines[targetLineNumber].match(/.*- \[.\] /);
       if (!matchResult) {
         return fileLines;
       }
 
-      let updatedLine = matchResult[0]! + this.deserializer.serialize(todo);
+      const updatedLine = matchResult[0]! + this.deserializer.serialize(todo);
       const updatedLines: string[] = [
         ...fileLines.slice(0, targetLineNumber),
         updatedLine,
@@ -98,11 +98,11 @@ export class ObsidianTasksSync {
    * @returns An array of todos.
    */
   public listTasks(startMoment: moment.Moment, triggeredBy: 'auto' | 'mannual' = 'auto'): Todo[] {
-    let obTodos: Todo[] = [];
+    const obTodos: Todo[] = [];
 
-    const queriedTasks = this.dataviewAPI!.pages().file.tasks
+    const queriedTasks = this.dataviewAPI?.pages().file.tasks
       .where((task: STask) => {
-        let taskMatch = task.text.match(/🛫+ (\d{4}-\d{2}-\d{2})/u);
+        const taskMatch = task.text.match(/🛫+ (\d{4}-\d{2}-\d{2})/u);
         if (!taskMatch) { return false; }
         return !window.moment(taskMatch[1]).isBefore(startMoment.startOf('day'));
       });
@@ -151,7 +151,7 @@ export class ObsidianTasksSync {
         eventStatus: task.status
       });
 
-      if (window.moment(todo.startDateTime!).isBefore(startMoment)) {
+      if (window.moment(todo.startDateTime).isBefore(startMoment)) {
         return;
       }
       obTodos.push(todo);
@@ -188,7 +188,7 @@ export class ObsidianTasksSync {
 
       let targetLine: number | undefined = undefined;
       originFileLines.forEach((line, line_index) => {
-        let index = line.indexOf(todo.blockId!);
+        const index = line.indexOf(todo.blockId ?? '');
         if (index > -1) {
           targetLine = line_index;
         }

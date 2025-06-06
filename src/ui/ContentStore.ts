@@ -21,7 +21,7 @@ class ContentStore {
     if (!this.listeners.has(eventId)) {
       this.listeners.set(eventId, new Set());
     }
-    this.listeners.get(eventId)!.add(listener);
+    this.listeners.get(eventId)?.add(listener);
 
     // Unsubscribe function
     return () => {

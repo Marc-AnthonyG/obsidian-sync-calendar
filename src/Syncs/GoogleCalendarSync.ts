@@ -6,13 +6,7 @@ import { google, type calendar_v3, Auth } from 'googleapis';
 
 import { Todo } from 'src/TodoSerialization/Todo';
 import { logger } from 'main';
-
-import {
-  NetworkStatus,
-  SyncStatus,
-  gfSyncStatus$,
-  gfNetStatus$
-} from './StatusEnumerate';
+import { gfSyncStatus$, gfNetStatus$, NetworkStatus, SyncStatus } from '../obsidian/NetworkMenu';
 
 /**
  * This class handles syncing with Google Calendar.
@@ -41,8 +35,8 @@ export class GoogleCalendarSync {
    * @param maxResults The maximum number of results to retrieve.
    * @returns A Promise that resolves to an array of Todo objects.
    */
-  async listEvents(startMoment: moment.Moment, maxResults: number = 200): Promise<Todo[]> {
-    let auth = await this.authorize();
+  async listEvents(startMoment: moment.Moment, maxResults = 200): Promise<Todo[]> {
+    const auth = await this.authorize();
     const calendar = google.calendar({ version: 'v3', auth });
 
     // Set the sync and network status to DOWNLOAD
@@ -72,8 +66,8 @@ export class GoogleCalendarSync {
     gfNetStatus$.next(NetworkStatus.HEALTH);
     gfSyncStatus$.next(SyncStatus.SUCCESS_WAITING);
 
-    let eventsMetaList = eventsListQueryResult.data.items;
-    let eventsList: Todo[] = [];
+    const eventsMetaList = eventsListQueryResult.data.items;
+    const eventsList: Todo[] = [];
 
     if (eventsMetaList != undefined) {
       eventsMetaList.forEach((eventMeta: calendar_v3.Schema$Event) => {
@@ -89,7 +83,7 @@ export class GoogleCalendarSync {
    * @param todo The Todo object to insert.
    */
   async insertEvent(todo: Todo) {
-    let auth = await this.authorize();
+    const auth = await this.authorize();
     const calendar: calendar_v3.Calendar = google.calendar({ version: 'v3', auth });
 
     let retryTimes = 0;
@@ -132,7 +126,7 @@ export class GoogleCalendarSync {
    * @param todo The Todo object to delete.
    */
   async deleteEvent(todo: Todo): Promise<void> {
-    let auth = await this.authorize();
+    const auth = await this.authorize();
     const calendar = google.calendar({ version: 'v3', auth });
 
     let retryTimes = 0;
@@ -176,7 +170,7 @@ export class GoogleCalendarSync {
    * @param getEventPatch A function that returns the patch to apply to the event.
    */
   async patchEvent(todo: Todo, getEventPatch: (todo: Todo) => calendar_v3.Schema$Event): Promise<void> {
-    let auth = await this.authorize();
+    const auth = await this.authorize();
     const calendar = google.calendar({ version: 'v3', auth });
 
     let retryTimes = 0;

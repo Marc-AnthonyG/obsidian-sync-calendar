@@ -120,7 +120,7 @@ export class Todo {
    * @throws Error if the Todo object is invalid.
    */
   static toGoogleEvent(todo: Todo): calendar_v3.Schema$Event {
-    let todoEvent = {
+    const todoEvent = {
       'summary': todo.content,
       'description': todo.serializeDescription(),
       'start': {},
@@ -141,27 +141,39 @@ export class Todo {
 
     let isValidEvent = false;
     if (isValidInterval) {
-      todoEvent.start!.dateTime = todo.startDateTime;
-      todoEvent.end!.dateTime = todo.dueDateTime;
-      isValidEvent = true;
+      if (todoEvent.start && todoEvent.end) {
+        todoEvent.start.dateTime = todo.startDateTime;
+        todoEvent.end.dateTime = todo.dueDateTime;
+        isValidEvent = true;
+      }
     } else {
       const regDate = /(\d{4}-\d{2}-\d{2})/u;
       if (todo.startDateTime) {
-        let startDateMatch = todo.startDateTime.match(regDate);
-        let endDateMatch = todo.dueDateTime?.match(regDate);
+        const startDateMatch = todo.startDateTime.match(regDate);
+        const endDateMatch = todo.dueDateTime?.match(regDate);
         if (startDateMatch) {
-          todoEvent.start!.date = startDateMatch[1];
-          todoEvent.end!.date = endDateMatch ? endDateMatch[1] : startDateMatch[1];
+          if (todoEvent.start) {
+            todoEvent.start.date = startDateMatch[1];
+          }
+          if (todoEvent.end) {
+            todoEvent.end.date = endDateMatch ? endDateMatch[1] : startDateMatch[1];
+          }
           isValidEvent = true;
         } else if (endDateMatch) {
-          todoEvent.start!.date = endDateMatch[1];
-          todoEvent.end!.date = endDateMatch[1];
+          if (todoEvent.start) {
+            todoEvent.start.date = endDateMatch[1];
+          }
+          if (todoEvent.end) {
+            todoEvent.end.date = endDateMatch[1];
+          }
         }
       }
     }
     if (isValidEvent) {
-      todoEvent.start!.timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-      todoEvent.end!.timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      if (todoEvent.start && todoEvent.end) {
+        todoEvent.start.timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        todoEvent.end.timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      }
     } else {
       throw Error(`Invalid todo->event ${todo.content}`);
     }
@@ -175,10 +187,10 @@ export class Todo {
    * @throws Error if the eventMeta object is invalid.
    */
   static fromGoogleEvent(eventMeta: calendar_v3.Schema$Event): Todo {
-    let content = eventMeta.summary;
-    let calUId = eventMeta.iCalUID;
-    let eventId = eventMeta.id;
-    let eventHtmlLink = eventMeta.htmlLink;
+    const content = eventMeta.summary;
+    const calUId = eventMeta.iCalUID;
+    const eventId = eventMeta.id;
+    const eventHtmlLink = eventMeta.htmlLink;
     let eventStatus = "";
     let blockId = undefined;
     let priority = undefined;
@@ -211,16 +223,16 @@ export class Todo {
       throw Error("Invalid eventMeta, start/end not exist!");
     }
 
-    if (eventMeta.start!.dateTime === null || eventMeta.start!.dateTime === undefined) {
-      startDateTime = window.moment(eventMeta.start!.date).format('YYYY-MM-DD');
+    if (eventMeta.start.dateTime === null || eventMeta.start.dateTime === undefined) {
+      startDateTime = window.moment(eventMeta.start.date).format('YYYY-MM-DD');
     } else {
-      startDateTime = window.moment(eventMeta.start!.dateTime).format('YYYY-MM-DD[T]HH:mm:ssZ');
+      startDateTime = window.moment(eventMeta.start.dateTime).format('YYYY-MM-DD[T]HH:mm:ssZ');
     }
 
-    if (eventMeta.end!.dateTime === null || eventMeta.end!.dateTime === undefined) {
-      dueDateTime = window.moment(eventMeta.end!.date).format('YYYY-MM-DD');
+    if (eventMeta.end.dateTime === null || eventMeta.end.dateTime === undefined) {
+      dueDateTime = window.moment(eventMeta.end.date).format('YYYY-MM-DD');
     } else {
-      dueDateTime = window.moment(eventMeta.end!.dateTime).format('YYYY-MM-DD[T]HH:mm:ssZ');
+      dueDateTime = window.moment(eventMeta.end.dateTime).format('YYYY-MM-DD[T]HH:mm:ssZ');
     }
 
     if (eventMeta.updated) {
@@ -256,7 +268,7 @@ export class Todo {
   }
 
   public isOverdue(overdueRefer?: moment.Moment): boolean {
-    let referMoment = overdueRefer ? overdueRefer : window.moment();
+    const referMoment = overdueRefer ? overdueRefer : window.moment();
 
     if (this.dueDateTime) {
       if (Todo.isDatetime(this.dueDateTime)) {

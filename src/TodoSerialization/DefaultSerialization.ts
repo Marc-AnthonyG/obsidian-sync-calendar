@@ -1,5 +1,5 @@
 import type { Todo } from "src/TodoSerialization/Todo";
-import type { TodoDetails, TodoSerializer } from ".";
+import type { TodoDetails, TodoSerializer } from "./";
 
 /* Interface describing the symbols that {@link DefaultTodoSerializer}
  * uses to serialize and deserialize todos.
@@ -129,7 +129,7 @@ export class DefaultTodoSerializer implements TodoSerializer {
    * @return The string representation of the todo
    */
   public serialize(todo: Todo): string {
-    let components: string[] = [];
+    const components: string[] = [];
     if (todo.content) {
       components.push(todo.content);
     }
@@ -307,7 +307,7 @@ export class DefaultTodoSerializer implements TodoSerializer {
     //   });
     // }
 
-    let tags = trailingTags.match(TodoRegularExpressions.hashTags)?.map((tag) => tag.trim()) ?? [];
+    const tags = trailingTags.match(TodoRegularExpressions.hashTags)?.map((tag) => tag.trim()) ?? [];
 
     // Add back any trailing tags to the description. We removed them so we can parse the rest of the
     // components but now we want them back.

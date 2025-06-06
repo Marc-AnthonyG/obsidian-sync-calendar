@@ -40,7 +40,7 @@ export class MainSynchronizer {
    */
   public async pushTodosToCalendar(
     startMoment: moment.Moment,
-    maxResults: number = 200,
+    maxResults = 200,
     triggeredBy: 'auto' | 'mannual' = 'auto'
   ) {
     logger.log(`push Todos: startMoment=${startMoment}`);
@@ -52,8 +52,7 @@ export class MainSynchronizer {
     const clEvents = await this.calendarSync.listEvents(startMoment, maxResults);
 
     // 3. push new events to Calendar
-    // obTasks -> 
-    let clBlockId2Event = new Map<string, Todo>();
+    const clBlockId2Event = new Map<string, Todo>();
     clEvents.forEach((event: Todo) => {
       if (event.blockId && event.blockId.length > 0) {
         clBlockId2Event.set(event.blockId, event);
@@ -90,26 +89,20 @@ export class MainSynchronizer {
    */
   public async pullTodosFromCalendar(
     startMoment: moment.Moment,
-    maxResults: number = 200): Promise<Todo[]> {
+    maxResults = 200): Promise<Todo[]> {
 
-    // 1. list events in Calendar
     const clEvents = await this.calendarSync.listEvents(startMoment, maxResults);
 
-    // 2. list Obsidian tasks
     const obTasks = this.obsidianSync.listTasks(startMoment);
 
-    // 3. update Obsidan tasks
-    let obBlockId2Task = new Map<string, Todo>();
+    const obBlockId2Task = new Map<string, Todo>();
     obTasks.forEach((task: Todo) => {
       if (task.blockId && task.blockId.length > 0) {
         obBlockId2Task.set(task.blockId, task);
       }
     });
-    // - none blockId: -> 由 Calendar 创建的任务
-    // - have blockId
-    //    - calendar 比 obsidian 多的那些任务: Obsidian 中删掉的任务
-    //    - calendar 和 obsidian 同步的任务
-    let todosCalendarCreate: Todo[] = [];
+
+    const todosCalendarCreate: Todo[] = [];
     clEvents.forEach((event: Todo) => {
       if (!event.blockId || event.blockId.length === 0) {
         todosCalendarCreate.push(event);
@@ -120,7 +113,7 @@ export class MainSynchronizer {
       }
 
       // Calendar -[m]-> Obsidian
-      let task = obBlockId2Task.get(event.blockId);
+      const task = obBlockId2Task.get(event.blockId);
 
       if (!task || !task.path || !task.blockId) {
         logger.log(`Cannot find file/blockId for updated todo: $ {event.content}`);
@@ -144,9 +137,11 @@ export class MainSynchronizer {
       if (!todo.blockId || !obBlockId2Task.has(todo.blockId)) {
         return;
       }
-      const obTask = obBlockId2Task.get(todo.blockId)!;
-      todo.path = obTask.path;
-      todo.content = obTask.content;
+      const obTask = obBlockId2Task.get(todo.blockId);
+      if (obTask) {
+        todo.path = obTask.path;
+        todo.content = obTask.content;
+      }
     });
 
     return clTodos;
