@@ -28,11 +28,6 @@ export function isSortingOption(value: any) {
  */
 export type Query = {
   name?: string
-  refreshInterval?: number
   timeMin?: string;
   timeMax?: string;
-  maxEvents?:number;
-  filter?: string;
-  sorting?: SortingOption[];
-  group?: boolean;
 };

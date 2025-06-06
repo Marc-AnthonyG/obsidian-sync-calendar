@@ -1,54 +1,34 @@
 import React, { useState, useEffect, useMemo, useCallback } from "react";
 
-import type SyncCalendarPlugin from "main";
-import type { Query } from "src/injector/Query";
-import { Todo } from "src/TodoSerialization/Todo";
-import type { MainSynchronizer } from "src/Syncs/MainSynchronizer";
+import { type SyncCalendarPluginSettings } from "main";
+import type { Query } from "src/obsidian/injector/Query";
+import { type InternalGoogleTodo } from "src/sync/Todo";
+import type { MainSynchronizer } from "src/sync/MainSynchronizer";
 
 import ErrorDisplay from "./ErrorDisplay";
 import TaskRenderer from "./TaskRenderer";
 import NoTaskDisplay from "./NoTaskDisplay";
+import { logger } from "src/util/Logger";
+import moment from "moment";
+import { RefreshSpinner } from "./icon/RefreshSpinner";
 
 interface CalendarQueryProps {
-	plugin: SyncCalendarPlugin;
+	settings: SyncCalendarPluginSettings;
 	api: MainSynchronizer;
 	query: Query;
+	path: string;
 }
 
 const CalendarQuery: React.FC<CalendarQueryProps> = ({
-	plugin,
+	settings,
 	api,
 	query,
+	path,
 }) => {
 	const [fetching, setFetching] = useState(false);
-	const [eventsList, setEventsList] = useState<Todo[]>([]);
+	const [todos, setTodos] = useState<InternalGoogleTodo[]>([]);
 	const [errorInfo, setErrorInfo] = useState<Error | null>(null);
 	const [fetchedOnce, setFetchedOnce] = useState(false);
-
-	const filterTodos = useCallback(
-		(todoList: Todo[]) => {
-			if (query && query.timeMax) {
-				return todoList.filter((todo: Todo) => {
-					if (Todo.isDatetime(todo.startDateTime!)) {
-						return window
-							.moment(query.timeMax)
-							.isAfter(window.moment(todo.startDateTime));
-					} else {
-						return window
-							.moment(query.timeMax)
-							.isAfter(window.moment(todo.startDateTime));
-					}
-				});
-			}
-			return todoList;
-		},
-		[query]
-	);
-
-	const todos = useMemo(
-		() => filterTodos(eventsList),
-		[eventsList, filterTodos]
-	);
 
 	const eventsListTitle = useMemo(() => {
 		const title = query?.name
@@ -58,6 +38,7 @@ const CalendarQuery: React.FC<CalendarQueryProps> = ({
 	}, [query, todos.length]);
 
 	const fetchEventLists = useCallback(async () => {
+		logger.log("CalendarQuery", "fetchEventLists");
 		const apiIsReady = await api.isReady();
 		if (!apiIsReady || fetching) {
 			return;
@@ -65,71 +46,67 @@ const CalendarQuery: React.FC<CalendarQueryProps> = ({
 
 		setFetching(true);
 
-		let startMoment = window
-			.moment()
+		let startMoment = moment()
 			.startOf("day")
-			.subtract(
-				window.moment.duration(plugin.settings.fetchWeeksAgo, "weeks")
-			);
+			.subtract(moment.duration(settings.fetchWeeksAgo, "weeks"));
+
 		if (query && query.timeMin) {
-			startMoment = window.moment(query.timeMin);
+			startMoment = moment(query.timeMin);
 		}
 
-		const maxEvents = query?.maxEvents
-			? query.maxEvents
-			: plugin.settings.fetchMaximumEvents;
+		let endMoment = moment()
+			.endOf("day")
+			.add(moment.duration(settings.fetchWeeksAgo, "weeks"));
 
-		const fetchPromise = api
-			.pullTodosFromCalendar(startMoment, maxEvents)
-			.then((newEventsList) => {
-				setEventsList(newEventsList);
-				setFetchedOnce(true);
-				setErrorInfo(null);
-			});
+		if (query && query.timeMax) {
+			endMoment = moment(query.timeMax);
+		}
 
-		const timeoutPromise = new Promise((_, reject) => {
-			setTimeout(() => {
-				reject(
-					new Error(
-						"Timeout occurred when fetching from Google Calendar!\nCheck your connection and proxy settings, then restart Obsidian."
-					)
-				);
-			}, 4000);
-		});
-
+		logger.log(
+			"CalendarQuery",
+			`fetchEventLists: startMoment=${startMoment}, endMoment=${endMoment}`
+		);
 		try {
-			await Promise.race([fetchPromise, timeoutPromise]);
-		} catch (err: any) {
-			setErrorInfo(err);
+			const timeoutPromise = new Promise<never>((_, reject) =>
+				setTimeout(
+					() =>
+						reject(
+							new Error(
+								"Timeout occurred when fetching from Google Calendar!\nCheck your connection and proxy settings, then restart Obsidian."
+							)
+						),
+					10000
+				)
+			);
+
+			const newTodos = await Promise.race([
+				api.pullTodosFromCalendar(
+					startMoment,
+					endMoment,
+					settings.fetchMaximumEvents,
+					path
+				),
+				timeoutPromise,
+			]);
+
+			setTodos(newTodos);
+			setFetchedOnce(true);
+			setErrorInfo(null);
+			logger.log(
+				"CalendarQuery",
+				`fetchEventLists: newTodos=${JSON.stringify(newTodos)}`
+			);
+		} catch (err: unknown) {
+			logger.log("CalendarQuery", "fetchEventLists: error", err);
+			setErrorInfo(err as Error);
 		} finally {
 			setFetching(false);
 		}
-	}, [
-		api,
-		fetching,
-		plugin.settings.fetchWeeksAgo,
-		plugin.settings.fetchMaximumEvents,
-		query,
-	]);
+	}, [api, path, query, settings]);
 
 	useEffect(() => {
 		fetchEventLists();
 	}, [fetchEventLists]);
-
-	useEffect(() => {
-		if (!query.refreshInterval || query.refreshInterval === -1) {
-			return;
-		}
-
-		const intervalId = window.setInterval(
-			fetchEventLists,
-			query.refreshInterval * 1000
-		);
-
-		return () => {
-			clearInterval(intervalId);
-		};
-	}, [query.refreshInterval, fetchEventLists]);
 
 	return (
 		<div>
@@ -141,39 +118,24 @@ const CalendarQuery: React.FC<CalendarQueryProps> = ({
 				onClick={fetchEventLists}
 				disabled={fetching}
 			>
-				<svg
-					className={fetching ? "todo-list-refresh-spin" : ""}
-					width="20px"
-					height="20px"
-					viewBox="0 0 20 20"
-					fill="currentColor"
-					xmlns="http://www.w3.org/2000/svg"
-				>
-					<path
-						fillRule="evenodd"
-						d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
-						clipRule="evenodd"
-					/>
-				</svg>
+				<RefreshSpinner fetching={fetching} />
 			</button>
 
 			{fetchedOnce && (
 				<>
-					{eventsList.length === 0 ? (
+					{todos.length === 0 ? (
 						<NoTaskDisplay />
-					) : todos.length !== 0 ? (
+					) : (
 						<ul className="contains-todo-list todo-list-todo-list">
 							{todos.map((todo) => (
 								<TaskRenderer
 									key={todo.calUId}
-									api={api}
-									plugin={plugin}
+									settings={settings}
 									todo={todo}
+									patchTodoToDone={api.patchTodoToDone}
 								/>
 							))}
 						</ul>
-					) : (
-						<NoTaskDisplay />
 					)}
 				</>
 			)}

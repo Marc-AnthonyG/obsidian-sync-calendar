@@ -1,6 +1,8 @@
+import moment from "moment";
 import { isSortingOption, sortingOptions } from "./Query";
 import type { Query } from "./Query";
 import YAML from "yaml";
+import { logger } from "src/util/Logger";
 
 /**
  * Custom error class for parsing errors
@@ -29,15 +31,9 @@ export class ParsingError extends Error {
  * @throws ParsingError if the raw string cannot be parsed
  */
 export function parseQuery(raw: string): Query {
-  let obj: any;
-
-  try {
-    obj = YAML.parse(raw);
-  } catch (e) {
-    throw e;
-  }
-
-  return parseObject(obj);
+  const query = parseObject(YAML.parse(raw));
+  logger.log("Parser", `parseQuery: query=${JSON.stringify(query)}`);
+  return query;
 }
 
 /**
@@ -46,6 +42,7 @@ export function parseQuery(raw: string): Query {
  * @returns the parsed Query object
  * @throws ParsingError if the object is not a valid Query object
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function parseObject(query: any): Query {
   if (query.hasOwnProperty("name") && typeof query.name !== "string") {
     throw new ParsingError("'name' field must be a string");
@@ -59,7 +56,7 @@ function parseObject(query: any): Query {
     if (typeof query.timeMin !== "string") {
       throw new ParsingError("'timeMin' field must be a string");
     }
-    if (!window.moment(query.timeMin).isValid()) {
+    if (!moment(query.timeMin).isValid()) {
       throw new ParsingError("'timeMin' field must be a valid moment string");
     }
   }
@@ -68,7 +65,7 @@ function parseObject(query: any): Query {
     if (typeof query.timeMax !== "string") {
       throw new ParsingError("'timeMax' field must be a string");
     }
-    if (!window.moment(query.timeMax).isValid()) {
+    if (!moment(query.timeMax).isValid()) {
       throw new ParsingError("'timeMax' field must be a valid moment string");
     }
   }
