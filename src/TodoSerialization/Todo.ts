@@ -201,22 +201,22 @@ export class Todo {
     let updated: string | undefined = undefined;
 
     if (eventMeta.description !== null && eventMeta.description !== undefined) {
-      eventMeta.description = eventMeta.description.replace(/<\/?span>/g, '');
+      eventMeta.description = eventMeta.description.replace(/<\/span>/g, '');
       try {
         blockId = JSON.parse(eventMeta.description).blockId;
-      } catch (e) { logger.log(`JSON parse error on ${eventMeta.description}: ${e}`); }
+      } catch (e) { logger.log("Todo", `JSON parse error on ${eventMeta.description}: ${e}`); }
       try {
         priority = JSON.parse(eventMeta.description).priority;
-      } catch (e) { logger.log(`JSON parse error on ${eventMeta.description}: ${e}`); }
+      } catch (e) { logger.log("Todo", `JSON parse error on ${eventMeta.description}: ${e}`); }
       try {
         eventStatus = JSON.parse(eventMeta.description).eventStatus;
-      } catch (e) { logger.log(`JSON parse error on ${eventMeta.description}: ${e}`); }
+      } catch (e) { logger.log("Todo", `JSON parse error on ${eventMeta.description}: ${e}`); }
       try {
         tags = JSON.parse(eventMeta.description).tags;
-      } catch (e) { logger.log(`JSON parse error on ${eventMeta.description}: ${e}`); }
+      } catch (e) { logger.log("Todo", `JSON parse error on ${eventMeta.description}: ${e}`); }
       try {
         doneDateTime = JSON.parse(eventMeta.description).doneDateTime;
-      } catch (e) { logger.log(`JSON parse error on ${eventMeta.description}: ${e}`); }
+      } catch (e) { logger.log("Todo", `JSON parse error on ${eventMeta.description}: ${e}`); }
     }
 
     if (!eventMeta.start || !eventMeta.end) {

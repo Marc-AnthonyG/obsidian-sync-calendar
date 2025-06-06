@@ -14,9 +14,9 @@ export class Logger {
     }
   }
 
-  log(message: string, ...optionalParams: any[]): void {
+  log(from: string, message: string, ...optionalParams: any[]): void {
     const timestamp = new Date().toISOString();
-    const logMessage = `[${timestamp}] ${message} ${optionalParams.map(p => JSON.stringify(p, null, 2)).join(' ')}\n`;
+    const logMessage = `[${timestamp}] [${from}] ${message} ${optionalParams.map(p => JSON.stringify(p, null, 2)).join(' ')}\n`;
 
     try {
       fs.appendFileSync(this.logFilePath, logMessage);

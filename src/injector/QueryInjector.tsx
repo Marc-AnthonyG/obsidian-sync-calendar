@@ -75,7 +75,7 @@ export default class QueryInjector {
 				}
 			);
 		} catch (err) {
-			logger.log(`query error: ${err}`);
+			logger.log("QueryInjector", `query error: ${err}`);
 
 			child = new InjectedQuery(
 				pendingQuery.target,

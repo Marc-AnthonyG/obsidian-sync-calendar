@@ -102,10 +102,10 @@ export class GoogleCalendarSync {
         )
         .then((event) => {
           isInsertSuccess = true;
-          logger.log(`Added event: ${todo.content}! link: ${event.data.htmlLink}`);
+          logger.log("GoogleCalendarSync", `Added event: ${todo.content}! link: ${event.data.htmlLink}`);
           return;
         }).catch(async (error) => {
-          logger.log(`Error on inserting event: ${error}`);
+          logger.log("GoogleCalendarSync", `Error on inserting event: ${error}`);
           await new Promise(resolve => setTimeout(resolve, 100));
         });
     }
@@ -145,10 +145,10 @@ export class GoogleCalendarSync {
         } as calendar_v3.Params$Resource$Events$Delete)
         .then(() => {
           isDeleteSuccess = true;
-          logger.log(`Deleted event: ${todo.content}!`);
+          logger.log("GoogleCalendarSync", `Deleted event: ${todo.content}!`);
           return;
         }).catch(async (err) => {
-          logger.log(`Error on delete event: ${err}`);
+          logger.log("GoogleCalendarSync", `Error on delete event: ${err}`);
           await new Promise(resolve => setTimeout(resolve, 100));
         });
     }
@@ -190,10 +190,10 @@ export class GoogleCalendarSync {
         } as calendar_v3.Params$Resource$Events$Patch)
         .then(() => {
           isPatchSuccess = true;
-          logger.log(`Patched event: ${todo.content}!`);
+          logger.log("GoogleCalendarSync", `Patched event: ${todo.content}!`);
           return;
         }).catch(async (err) => {
-          logger.log(`Error on patch event: ${err}`);
+          logger.log("GoogleCalendarSync", `Error on patch event: ${err}`);
           await new Promise(resolve => setTimeout(resolve, 100));
         });
     }

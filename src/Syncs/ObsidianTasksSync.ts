@@ -57,7 +57,7 @@ export class ObsidianTasksSync {
     this.updateFileContent(todo, (fileLines, targetLineNumber) => {
       const matchResult = fileLines[targetLineNumber].match(/.*- \[.\] /);
       if (!matchResult) {
-        logger.log(`We cannot find a line with pattern - [ ] in ${fileLines[targetLineNumber]}`);;
+        logger.log("ObsidianTasksSync", `We cannot find a line with pattern - [ ] in ${fileLines[targetLineNumber]}`);
         return fileLines;
       }
 
@@ -115,7 +115,7 @@ export class ObsidianTasksSync {
         if (triggeredBy == 'auto') {
           const cursorPosition = this.app.workspace.activeEditor?.editor?.getCursor();
           if (cursorPosition?.line === task.position.start.line) {
-            logger.log("task is on editing, skip it!");
+            logger.log("ObsidianTasksSync", "task is on editing, skip it!");
             return;
           }
         }
@@ -169,8 +169,8 @@ export class ObsidianTasksSync {
   private async updateFileContent(todo: Todo, updateFunc: (fileLines: string[], targetLine: number) => string[]): Promise<void> {
     // Check if todo has valid path and blockId
     if (!todo.path || !todo.blockId) {
-      logger.log(`${todo.content} todo has invalid path or blockId`);
-      logger.log(JSON.stringify(todo));
+      logger.log("ObsidianTasksSync", `${todo.content} todo has invalid path or blockId`);
+      logger.log("ObsidianTasksSync", JSON.stringify(todo));
       throw Error(`${todo.content} todo has invalid path or blockId`);
     }
 
@@ -194,7 +194,7 @@ export class ObsidianTasksSync {
         }
       });
       if (targetLine === undefined) {
-        logger.log("Cannot find line/prefix for updated todo: " + todo.content);
+        logger.log("ObsidianTasksSync", "Cannot find line/prefix for updated todo: " + todo.content);
         return;
       }
 

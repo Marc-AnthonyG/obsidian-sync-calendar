@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Menu } from "obsidian";
 import MarkdownRenderer from "./MarkdownRenderer";
-import { logger } from "main";
 
 import type SyncCalendarPlugin from "../../main";
 import { contentStore } from "./ContentStore";
@@ -19,7 +18,6 @@ const TaskRenderer: React.FC<TaskRendererProps> = ({ api, plugin, todo }) => {
 	const [disabled, setDisabled] = useState(false);
 
 	useEffect(() => {
-		logger.log("Rendering task:", todo);
 		if (todo.eventId) {
 			contentStore.set(todo.eventId, getTodoContent(todo));
 		}
