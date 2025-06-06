@@ -2,12 +2,13 @@ import {
   type MarkdownPostProcessorContext,
   MarkdownRenderChild,
 } from "obsidian";
-import type { SvelteComponentDev } from "svelte/internal";
+import React from "react";
+import { createRoot, type Root } from "react-dom/client";
 
 import type SyncCalendarPlugin from "main";
 import type { MainSynchronizer } from "src/Syncs/MainSynchronizer";
-import CalendarQuery from "ui/CalendarQuery.svelte";
-import ErrorDisplay from "ui/ErrorDisplay.svelte";
+import CalendarQuery from "src/ui/CalendarQuery";
+import ErrorDisplay from "src/ui/ErrorDisplay";
 import { debug } from "src/lib/DebugLog";
 
 import { parseQuery } from "./Parser";
@@ -58,26 +59,14 @@ export default class QueryInjector {
       }
 
       child = new InjectedQuery(pendingQuery.target, (root: HTMLElement) => {
-        return new CalendarQuery({
-          target: root,
-          props: {
-            plugin: this.plugin,
-            api: this.mainSync,
-            query: query,
-          },
-        });
+        return <CalendarQuery plugin={this.plugin} api={this.mainSync} query={query} />;
       });
     }
     catch (err) {
       debug(`query error: ${err}`);
 
       child = new InjectedQuery(pendingQuery.target, (root: HTMLElement) => {
-        return new ErrorDisplay({
-          target: root,
-          props: {
-            error: err
-          },
-        });
+        return <ErrorDisplay error={err} />;
       });
     }
 
@@ -93,12 +82,12 @@ interface PendingQuery {
 }
 
 class InjectedQuery extends MarkdownRenderChild {
-  private readonly createComp: (root: HTMLElement) => SvelteComponentDev;
-  private component: SvelteComponentDev;
+  private readonly createComp: (root: HTMLElement) => React.ReactElement;
+  private root: Root;
 
   constructor(
     container: HTMLElement,
-    createComp: (root: HTMLElement) => SvelteComponentDev
+    createComp: (root: HTMLElement) => React.ReactElement
   ) {
     super(container);
     this.containerEl = container;
@@ -106,12 +95,13 @@ class InjectedQuery extends MarkdownRenderChild {
   }
 
   onload() {
-    this.component = this.createComp(this.containerEl);
+    this.root = createRoot(this.containerEl);
+    this.root.render(this.createComp(this.containerEl));
   }
 
   onunload() {
-    if (this.component) {
-      this.component.$destroy();
+    if (this.root) {
+      this.root.unmount();
     }
   }
 }
