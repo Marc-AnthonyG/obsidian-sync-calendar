@@ -169,7 +169,7 @@ export class DefaultTodoSerializer  {
   }
 
 
-  public fromExternalTodo(line: string, startMoment: moment.Moment): TodoDetails | null {
+  public fromObsidianTodo(line: string, startMoment: moment.Moment): TodoDetails | null {
     const { TodoFormatRegularExpressions } = this.symbols;
 
     let matched: boolean;
@@ -250,6 +250,7 @@ export class DefaultTodoSerializer  {
     if (!startDateTime) {
       // if no start date, set it to the start of the current display 
       startDateTime = startMoment;
+      dueDateTime = startMoment.add(1, 'day');
     }
 
     return {

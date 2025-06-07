@@ -8,17 +8,11 @@ import { SyncCalendarPluginSettingTab } from 'src/obsidian/SettingMenu';
 export interface SyncCalendarPluginSettings {
   fetchWeeksAgo: number;
   fetchMaximumEvents: number;
-
-  renderDate: boolean;
-  renderTags: boolean;
 }
 
 const DEFAULT_SETTINGS: SyncCalendarPluginSettings = {
   fetchWeeksAgo: 2,
   fetchMaximumEvents: 1000,
-
-  renderDate: true,
-  renderTags: true,
 }
 
 

@@ -121,10 +121,10 @@ export class ObsidianTasksSync {
     queriedTasks.values.forEach(async (task: STask) => {
       let todo_details: TodoDetails | null = null;
       if (task.blockId && task.blockId.length > 0) {
-        todo_details = this.deserializer.fromExternalTodo(task.text, startMoment);
+        todo_details = this.deserializer.fromObsidianTodo(task.text, startMoment);
       } else {
         const shorternTaskHash = await createTodoId(task, this.app, this.fileMutex);
-        todo_details = this.deserializer.fromExternalTodo(`${task.text} ^${shorternTaskHash}`, startMoment);
+        todo_details = this.deserializer.fromObsidianTodo(`${task.text} ^${shorternTaskHash}`, startMoment);
       }
 
       if (!todo_details) {

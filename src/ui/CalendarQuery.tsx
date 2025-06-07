@@ -62,13 +62,9 @@ const CalendarQuery: React.FC<CalendarQueryProps> = ({
 			endMoment = moment(query.timeMax);
 		}
 
-		const maxEvents = query?.maxEvents
-			? query.maxEvents
-			: settings.fetchMaximumEvents;
-
 		logger.log(
 			"CalendarQuery",
-			`fetchEventLists: startMoment=${startMoment}, maxEvents=${maxEvents}`
+			`fetchEventLists: startMoment=${startMoment}, endMoment=${endMoment}`
 		);
 		try {
 			const timeoutPromise = new Promise<never>((_, reject) =>
@@ -87,7 +83,7 @@ const CalendarQuery: React.FC<CalendarQueryProps> = ({
 				api.pullTodosFromCalendar(
 					startMoment,
 					endMoment,
-					maxEvents,
+					settings.fetchMaximumEvents,
 					path
 				),
 				timeoutPromise,
@@ -111,21 +107,6 @@ const CalendarQuery: React.FC<CalendarQueryProps> = ({
 	useEffect(() => {
 		fetchEventLists();
 	}, [fetchEventLists]);
-
-	useEffect(() => {
-		if (!query.refreshInterval || query.refreshInterval === -1) {
-			return;
-		}
-
-		const intervalId = setInterval(
-			fetchEventLists,
-			query.refreshInterval * 1000 * 10
-		);
-
-		return () => {
-			clearInterval(intervalId);
-		};
-	}, [query.refreshInterval, fetchEventLists]);
 
 	return (
 		<div>

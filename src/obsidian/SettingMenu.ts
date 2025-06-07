@@ -53,29 +53,5 @@ export class SyncCalendarPluginSettingTab extends PluginSettingTab {
 
     const header2 = this.containerEl.createDiv();
     header2.createEl('p', { text: "Render", cls: 'sync-calendar-setting-header-title' });
-
-    new Setting(containerEl)
-      .setName("Render date")
-      .setDesc("Whether date should be rendered with google events.")
-      .addToggle(toggle =>
-        toggle.setValue(this.plugin.settings.renderDate)
-          .onChange(async (value) => {
-            this.plugin.settings.renderDate = value;
-            await this.saveSettings();
-          })
-      )
-      .controlEl.querySelector("input");
-
-    new Setting(containerEl)
-      .setName("Render tags")
-      .setDesc("Whether tags should be rendered with google events.")
-      .addToggle(toggle =>
-        toggle.setValue(this.plugin.settings.renderTags)
-          .onChange(async (value) => {
-            this.plugin.settings.renderTags = value;
-            await this.saveSettings();
-          })
-      )
-      .controlEl.querySelector("input");
   }
 }

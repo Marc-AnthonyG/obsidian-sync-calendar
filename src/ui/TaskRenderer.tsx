@@ -72,17 +72,15 @@ const TaskRenderer: React.FC<TaskRendererProps> = ({
 				/>
 			</div>
 			<div className="todo-metadata">
-				{settings.renderDate && todo.startDateTime && (
-					<div
-						className={`todo-date ${
-							todo.isOverdue() ? "todo-overdue" : ""
-						}`}
-					>
-						<CalendarIcon />
-						{moment(todo.startDateTime).format("🛫")}
-					</div>
-				)}
-				{settings.renderTags && todo.tags && todo.tags.length > 0 && (
+				<div
+					className={`todo-date ${
+						todo.isOverdue() ? "todo-overdue" : ""
+					}`}
+				>
+					<CalendarIcon />
+					{moment(todo.startDateTime).format("🛫")}
+				</div>
+				{todo.tags && todo.tags.length > 0 && (
 					<div className="todo-labels">
 						<svg
 							className="todo-labels-icon"
