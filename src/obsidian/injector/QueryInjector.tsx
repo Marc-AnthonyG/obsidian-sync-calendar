@@ -9,10 +9,10 @@ import type SyncCalendarPlugin from "main";
 import type { MainSynchronizer } from "src/sync/MainSynchronizer";
 import CalendarQuery from "src/ui/CalendarQuery";
 import ErrorDisplay from "src/ui/ErrorDisplay";
-import { logger } from "main";
 
 import { parseQuery } from "./Parser";
 import type { Query } from "./Query";
+import { logger } from "src/util/Logger";
 
 export default class QueryInjector {
 	private plugin: SyncCalendarPlugin;

@@ -2,10 +2,8 @@ import { App, type PluginManifest, Plugin } from 'obsidian';
 
 import { MainSynchronizer } from "src/sync/MainSynchronizer";
 import QueryInjector from 'src/obsidian/injector/QueryInjector';
-import { Logger } from 'src/util/Logger';
+import { logger } from 'src/util/Logger';
 import { SyncCalendarPluginSettingTab } from 'src/obsidian/SettingMenu';
-
-export let logger: Logger;
 
 export interface SyncCalendarPluginSettings {
   fetchWeeksAgo: number;
@@ -37,8 +35,6 @@ export default class SyncCalendarPlugin extends Plugin {
 
   async onload() {
     await this.loadSettings();
-    logger = new Logger("/Users/marc-anthonygirard/repository/obsidian-sync-calendar");
-
     logger.log("SyncCalendarPlugin", "onload");
 
     this.addSettingTab(new SyncCalendarPluginSettingTab(this.app, this));

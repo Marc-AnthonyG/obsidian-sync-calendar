@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useCallback } from "react";
 
-import type { SyncCalendarPluginSettings } from "main";
+import { type SyncCalendarPluginSettings } from "main";
 import type { Query } from "src/obsidian/injector/Query";
 import { Todo } from "src/sync/Todo";
 import type { MainSynchronizer } from "src/sync/MainSynchronizer";
@@ -8,6 +8,7 @@ import type { MainSynchronizer } from "src/sync/MainSynchronizer";
 import ErrorDisplay from "./ErrorDisplay";
 import TaskRenderer from "./TaskRenderer";
 import NoTaskDisplay from "./NoTaskDisplay";
+import { logger } from "src/util/Logger";
 
 interface CalendarQueryProps {
 	settings: SyncCalendarPluginSettings;
@@ -58,6 +59,7 @@ const CalendarQuery: React.FC<CalendarQueryProps> = ({
 	}, [query, todos.length]);
 
 	const fetchEventLists = useCallback(async () => {
+		logger.log("CalendarQuery", "fetchEventLists");
 		const apiIsReady = await api.isReady();
 		if (!apiIsReady || fetching) {
 			return;
@@ -77,6 +79,10 @@ const CalendarQuery: React.FC<CalendarQueryProps> = ({
 			? query.maxEvents
 			: settings.fetchMaximumEvents;
 
+		logger.log(
+			"CalendarQuery",
+			`fetchEventLists: startMoment=${startMoment}, maxEvents=${maxEvents}`
+		);
 		const fetchPromise = api
 			.pullTodosFromCalendar(startMoment, maxEvents)
 			.then((newEventsList) => {
@@ -87,6 +93,7 @@ const CalendarQuery: React.FC<CalendarQueryProps> = ({
 
 		const timeoutPromise = new Promise((_, reject) => {
 			setTimeout(() => {
+				logger.log("CalendarQuery", "fetchEventLists: timeout");
 				reject(
 					new Error(
 						"Timeout occurred when fetching from Google Calendar!\nCheck your connection and proxy settings, then restart Obsidian."
@@ -98,6 +105,7 @@ const CalendarQuery: React.FC<CalendarQueryProps> = ({
 		try {
 			await Promise.race([fetchPromise, timeoutPromise]);
 		} catch (err: unknown) {
+			logger.log("CalendarQuery", "fetchEventLists: error", err);
 			setErrorInfo(err as Error);
 		} finally {
 			setFetching(false);
@@ -158,9 +166,10 @@ const CalendarQuery: React.FC<CalendarQueryProps> = ({
 							{todos.map((todo) => (
 								<TaskRenderer
 									key={todo.calUId}
-									api={api}
 									settings={settings}
 									todo={todo}
+									patchTodoToDone={api.patchTodoToDone}
+									deleteTodo={api.deleteTodo}
 								/>
 							))}
 						</ul>

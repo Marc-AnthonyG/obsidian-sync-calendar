@@ -5,9 +5,10 @@ import { authenticate } from '@google-cloud/local-auth';
 import { google, Auth, calendar_v3 } from 'googleapis';
 
 import { Todo } from 'src/sync/Todo';
-import { logger } from 'main';
+import { logger } from 'src/util/Logger';
 import { GoogleTodoConverter } from './GoogleTodoConverter';
 import type { GoogleTodo } from './GoogleTodo';
+import {OAuth2Client} from "google-auth-library";
 
 /**
  * This class handles syncing with Google Calendar.
@@ -17,11 +18,11 @@ export class GoogleCalendarSync {
   converter: GoogleTodoConverter;
 
   public SCOPES = ['https://www.googleapis.com/auth/calendar'];
-  private TOKEN_PATH = ""
-  private CREDENTIALS_PATH = ""
+  private TOKEN_PATH: string;
+  private CREDENTIALS_PATH: string;
 
-  private isTokenValid = true;
-  private isTokenRefreshing = false;
+  private isTokenValid: boolean = true;
+  private isTokenRefreshing: boolean = false;
 
   constructor(app: App) {
     this.vault = app.vault
@@ -72,10 +73,6 @@ export class GoogleCalendarSync {
     return eventsList;
   }
 
-  /**
-   * Inserts a new event into Google Calendar.
-   * @param todo The Todo object to insert.
-   */
   async insertEvent(todo: Todo) {
     const auth = await this.authorize();
     const calendar: calendar_v3.Calendar = google.calendar({ version: 'v3', auth });
@@ -248,11 +245,7 @@ export class GoogleCalendarSync {
     return true;
   }
 
-  /**
-   * Reads previously authorized credentials from the save file.
-   * @returns {Promise<OAuth2Client|null>} The authorized client or null if not found.
-   */
-  async loadSavedCredentialsIfExist() {
+  async loadSavedCredentialsIfExist(): Promise<OAuth2Client|null> {
     try {
       const content = await this.vault.adapter.read(this.TOKEN_PATH);
       const credentials = JSON.parse(content);
@@ -262,12 +255,7 @@ export class GoogleCalendarSync {
     }
   }
 
-  /**
-   * Serializes credentials to a file compatible with GoogleAUth.fromJSON.
-   * @param {OAuth2Client} client The client to serialize.
-   * @returns {Promise<void>}
-   */
-  async saveCredentials(client: Auth.OAuth2Client) {
+  async saveCredentials(client: OAuth2Client): Promise<void> {
     const content = await this.vault.adapter.read(this.CREDENTIALS_PATH);
     const keys = JSON.parse(content);
     const key = keys.installed || keys.web;

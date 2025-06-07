@@ -1,40 +1,23 @@
 import type { App } from "obsidian";
 
 import type { Todo } from "src/sync/Todo";
-import { logger } from 'main';
 import { GoogleCalendarSync } from './google-calendar/GoogleCalendarSync'
 import { ObsidianTasksSync } from './obsidian/ObsidianTasksSync';
+import { logger } from "src/util/Logger";
 
-/**
- * MainSynchronizer class for syncing tasks between Obsidian and Google Calendar
- */
 export class MainSynchronizer {
   private calendarSync: GoogleCalendarSync;
   private obsidianSync: ObsidianTasksSync;
 
-  /**
-   * Constructor for MainSynchronizer class
-   * @param app - The Obsidian App object
-   */
   constructor(app: App) {
     this.calendarSync = new GoogleCalendarSync(app);
     this.obsidianSync = new ObsidianTasksSync(app);
   }
 
-  /**
-   * Check if the synchronizer is ready
-   * @returns A promise that resolves to a boolean indicating if the synchronizer is ready
-   */
   public isReady(): Promise<boolean> {
     return this.calendarSync.isReady();
   }
 
-  /**
-   * Push todos to Google Calendar
-   * @param startMoment - The start moment for the sync
-   * @param maxResults - The maximum number of results to retrieve
-   * @param triggeredBy - The trigger for the sync
-   */
   public async pushTodosToCalendar(
     startMoment: moment.Moment,
     maxResults = 200,

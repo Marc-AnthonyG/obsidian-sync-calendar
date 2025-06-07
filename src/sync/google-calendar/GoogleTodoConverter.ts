@@ -1,4 +1,4 @@
-import { logger } from "main";
+import { logger } from "src/util/Logger";
 import { Todo } from "../Todo";
 import type { GoogleTodo } from "./GoogleTodo";
 import type { Converter } from "../Converter";

@@ -4,9 +4,9 @@ import { App, TFile, Notice } from "obsidian";
 import { DataviewApi, getAPI, isPluginEnabled, type STask } from "obsidian-dataview";
 
 import { Todo } from "src/sync/Todo";
-import { logger } from "main";
 import { DEFAULT_SYMBOLS, DefaultTodoSerializer } from "./ObsidianTodoConverter";
 import type { TodoDetails } from "./MdTodo";
+import { logger } from "src/util/Logger";
 
 /**
  * This class is responsible for syncing tasks between Obsidian and a calendar.

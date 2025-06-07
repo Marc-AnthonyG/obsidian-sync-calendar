@@ -5,16 +5,21 @@ import MarkdownRenderer from "./MarkdownRenderer";
 import { contentStore } from "./ContentStore";
 
 import { Todo } from "../sync/Todo";
-import type { MainSynchronizer } from "../sync/MainSynchronizer";
 import type { SyncCalendarPluginSettings } from "../../main";
 
 interface TaskRendererProps {
-	api: MainSynchronizer;
 	settings: SyncCalendarPluginSettings;
 	todo: Todo;
+	patchTodoToDone: (todo: Todo) => void;
+	deleteTodo: (todo: Todo) => void;
 }
 
-const TaskRenderer: React.FC<TaskRendererProps> = ({ api, settings, todo }) => {
+const TaskRenderer: React.FC<TaskRendererProps> = ({
+	settings,
+	todo,
+	patchTodoToDone,
+	deleteTodo,
+}) => {
 	const [disabled, setDisabled] = useState(false);
 
 	useEffect(() => {
@@ -47,7 +52,7 @@ const TaskRenderer: React.FC<TaskRendererProps> = ({ api, settings, todo }) => {
 	}
 
 	async function onClickTask(todo: Todo) {
-		api.patchTodoToDone(todo);
+		patchTodoToDone(todo);
 	}
 
 	// TODO: Fix this lol
@@ -62,7 +67,7 @@ const TaskRenderer: React.FC<TaskRendererProps> = ({ api, settings, todo }) => {
 				.setTitle("Delete todo")
 				.setIcon("popup-open")
 				.onClick(() => {
-					api.deleteTodo(todo);
+					deleteTodo(todo);
 				})
 		);
 

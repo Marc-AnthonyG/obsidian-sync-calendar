@@ -1,7 +1,8 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-export class Logger {
+
+class Logger {
   private logFilePath: string;
 
   constructor(basePath: string) {
@@ -25,3 +26,5 @@ export class Logger {
     }
   }
 } 
+
+export const logger = new Logger("/Users/marc-anthonygirard/repository/knowledgeBase/programming/.obsidian");
