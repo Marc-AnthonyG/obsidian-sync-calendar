@@ -9,8 +9,6 @@ import { ObsidianTasksSync } from './obsidian/ObsidianTasksSync';
  * MainSynchronizer class for syncing tasks between Obsidian and Google Calendar
  */
 export class MainSynchronizer {
-  // Create a member variable called "app" of type "App" and initialize it in the constructor
-  private app: App;
   private calendarSync: GoogleCalendarSync;
   private obsidianSync: ObsidianTasksSync;
 
@@ -19,9 +17,8 @@ export class MainSynchronizer {
    * @param app - The Obsidian App object
    */
   constructor(app: App) {
-    this.app = app;
-    this.calendarSync = new GoogleCalendarSync(this.app);
-    this.obsidianSync = new ObsidianTasksSync(this.app);
+    this.calendarSync = new GoogleCalendarSync(app);
+    this.obsidianSync = new ObsidianTasksSync(app);
   }
 
   /**
@@ -41,12 +38,11 @@ export class MainSynchronizer {
   public async pushTodosToCalendar(
     startMoment: moment.Moment,
     maxResults = 200,
-    triggeredBy: 'auto' | 'mannual' = 'auto'
   ) {
     logger.log("MainSynchronizer", `push Todos: startMoment=${startMoment}`);
 
     // 1. list all tasks in Obsidian
-    const obTasks = this.obsidianSync.listTasks(startMoment, triggeredBy);
+    const obTasks = this.obsidianSync.listTasks(startMoment);
 
     // 2. list events in Calendar
     const clEvents = await this.calendarSync.listEvents(startMoment, maxResults);
@@ -90,7 +86,9 @@ export class MainSynchronizer {
   public async pullTodosFromCalendar(
     startMoment: moment.Moment,
     maxResults = 200): Promise<Todo[]> {
+    this.pushTodosToCalendar(startMoment, maxResults);
 
+    logger.log("MainSynchronizer", `pull Todos: startMoment=${startMoment}`);
     const clEvents = await this.calendarSync.listEvents(startMoment, maxResults);
 
     const obTasks = this.obsidianSync.listTasks(startMoment);
@@ -158,14 +156,6 @@ export class MainSynchronizer {
       .catch((err) => { throw err; });
   }
 
-  /**
-   * Insert a todo to Google Calendar
-   * @param todo - The todo to insert
-   */
-  public async insertTodo(todo: Todo): Promise<void> {
-    await this.calendarSync.insertEvent(todo)
-      .catch((err) => { throw err; });
-  }
 
   /**
    * Patch a todo to done in both Google Calendar and Obsidian

@@ -97,7 +97,7 @@ export class ObsidianTasksSync {
    * @param triggeredBy - Whether the fetch was triggered automatically or manually.
    * @returns An array of todos.
    */
-  public listTasks(startMoment: moment.Moment, triggeredBy: 'auto' | 'mannual' = 'auto'): Todo[] {
+  public listTasks(startMoment: moment.Moment): Todo[] {
     const obTodos: Todo[] = [];
 
     const queriedTasks = this.dataviewAPI?.pages().file.tasks
@@ -112,14 +112,6 @@ export class ObsidianTasksSync {
       if (task.blockId && task.blockId.length > 0) {
         todo_details = this.deserializer.deserialize(task.text);
       } else {
-        if (triggeredBy == 'auto') {
-          const cursorPosition = this.app.workspace.activeEditor?.editor?.getCursor();
-          if (cursorPosition?.line === task.position.start.line) {
-            logger.log("ObsidianTasksSync", "task is on editing, skip it!");
-            return;
-          }
-        }
-
         const hash = crypto.createHash("sha256").update(task.text).digest();
         let shorternTaskHash = parseInt(hash.toString("hex").slice(0, 16), 16).toString(36).toUpperCase();
         shorternTaskHash = shorternTaskHash.padStart(8, "0");

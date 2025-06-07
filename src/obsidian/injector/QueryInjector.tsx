@@ -51,7 +51,7 @@ export default class QueryInjector {
 				(root: HTMLElement) => {
 					return (
 						<CalendarQuery
-							plugin={this.plugin}
+							settings={this.plugin.settings}
 							api={this.mainSync}
 							query={query}
 						/>
@@ -59,7 +59,7 @@ export default class QueryInjector {
 				}
 			);
 		} catch (err) {
-			logger.log("QueryInjector", `query error: ${err}`);
+			logger.log("QueryInjector", "query error", err);
 
 			child = new InjectedQuery(
 				pendingQuery.target,

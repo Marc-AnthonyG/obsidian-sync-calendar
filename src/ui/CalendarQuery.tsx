@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useCallback } from "react";
 
-import type SyncCalendarPlugin from "main";
+import type { SyncCalendarPluginSettings } from "main";
 import type { Query } from "src/obsidian/injector/Query";
 import { Todo } from "src/sync/Todo";
 import type { MainSynchronizer } from "src/sync/MainSynchronizer";
@@ -10,13 +10,13 @@ import TaskRenderer from "./TaskRenderer";
 import NoTaskDisplay from "./NoTaskDisplay";
 
 interface CalendarQueryProps {
-	plugin: SyncCalendarPlugin;
+	settings: SyncCalendarPluginSettings;
 	api: MainSynchronizer;
 	query: Query;
 }
 
 const CalendarQuery: React.FC<CalendarQueryProps> = ({
-	plugin,
+	settings,
 	api,
 	query,
 }) => {
@@ -68,16 +68,14 @@ const CalendarQuery: React.FC<CalendarQueryProps> = ({
 		let startMoment = window
 			.moment()
 			.startOf("day")
-			.subtract(
-				window.moment.duration(plugin.settings.fetchWeeksAgo, "weeks")
-			);
+			.subtract(window.moment.duration(settings.fetchWeeksAgo, "weeks"));
 		if (query && query.timeMin) {
 			startMoment = window.moment(query.timeMin);
 		}
 
 		const maxEvents = query?.maxEvents
 			? query.maxEvents
-			: plugin.settings.fetchMaximumEvents;
+			: settings.fetchMaximumEvents;
 
 		const fetchPromise = api
 			.pullTodosFromCalendar(startMoment, maxEvents)
@@ -104,12 +102,7 @@ const CalendarQuery: React.FC<CalendarQueryProps> = ({
 		} finally {
 			setFetching(false);
 		}
-	}, [
-		api,
-		plugin.settings.fetchWeeksAgo,
-		plugin.settings.fetchMaximumEvents,
-		query,
-	]);
+	}, [api, settings.fetchWeeksAgo, settings.fetchMaximumEvents, query]);
 
 	useEffect(() => {
 		fetchEventLists();
@@ -166,7 +159,7 @@ const CalendarQuery: React.FC<CalendarQueryProps> = ({
 								<TaskRenderer
 									key={todo.calUId}
 									api={api}
-									plugin={plugin}
+									settings={settings}
 									todo={todo}
 								/>
 							))}

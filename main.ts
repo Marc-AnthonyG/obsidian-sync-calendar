@@ -7,7 +7,7 @@ import { SyncCalendarPluginSettingTab } from 'src/obsidian/SettingMenu';
 
 export let logger: Logger;
 
-interface SyncCalendarPluginSettings {
+export interface SyncCalendarPluginSettings {
   fetchWeeksAgo: number;
   fetchMaximumEvents: number;
 
@@ -38,6 +38,8 @@ export default class SyncCalendarPlugin extends Plugin {
   async onload() {
     await this.loadSettings();
     logger = new Logger("/Users/marc-anthonygirard/repository/obsidian-sync-calendar");
+
+    logger.log("SyncCalendarPlugin", "onload");
 
     this.addSettingTab(new SyncCalendarPluginSettingTab(this.app, this));
 
