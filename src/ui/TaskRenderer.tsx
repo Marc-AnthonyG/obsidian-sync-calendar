@@ -4,14 +4,17 @@ import MarkdownRenderer from "./MarkdownRenderer";
 
 import { contentStore } from "./ContentStore";
 
-import { Todo } from "../sync/Todo";
+import { InternalGoogleTodo, Todo } from "../sync/Todo";
 import type { SyncCalendarPluginSettings } from "../../main";
+import { logger } from "src/util/Logger";
+import moment from "moment";
+import { CalendarIcon } from "./icon/CalendarIcon";
 
 interface TaskRendererProps {
 	settings: SyncCalendarPluginSettings;
-	todo: Todo;
-	patchTodoToDone: (todo: Todo) => void;
-	deleteTodo: (todo: Todo) => void;
+	todo: InternalGoogleTodo;
+	patchTodoToDone: (todo: InternalGoogleTodo) => void;
+	deleteTodo: (todo: InternalGoogleTodo) => void;
 }
 
 const TaskRenderer: React.FC<TaskRendererProps> = ({
@@ -20,20 +23,12 @@ const TaskRenderer: React.FC<TaskRendererProps> = ({
 	patchTodoToDone,
 	deleteTodo,
 }) => {
+	logger.log("TaskRenderer", `todo=${todo}`);
 	const [disabled, setDisabled] = useState(false);
 
 	useEffect(() => {
-		if (todo.eventId) {
-			contentStore.set(todo.eventId, getTodoContent(todo));
-		}
+		contentStore.set(todo.eventId, todo.content);
 	}, [todo]);
-
-	function getTodoContent(todo: Todo): string {
-		if (todo.content) {
-			return todo.content;
-		}
-		return "Invalid Todo Title";
-	}
 
 	function getPriorityClass(priority: null | undefined | string): string {
 		if (priority === null || priority === undefined || priority === " ") {
@@ -51,7 +46,7 @@ const TaskRenderer: React.FC<TaskRendererProps> = ({
 		return "todo-list-p4";
 	}
 
-	async function onClickTask(todo: Todo) {
+	async function onClickTask(todo: InternalGoogleTodo) {
 		patchTodoToDone(todo);
 	}
 
@@ -109,19 +104,8 @@ const TaskRenderer: React.FC<TaskRendererProps> = ({
 							todo.isOverdue() ? "todo-overdue" : ""
 						}`}
 					>
-						<svg
-							className="todo-calendar-icon"
-							xmlns="http://www.w3.org/2000/svg"
-							viewBox="0 0 20 20"
-							fill="currentColor"
-						>
-							<path
-								fillRule="evenodd"
-								d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-								clipRule="evenodd"
-							/>
-						</svg>
-						{Todo.momentString(todo.startDateTime, "🛫")}
+						<CalendarIcon />
+						{moment(todo.startDateTime).format("🛫")}
 					</div>
 				)}
 				{settings.renderTags && todo.tags && todo.tags.length > 0 && (

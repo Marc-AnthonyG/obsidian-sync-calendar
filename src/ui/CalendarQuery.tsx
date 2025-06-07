@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo, useCallback } from "react";
 
 import { type SyncCalendarPluginSettings } from "main";
 import type { Query } from "src/obsidian/injector/Query";
-import { Todo } from "src/sync/Todo";
+import { type InternalGoogleTodo } from "src/sync/Todo";
 import type { MainSynchronizer } from "src/sync/MainSynchronizer";
 
 import ErrorDisplay from "./ErrorDisplay";
@@ -10,6 +10,7 @@ import TaskRenderer from "./TaskRenderer";
 import NoTaskDisplay from "./NoTaskDisplay";
 import { logger } from "src/util/Logger";
 import moment from "moment";
+import { RefreshSpinner } from "./icon/RefreshSpinner";
 
 interface CalendarQueryProps {
 	settings: SyncCalendarPluginSettings;
@@ -25,7 +26,7 @@ const CalendarQuery: React.FC<CalendarQueryProps> = ({
 	path,
 }) => {
 	const [fetching, setFetching] = useState(false);
-	const [todos, setTodos] = useState<Todo[]>([]);
+	const [todos, setTodos] = useState<InternalGoogleTodo[]>([]);
 	const [errorInfo, setErrorInfo] = useState<Error | null>(null);
 	const [fetchedOnce, setFetchedOnce] = useState(false);
 
@@ -69,40 +70,43 @@ const CalendarQuery: React.FC<CalendarQueryProps> = ({
 			"CalendarQuery",
 			`fetchEventLists: startMoment=${startMoment}, maxEvents=${maxEvents}`
 		);
-		const fetchPromise = api
-			.pullTodosFromCalendar(startMoment, endMoment, maxEvents, path)
-			.then((newTodos) => {
-				setTodos(newTodos);
-				setFetchedOnce(true);
-				setErrorInfo(null);
-				logger.log(
-					"CalendarQuery",
-					`fetchEventLists: newTodos=${JSON.stringify(newTodos)}`
-				);
-			});
-
-		const timeoutPromise = new Promise((_, reject) => {
-			setTimeout(() => {
-				if (fetchedOnce) {
-					return;
-				}
-				reject(
-					new Error(
-						"Timeout occurred when fetching from Google Calendar!\nCheck your connection and proxy settings, then restart Obsidian."
-					)
-				);
-			}, 10000);
-		});
-
 		try {
-			await Promise.race([fetchPromise, timeoutPromise]);
+			const timeoutPromise = new Promise<never>((_, reject) =>
+				setTimeout(
+					() =>
+						reject(
+							new Error(
+								"Timeout occurred when fetching from Google Calendar!\nCheck your connection and proxy settings, then restart Obsidian."
+							)
+						),
+					10000
+				)
+			);
+
+			const newTodos = await Promise.race([
+				api.pullTodosFromCalendar(
+					startMoment,
+					endMoment,
+					maxEvents,
+					path
+				),
+				timeoutPromise,
+			]);
+
+			setTodos(newTodos);
+			setFetchedOnce(true);
+			setErrorInfo(null);
+			logger.log(
+				"CalendarQuery",
+				`fetchEventLists: newTodos=${JSON.stringify(newTodos)}`
+			);
 		} catch (err: unknown) {
 			logger.log("CalendarQuery", "fetchEventLists: error", err);
 			setErrorInfo(err as Error);
 		} finally {
 			setFetching(false);
 		}
-	}, [api, settings.fetchWeeksAgo, settings.fetchMaximumEvents, query]);
+	}, [api, path, query, settings]);
 
 	useEffect(() => {
 		fetchEventLists();
@@ -133,20 +137,7 @@ const CalendarQuery: React.FC<CalendarQueryProps> = ({
 				onClick={fetchEventLists}
 				disabled={fetching}
 			>
-				<svg
-					className={fetching ? "todo-list-refresh-spin" : ""}
-					width="20px"
-					height="20px"
-					viewBox="0 0 20 20"
-					fill="currentColor"
-					xmlns="http://www.w3.org/2000/svg"
-				>
-					<path
-						fillRule="evenodd"
-						d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
-						clipRule="evenodd"
-					/>
-				</svg>
+				<RefreshSpinner fetching={fetching} />
 			</button>
 
 			{fetchedOnce && (

@@ -48,7 +48,7 @@ export class MainSynchronizer {
     startMoment: moment.Moment,
     endMoment: moment.Moment,
     maxResults = 200,
-    path: string): Promise<Todo[]> {
+    path: string): Promise<InternalGoogleTodo[]> {
 
     const obTasks = this.obsidianSync.listTasks(startMoment, path);
     const clEvents = await this.calendarSync.listEvents(startMoment, endMoment, maxResults);

@@ -2,9 +2,10 @@ import type { Todo } from "../Todo";
 import type { GoogleTodo } from "./GoogleTodo";
 
 export function changeGoogleStatusTodo(todo: Todo): GoogleTodo {
-    if (!todo.eventStatus) {
+    if (!todo.eventStatus || todo.eventStatus.trim() === '') {
       todo.eventStatus = 'x';
     }
+    
     if (['!', '?', '>', '-', ' '].indexOf(todo.eventStatus) < 0) {
       todo.eventStatus = 'x';
     }
