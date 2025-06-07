@@ -1,5 +1,5 @@
 import { logger } from "src/util/Logger";
-import { InternalGoogleTodo, Todo } from "../Todo";
+import { InternalGoogleTodo, Todo, type TodoGoogleDescription } from "../Todo";
 import type { GoogleTodo } from "./GoogleTodo";
 import moment, { type Moment } from "moment";
 
@@ -8,13 +8,17 @@ export class GoogleTodoConverter  {
     const todoEvent = {
       'summary': todo.content,
       'description': todo.serializeDescription(),
-      'start': {
-        dateTime: todo.startDateTime.toISOString(),
-        timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      'start': todo.isAllDay ? {
+        'date': todo.startDateTime.format('YYYY-MM-DD'),
+      } : {
+        'dateTime': todo.startDateTime.toISOString(),
+        'timeZone': Intl.DateTimeFormat().resolvedOptions().timeZone,
       },
-      'end': {
-        dateTime: (todo.dueDateTime || todo.startDateTime.clone().add(1, 'hour')).toISOString(),
-        timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      'end': todo.isAllDay ? {
+        'date': (todo.dueDateTime || todo.startDateTime.clone().add(1, 'day')).format('YYYY-MM-DD'),
+      } : {
+        'dateTime': (todo.dueDateTime || todo.startDateTime.clone().add(1, 'hour')).toISOString(),
+        'timeZone': Intl.DateTimeFormat().resolvedOptions().timeZone,
       },
     } as GoogleTodo;
 
@@ -38,18 +42,17 @@ export class GoogleTodoConverter  {
 
     let eventStatus = "";
     let blockId: string | null = null;
-    let priority: string | null = null;
     let doneDateTime: Moment | null = null;
     let startDateTime: Moment;
     let dueDateTime: Moment | null = null;
     let tags: string[] = [];
+    let isAllDay = false;
 
     if (eventMeta.description) {
       try {
         // Try to parse the serialization made on Todo.serializeDescription()
-        const description = JSON.parse(eventMeta.description);
+        const description = JSON.parse(eventMeta.description) as TodoGoogleDescription;
         blockId = description.blockId;
-        priority = description.priority;
         eventStatus = description.eventStatus;
         tags = description.tags;
         if (description.doneDateTime) {
@@ -68,6 +71,7 @@ export class GoogleTodoConverter  {
       startDateTime = moment(eventMeta.start.dateTime);
     } else if (eventMeta.start.date) {
         startDateTime = moment(eventMeta.start.date);
+        isAllDay = true;
     } else {
         return null;
     }
@@ -82,7 +86,6 @@ export class GoogleTodoConverter  {
 
     return new InternalGoogleTodo({
       content,
-      priority,
       blockId,
       startDateTime,
       dueDateTime,
@@ -92,6 +95,7 @@ export class GoogleTodoConverter  {
       eventStatus,
       tags,
       path: null,
+      isAllDay,
     });
   }
 }

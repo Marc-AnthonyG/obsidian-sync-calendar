@@ -1,22 +1,10 @@
 import type { Todo } from "src/sync/Todo";
 import type { TodoDetails } from "./MdTodo";
 import moment, { type Moment } from "moment";
+import { logger } from "src/util/Logger";
 
-/* Interface describing the symbols that {@link DefaultTodoSerializer}
- * uses to serialize and deserialize todos.
- *
- * @export
- * @interface DefaultTodoSerializerSymbols
- */
 export interface DefaultTodoSerializerSymbols {
-  readonly prioritySymbols: {
-    High: string;
-    Medium: string;
-    Low: string;
-    None: string;
-  };
   readonly TodoFormatRegularExpressions: {
-    priorityRegex: RegExp;
     blockIdRegex: RegExp;
     createdDateRegex: RegExp;
     scheduledDateRegex: RegExp;
@@ -25,24 +13,11 @@ export interface DefaultTodoSerializerSymbols {
     dueDateRegex: RegExp;
     dueDateTimeRegex: RegExp;
     doneDateRegex: RegExp;
-    recurrenceRegex: RegExp;
   };
 }
 
-/**
- * Uses emojis to concisely convey meaning
- */
 export const DEFAULT_SYMBOLS: DefaultTodoSerializerSymbols = {
-  prioritySymbols: {
-    High: '⏫',
-    Medium: '🔼',
-    Low: '🔽',
-    None: '',
-  },
   TodoFormatRegularExpressions: {
-    // The following regex's end with `$` because they will be matched and
-    // removed from the end until none are left.
-    priorityRegex: /([⏫🔼🔽])$/u,
     blockIdRegex: /\^([0-9a-zA-Z]*)$/u,
     createdDateRegex: /➕ *(\d{4}-\d{2}-\d{2})$/u,
     startDateRegex: /🛫 *(\d{4}-\d{2}-\d{2})$/u,
@@ -51,7 +26,6 @@ export const DEFAULT_SYMBOLS: DefaultTodoSerializerSymbols = {
     dueDateRegex: /[📅📆🗓] *(\d{4}-\d{2}-\d{2})$/u,
     dueDateTimeRegex: /[📅📆🗓] *(\d{4}-\d{2}-\d{2}@\d+:\d+)$/u,
     doneDateRegex: /✅ *(\d{4}-\d{2}-\d{2})$/u,
-    recurrenceRegex: /🔁 ?([a-zA-Z0-9, !]+)$/iu,
   },
 } as const;
 
@@ -60,23 +34,14 @@ export class TodoRegularExpressions {
   public static readonly dateFormat = 'YYYY-MM-DD';
   public static readonly dateTimeFormat = 'YYYY-MM-DD@HH:mm';
 
-  // Matches indentation before a list marker (including > for potentially nested blockquotes or Obsidian callouts)
   public static readonly indentationRegex = /^([\s\t>]*)/;
 
-  // Matches - or * list markers, or numbered list markers (eg 1.)
   public static readonly listMarkerRegex = /([-*]|[0-9]+\.)/;
 
-  // Matches a checkbox and saves the status character inside
   public static readonly checkboxRegex = /\[(.)\]/u;
 
-  // Matches the rest of the todo after the checkbox.
   public static readonly afterCheckboxRegex = / *(.*)/u;
 
-  // Main regex for parsing a line. It matches the following:
-  // - Indentation
-  // - List marker
-  // - Status character
-  // - Rest of todo after checkbox markdown
   public static readonly todoRegex = new RegExp(
     TodoRegularExpressions.indentationRegex.source +
     TodoRegularExpressions.listMarkerRegex.source +
@@ -86,7 +51,6 @@ export class TodoRegularExpressions {
     'u',
   );
 
-  // Used with the "Create or Edit Todo" command to parse indentation and status if present
   public static readonly nonTodoRegex = new RegExp(
     TodoRegularExpressions.indentationRegex.source +
     TodoRegularExpressions.listMarkerRegex.source +
@@ -97,21 +61,11 @@ export class TodoRegularExpressions {
     'u',
   );
 
-  // Used with "Toggle Done" command to detect a list item that can get a checkbox added to it.
   public static readonly listItemRegex = new RegExp(
     TodoRegularExpressions.indentationRegex.source + TodoRegularExpressions.listMarkerRegex.source,
   );
 
-  // Match on block link at end.
   public static readonly blockLinkRegex = / \^[a-zA-Z0-9-]+$/u;
-
-  // Regex to match all hash tags, basically hash followed by anything but the characters in the negation.
-  // To ensure URLs are not caught it is looking of beginning of string tag and any
-  // tag that has a space in front of it. Any # that has a character in front
-  // of it will be ignored.
-  // EXAMPLE:
-  // description: '#dog #car http://www/ddd#ere #house'
-  // matches: #dog, #car, #house
   public static readonly hashTags = /(^|\s)#[^ !@#$%^&*(),.?":{}|<>]*/g;
   public static readonly hashTagsFloating = new RegExp(this.hashTags.source);
   public static readonly hashTagsFromEnd = new RegExp(this.hashTags.source + '$');
@@ -130,32 +84,10 @@ export class DefaultTodoSerializer  {
     if (todo.content) {
       components.push(todo.content);
     }
+    
+    components.push('🛫 ' + todo.getStringStartDateTime());
 
-    todo.tags?.forEach((tag) => {
-      components.push(tag);
-    });
-
-    if (todo.priority) {
-      components.push(todo.priority);
-    }
-
-    const regDateTime = /(\d{4}-\d{2}-\d{2}T)/u;
-
-    if (todo.startDateTime) {
-      if (todo.startDateTime.toISOString().match(regDateTime)) {
-        components.push(moment(todo.startDateTime).format("[🛫] YYYY-MM-DD[@]HH:mm"));
-      } else {
-        components.push('🛫 ' + todo.startDateTime);
-      }
-    }
-
-    if (todo.dueDateTime) {
-      if (todo.dueDateTime.toISOString().match(regDateTime)) {
-        components.push(moment(todo.dueDateTime).format("[🗓] YYYY-MM-DD[@]HH:mm"));
-      } else {
-        components.push('🗓 ' + todo.dueDateTime);
-      }
-    }
+    components.push('🗓 ' + todo.getStringDueDateTime());
 
     if (todo.doneDateTime) {
       components.push('✅ ' + todo.doneDateTime);
@@ -173,24 +105,17 @@ export class DefaultTodoSerializer  {
     const { TodoFormatRegularExpressions } = this.symbols;
 
     let matched: boolean;
-    let priority: null | string = null;
     let blockId: null | string = null;
     let doneDateTime: null | Moment = null;
     let startDateTime: null | Moment = null;
     let dueDateTime: null | Moment = null;
+    let isAllDay = false;
 
     let trailingTags = '';
     const maxRuns = 20;
     let runs = 0;
     do {
       matched = false;
-
-      const priorityMatch = line.match(TodoFormatRegularExpressions.priorityRegex);
-      if (priorityMatch !== null) {
-        priority = priorityMatch[1];
-        line = line.replace(TodoFormatRegularExpressions.priorityRegex, '').trim();
-        matched = true;
-      }
 
       const blockIdMatch = line.match(TodoFormatRegularExpressions.blockIdRegex);
       if (blockIdMatch !== null) {
@@ -204,6 +129,7 @@ export class DefaultTodoSerializer  {
         startDateTime = moment(startDateMatch[1], TodoRegularExpressions.dateFormat);
         line = line.replace(TodoFormatRegularExpressions.startDateRegex, '').trim();
         matched = true;
+        isAllDay = true;
       }
 
       const startDateTimeMatch = line.match(TodoFormatRegularExpressions.startDateTimeRegex);
@@ -218,6 +144,7 @@ export class DefaultTodoSerializer  {
         dueDateTime = moment(dueDateMatch[1], TodoRegularExpressions.dateFormat);
         line = line.replace(TodoFormatRegularExpressions.dueDateRegex, '').trim();
         matched = true;
+        isAllDay = true;
       }
 
       const dueDateTimeMatch = line.match(TodoFormatRegularExpressions.dueDateTimeRegex);
@@ -250,17 +177,19 @@ export class DefaultTodoSerializer  {
     if (!startDateTime) {
       // if no start date, set it to the start of the current display 
       startDateTime = startMoment;
-      dueDateTime = startMoment.add(1, 'day');
+      dueDateTime = startMoment.clone().add(1, 'day');
+      isAllDay = true;
+      logger.log("DefaultTodoSerializer", `startDateTime=${startDateTime}, dueDateTime=${dueDateTime}`);
     }
 
     return {
       content: line,
       blockId: blockId,
-      priority: priority,
       tags,
       startDateTime: startDateTime,
       dueDateTime: dueDateTime ? moment(dueDateTime) : null,
       doneDateTime: doneDateTime ? moment(doneDateTime) : null,
+      isAllDay: isAllDay,
     };
   }
 }

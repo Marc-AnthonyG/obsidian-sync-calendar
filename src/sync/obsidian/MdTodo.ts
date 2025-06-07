@@ -16,10 +16,10 @@ export type TodoDetails = Writeable<
     Todo,
     | 'blockId'
     | 'content'
-    | 'priority'
     | 'tags'
     | 'startDateTime'
     | 'dueDateTime'
     | 'doneDateTime'
+    | 'isAllDay'
   >
 >;
