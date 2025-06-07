@@ -46,35 +46,37 @@ export class MainSynchronizer {
 
   public async pullTodosFromCalendar(
     startMoment: moment.Moment,
+    endMoment: moment.Moment,
     maxResults = 200,
     path: string): Promise<Todo[]> {
 
-    logger.log("MainSynchronizer", `pull Todos: startMoment=${startMoment}`);
     const obTasks = this.obsidianSync.listTasks(startMoment, path);
-    const clEvents = await this.calendarSync.listEvents(startMoment, maxResults);
+    const clEvents = await this.calendarSync.listEvents(startMoment, endMoment, maxResults);
     this.pushTodosToCalendar(startMoment, clEvents, obTasks);
 
     logger.log("MainSynchronizer", `pull Todos: startMoment=${startMoment}`);
 
-    const obBlockId2Task = new Map<string, Todo>();
-    obTasks.forEach((task: Todo) => {
-      if (task.blockId && task.blockId.length > 0) {
-        obBlockId2Task.set(task.blockId, task);
-      }
+    const obBlockId2Task = new Map<string, ObsidianTodo>();
+
+    obTasks.forEach((task: ObsidianTodo) => {
+      obBlockId2Task.set(task.blockId, task);
     });
 
     const todosCalendarCreate: Todo[] = [];
     clEvents.forEach((event: Todo) => {
-      if (!event.blockId || event.blockId.length === 0) {
+      const obEvent = event.toSyncedTodo();
+      if (obEvent === null) {
+        logger.log("MainSynchronizer", `Event is not in Obsidian and will be created: ${event.content}`);
         todosCalendarCreate.push(event);
         return;
       }
-      if (!obBlockId2Task.has(event.blockId)) {
+      if (!obBlockId2Task.has(obEvent.blockId)) {
+        logger.log("MainSynchronizer", `Event was created in Obsidian, but is no longer in Obsidian: ${event.content}`);
         return;
       }
 
       // Calendar -[m]-> Obsidian
-      const task = obBlockId2Task.get(event.blockId);
+      const task = obBlockId2Task.get(obEvent.blockId);
 
       if (!task || !task.path || !task.blockId) {
         logger.log("MainSynchronizer", `Cannot find file/blockId for updated todo: $ {event.content}`);
@@ -86,14 +88,13 @@ export class MainSynchronizer {
       this.obsidianSync.updateTodo(task);
     });
 
+    logger.log("MainSynchronizer", `source events: clEvents=${JSON.stringify(clEvents)}`);
     const clTodos = clEvents
       .filter((todo) => {
-        if (!todo.eventStatus) {
-          return true;
-        }
-        return todo.eventStatus !== "x" && todo.eventStatus !== "X";
+        return !todo.isDone();
       });
 
+    logger.log("MainSynchronizer", `filtered events: clEvents=${JSON.stringify(clEvents)}`);
     clTodos.forEach((todo) => {
       if (!todo.blockId || !obBlockId2Task.has(todo.blockId)) {
         return;
@@ -104,6 +105,7 @@ export class MainSynchronizer {
         todo.content = obTask.content;
       }
     });
+    logger.log("MainSynchronizer", `pull Todos (Done): clEvents=${JSON.stringify(clEvents)}`);
 
     return clTodos;
   }

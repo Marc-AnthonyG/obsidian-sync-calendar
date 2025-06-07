@@ -25,28 +25,9 @@ const CalendarQuery: React.FC<CalendarQueryProps> = ({
 	path,
 }) => {
 	const [fetching, setFetching] = useState(false);
-	const [eventsList, setEventsList] = useState<Todo[]>([]);
+	const [todos, setTodos] = useState<Todo[]>([]);
 	const [errorInfo, setErrorInfo] = useState<Error | null>(null);
 	const [fetchedOnce, setFetchedOnce] = useState(false);
-
-	const filterTodos = useCallback(
-		(todoList: Todo[]) => {
-			if (query && query.timeMax) {
-				return todoList.filter((todo: Todo) => {
-					return moment(query.timeMax).isAfter(
-						moment(todo.startDateTime)
-					);
-				});
-			}
-			return todoList;
-		},
-		[query]
-	);
-
-	const todos = useMemo(
-		() => filterTodos(eventsList),
-		[eventsList, filterTodos]
-	);
 
 	const eventsListTitle = useMemo(() => {
 		const title = query?.name
@@ -67,8 +48,17 @@ const CalendarQuery: React.FC<CalendarQueryProps> = ({
 		let startMoment = moment()
 			.startOf("day")
 			.subtract(moment.duration(settings.fetchWeeksAgo, "weeks"));
+
 		if (query && query.timeMin) {
 			startMoment = moment(query.timeMin);
+		}
+
+		let endMoment = moment()
+			.endOf("day")
+			.add(moment.duration(settings.fetchWeeksAgo, "weeks"));
+
+		if (query && query.timeMax) {
+			endMoment = moment(query.timeMax);
 		}
 
 		const maxEvents = query?.maxEvents
@@ -80,16 +70,22 @@ const CalendarQuery: React.FC<CalendarQueryProps> = ({
 			`fetchEventLists: startMoment=${startMoment}, maxEvents=${maxEvents}`
 		);
 		const fetchPromise = api
-			.pullTodosFromCalendar(startMoment, maxEvents, path)
-			.then((newEventsList) => {
-				setEventsList(newEventsList);
+			.pullTodosFromCalendar(startMoment, endMoment, maxEvents, path)
+			.then((newTodos) => {
+				setTodos(newTodos);
 				setFetchedOnce(true);
 				setErrorInfo(null);
+				logger.log(
+					"CalendarQuery",
+					`fetchEventLists: newTodos=${JSON.stringify(newTodos)}`
+				);
 			});
 
 		const timeoutPromise = new Promise((_, reject) => {
 			setTimeout(() => {
-				logger.log("CalendarQuery", "fetchEventLists: timeout");
+				if (fetchedOnce) {
+					return;
+				}
 				reject(
 					new Error(
 						"Timeout occurred when fetching from Google Calendar!\nCheck your connection and proxy settings, then restart Obsidian."
@@ -155,9 +151,9 @@ const CalendarQuery: React.FC<CalendarQueryProps> = ({
 
 			{fetchedOnce && (
 				<>
-					{eventsList.length === 0 ? (
+					{todos.length === 0 ? (
 						<NoTaskDisplay />
-					) : todos.length !== 0 ? (
+					) : (
 						<ul className="contains-todo-list todo-list-todo-list">
 							{todos.map((todo) => (
 								<TaskRenderer
@@ -169,8 +165,6 @@ const CalendarQuery: React.FC<CalendarQueryProps> = ({
 								/>
 							))}
 						</ul>
-					) : (
-						<NoTaskDisplay />
 					)}
 				</>
 			)}

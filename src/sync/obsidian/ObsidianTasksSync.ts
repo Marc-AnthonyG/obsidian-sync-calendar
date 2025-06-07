@@ -76,7 +76,8 @@ export class ObsidianTasksSync {
    * Updates a todo item in its file.
    * @param todo - The todo item to update.
    */
-  public async updateTodo(todo: Todo) {
+  public async updateTodo(todo: ObsidianTodo) {
+    logger.log("ObsidianTasksSync", `updateTodo: todo=${todo.content}`);
     await this.updateFileContent(todo, (fileLines, targetLineNumber) => {
       const matchResult = fileLines[targetLineNumber].match(/.*- \[.\] /);
       if (!matchResult) {
@@ -114,7 +115,7 @@ export class ObsidianTasksSync {
         return !moment(taskMatch[1]).isBefore(startMoment.startOf('day'));
       });
 
-    logger.log("ObsidianTasksSync", `listTasks: queriedTasks=${JSON.stringify({values: queriedTasks?.values})}`);
+    logger.log("ObsidianTasksSync", `listTasks: queriedTasks=${queriedTasks?.values.length}`);
 
     queriedTasks.values.forEach(async (task: STask) => {
       let todo_details: TodoDetails | null = null;

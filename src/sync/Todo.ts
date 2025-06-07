@@ -108,12 +108,20 @@ export class Todo {
     return false;
   }
 
+  public isDone(): boolean {
+    return this.eventStatus === "x" || this.eventStatus === "X";
+  }
+
   toSyncedTodo(): SyncedTodo | null {
     if (this.blockId && this.eventId) {
       return new SyncedTodo(this);
     }
     
     return null;
+  }
+
+  isNotFromObsidian(): boolean {
+    return this.blockId === null || this.blockId.length === 0;
   }
 }
 

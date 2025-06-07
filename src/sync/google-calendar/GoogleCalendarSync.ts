@@ -33,7 +33,7 @@ export class GoogleCalendarSync {
     this.converter = new GoogleTodoConverter();
   }
 
-  async listEvents(startMoment: moment.Moment, maxResults = 200): Promise<InternalGoogleTodo[]> {
+  async listEvents(startMoment: moment.Moment, endMoment: moment.Moment, maxResults = 200): Promise<InternalGoogleTodo[]> {
     const auth = await this.authorize();
     const calendar = google.calendar({ version: 'v3', auth });
 
@@ -42,6 +42,7 @@ export class GoogleCalendarSync {
         .list({
           calendarId: 'primary',
           timeMin: startMoment.toISOString(),
+          timeMax: endMoment.toISOString(),
           maxResults: maxResults,
           singleEvents: true,
           orderBy: 'startTime',
