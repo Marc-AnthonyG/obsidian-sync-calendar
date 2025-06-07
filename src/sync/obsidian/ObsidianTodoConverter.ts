@@ -20,7 +20,6 @@ export interface DefaultTodoSerializerSymbols {
     blockIdRegex: RegExp;
     createdDateRegex: RegExp;
     scheduledDateRegex: RegExp;
-    scheduledDateTimeRegex: RegExp;
     startDateRegex: RegExp;
     startDateTimeRegex: RegExp;
     dueDateRegex: RegExp;
@@ -49,7 +48,6 @@ export const DEFAULT_SYMBOLS: DefaultTodoSerializerSymbols = {
     startDateRegex: /🛫 *(\d{4}-\d{2}-\d{2})$/u,
     startDateTimeRegex: /🛫 *(\d{4}-\d{2}-\d{2}@\d+:\d+)$/u,
     scheduledDateRegex: /[⏳⌛] *(\d{4}-\d{2}-\d{2})$/u,
-    scheduledDateTimeRegex: /[⏳⌛] *(\d{4}-\d{2}-\d{2}@\d+:\d+)$/u,
     dueDateRegex: /[📅📆🗓] *(\d{4}-\d{2}-\d{2})$/u,
     dueDateTimeRegex: /[📅📆🗓] *(\d{4}-\d{2}-\d{2}@\d+:\d+)$/u,
     doneDateRegex: /✅ *(\d{4}-\d{2}-\d{2})$/u,
@@ -150,13 +148,7 @@ export class DefaultTodoSerializer  {
         components.push('🛫 ' + todo.startDateTime);
       }
     }
-    if (todo.scheduledDateTime) {
-      if (todo.scheduledDateTime.toISOString().match(regDateTime)) {
-        components.push(moment(todo.scheduledDateTime).format("[⌛] YYYY-MM-DD[@]HH:mm"));
-      } else {
-        components.push('⌛ ' + todo.scheduledDateTime);
-      }
-    }
+
     if (todo.dueDateTime) {
       if (todo.dueDateTime.toISOString().match(regDateTime)) {
         components.push(moment(todo.dueDateTime).format("[🗓] YYYY-MM-DD[@]HH:mm"));
@@ -185,7 +177,6 @@ export class DefaultTodoSerializer  {
     let blockId: null | string = null;
     let doneDateTime: null | Moment = null;
     let startDateTime: null | Moment = null;
-    let scheduledDateTime: null | Moment = null;
     let dueDateTime: null | Moment = null;
 
     let trailingTags = '';
@@ -243,20 +234,6 @@ export class DefaultTodoSerializer  {
         matched = true;
       }
 
-      const scheduledDateMatch = line.match(TodoFormatRegularExpressions.scheduledDateRegex);
-      if (scheduledDateMatch !== null) {
-        scheduledDateTime = moment(scheduledDateMatch[1], TodoRegularExpressions.dateFormat);
-        line = line.replace(TodoFormatRegularExpressions.scheduledDateRegex, '').trim();
-        matched = true;
-      }
-
-      const scheduledDateTimeMatch = line.match(TodoFormatRegularExpressions.scheduledDateTimeRegex);
-      if (scheduledDateTimeMatch !== null) {
-        scheduledDateTime = moment(scheduledDateTimeMatch[1], TodoRegularExpressions.dateTimeFormat);
-        line = line.replace(TodoFormatRegularExpressions.scheduledDateTimeRegex, '').trim();
-        matched = true;
-      }
-
       const tagsMatch = line.match(TodoRegularExpressions.hashTagsFloating);
       if (tagsMatch != null) {
         line = line.replace(TodoRegularExpressions.hashTagsFloating, '').trim();
@@ -281,7 +258,6 @@ export class DefaultTodoSerializer  {
       priority: priority,
       tags,
       startDateTime: startDateTime,
-      scheduledDateTime: scheduledDateTime ? moment(scheduledDateTime) : null,
       dueDateTime: dueDateTime ? moment(dueDateTime) : null,
       doneDateTime: doneDateTime ? moment(doneDateTime) : null,
     };

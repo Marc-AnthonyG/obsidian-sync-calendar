@@ -19,7 +19,6 @@ export type TodoDetails = Writeable<
     | 'priority'
     | 'tags'
     | 'startDateTime'
-    | 'scheduledDateTime'
     | 'dueDateTime'
     | 'doneDateTime'
   >

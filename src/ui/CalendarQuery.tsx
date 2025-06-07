@@ -152,7 +152,6 @@ const CalendarQuery: React.FC<CalendarQueryProps> = ({
 									settings={settings}
 									todo={todo}
 									patchTodoToDone={api.patchTodoToDone}
-									deleteTodo={api.deleteTodo}
 								/>
 							))}
 						</ul>

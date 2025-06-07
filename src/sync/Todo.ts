@@ -10,7 +10,6 @@ export class Todo {
   public tags: string[] | null;
 
   public startDateTime: Moment;
-  public scheduledDateTime: Moment | null;
   public dueDateTime: Moment | null;
   public doneDateTime: Moment | null;
 
@@ -27,7 +26,6 @@ export class Todo {
     priority,
     tags,
     startDateTime,
-    scheduledDateTime,
     dueDateTime,
     doneDateTime,
     path,
@@ -40,7 +38,6 @@ export class Todo {
     priority: string | null;
     tags: string[] | null;
     startDateTime: Moment;
-    scheduledDateTime?: Moment | null;
     dueDateTime?: Moment | null;
     doneDateTime?: Moment | null;
     path: string | null;
@@ -54,7 +51,6 @@ export class Todo {
 
     this.priority = priority ?? null;
     this.tags = tags ?? null;
-    this.scheduledDateTime = scheduledDateTime ?? null;
     this.dueDateTime = dueDateTime ?? null;
     this.doneDateTime = doneDateTime ?? null;
     this.path = path ?? null;
@@ -71,7 +67,6 @@ export class Todo {
     this.content = todo.content;
     this.startDateTime = todo.startDateTime;
     if (todo.priority != null) { this.priority = todo.priority; }
-    if (todo.scheduledDateTime != null) { this.scheduledDateTime = todo.scheduledDateTime; }
     if (todo.dueDateTime != null) { this.dueDateTime = todo.dueDateTime; }
     if (todo.doneDateTime != null) { this.doneDateTime = todo.doneDateTime; }
     if (todo.tags != null) { this.tags = todo.tags; }

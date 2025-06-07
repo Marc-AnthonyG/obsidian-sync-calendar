@@ -92,41 +92,6 @@ export class GoogleCalendarSync {
     }
   }
 
-  /**
-   * @deprecated TODO pass on this function
-   */
-  async deleteEvent(todo: Todo): Promise<void> {
-    const auth = await this.authorize();
-    const calendar = google.calendar({ version: 'v3', auth });
-
-    let retryTimes = 0;
-    let isDeleteSuccess = false;
-
-    // Set the sync status to UPLOAD and attempt to delete the event
-    while (retryTimes < 20 && !isDeleteSuccess) {
-      ++retryTimes;
-
-      await calendar.events
-        .delete({
-          auth: auth,
-          calendarId: 'primary',
-          eventId: todo.eventId
-        } as calendar_v3.Params$Resource$Events$Delete)
-        .then(() => {
-          isDeleteSuccess = true;
-          logger.log("GoogleCalendarSync", `Deleted event: ${todo.content}!`);
-          return;
-        }).catch(async (err) => {
-          logger.log("GoogleCalendarSync", `Error on patch event: ${err}`);
-          await new Promise(resolve => setTimeout(resolve, 100));
-        });
-    }
-
-    if (!isDeleteSuccess) {
-      throw Error(`Failed to delete event: ${todo.content}`);
-    }
-  }
-
   async patchEvent(todo: InternalGoogleTodo): Promise<void> {
     const auth = await this.authorize();
     const calendar = google.calendar({ version: 'v3', auth });

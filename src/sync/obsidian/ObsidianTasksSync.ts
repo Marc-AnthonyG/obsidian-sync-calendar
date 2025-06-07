@@ -56,6 +56,7 @@ export class ObsidianTasksSync {
    * @param getTodoPatch - A function that returns the updated line for the todo item.
    */
   public async patchTodo(todo: Todo, getTodoPatch: (todo: Todo, line: string) => string): Promise<void> {
+    logger.log("ObsidianTasksSync", `patchTodo: todo=${todo.content}`);
     this.updateFileContent(todo, (fileLines, targetLineNumber) => {
       const matchResult = fileLines[targetLineNumber].match(/.*- \[.\] /);
       if (!matchResult) {

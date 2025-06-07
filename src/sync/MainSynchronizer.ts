@@ -110,23 +110,12 @@ export class MainSynchronizer {
     return clTodos;
   }
 
-/**
-   * Delete a todo from Google Calendar and Obsidian
-   * @param todo - The todo to delete
-   */
-  public async deleteTodo(todo: Todo): Promise<void> {
-    await this.obsidianSync.deleteTodo(todo)
-      .catch((err) => { throw err; });
-    await this.calendarSync.deleteEvent(todo)
-      .catch((err) => { throw err; });
-  }
-
-
   /**
    * Patch a todo to done in both Google Calendar and Obsidian
    * @param todo - The todo to patch
    */
   public async patchTodoToDone(todo: Todo): Promise<void> {
+    logger.log("MainSynchronizer", `patchTodoToDone: todo=${todo.content}`);
     todo.eventStatus = 'x';
 
     await this.obsidianSync.patchTodo(todo, ObsidianTasksSync.getStatusDonePatch)

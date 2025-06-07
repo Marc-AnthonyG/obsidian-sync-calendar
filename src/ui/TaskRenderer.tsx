@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Menu } from "obsidian";
 import MarkdownRenderer from "./MarkdownRenderer";
 
 import { contentStore } from "./ContentStore";
@@ -14,14 +13,12 @@ interface TaskRendererProps {
 	settings: SyncCalendarPluginSettings;
 	todo: InternalGoogleTodo;
 	patchTodoToDone: (todo: InternalGoogleTodo) => void;
-	deleteTodo: (todo: InternalGoogleTodo) => void;
 }
 
 const TaskRenderer: React.FC<TaskRendererProps> = ({
 	settings,
 	todo,
 	patchTodoToDone,
-	deleteTodo,
 }) => {
 	logger.log("TaskRenderer", `todo=${todo}`);
 	const [disabled, setDisabled] = useState(false);
@@ -50,31 +47,8 @@ const TaskRenderer: React.FC<TaskRendererProps> = ({
 		patchTodoToDone(todo);
 	}
 
-	// TODO: Fix this lol
-	function onClickTaskContainer(evt: React.MouseEvent) {
-		evt.stopPropagation();
-		evt.preventDefault();
-
-		const menu = new Menu();
-
-		menu.addItem((menuItem) =>
-			menuItem
-				.setTitle("Delete todo")
-				.setIcon("popup-open")
-				.onClick(() => {
-					deleteTodo(todo);
-				})
-		);
-
-		menu.showAtPosition({
-			x: evt.pageX,
-			y: evt.pageY,
-		});
-	}
-
 	return (
 		<li
-			onContextMenu={onClickTaskContainer}
 			className={`
         todo-list-item
         has-time
