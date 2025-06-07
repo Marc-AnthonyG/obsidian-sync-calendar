@@ -1,17 +1,9 @@
 import { logger } from "src/util/Logger";
 import { Todo } from "../Todo";
 import type { GoogleTodo } from "./GoogleTodo";
-import type { Converter } from "../Converter";
 import moment, { type Moment } from "moment";
 
-export class GoogleTodoConverter implements Converter<GoogleTodo> {
-  toExternalTodos(todos: Todo[]): GoogleTodo[] {
-    return todos.map(todo => this.toExternalTodo(todo));
-  }
-
-  /**
-   * @deprecated TODO pass on this function
-   */
+export class GoogleTodoConverter  {
   toExternalTodo(todo: Todo): GoogleTodo {
     const todoEvent = {
       'summary': todo.content,
@@ -23,12 +15,6 @@ export class GoogleTodoConverter implements Converter<GoogleTodo> {
       'end': {
         dateTime: (todo.dueDateTime || todo.startDateTime.clone().add(1, 'hour')).toISOString(),
         timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-      },
-      'reminders': {
-        'useDefault': false,
-        'overrides': [
-          { 'method': 'popup', 'minutes': 10 },
-        ],
       },
     } as GoogleTodo;
 

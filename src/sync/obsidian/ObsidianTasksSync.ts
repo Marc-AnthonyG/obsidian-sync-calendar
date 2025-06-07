@@ -3,10 +3,12 @@ import { Mutex } from 'async-mutex';
 import { App, TFile, Notice } from "obsidian";
 import { DataviewApi, getAPI, isPluginEnabled, type STask } from "obsidian-dataview";
 
-import { Todo } from "src/sync/Todo";
+import { ObsidianTodo, Todo } from "src/sync/Todo";
 import { DEFAULT_SYMBOLS, DefaultTodoSerializer } from "./ObsidianTodoConverter";
 import type { TodoDetails } from "./MdTodo";
 import { logger } from "src/util/Logger";
+import { createTodoId } from "./ObsidianUtils";
+import moment from "moment";
 
 /**
  * This class is responsible for syncing tasks between Obsidian and a calendar.
@@ -97,51 +99,32 @@ export class ObsidianTasksSync {
    * @param triggeredBy - Whether the fetch was triggered automatically or manually.
    * @returns An array of todos.
    */
-  public listTasks(startMoment: moment.Moment): Todo[] {
-    const obTodos: Todo[] = [];
+  public listTasks(startMoment: moment.Moment): ObsidianTodo[] {
+    const obTodos: ObsidianTodo[] = [];
 
     const queriedTasks = this.dataviewAPI?.pages().file.tasks
+      // filter out tasks with starting date before startMoment (keep tasks with no starting date)
       .where((task: STask) => {
         const taskMatch = task.text.match(/🛫+ (\d{4}-\d{2}-\d{2})/u);
-        if (!taskMatch) { return false; }
-        return !window.moment(taskMatch[1]).isBefore(startMoment.startOf('day'));
+        if (!taskMatch) { return true; }
+        return !moment(taskMatch[1]).isBefore(startMoment.startOf('day'));
       });
 
     queriedTasks.values.forEach(async (task: STask) => {
+      logger.log("ObsidianTasksSync", `listTasks: tag=${task.tag}, text=${task.text}`);
       let todo_details: TodoDetails | null = null;
       if (task.blockId && task.blockId.length > 0) {
-        todo_details = this.deserializer.fromExternalTodo(task.text);
+        todo_details = this.deserializer.fromExternalTodo(task.text, startMoment);
       } else {
-        const hash = crypto.createHash("sha256").update(task.text).digest();
-        let shorternTaskHash = parseInt(hash.toString("hex").slice(0, 16), 16).toString(36).toUpperCase();
-        shorternTaskHash = shorternTaskHash.padStart(8, "0");
-
-        await this.fileMutex.runExclusive(async () => {
-          const file = this.app.vault.getAbstractFileByPath(task.path);
-          if (!(file instanceof TFile)) {
-            new Notice(`sync-calendar: No file found for task ${task.text}. Retrying ...`);
-            return;
-          }
-
-          const fileContent = await this.app.vault.read(file);
-          const fileLines = fileContent.split('\n');
-
-          const updatedFileLines = [
-            ...fileLines.slice(0, task.position.start.line),
-            `${fileLines[task.position.start.line]} ^${shorternTaskHash}`,
-            ...fileLines.slice(task.position.start.line + 1),
-          ];
-
-          await this.app.vault.modify(file, updatedFileLines.join('\n'));
-        });
-        todo_details = this.deserializer.fromExternalTodo(`${task.text} ^${shorternTaskHash}`);
+        const shorternTaskHash = await createTodoId(task, this.app, this.fileMutex);
+        todo_details = this.deserializer.fromExternalTodo(`${task.text} ^${shorternTaskHash}`, startMoment);
       }
 
       if (!todo_details) {
         return;
       }
 
-      const todo = new Todo({
+      const todo = new ObsidianTodo({
         ...todo_details,
         path: task.path,
         eventStatus: task.status,
@@ -149,7 +132,7 @@ export class ObsidianTasksSync {
         eventId: null,
       });
 
-      if (window.moment(todo.startDateTime).isBefore(startMoment)) {
+      if (moment(todo.startDateTime).isBefore(startMoment)) {
         return;
       }
       obTodos.push(todo);

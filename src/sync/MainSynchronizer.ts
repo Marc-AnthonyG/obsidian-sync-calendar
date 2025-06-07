@@ -1,6 +1,6 @@
 import type { App } from "obsidian";
 
-import type { BlockId, Todo } from "src/sync/Todo";
+import type { BlockId, ObsidianTodo, Todo } from "src/sync/Todo";
 import { GoogleCalendarSync } from './google-calendar/GoogleCalendarSync'
 import { ObsidianTasksSync } from './obsidian/ObsidianTasksSync';
 import { logger } from "src/util/Logger";
@@ -18,54 +18,39 @@ export class MainSynchronizer {
     return this.calendarSync.isReady();
   }
 
-  public async pushTodosToCalendar(
-startMoment: moment.Moment, maxResults = 200, clEvents: Todo[],
-  ) {
+  public async pushTodosToCalendar( startMoment: moment.Moment, clEvents: Todo[],) {
     logger.log("MainSynchronizer", `push Todos: startMoment=${startMoment}`);
     const obTasks = this.obsidianSync.listTasks(startMoment);
 
-    const clBlockId2Event = new Map<BlockId, Todo>();
+    const clEventCreatedFromTodo = new Map<BlockId, ObsidianTodo>();
     clEvents.forEach((event: Todo) => {
-      if (event.blockId && event.blockId.length > 0) {
-        clBlockId2Event.set(event.blockId, event);
-      }
+        const obTodo = event.toObsidianTodo();
+        if (obTodo) {
+          clEventCreatedFromTodo.set(obTodo.blockId, obTodo);
+        }
     });
 
     obTasks.map(async (task) => {
-      if (!task.blockId || task.blockId.length === 0) {
-        logger.log("MainSynchronizer", `Error in construct obBlockId2Todo, ${task.content} does not have a blockId`);
-        return;
-      }
-      if (clBlockId2Event.has(task.blockId)) {
-        const event = clBlockId2Event.get(task.blockId);
-        if (!event || event.eventStatus === task.eventStatus || task.eventStatus === ' ') {
+      const event = clEventCreatedFromTodo.get(task.blockId);
+      if (event) {
+        if (event.eventStatus === task.eventStatus || task.eventStatus === ' ') {
           return;
         }
-        // Obsidian --{m}-> Calendar 
-        // patch events
-        this.calendarSync.patchEvent(task, GoogleCalendarSync.getEventDonePatch);
+        this.calendarSync.patchEvent(task);
       } else {
-        // Obsidian --{+}-> Calendar
-        // insert events
         await this.calendarSync.insertEvent(task);
       }
     });
 
   }
 
-  /**
-   * Pull todos from Google Calendar
-   * @param startMoment - The start moment for the sync
-   * @param maxResults - The maximum number of results to retrieve
-   * @returns A promise that resolves to an array of todos
-   */
   public async pullTodosFromCalendar(
     startMoment: moment.Moment,
     maxResults = 200): Promise<Todo[]> {
 
     logger.log("MainSynchronizer", `pull Todos: startMoment=${startMoment}`);
     const clEvents = await this.calendarSync.listEvents(startMoment, maxResults);
-    this.pushTodosToCalendar(startMoment, maxResults, clEvents);
+    this.pushTodosToCalendar(startMoment, clEvents);
 
     const obTasks = this.obsidianSync.listTasks(startMoment);
 
@@ -143,7 +128,7 @@ startMoment: moment.Moment, maxResults = 200, clEvents: Todo[],
     await this.obsidianSync.patchTodo(todo, ObsidianTasksSync.getStatusDonePatch)
       .catch((err) => { throw err; });
 
-    await this.calendarSync.patchEvent(todo, GoogleCalendarSync.getEventDonePatch)
+    await this.calendarSync.patchEvent(todo)
       .catch((err) => { throw err; });
   }
 

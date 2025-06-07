@@ -1,6 +1,6 @@
 import type { Todo } from "src/sync/Todo";
 import type { TodoDetails } from "./MdTodo";
-import moment from "moment";
+import moment, { type Moment } from "moment";
 
 /* Interface describing the symbols that {@link DefaultTodoSerializer}
  * uses to serialize and deserialize todos.
@@ -145,21 +145,21 @@ export class DefaultTodoSerializer  {
 
     if (todo.startDateTime) {
       if (todo.startDateTime.toISOString().match(regDateTime)) {
-        components.push(window.moment(todo.startDateTime).format("[🛫] YYYY-MM-DD[@]HH:mm"));
+        components.push(moment(todo.startDateTime).format("[🛫] YYYY-MM-DD[@]HH:mm"));
       } else {
         components.push('🛫 ' + todo.startDateTime);
       }
     }
     if (todo.scheduledDateTime) {
       if (todo.scheduledDateTime.toISOString().match(regDateTime)) {
-        components.push(window.moment(todo.scheduledDateTime).format("[⌛] YYYY-MM-DD[@]HH:mm"));
+        components.push(moment(todo.scheduledDateTime).format("[⌛] YYYY-MM-DD[@]HH:mm"));
       } else {
         components.push('⌛ ' + todo.scheduledDateTime);
       }
     }
     if (todo.dueDateTime) {
       if (todo.dueDateTime.toISOString().match(regDateTime)) {
-        components.push(window.moment(todo.dueDateTime).format("[🗓] YYYY-MM-DD[@]HH:mm"));
+        components.push(moment(todo.dueDateTime).format("[🗓] YYYY-MM-DD[@]HH:mm"));
       } else {
         components.push('🗓 ' + todo.dueDateTime);
       }
@@ -177,20 +177,16 @@ export class DefaultTodoSerializer  {
   }
 
 
-  fromExternalTodos(external: string[]): Todo[] {
-    return external.map(line => this.fromExternalTodo(line)).filter((todo): todo is Todo => todo !== null);
-  }
-
-  public fromExternalTodo(line: string): TodoDetails | null {
+  public fromExternalTodo(line: string, startMoment: moment.Moment): TodoDetails | null {
     const { TodoFormatRegularExpressions } = this.symbols;
 
     let matched: boolean;
     let priority: null | string = null;
     let blockId: null | string = null;
-    let doneDateTime: null | string = null;
-    let startDateTime: null | string = null;
-    let scheduledDateTime: null | string = null;
-    let dueDateTime: null | string = null;
+    let doneDateTime: null | Moment = null;
+    let startDateTime: null | Moment = null;
+    let scheduledDateTime: null | Moment = null;
+    let dueDateTime: null | Moment = null;
 
     let trailingTags = '';
     const maxRuns = 20;
@@ -214,49 +210,49 @@ export class DefaultTodoSerializer  {
 
       const startDateMatch = line.match(TodoFormatRegularExpressions.startDateRegex);
       if (startDateMatch !== null) {
-        startDateTime = window.moment(startDateMatch[1], TodoRegularExpressions.dateFormat).format('YYYY-MM-DD');
+        startDateTime = moment(startDateMatch[1], TodoRegularExpressions.dateFormat);
         line = line.replace(TodoFormatRegularExpressions.startDateRegex, '').trim();
         matched = true;
       }
 
       const startDateTimeMatch = line.match(TodoFormatRegularExpressions.startDateTimeRegex);
       if (startDateTimeMatch !== null) {
-        startDateTime = window.moment(startDateTimeMatch[1], TodoRegularExpressions.dateTimeFormat).format('YYYY-MM-DD[T]HH:mm:ssZ');
+        startDateTime = moment(startDateTimeMatch[1], TodoRegularExpressions.dateTimeFormat);
         line = line.replace(TodoFormatRegularExpressions.startDateTimeRegex, '').trim();
         matched = true;
       }
 
       const dueDateMatch = line.match(TodoFormatRegularExpressions.dueDateRegex);
       if (dueDateMatch !== null) {
-        dueDateTime = window.moment(dueDateMatch[1], TodoRegularExpressions.dateFormat).format('YYYY-MM-DD');
+        dueDateTime = moment(dueDateMatch[1], TodoRegularExpressions.dateFormat);
         line = line.replace(TodoFormatRegularExpressions.dueDateRegex, '').trim();
         matched = true;
       }
 
       const dueDateTimeMatch = line.match(TodoFormatRegularExpressions.dueDateTimeRegex);
       if (dueDateTimeMatch !== null) {
-        dueDateTime = window.moment(dueDateTimeMatch[1], TodoRegularExpressions.dateTimeFormat).format('YYYY-MM-DD[T]HH:mm:ssZ');
+        dueDateTime = moment(dueDateTimeMatch[1], TodoRegularExpressions.dateTimeFormat);
         line = line.replace(TodoFormatRegularExpressions.dueDateTimeRegex, '').trim();
         matched = true;
       }
 
       const doneDateMatch = line.match(TodoFormatRegularExpressions.doneDateRegex);
       if (doneDateMatch !== null) {
-        doneDateTime = window.moment(doneDateMatch[1], TodoRegularExpressions.dateFormat).format('YYYY-MM-DD');
+        doneDateTime = moment(doneDateMatch[1], TodoRegularExpressions.dateFormat);
         line = line.replace(TodoFormatRegularExpressions.doneDateRegex, '').trim();
         matched = true;
       }
 
       const scheduledDateMatch = line.match(TodoFormatRegularExpressions.scheduledDateRegex);
       if (scheduledDateMatch !== null) {
-        scheduledDateTime = window.moment(scheduledDateMatch[1], TodoRegularExpressions.dateFormat).format('YYYY-MM-DD');
+        scheduledDateTime = moment(scheduledDateMatch[1], TodoRegularExpressions.dateFormat);
         line = line.replace(TodoFormatRegularExpressions.scheduledDateRegex, '').trim();
         matched = true;
       }
 
       const scheduledDateTimeMatch = line.match(TodoFormatRegularExpressions.scheduledDateTimeRegex);
       if (scheduledDateTimeMatch !== null) {
-        scheduledDateTime = window.moment(scheduledDateTimeMatch[1], TodoRegularExpressions.dateTimeFormat).format('YYYY-MM-DD[T]HH:mm:ssZ');
+        scheduledDateTime = moment(scheduledDateTimeMatch[1], TodoRegularExpressions.dateTimeFormat);
         line = line.replace(TodoFormatRegularExpressions.scheduledDateTimeRegex, '').trim();
         matched = true;
       }
@@ -275,7 +271,8 @@ export class DefaultTodoSerializer  {
     const tags = trailingTags.match(TodoRegularExpressions.hashTags)?.map((tag) => tag.trim()) ?? [];
 
     if (!startDateTime) {
-      return null;
+      // if no start date, set it to the start of the current display 
+      startDateTime = startMoment;
     }
 
     return {
@@ -283,7 +280,7 @@ export class DefaultTodoSerializer  {
       blockId: blockId,
       priority: priority,
       tags,
-      startDateTime: moment(startDateTime),
+      startDateTime: startDateTime,
       scheduledDateTime: scheduledDateTime ? moment(scheduledDateTime) : null,
       dueDateTime: dueDateTime ? moment(dueDateTime) : null,
       doneDateTime: doneDateTime ? moment(doneDateTime) : null,

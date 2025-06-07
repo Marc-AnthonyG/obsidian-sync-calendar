@@ -25,6 +25,10 @@ class Logger {
       console.error('Error writing to log file:', err);
     }
   }
+
+  error(from: string, message: string, ...optionalParams: any[]): void {
+    this.log(from, message, ...optionalParams);
+  }
 } 
 
 export const logger = new Logger("/Users/marc-anthonygirard/repository/knowledgeBase/programming/.obsidian");

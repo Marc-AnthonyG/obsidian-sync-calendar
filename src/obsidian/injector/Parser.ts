@@ -1,3 +1,4 @@
+import moment from "moment";
 import { isSortingOption, sortingOptions } from "./Query";
 import type { Query } from "./Query";
 import YAML from "yaml";
@@ -52,7 +53,7 @@ function parseObject(query: any): Query {
     if (typeof query.timeMin !== "string") {
       throw new ParsingError("'timeMin' field must be a string");
     }
-    if (!window.moment(query.timeMin).isValid()) {
+    if (!moment(query.timeMin).isValid()) {
       throw new ParsingError("'timeMin' field must be a valid moment string");
     }
   }
@@ -61,7 +62,7 @@ function parseObject(query: any): Query {
     if (typeof query.timeMax !== "string") {
       throw new ParsingError("'timeMax' field must be a string");
     }
-    if (!window.moment(query.timeMax).isValid()) {
+    if (!moment(query.timeMax).isValid()) {
       throw new ParsingError("'timeMax' field must be a valid moment string");
     }
   }

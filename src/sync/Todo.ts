@@ -2,6 +2,7 @@ import moment, { type Moment } from "moment";
 
 export type BlockId = string;
 
+
 export class Todo {
   public content: string;
 
@@ -106,4 +107,16 @@ export class Todo {
     }
     return false;
   }
+
+  toObsidianTodo(): ObsidianTodo | null {
+    if (this.blockId) {
+      return new ObsidianTodo(this);
+    }
+    
+    return null;
+  }
+}
+
+export class ObsidianTodo extends Todo {
+  public blockId: BlockId;
 }

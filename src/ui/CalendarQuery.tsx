@@ -9,6 +9,7 @@ import ErrorDisplay from "./ErrorDisplay";
 import TaskRenderer from "./TaskRenderer";
 import NoTaskDisplay from "./NoTaskDisplay";
 import { logger } from "src/util/Logger";
+import moment from "moment";
 
 interface CalendarQueryProps {
 	settings: SyncCalendarPluginSettings;
@@ -30,15 +31,9 @@ const CalendarQuery: React.FC<CalendarQueryProps> = ({
 		(todoList: Todo[]) => {
 			if (query && query.timeMax) {
 				return todoList.filter((todo: Todo) => {
-					if (Todo.isDatetime(todo.startDateTime ?? "")) {
-						return window
-							.moment(query.timeMax)
-							.isAfter(window.moment(todo.startDateTime));
-					} else {
-						return window
-							.moment(query.timeMax)
-							.isAfter(window.moment(todo.startDateTime));
-					}
+					return moment(query.timeMax).isAfter(
+						moment(todo.startDateTime)
+					);
 				});
 			}
 			return todoList;
@@ -67,12 +62,11 @@ const CalendarQuery: React.FC<CalendarQueryProps> = ({
 
 		setFetching(true);
 
-		let startMoment = window
-			.moment()
+		let startMoment = moment()
 			.startOf("day")
-			.subtract(window.moment.duration(settings.fetchWeeksAgo, "weeks"));
+			.subtract(moment.duration(settings.fetchWeeksAgo, "weeks"));
 		if (query && query.timeMin) {
-			startMoment = window.moment(query.timeMin);
+			startMoment = moment(query.timeMin);
 		}
 
 		const maxEvents = query?.maxEvents
@@ -121,7 +115,7 @@ const CalendarQuery: React.FC<CalendarQueryProps> = ({
 			return;
 		}
 
-		const intervalId = window.setInterval(
+		const intervalId = setInterval(
 			fetchEventLists,
 			query.refreshInterval * 1000
 		);

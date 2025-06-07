@@ -7,8 +7,8 @@ import { google, Auth, calendar_v3 } from 'googleapis';
 import { Todo } from 'src/sync/Todo';
 import { logger } from 'src/util/Logger';
 import { GoogleTodoConverter } from './GoogleTodoConverter';
-import type { GoogleTodo } from './GoogleTodo';
 import {OAuth2Client} from "google-auth-library";
+import { changeGoogleStatusTodo } from './GoogleUtils';
 
 /**
  * This class handles syncing with Google Calendar.
@@ -67,7 +67,7 @@ export class GoogleCalendarSync {
     let retryTimes = 0;
     let isInsertSuccess = false;
 
-    while (retryTimes < 20 && !isInsertSuccess) {
+    while (retryTimes < 3 && !isInsertSuccess) {
       ++retryTimes;
       await calendar.events
         .insert({
@@ -76,18 +76,17 @@ export class GoogleCalendarSync {
           resource: this.converter.toExternalTodo(todo)
         } as calendar_v3.Params$Resource$Events$Insert
         )
-        .then((event) => {
+        .then(() => {
           isInsertSuccess = true;
-          logger.log("GoogleCalendarSync", `Added event: ${todo.content}! link: ${event.data.htmlLink}`);
-          return;
-        }).catch(async (error) => {
-          logger.log("GoogleCalendarSync", `Error on inserting event: ${error}`);
+        }).catch(async (err) => {
+          logger.error("GoogleCalendarSync", `Error on insert event: ${err}`);
           await new Promise(resolve => setTimeout(resolve, 100));
         });
     }
 
     // Set the sync status and network status based on whether the insert was successful
     if (!isInsertSuccess) {
+      logger.error("GoogleCalendarSync", `Failed to insert event: ${todo.content}`);
       throw Error(`Failed to insert event: ${todo.content}`);
     }
   }
@@ -117,7 +116,7 @@ export class GoogleCalendarSync {
           logger.log("GoogleCalendarSync", `Deleted event: ${todo.content}!`);
           return;
         }).catch(async (err) => {
-          logger.log("GoogleCalendarSync", `Error on delete event: ${err}`);
+          logger.log("GoogleCalendarSync", `Error on patch event: ${err}`);
           await new Promise(resolve => setTimeout(resolve, 100));
         });
     }
@@ -127,18 +126,14 @@ export class GoogleCalendarSync {
     }
   }
 
-  /**
-   * @deprecated TODO pass on this function
-   */
-  async patchEvent(todo: Todo, getEventPatch: (todo: Todo) => calendar_v3.Schema$Event): Promise<void> {
+  async patchEvent(todo: Todo): Promise<void> {
     const auth = await this.authorize();
     const calendar = google.calendar({ version: 'v3', auth });
 
     let retryTimes = 0;
     let isPatchSuccess = false;
 
-    // Set the sync status to UPLOAD and attempt to patch the event
-    while (retryTimes < 20 && !isPatchSuccess) {
+    while (retryTimes < 3 && !isPatchSuccess) {
       ++retryTimes;
 
       await calendar.events
@@ -146,68 +141,20 @@ export class GoogleCalendarSync {
           auth: auth,
           calendarId: 'primary',
           eventId: todo.eventId,
-          resource: getEventPatch(todo)
+          resource: changeGoogleStatusTodo(todo)
         } as calendar_v3.Params$Resource$Events$Patch)
         .then(() => {
           isPatchSuccess = true;
-          logger.log("GoogleCalendarSync", `Patched event: ${todo.content}!`);
-          return;
         }).catch(async (err) => {
           logger.log("GoogleCalendarSync", `Error on patch event: ${err}`);
           await new Promise(resolve => setTimeout(resolve, 100));
         });
     }
 
-    // Set the sync status and network status based on whether the patch was successful
     if (!isPatchSuccess) {
+      logger.error("GoogleCalendarSync", `Failed on patched event: ${todo.content}`);
       throw Error(`Failed on patched event: ${todo.content}`);
     }
-  }
-
-  /**
-   * @deprecated TODO pass on this function
-   */
-  static getEventDonePatch(todo: Todo): GoogleTodo {
-    if (!todo.eventStatus) {
-      todo.eventStatus = 'x';
-    }
-    if (['!', '?', '>', '-', ' '].indexOf(todo.eventStatus) < 0) {
-      todo.eventStatus = 'x';
-    }
-
-    const eventDescUpdate = todo.serializeDescription();
-    switch (todo.eventStatus) {
-      case '-':
-        return {
-          "summary": `🚫 ${todo.content}`,
-          "description": eventDescUpdate,
-        } as GoogleTodo;
-      case '!':
-        return {
-          "summary": `❗️ ${todo.content}`,
-          "description": eventDescUpdate,
-        } as GoogleTodo;
-      case '>':
-        return {
-          "summary": `💤 ${todo.content}`,
-          "description": eventDescUpdate,
-        } as GoogleTodo;
-      case '?':
-        return {
-          "summary": `❓ ${todo.content}`,
-          "description": eventDescUpdate,
-        } as GoogleTodo;
-      case 'x':
-      case 'X':
-        return {
-          "summary": `✅ ${todo.content}`,
-          "description": eventDescUpdate,
-        } as GoogleTodo;
-    }
-    return {
-      "summary": `✅ ${todo.content}`,
-      "description": eventDescUpdate,
-    } as GoogleTodo;
   }
 
   async isReady(): Promise<boolean> {
