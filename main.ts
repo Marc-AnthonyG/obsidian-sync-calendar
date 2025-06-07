@@ -1,9 +1,9 @@
 import { App, type PluginManifest, Plugin } from 'obsidian';
 
 import { gfSyncStatus$, gfNetStatus$, NetworkStatus } from 'src/obsidian/NetworkMenu';
-import { MainSynchronizer } from "src/Syncs/MainSynchronizer";
+import { MainSync } from "src/sync/MainSync";
 import QueryInjector from 'src/obsidian/injector/QueryInjector';
-import { Logger } from 'src/util/Logger';
+import { Logger } from 'src/lib/Logger';
 import { SyncCalendarPluginSettingTab } from 'src/obsidian/SettingMenu';
 import { updateNetStatusItem, updateSyncStatusItem } from 'src/obsidian/NetworkMenu';
 
@@ -34,7 +34,7 @@ export default class SyncCalendarPlugin extends Plugin {
   public netStatus: NetworkStatus;
   public netStatusItem: HTMLElement;
 
-  private mainSync: MainSynchronizer;
+  private mainSync: MainSync;
 
   private queryInjector: QueryInjector;
 
@@ -55,7 +55,7 @@ export default class SyncCalendarPlugin extends Plugin {
     gfNetStatus$.subscribe(newNetStatus => updateNetStatusItem(newNetStatus));
     gfSyncStatus$.subscribe(newSyncStatus => updateSyncStatusItem(newSyncStatus));
 
-    this.mainSync = new MainSynchronizer(this.app);
+    this.mainSync = new MainSync(this.app);
 
     this.queryInjector = new QueryInjector(this);
     this.queryInjector.setMainSync(this.mainSync);
@@ -65,13 +65,7 @@ export default class SyncCalendarPlugin extends Plugin {
     );
 
     const syncCallback = () => {
-      const keyMoment = window.moment().startOf('day');
-      const Ago = window.moment.duration(this.settings.fetchWeeksAgo, 'week');
-      this.mainSync.pushTodosToCalendar(
-        keyMoment.subtract(Ago),
-        this.settings.fetchMaximumEvents,
-        'auto'
-      );
+      this.mainSync.sync();
     }
 
     this.addCommand({

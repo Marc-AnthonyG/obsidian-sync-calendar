@@ -1,5 +1,4 @@
-import type { Todo } from "src/TodoSerialization/Todo";
-import type { TodoDetails, TodoSerializer } from "./";
+import type { Todo } from "../Todo";
 
 /* Interface describing the symbols that {@link DefaultTodoSerializer}
  * uses to serialize and deserialize todos.
@@ -118,8 +117,20 @@ export class TodoRegularExpressions {
   public static readonly hashTagsFromEnd = new RegExp(this.hashTags.source + '$');
 }
 
+interface SerializedTodo {
+    priority: null | string;
+    blockId: null | string;
+    doneDateTime: null | string;
+    startDateTime: null | string;
+    scheduledDateTime: null | string;
+    dueDateTime: null | string;
+    content: string;
+    tags: string[];
+}
 
-export class DefaultTodoSerializer implements TodoSerializer {
+export type TodoDetails = Partial<SerializedTodo>;
+
+export class DefaultTodoSerializer {
   constructor(public readonly symbols: DefaultTodoSerializerSymbols) { }
 
   /* Convert a todo to its string representation
@@ -273,47 +284,18 @@ export class DefaultTodoSerializer implements TodoSerializer {
       }
 
 
-      // Match tags from the end to allow users to mix the various todo components with
-      // tags. These tags will be added back to the description below
       const tagsMatch = line.match(TodoRegularExpressions.hashTagsFloating);
       if (tagsMatch != null) {
         line = line.replace(TodoRegularExpressions.hashTagsFloating, '').trim();
         matched = true;
         const tagName = tagsMatch[0].trim();
-        // Adding to the left because the matching is done right-to-left
         trailingTags = trailingTags.length > 0 ? [tagName, trailingTags].join(' ') : tagName;
       }
-
-      // const recurrenceMatch = line.match(TodoFormatRegularExpressions.recurrenceRegex);
-      // if (recurrenceMatch !== null) {
-      //   // Save the recurrence rule, but *do not parse it yet*.
-      //   // Creating the Recurrence object requires a reference date (e.g. a due date),
-      //   // and it might appear in the next (earlier in the line) tokens to parse
-      //   recurrenceRule = recurrenceMatch[1].trim();
-      //   line = line.replace(TodoFormatRegularExpressions.recurrenceRegex, '').trim();
-      //   matched = true;
-      // }
 
       runs++;
     } while (matched && runs <= maxRuns);
 
-    // // Now that we have all the todo details, parse the recurrence rule if we found any
-    // if (recurrenceRule.length > 0) {
-    //   recurrence = Recurrence.fromText({
-    //     recurrenceRuleText: recurrenceRule,
-    //     startDate,
-    //     scheduledDate,
-    //     dueDate,
-    //   });
-    // }
-
     const tags = trailingTags.match(TodoRegularExpressions.hashTags)?.map((tag) => tag.trim()) ?? [];
-
-    // Add back any trailing tags to the description. We removed them so we can parse the rest of the
-    // components but now we want them back.
-    // The goal is for a todo of them form 'Do something #tag1 (due) tomorrow #tag2 (start) today'
-    // to actually have the description 'Do something #tag1 #tag2'
-    // if (trailingTags.length > 0) line += ' ' + trailingTags;
 
     return {
       content: line,

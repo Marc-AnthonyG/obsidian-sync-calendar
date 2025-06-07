@@ -4,7 +4,7 @@ export enum NetworkStatus {
   UNKOWN = 1,
   HEALTH,
   CONNECTION_ERROR,
-};
+}
 
 export enum SyncStatus {
   UNKOWN = 1,

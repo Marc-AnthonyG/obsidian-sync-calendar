@@ -3,7 +3,7 @@ import React, { useState, useEffect, useMemo, useCallback } from "react";
 import type SyncCalendarPlugin from "main";
 import type { Query } from "src/obsidian/injector/Query";
 import { Todo } from "src/TodoSerialization/Todo";
-import type { MainSynchronizer } from "src/Syncs/MainSynchronizer";
+import type { MainSync } from "src/sync/MainSync";
 
 import ErrorDisplay from "./ErrorDisplay";
 import TaskRenderer from "./TaskRenderer";
@@ -11,7 +11,7 @@ import NoTaskDisplay from "./NoTaskDisplay";
 
 interface CalendarQueryProps {
 	plugin: SyncCalendarPlugin;
-	api: MainSynchronizer;
+	api: MainSync;
 	query: Query;
 }
 
@@ -58,8 +58,7 @@ const CalendarQuery: React.FC<CalendarQueryProps> = ({
 	}, [query, todos.length]);
 
 	const fetchEventLists = useCallback(async () => {
-		const apiIsReady = await api.isReady();
-		if (!apiIsReady || fetching) {
+		if (fetching) {
 			return;
 		}
 
@@ -80,7 +79,7 @@ const CalendarQuery: React.FC<CalendarQueryProps> = ({
 			: plugin.settings.fetchMaximumEvents;
 
 		const fetchPromise = api
-			.pullTodosFromCalendar(startMoment, maxEvents)
+			.fetchall(startMoment, maxEvents)
 			.then((newEventsList) => {
 				setEventsList(newEventsList);
 				setFetchedOnce(true);

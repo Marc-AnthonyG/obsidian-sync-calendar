@@ -6,7 +6,7 @@ import React from "react";
 import { createRoot, type Root } from "react-dom/client";
 
 import type SyncCalendarPlugin from "main";
-import type { MainSynchronizer } from "src/Syncs/MainSynchronizer";
+import type { MainSync } from "src/sync/MainSync";
 import CalendarQuery from "src/ui/CalendarQuery";
 import ErrorDisplay from "src/ui/ErrorDisplay";
 import { logger } from "main";
@@ -18,7 +18,7 @@ export default class QueryInjector {
 	private pendingQueries: PendingQuery[];
 
 	private plugin: SyncCalendarPlugin;
-	private mainSync: MainSynchronizer;
+	private mainSync: MainSync;
 
 	constructor(plugin: SyncCalendarPlugin) {
 		this.plugin = plugin;
@@ -44,7 +44,7 @@ export default class QueryInjector {
 		this.injectQuery(pendingQuery);
 	}
 
-	setMainSync(mainSync: MainSynchronizer) {
+	setMainSync(mainSync: MainSync) {
 		this.mainSync = mainSync;
 
 		while (this.pendingQueries.length > 0) {

@@ -1,17 +1,19 @@
 import * as path from 'path';
 
 import type { App, Vault, FileSystemAdapter } from 'obsidian';
-import { authenticate } from '@google-cloud/local-auth';
 import { google, type calendar_v3, Auth } from 'googleapis';
 
-import { Todo } from 'src/TodoSerialization/Todo';
-import { logger } from 'main';
-import { gfSyncStatus$, gfNetStatus$, NetworkStatus, SyncStatus } from '../obsidian/NetworkMenu';
+import { Todo } from '../Todo';
+import { logger } from '../../../main';
+import { gfSyncStatus$, gfNetStatus$, NetworkStatus, SyncStatus } from '../../obsidian/NetworkMenu';
+import type { Syncher, PartialTodo } from '../Syncher';
+import { fromGoogleEvent, toGoogleEvent } from './GoogleTodoConverter';
+import { authenticate } from '@google-cloud/local-auth';
 
 /**
  * This class handles syncing with Google Calendar.
  */
-export class GoogleCalendarSync {
+export class GoogleSync implements Syncher {
   vault: Vault;
 
   public SCOPES = ['https://www.googleapis.com/auth/calendar'];
@@ -29,13 +31,19 @@ export class GoogleCalendarSync {
     this.CREDENTIALS_PATH = path.join(this.vault.configDir, 'calendar.sync.credentials.json');
   }
 
+  async pull(destination: Todo[]): Promise<Todo[]> {
+    // A simple pull implementation. For a more efficient version,
+    // you would use the destination todos to perform a diff and only fetch what's needed.
+    return this.fetchAll();
+  }
+
   /**
    * Returns a list of completed and uncompleted events.
    * @param startMoment The start moment for the events to retrieve.
    * @param maxResults The maximum number of results to retrieve.
    * @returns A Promise that resolves to an array of Todo objects.
    */
-  async listEvents(startMoment: moment.Moment, maxResults = 200): Promise<Todo[]> {
+  async fetchAll(startMoment: moment.Moment = window.moment().startOf('day'), maxResults = 200): Promise<Todo[]> {
     const auth = await this.authorize();
     const calendar = google.calendar({ version: 'v3', auth });
 
@@ -71,7 +79,7 @@ export class GoogleCalendarSync {
 
     if (eventsMetaList != undefined) {
       eventsMetaList.forEach((eventMeta: calendar_v3.Schema$Event) => {
-        eventsList.push(Todo.fromGoogleEvent(eventMeta));
+        eventsList.push(fromGoogleEvent(eventMeta));
       });
     }
 
@@ -82,179 +90,107 @@ export class GoogleCalendarSync {
    * Inserts a new event into Google Calendar.
    * @param todo The Todo object to insert.
    */
-  async insertEvent(todo: Todo) {
+  async create(todo: Todo): Promise<Todo> {
     const auth = await this.authorize();
     const calendar: calendar_v3.Calendar = google.calendar({ version: 'v3', auth });
 
-    let retryTimes = 0;
-    let isInsertSuccess = false;
-
     // Set the sync status to UPLOAD and attempt to insert the event
     gfSyncStatus$.next(SyncStatus.UPLOAD);
-    while (retryTimes < 20 && !isInsertSuccess) {
-      ++retryTimes;
-      await calendar.events
-        .insert({
-          auth: auth,
-          calendarId: 'primary',
-          resource: Todo.toGoogleEvent(todo)
-        } as calendar_v3.Params$Resource$Events$Insert
-        )
-        .then((event) => {
-          isInsertSuccess = true;
-          logger.log("GoogleCalendarSync", `Added event: ${todo.content}! link: ${event.data.htmlLink}`);
-          return;
-        }).catch(async (error) => {
-          logger.log("GoogleCalendarSync", `Error on inserting event: ${error}`);
-          await new Promise(resolve => setTimeout(resolve, 100));
-        });
-    }
 
-    // Set the sync status and network status based on whether the insert was successful
-    if (isInsertSuccess) {
-      gfSyncStatus$.next(SyncStatus.SUCCESS_WAITING);
-      gfNetStatus$.next(NetworkStatus.HEALTH);
-    } else {
-      gfSyncStatus$.next(SyncStatus.FAILED_WARNING);
-      gfNetStatus$.next(NetworkStatus.CONNECTION_ERROR);
-      throw Error(`Failed to insert event: ${todo.content}`);
-    }
+    const createdEvent = await calendar.events
+      .insert({
+        auth: auth,
+        calendarId: 'primary',
+        requestBody: toGoogleEvent(todo)
+      }
+      )
+    
+    gfSyncStatus$.next(SyncStatus.SUCCESS_WAITING);
+    gfNetStatus$.next(NetworkStatus.HEALTH);
+    logger.log("GoogleSync", `Added event: ${todo.content}! link: ${createdEvent.data.htmlLink}`);
+    
+    return fromGoogleEvent(createdEvent.data);
+  }
+
+  async update(todo: Todo): Promise<Todo> {
+    const auth = await this.authorize();
+    const calendar = google.calendar({ version: 'v3', auth });
+    
+    gfSyncStatus$.next(SyncStatus.UPLOAD);
+
+    const updatedEvent = await calendar.events.update({
+      auth: auth,
+      calendarId: 'primary',
+      eventId: todo.eventId!,
+      requestBody: toGoogleEvent(todo)
+    });
+    
+    gfSyncStatus$.next(SyncStatus.SUCCESS_WAITING);
+    gfNetStatus$.next(NetworkStatus.HEALTH);
+    logger.log("GoogleSync", `Updated event: ${todo.content}!`);
+    
+    return fromGoogleEvent(updatedEvent.data);
   }
 
   /**
    * Deletes an event from Google Calendar.
    * @param todo The Todo object to delete.
    */
-  async deleteEvent(todo: Todo): Promise<void> {
+  async delete(todo: PartialTodo): Promise<void> {
     const auth = await this.authorize();
     const calendar = google.calendar({ version: 'v3', auth });
 
-    let retryTimes = 0;
-    let isDeleteSuccess = false;
-
     // Set the sync status to UPLOAD and attempt to delete the event
     gfSyncStatus$.next(SyncStatus.UPLOAD);
-    while (retryTimes < 20 && !isDeleteSuccess) {
-      ++retryTimes;
-
-      await calendar.events
-        .delete({
-          auth: auth,
-          calendarId: 'primary',
-          eventId: todo.eventId
-        } as calendar_v3.Params$Resource$Events$Delete)
-        .then(() => {
-          isDeleteSuccess = true;
-          logger.log("GoogleCalendarSync", `Deleted event: ${todo.content}!`);
-          return;
-        }).catch(async (err) => {
-          logger.log("GoogleCalendarSync", `Error on delete event: ${err}`);
-          await new Promise(resolve => setTimeout(resolve, 100));
-        });
-    }
-
-    // Set the sync status and network status based on whether the delete was successful
-    if (isDeleteSuccess) {
-      gfSyncStatus$.next(SyncStatus.SUCCESS_WAITING);
-      gfNetStatus$.next(NetworkStatus.HEALTH);
-    } else {
-      gfSyncStatus$.next(SyncStatus.FAILED_WARNING);
-      gfNetStatus$.next(NetworkStatus.CONNECTION_ERROR);
-      throw Error(`Failed to delete event: ${todo.content}`);
-    }
+    
+    await calendar.events
+      .delete({
+        auth: auth,
+        calendarId: 'primary',
+        eventId: todo.id!
+      });
+    
+    gfSyncStatus$.next(SyncStatus.SUCCESS_WAITING);
+    gfNetStatus$.next(NetworkStatus.HEALTH);
+    logger.log("GoogleSync", `Deleted event: ${todo.id}!`);
   }
 
   /**
    * Patches an event in Google Calendar.
    * @param todo The Todo object to patch.
-   * @param getEventPatch A function that returns the patch to apply to the event.
+   * @param fields The fields to patch.
    */
-  async patchEvent(todo: Todo, getEventPatch: (todo: Todo) => calendar_v3.Schema$Event): Promise<void> {
+  async patch(todo: Todo, fields: (keyof Todo)[]): Promise<Todo> {
     const auth = await this.authorize();
     const calendar = google.calendar({ version: 'v3', auth });
 
-    let retryTimes = 0;
-    let isPatchSuccess = false;
-
-    // Set the sync status to UPLOAD and attempt to patch the event
     gfSyncStatus$.next(SyncStatus.UPLOAD);
-    while (retryTimes < 20 && !isPatchSuccess) {
-      ++retryTimes;
-
-      await calendar.events
-        .patch({
-          auth: auth,
-          calendarId: 'primary',
-          eventId: todo.eventId,
-          resource: getEventPatch(todo)
-        } as calendar_v3.Params$Resource$Events$Patch)
-        .then(() => {
-          isPatchSuccess = true;
-          logger.log("GoogleCalendarSync", `Patched event: ${todo.content}!`);
-          return;
-        }).catch(async (err) => {
-          logger.log("GoogleCalendarSync", `Error on patch event: ${err}`);
-          await new Promise(resolve => setTimeout(resolve, 100));
-        });
+    
+    const eventPatch: calendar_v3.Schema$Event = {};
+    for (const field of fields) {
+      switch (field) {
+        case 'content':
+          eventPatch.summary = todo.content;
+          break;
+        case 'eventStatus':
+          eventPatch.description = todo.serializeDescription();
+          // Add more cases for other fields as needed
+      }
     }
-
-    // Set the sync status and network status based on whether the patch was successful
-    if (isPatchSuccess) {
-      gfSyncStatus$.next(SyncStatus.SUCCESS_WAITING);
-      gfNetStatus$.next(NetworkStatus.HEALTH);
-    } else {
-      gfSyncStatus$.next(SyncStatus.FAILED_WARNING);
-      gfNetStatus$.next(NetworkStatus.CONNECTION_ERROR);
-      throw Error(`Failed on patched event: ${todo.content}`);
-    }
-  }
-
-  /**
-     * Returns a patch object for a completed event in Google Calendar.
-     * @param todo The Todo object to patch.
-     * @returns {calendar_v3.Schema$Event} The patch object.
-     */
-  static getEventDonePatch(todo: Todo): calendar_v3.Schema$Event {
-    if (!todo.eventStatus) {
-      todo.eventStatus = 'x';
-    }
-    if (['!', '?', '>', '-', ' '].indexOf(todo.eventStatus) < 0) {
-      todo.eventStatus = 'x';
-    }
-
-    const eventDescUpdate = todo.serializeDescription();
-    switch (todo.eventStatus) {
-      case '-':
-        return {
-          "summary": `🚫 ${todo.content}`,
-          "description": eventDescUpdate,
-        } as calendar_v3.Schema$Event;
-      case '!':
-        return {
-          "summary": `❗️ ${todo.content}`,
-          "description": eventDescUpdate,
-        } as calendar_v3.Schema$Event;
-      case '>':
-        return {
-          "summary": `💤 ${todo.content}`,
-          "description": eventDescUpdate,
-        } as calendar_v3.Schema$Event;
-      case '?':
-        return {
-          "summary": `❓ ${todo.content}`,
-          "description": eventDescUpdate,
-        } as calendar_v3.Schema$Event;
-      case 'x':
-      case 'X':
-        return {
-          "summary": `✅ ${todo.content}`,
-          "description": eventDescUpdate,
-        } as calendar_v3.Schema$Event;
-    }
-    return {
-      "summary": `✅ ${todo.content}`,
-      "description": eventDescUpdate,
-    } as calendar_v3.Schema$Event;
+    
+    const patchedEvent = await calendar.events
+      .patch({
+        auth: auth,
+        calendarId: 'primary',
+        eventId: todo.eventId!,
+        requestBody: eventPatch
+      });
+    
+    gfSyncStatus$.next(SyncStatus.SUCCESS_WAITING);
+    gfNetStatus$.next(NetworkStatus.HEALTH);
+    logger.log("GoogleSync", `Patched event: ${todo.content}!`);
+    
+    return fromGoogleEvent(patchedEvent.data);
   }
 
   /**
