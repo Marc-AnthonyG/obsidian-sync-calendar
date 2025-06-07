@@ -1,3 +1,5 @@
+export type BlockId = string;
+
 export class Todo {
   public content: null | string | undefined;
 
@@ -17,7 +19,7 @@ export class Todo {
   public eventHtmlLink?: null | string | undefined;
 
   public path?: string | undefined;
-  public blockId?: null | string | undefined;
+  public blockId?: null | BlockId | undefined;
 
   public updated?: null | string | undefined;
 
@@ -47,7 +49,7 @@ export class Todo {
     doneDateTime?: null | string | undefined;
     children?: Todo[] | undefined;
     path?: string | undefined;
-    blockId?: null | string | undefined;
+    blockId?: null | BlockId | undefined;
     eventStatus?: null | string | undefined;
     updated?: null | string | undefined;
     calUId?: null | string | undefined;

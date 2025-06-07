@@ -4,13 +4,10 @@ import type { GoogleTodo } from "./GoogleTodo";
 import type { Converter } from "../Converter";
 
 export class GoogleTodoConverter implements Converter<GoogleTodo> {
-  toExternalTodo(todo: Todo): GoogleTodo {
   /**
-   * Convert a Todo object to a Google Calendar event object.
-   * @param todo - The Todo object to convert.
-   * @returns The Google Calendar event object.
-   * @throws Error if the Todo object is invalid.
+   * @deprecated TODO pass on this function
    */
+  toExternalTodo(todo: Todo): GoogleTodo {
     const todoEvent = {
       'summary': todo.content,
       'description': todo.serializeDescription(),
@@ -72,12 +69,6 @@ export class GoogleTodoConverter implements Converter<GoogleTodo> {
   }
 
   fromExternalTodo(eventMeta: GoogleTodo): Todo {
-  /**
-   * Convert a Google Calendar event object to a Todo object.
-   * @param eventMeta - The Google Calendar event object to convert.
-   * @returns The Todo object.
-   * @throws Error if the eventMeta object is invalid.
-   */
     const content = eventMeta.summary;
     const calUId = eventMeta.iCalUID;
     const eventId = eventMeta.id;
@@ -90,23 +81,15 @@ export class GoogleTodoConverter implements Converter<GoogleTodo> {
     let tags: string[] = [];
 
     if (eventMeta.description !== null && eventMeta.description !== undefined) {
+      logger.log("GoogleTodoConverter", `eventMeta.description: ${eventMeta.description}`);
       eventMeta.description = eventMeta.description.replace(/<\/span>/g, '');
+      logger.log("GoogleTodoConverter", `eventMeta.description: ${eventMeta.description}`);
 
-      try {
-        blockId = JSON.parse(eventMeta.description).blockId;
-      } catch (e) { logger.log("GoogleTodoConverter", `JSON parse error on ${eventMeta.description}: ${e}`); }
-      try {
-        priority = JSON.parse(eventMeta.description).priority;
-      } catch (e) { logger.log("GoogleTodoConverter", `JSON parse error on ${eventMeta.description}: ${e}`); }
-      try {
-        eventStatus = JSON.parse(eventMeta.description).eventStatus;
-      } catch (e) { logger.log("GoogleTodoConverter", `JSON parse error on ${eventMeta.description}: ${e}`); }
-      try {
-        tags = JSON.parse(eventMeta.description).tags;
-      } catch (e) { logger.log("GoogleTodoConverter", `JSON parse error on ${eventMeta.description}: ${e}`); }
-      try {
-        doneDateTime = JSON.parse(eventMeta.description).doneDateTime;
-      } catch (e) { logger.log("GoogleTodoConverter", `JSON parse error on ${eventMeta.description}: ${e}`); }
+      blockId = JSON.parse(eventMeta.description).blockId;
+      priority = JSON.parse(eventMeta.description).priority;
+      eventStatus = JSON.parse(eventMeta.description).eventStatus;
+      tags = JSON.parse(eventMeta.description).tags;
+      doneDateTime = JSON.parse(eventMeta.description).doneDateTime;
     }
 
     if (!eventMeta.start || !eventMeta.end) {

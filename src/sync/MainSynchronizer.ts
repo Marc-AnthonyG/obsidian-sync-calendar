@@ -1,6 +1,6 @@
 import type { App } from "obsidian";
 
-import type { Todo } from "src/sync/Todo";
+import type { BlockId, Todo } from "src/sync/Todo";
 import { GoogleCalendarSync } from './google-calendar/GoogleCalendarSync'
 import { ObsidianTasksSync } from './obsidian/ObsidianTasksSync';
 import { logger } from "src/util/Logger";
@@ -19,19 +19,12 @@ export class MainSynchronizer {
   }
 
   public async pushTodosToCalendar(
-    startMoment: moment.Moment,
-    maxResults = 200,
+startMoment: moment.Moment, maxResults = 200, clEvents: Todo[],
   ) {
     logger.log("MainSynchronizer", `push Todos: startMoment=${startMoment}`);
-
-    // 1. list all tasks in Obsidian
     const obTasks = this.obsidianSync.listTasks(startMoment);
 
-    // 2. list events in Calendar
-    const clEvents = await this.calendarSync.listEvents(startMoment, maxResults);
-
-    // 3. push new events to Calendar
-    const clBlockId2Event = new Map<string, Todo>();
+    const clBlockId2Event = new Map<BlockId, Todo>();
     clEvents.forEach((event: Todo) => {
       if (event.blockId && event.blockId.length > 0) {
         clBlockId2Event.set(event.blockId, event);
@@ -69,10 +62,10 @@ export class MainSynchronizer {
   public async pullTodosFromCalendar(
     startMoment: moment.Moment,
     maxResults = 200): Promise<Todo[]> {
-    this.pushTodosToCalendar(startMoment, maxResults);
 
     logger.log("MainSynchronizer", `pull Todos: startMoment=${startMoment}`);
     const clEvents = await this.calendarSync.listEvents(startMoment, maxResults);
+    this.pushTodosToCalendar(startMoment, maxResults, clEvents);
 
     const obTasks = this.obsidianSync.listTasks(startMoment);
 

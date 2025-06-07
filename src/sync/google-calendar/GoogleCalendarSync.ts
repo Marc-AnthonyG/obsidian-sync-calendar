@@ -22,7 +22,7 @@ export class GoogleCalendarSync {
   private CREDENTIALS_PATH: string;
 
   private isTokenValid: boolean = true;
-  private isTokenRefreshing: boolean = false;
+  private isTokenRefreshing = false;
 
   constructor(app: App) {
     this.vault = app.vault
@@ -33,17 +33,10 @@ export class GoogleCalendarSync {
     this.converter = new GoogleTodoConverter();
   }
 
-  /**
-   * Returns a list of completed and uncompleted events.
-   * @param startMoment The start moment for the events to retrieve.
-   * @param maxResults The maximum number of results to retrieve.
-   * @returns A Promise that resolves to an array of Todo objects.
-   */
   async listEvents(startMoment: moment.Moment, maxResults = 200): Promise<Todo[]> {
     const auth = await this.authorize();
     const calendar = google.calendar({ version: 'v3', auth });
 
-    // Retrieve the events from Google Calendar
     const eventsListQueryResult =
       await calendar.events
         .list({
@@ -61,18 +54,12 @@ export class GoogleCalendarSync {
         });
 
 
-    const eventsMetaList = eventsListQueryResult.data.items;
-    const eventsList: Todo[] = [];
-
-    if (eventsMetaList != undefined) {
-      eventsMetaList.forEach((eventMeta: GoogleTodo) => {
-        eventsList.push(this.converter.fromExternalTodo(eventMeta));
-      });
-    }
-
-    return eventsList;
+    return eventsListQueryResult.data.items?.map(eventMeta => this.converter.fromExternalTodo(eventMeta)) ?? [];
   }
 
+  /**
+   * @deprecated TODO pass on this function
+   */
   async insertEvent(todo: Todo) {
     const auth = await this.authorize();
     const calendar: calendar_v3.Calendar = google.calendar({ version: 'v3', auth });
@@ -106,8 +93,7 @@ export class GoogleCalendarSync {
   }
 
   /**
-   * Deletes an event from Google Calendar.
-   * @param todo The Todo object to delete.
+   * @deprecated TODO pass on this function
    */
   async deleteEvent(todo: Todo): Promise<void> {
     const auth = await this.authorize();
@@ -142,9 +128,7 @@ export class GoogleCalendarSync {
   }
 
   /**
-   * Patches an event in Google Calendar.
-   * @param todo The Todo object to patch.
-   * @param getEventPatch A function that returns the patch to apply to the event.
+   * @deprecated TODO pass on this function
    */
   async patchEvent(todo: Todo, getEventPatch: (todo: Todo) => calendar_v3.Schema$Event): Promise<void> {
     const auth = await this.authorize();
@@ -181,10 +165,8 @@ export class GoogleCalendarSync {
   }
 
   /**
-     * Returns a patch object for a completed event in Google Calendar.
-     * @param todo The Todo object to patch.
-     * @returns {calendar_v3.Schema$Event} The patch object.
-     */
+   * @deprecated TODO pass on this function
+   */
   static getEventDonePatch(todo: Todo): GoogleTodo {
     if (!todo.eventStatus) {
       todo.eventStatus = 'x';
@@ -228,10 +210,6 @@ export class GoogleCalendarSync {
     } as GoogleTodo;
   }
 
-  /**
-   * Checks if the client is authorized to call APIs.
-   * @returns {Promise<boolean>} Whether the client is authorized.
-   */
   async isReady(): Promise<boolean> {
     if (this.isTokenRefreshing) {
       return false;
@@ -269,10 +247,6 @@ export class GoogleCalendarSync {
     await this.vault.adapter.write(this.TOKEN_PATH, payload);
   }
 
-  /**
-   * Load or request authorization to call APIs.
-   * @returns {Promise<OAuth2Client>} The authorized client.
-   */
   public async authorize(): Promise<Auth.OAuth2Client> {
     let client: Auth.OAuth2Client;
     if (this.isTokenValid) {
@@ -297,5 +271,4 @@ export class GoogleCalendarSync {
     this.isTokenRefreshing = false;
     return client;
   }
-
 }
