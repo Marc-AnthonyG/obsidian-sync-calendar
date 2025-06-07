@@ -93,7 +93,7 @@ const CalendarQuery: React.FC<CalendarQueryProps> = ({
 						"Timeout occurred when fetching from Google Calendar!\nCheck your connection and proxy settings, then restart Obsidian."
 					)
 				);
-			}, 4000);
+			}, 10000);
 		});
 
 		try {
@@ -117,7 +117,7 @@ const CalendarQuery: React.FC<CalendarQueryProps> = ({
 
 		const intervalId = setInterval(
 			fetchEventLists,
-			query.refreshInterval * 1000
+			query.refreshInterval * 1000 * 10
 		);
 
 		return () => {

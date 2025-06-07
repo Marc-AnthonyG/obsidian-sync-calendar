@@ -1,5 +1,5 @@
 import { logger } from "src/util/Logger";
-import { Todo } from "../Todo";
+import { InternalGoogleTodo, Todo } from "../Todo";
 import type { GoogleTodo } from "./GoogleTodo";
 import moment, { type Moment } from "moment";
 
@@ -21,17 +21,21 @@ export class GoogleTodoConverter  {
     return todoEvent;
   }
 
-  fromExternalTodos(events: GoogleTodo[]): Todo[] {
-    return events.map(event => this.fromExternalTodo(event)).filter((todo): todo is Todo => todo !== null);
+  fromExternalTodos(events: GoogleTodo[]): InternalGoogleTodo[] {
+    return events.map(event => this.fromExternalTodo(event)).filter((todo): todo is InternalGoogleTodo => todo !== null);
   }
 
-  fromExternalTodo(eventMeta: GoogleTodo): Todo | null {
+  fromExternalTodo(eventMeta: GoogleTodo): InternalGoogleTodo | null {
     const content = eventMeta.summary;
     if (!content) {
       return null;
     }
     const calUId = eventMeta.iCalUID ?? null;
-    const eventId = eventMeta.id ?? null;
+    const eventId = eventMeta.id;
+    if (!eventId) {
+      return null;
+    }
+
     let eventStatus = "";
     let blockId: string | null = null;
     let priority: string | null = null;
@@ -41,10 +45,8 @@ export class GoogleTodoConverter  {
     let tags: string[] = [];
 
     if (eventMeta.description) {
-      logger.log("GoogleTodoConverter", `eventMeta.description: ${eventMeta.description}`);
-      eventMeta.description = eventMeta.description.replace(/<\/span>/g, '');
-      logger.log("GoogleTodoConverter", `eventMeta.description: ${eventMeta.description}`);
       try {
+        // Try to parse the serialization made on Todo.serializeDescription()
         const description = JSON.parse(eventMeta.description);
         blockId = description.blockId;
         priority = description.priority;
@@ -78,7 +80,7 @@ export class GoogleTodoConverter  {
         }
     }
 
-    return new Todo({
+    return new InternalGoogleTodo({
       content,
       priority,
       blockId,

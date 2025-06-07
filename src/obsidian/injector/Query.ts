@@ -35,4 +35,5 @@ export type Query = {
   filter?: string;
   sorting?: SortingOption[];
   group?: boolean;
+  fetchFromEveryWeek?: boolean;
 };

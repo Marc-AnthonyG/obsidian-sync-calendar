@@ -108,9 +108,9 @@ export class Todo {
     return false;
   }
 
-  toObsidianTodo(): ObsidianTodo | null {
-    if (this.blockId) {
-      return new ObsidianTodo(this);
+  toSyncedTodo(): SyncedTodo | null {
+    if (this.blockId && this.eventId) {
+      return new SyncedTodo(this);
     }
     
     return null;
@@ -118,5 +118,14 @@ export class Todo {
 }
 
 export class ObsidianTodo extends Todo {
+  public blockId: BlockId;
+}
+
+export class InternalGoogleTodo extends Todo {
+  public eventId: string;
+}
+
+export class SyncedTodo extends Todo {
+  public eventId: string;
   public blockId: BlockId;
 }

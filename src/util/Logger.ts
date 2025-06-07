@@ -31,4 +31,4 @@ class Logger {
   }
 } 
 
-export const logger = new Logger("/Users/marc-anthonygirard/repository/knowledgeBase/programming/.obsidian");
+export const logger = new Logger("/Users/marc-anthonygirard/repository/obsidian-sync-calendar");

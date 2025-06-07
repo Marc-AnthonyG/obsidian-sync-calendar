@@ -4,7 +4,7 @@ import type { App, Vault, FileSystemAdapter } from 'obsidian';
 import { authenticate } from '@google-cloud/local-auth';
 import { google, Auth, calendar_v3 } from 'googleapis';
 
-import { Todo } from 'src/sync/Todo';
+import { InternalGoogleTodo, Todo } from 'src/sync/Todo';
 import { logger } from 'src/util/Logger';
 import { GoogleTodoConverter } from './GoogleTodoConverter';
 import {OAuth2Client} from "google-auth-library";
@@ -33,7 +33,7 @@ export class GoogleCalendarSync {
     this.converter = new GoogleTodoConverter();
   }
 
-  async listEvents(startMoment: moment.Moment, maxResults = 200): Promise<Todo[]> {
+  async listEvents(startMoment: moment.Moment, maxResults = 200): Promise<InternalGoogleTodo[]> {
     const auth = await this.authorize();
     const calendar = google.calendar({ version: 'v3', auth });
 
@@ -126,7 +126,7 @@ export class GoogleCalendarSync {
     }
   }
 
-  async patchEvent(todo: Todo): Promise<void> {
+  async patchEvent(todo: InternalGoogleTodo): Promise<void> {
     const auth = await this.authorize();
     const calendar = google.calendar({ version: 'v3', auth });
 
@@ -146,14 +146,14 @@ export class GoogleCalendarSync {
         .then(() => {
           isPatchSuccess = true;
         }).catch(async (err) => {
-          logger.log("GoogleCalendarSync", `Error on patch event: ${err}`);
+          logger.log("GoogleCalendarSync", `Error on patch event: ${JSON.stringify(err)}`);
           await new Promise(resolve => setTimeout(resolve, 100));
         });
     }
 
     if (!isPatchSuccess) {
       logger.error("GoogleCalendarSync", `Failed on patched event: ${todo.content}`);
-      throw Error(`Failed on patched event: ${todo.content}`);
+      // TODO: Do something about this
     }
   }
 

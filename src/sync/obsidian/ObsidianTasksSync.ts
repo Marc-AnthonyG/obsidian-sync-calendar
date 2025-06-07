@@ -110,8 +110,9 @@ export class ObsidianTasksSync {
         return !moment(taskMatch[1]).isBefore(startMoment.startOf('day'));
       });
 
+    logger.log("ObsidianTasksSync", `listTasks: queriedTasks=${JSON.stringify({values: queriedTasks?.values})}`);
+
     queriedTasks.values.forEach(async (task: STask) => {
-      logger.log("ObsidianTasksSync", `listTasks: tag=${task.tag}, text=${task.text}`);
       let todo_details: TodoDetails | null = null;
       if (task.blockId && task.blockId.length > 0) {
         todo_details = this.deserializer.fromExternalTodo(task.text, startMoment);
@@ -137,6 +138,8 @@ export class ObsidianTasksSync {
       }
       obTodos.push(todo);
     });
+
+    logger.log("ObsidianTasksSync", `listTasks: listed ${obTodos.length} todos`);
 
     return obTodos;
   }
