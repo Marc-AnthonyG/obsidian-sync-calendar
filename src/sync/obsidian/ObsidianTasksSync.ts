@@ -81,7 +81,7 @@ export class ObsidianTasksSync {
         return fileLines;
       }
 
-      const updatedLine = matchResult[0]! + this.deserializer.serialize(todo);
+      const updatedLine = matchResult[0]! + this.deserializer.toExternalTodo(todo);
       const updatedLines: string[] = [
         ...fileLines.slice(0, targetLineNumber),
         updatedLine,
@@ -110,7 +110,7 @@ export class ObsidianTasksSync {
     queriedTasks.values.forEach(async (task: STask) => {
       let todo_details: TodoDetails | null = null;
       if (task.blockId && task.blockId.length > 0) {
-        todo_details = this.deserializer.deserialize(task.text);
+        todo_details = this.deserializer.fromExternalTodo(task.text);
       } else {
         const hash = crypto.createHash("sha256").update(task.text).digest();
         let shorternTaskHash = parseInt(hash.toString("hex").slice(0, 16), 16).toString(36).toUpperCase();
@@ -134,13 +134,19 @@ export class ObsidianTasksSync {
 
           await this.app.vault.modify(file, updatedFileLines.join('\n'));
         });
-        todo_details = this.deserializer.deserialize(`${task.text} ^${shorternTaskHash}`);
+        todo_details = this.deserializer.fromExternalTodo(`${task.text} ^${shorternTaskHash}`);
+      }
+
+      if (!todo_details) {
+        return;
       }
 
       const todo = new Todo({
         ...todo_details,
         path: task.path,
-        eventStatus: task.status
+        eventStatus: task.status,
+        calUId: null,
+        eventId: null,
       });
 
       if (window.moment(todo.startDateTime).isBefore(startMoment)) {

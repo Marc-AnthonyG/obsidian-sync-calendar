@@ -1,5 +1,6 @@
 import type { Todo } from "src/sync/Todo";
 import type { TodoDetails } from "./MdTodo";
+import moment from "moment";
 
 /* Interface describing the symbols that {@link DefaultTodoSerializer}
  * uses to serialize and deserialize todos.
@@ -119,16 +120,14 @@ export class TodoRegularExpressions {
 }
 
 
-export class DefaultTodoSerializer {
+export class DefaultTodoSerializer  {
   constructor(public readonly symbols: DefaultTodoSerializerSymbols) { }
 
-  /* Convert a todo to its string representation
-   *
-   * @param todo The todo to serialize
-   *
-   * @return The string representation of the todo
-   */
-  public serialize(todo: Todo): string {
+  toExternalTodos(todos: Todo[]): string[] {
+    return todos.map(todo => this.toExternalTodo(todo));
+  }
+
+  public toExternalTodo(todo: Todo): string {
     const components: string[] = [];
     if (todo.content) {
       components.push(todo.content);
@@ -145,21 +144,21 @@ export class DefaultTodoSerializer {
     const regDateTime = /(\d{4}-\d{2}-\d{2}T)/u;
 
     if (todo.startDateTime) {
-      if (todo.startDateTime.match(regDateTime)) {
+      if (todo.startDateTime.toISOString().match(regDateTime)) {
         components.push(window.moment(todo.startDateTime).format("[🛫] YYYY-MM-DD[@]HH:mm"));
       } else {
         components.push('🛫 ' + todo.startDateTime);
       }
     }
     if (todo.scheduledDateTime) {
-      if (todo.scheduledDateTime.match(regDateTime)) {
+      if (todo.scheduledDateTime.toISOString().match(regDateTime)) {
         components.push(window.moment(todo.scheduledDateTime).format("[⌛] YYYY-MM-DD[@]HH:mm"));
       } else {
         components.push('⌛ ' + todo.scheduledDateTime);
       }
     }
     if (todo.dueDateTime) {
-      if (todo.dueDateTime.match(regDateTime)) {
+      if (todo.dueDateTime.toISOString().match(regDateTime)) {
         components.push(window.moment(todo.dueDateTime).format("[🗓] YYYY-MM-DD[@]HH:mm"));
       } else {
         components.push('🗓 ' + todo.dueDateTime);
@@ -174,22 +173,17 @@ export class DefaultTodoSerializer {
       components.push(`^${todo.blockId}`);
     }
 
-    // debugger;
     return components.join(' ');
   }
 
-  /* Parse TodoDetails from the textual description of a {@link Todo}
-   *
-   * @param line The string to parse
-   *
-   * @return {TodoDetails}
-   */
-  public deserialize(line: string): TodoDetails {
+
+  fromExternalTodos(external: string[]): Todo[] {
+    return external.map(line => this.fromExternalTodo(line)).filter((todo): todo is Todo => todo !== null);
+  }
+
+  public fromExternalTodo(line: string): TodoDetails | null {
     const { TodoFormatRegularExpressions } = this.symbols;
 
-    // Keep matching and removing special strings from the end of the
-    // description in any order. The loop should only run once if the
-    // strings are in the expected order after the description.
     let matched: boolean;
     let priority: null | string = null;
     let blockId: null | string = null;
@@ -198,12 +192,7 @@ export class DefaultTodoSerializer {
     let scheduledDateTime: null | string = null;
     let dueDateTime: null | string = null;
 
-    // Tags that are removed from the end while parsing, but we want to add them back for being part of the description.
-    // In the original todo description they are possibly mixed with other components
-    // (e.g. #tag1 <due date> #tag2), they do not have to all trail all todo components,
-    // but eventually we want to paste them back to the todo description at the end
     let trailingTags = '';
-    // Add a "max runs" failsafe to never end in an endless loop:
     const maxRuns = 20;
     let runs = 0;
     do {
@@ -272,58 +261,32 @@ export class DefaultTodoSerializer {
         matched = true;
       }
 
-
-      // Match tags from the end to allow users to mix the various todo components with
-      // tags. These tags will be added back to the description below
       const tagsMatch = line.match(TodoRegularExpressions.hashTagsFloating);
       if (tagsMatch != null) {
         line = line.replace(TodoRegularExpressions.hashTagsFloating, '').trim();
         matched = true;
         const tagName = tagsMatch[0].trim();
-        // Adding to the left because the matching is done right-to-left
         trailingTags = trailingTags.length > 0 ? [tagName, trailingTags].join(' ') : tagName;
       }
-
-      // const recurrenceMatch = line.match(TodoFormatRegularExpressions.recurrenceRegex);
-      // if (recurrenceMatch !== null) {
-      //   // Save the recurrence rule, but *do not parse it yet*.
-      //   // Creating the Recurrence object requires a reference date (e.g. a due date),
-      //   // and it might appear in the next (earlier in the line) tokens to parse
-      //   recurrenceRule = recurrenceMatch[1].trim();
-      //   line = line.replace(TodoFormatRegularExpressions.recurrenceRegex, '').trim();
-      //   matched = true;
-      // }
-
       runs++;
     } while (matched && runs <= maxRuns);
 
-    // // Now that we have all the todo details, parse the recurrence rule if we found any
-    // if (recurrenceRule.length > 0) {
-    //   recurrence = Recurrence.fromText({
-    //     recurrenceRuleText: recurrenceRule,
-    //     startDate,
-    //     scheduledDate,
-    //     dueDate,
-    //   });
-    // }
 
     const tags = trailingTags.match(TodoRegularExpressions.hashTags)?.map((tag) => tag.trim()) ?? [];
 
-    // Add back any trailing tags to the description. We removed them so we can parse the rest of the
-    // components but now we want them back.
-    // The goal is for a todo of them form 'Do something #tag1 (due) tomorrow #tag2 (start) today'
-    // to actually have the description 'Do something #tag1 #tag2'
-    // if (trailingTags.length > 0) line += ' ' + trailingTags;
+    if (!startDateTime) {
+      return null;
+    }
 
     return {
       content: line,
       blockId: blockId,
       priority: priority,
       tags,
-      startDateTime,
-      scheduledDateTime,
-      dueDateTime,
-      doneDateTime,
+      startDateTime: moment(startDateTime),
+      scheduledDateTime: scheduledDateTime ? moment(scheduledDateTime) : null,
+      dueDateTime: dueDateTime ? moment(dueDateTime) : null,
+      doneDateTime: doneDateTime ? moment(doneDateTime) : null,
     };
   }
 }

@@ -54,7 +54,7 @@ export class GoogleCalendarSync {
         });
 
 
-    return eventsListQueryResult.data.items?.map(eventMeta => this.converter.fromExternalTodo(eventMeta)) ?? [];
+    return this.converter.fromExternalTodos(eventsListQueryResult.data.items ?? []);
   }
 
   /**
