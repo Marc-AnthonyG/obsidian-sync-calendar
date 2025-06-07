@@ -15,12 +15,14 @@ interface CalendarQueryProps {
 	settings: SyncCalendarPluginSettings;
 	api: MainSynchronizer;
 	query: Query;
+	path: string;
 }
 
 const CalendarQuery: React.FC<CalendarQueryProps> = ({
 	settings,
 	api,
 	query,
+	path,
 }) => {
 	const [fetching, setFetching] = useState(false);
 	const [eventsList, setEventsList] = useState<Todo[]>([]);
@@ -78,7 +80,7 @@ const CalendarQuery: React.FC<CalendarQueryProps> = ({
 			`fetchEventLists: startMoment=${startMoment}, maxEvents=${maxEvents}`
 		);
 		const fetchPromise = api
-			.pullTodosFromCalendar(startMoment, maxEvents)
+			.pullTodosFromCalendar(startMoment, maxEvents, path)
 			.then((newEventsList) => {
 				setEventsList(newEventsList);
 				setFetchedOnce(true);

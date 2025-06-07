@@ -99,12 +99,16 @@ export class ObsidianTasksSync {
    * @param triggeredBy - Whether the fetch was triggered automatically or manually.
    * @returns An array of todos.
    */
-  public listTasks(startMoment: moment.Moment): ObsidianTodo[] {
+  public listTasks(startMoment: moment.Moment, path: string): ObsidianTodo[] {
     const obTodos: ObsidianTodo[] = [];
+    logger.log("ObsidianTasksSync", `listTasks: path=${path}`);
 
     const queriedTasks = this.dataviewAPI?.pages().file.tasks
       // filter out tasks with starting date before startMoment (keep tasks with no starting date)
       .where((task: STask) => {
+        if (path) {
+          return task.path === path;
+        }
         const taskMatch = task.text.match(/🛫+ (\d{4}-\d{2}-\d{2})/u);
         if (!taskMatch) { return true; }
         return !moment(taskMatch[1]).isBefore(startMoment.startOf('day'));

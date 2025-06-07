@@ -46,10 +46,11 @@ export class MainSynchronizer {
 
   public async pullTodosFromCalendar(
     startMoment: moment.Moment,
-    maxResults = 200): Promise<Todo[]> {
+    maxResults = 200,
+    path: string): Promise<Todo[]> {
 
     logger.log("MainSynchronizer", `pull Todos: startMoment=${startMoment}`);
-    const obTasks = this.obsidianSync.listTasks(startMoment);
+    const obTasks = this.obsidianSync.listTasks(startMoment, path);
     const clEvents = await this.calendarSync.listEvents(startMoment, maxResults);
     this.pushTodosToCalendar(startMoment, clEvents, obTasks);
 

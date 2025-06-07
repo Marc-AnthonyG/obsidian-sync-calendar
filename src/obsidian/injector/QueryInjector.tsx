@@ -54,6 +54,7 @@ export default class QueryInjector {
 							settings={this.plugin.settings}
 							api={this.mainSync}
 							query={query}
+							path={pendingQuery.ctx.sourcePath}
 						/>
 					);
 				}

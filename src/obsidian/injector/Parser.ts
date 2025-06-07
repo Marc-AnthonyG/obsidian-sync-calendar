@@ -2,6 +2,7 @@ import moment from "moment";
 import { isSortingOption, sortingOptions } from "./Query";
 import type { Query } from "./Query";
 import YAML from "yaml";
+import { logger } from "src/util/Logger";
 
 /**
  * Custom error class for parsing errors
@@ -30,7 +31,9 @@ export class ParsingError extends Error {
  * @throws ParsingError if the raw string cannot be parsed
  */
 export function parseQuery(raw: string): Query {
-  return parseObject(YAML.parse(raw));
+  const query = parseObject(YAML.parse(raw));
+  logger.log("Parser", `parseQuery: query=${JSON.stringify(query)}`);
+  return query;
 }
 
 /**
