@@ -124,14 +124,20 @@ export class Todo {
   }
 
   getStringStartDateTime(): string {
-    return this.isAllDay ? this.startDateTime.format("YYYY-MM-DD") : this.startDateTime.toISOString();
+    return this.isAllDay 
+      ? this.startDateTime.format("YYYY-MM-DD") 
+      : this.startDateTime.format("YYYY-MM-DD@HH:mm");
   }
 
   getStringDueDateTime(): string {
     if (this.dueDateTime) {
-      return this.isAllDay ? this.dueDateTime.format("YYYY-MM-DD") : this.dueDateTime.toISOString();
+      return this.isAllDay 
+        ? this.dueDateTime.format("YYYY-MM-DD") 
+        : this.dueDateTime.format("YYYY-MM-DD@HH:mm");
     }
-    return this.isAllDay ? this.startDateTime.format("YYYY-MM-DD") : this.startDateTime.clone().add(1, 'hour').toISOString();
+    return this.isAllDay 
+      ? this.startDateTime.format("YYYY-MM-DD") 
+      : this.startDateTime.clone().add(1, 'hour').format("YYYY-MM-DD@HH:mm");
   }
 }
 
