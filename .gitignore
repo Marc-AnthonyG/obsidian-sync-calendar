@@ -24,3 +24,7 @@ data.json
 
 # Exclude log file
 log.log
+
+# OpenCode
+OpenCode.md
+.opencode/

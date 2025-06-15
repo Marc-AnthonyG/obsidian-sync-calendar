@@ -8,10 +8,9 @@ import {
 } from "obsidian-dataview";
 
 import { ObsidianTodo, Todo } from "src/sync/Todo";
-import {
-	DEFAULT_SYMBOLS,
-	DefaultTodoSerializer,
-} from "./ObsidianTodoConverter";
+import { DEFAULT_SYMBOLS } from "./ObsidianTodoSerializer";
+import { ObsidianTodoSerializer } from "./ObsidianTodoSerializer";
+import { ObsidianTodoDeserializer } from "./ObsidianTodoDeserializer";
 import type { TodoDetails } from "./MdTodo";
 import { logger } from "src/util/Logger";
 import { createTodoId } from "./ObsidianUtils";
@@ -23,7 +22,8 @@ import moment from "moment";
 export class ObsidianTasksSync {
 	private app: App;
 	private dataviewAPI: DataviewApi | undefined;
-	private deserializer: DefaultTodoSerializer;
+	private serializer: ObsidianTodoSerializer;
+	private deserializer: ObsidianTodoDeserializer;
 	private readonly fileMutex: Mutex;
 
 	constructor(app: App) {
@@ -31,7 +31,8 @@ export class ObsidianTasksSync {
 			new Notice("You need to install dataview first!");
 			throw Error("dataview is not avaliable!");
 		}
-		this.deserializer = new DefaultTodoSerializer(DEFAULT_SYMBOLS);
+		this.serializer = new ObsidianTodoSerializer(DEFAULT_SYMBOLS);
+		this.deserializer = new ObsidianTodoDeserializer(DEFAULT_SYMBOLS);
 		this.app = app;
 		this.dataviewAPI = getAPI(app);
 		if (!this.dataviewAPI) {
@@ -99,7 +100,7 @@ export class ObsidianTasksSync {
 			}
 
 			const updatedLine =
-				matchResult[0]! + this.deserializer.toExternalTodo(todo);
+				matchResult[0]! + this.serializer.toExternalTodo(todo);
 			const updatedLines: string[] = [
 				...fileLines.slice(0, targetLineNumber),
 				updatedLine,
