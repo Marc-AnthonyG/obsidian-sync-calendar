@@ -7,7 +7,11 @@ settings:
 importers:
     .:
         dependencies:
+<<<<<<< Updated upstream
             "@google-cloud/local-auth":
+=======
+            '@google-cloud/local-auth':
+>>>>>>> Stashed changes
                 specifier: ^2.1.0
                 version: 2.1.1
             async-mutex:
@@ -19,12 +23,21 @@ importers:
             dayjs:
                 specifier: ^1.11.7
                 version: 1.11.13
+<<<<<<< Updated upstream
             googleapis:
                 specifier: ^105.0.0
                 version: 105.0.0
             prettier:
                 specifier: ^3.5.3
                 version: 3.5.3
+=======
+            google-auth-library:
+                specifier: ^9.15.1
+                version: 9.15.1
+            googleapis:
+                specifier: ^105.0.0
+                version: 105.0.0
+>>>>>>> Stashed changes
             rxjs:
                 specifier: ^7.8.0
                 version: 7.8.2
@@ -32,6 +45,7 @@ importers:
                 specifier: ^2.2.1
                 version: 2.8.0
         devDependencies:
+<<<<<<< Updated upstream
             "@types/node":
                 specifier: ^16.11.6
                 version: 16.18.126
@@ -47,12 +61,27 @@ importers:
             "@typescript-eslint/parser":
                 specifier: ^8.33.1
                 version: 8.34.1(eslint@9.29.0)(typescript@5.8.3)
+=======
+            '@tsconfig/svelte':
+                specifier: ^3.0.0
+                version: 3.0.0
+            '@types/node':
+                specifier: ^16.11.6
+                version: 16.18.126
+            '@typescript-eslint/eslint-plugin':
+                specifier: 5.29.0
+                version: 5.29.0(@typescript-eslint/parser@5.29.0(eslint@8.57.1)(typescript@4.7.4))(eslint@8.57.1)(typescript@4.7.4)
+            '@typescript-eslint/parser':
+                specifier: 5.29.0
+                version: 5.29.0(eslint@8.57.1)(typescript@4.7.4)
+>>>>>>> Stashed changes
             builtin-modules:
                 specifier: 3.3.0
                 version: 3.3.0
             esbuild:
                 specifier: 0.17.3
                 version: 0.17.3
+<<<<<<< Updated upstream
             eslint:
                 specifier: ^9.29.0
                 version: 9.29.0
@@ -62,12 +91,18 @@ importers:
             globals:
                 specifier: ^16.2.0
                 version: 16.2.0
+=======
+            esbuild-svelte:
+                specifier: ^0.7.3
+                version: 0.7.4(esbuild@0.17.3)(svelte@3.59.2)
+>>>>>>> Stashed changes
             obsidian:
                 specifier: latest
                 version: 1.8.7(@codemirror/state@6.5.2)(@codemirror/view@6.36.8)
             obsidian-dataview:
                 specifier: ^0.5.55
                 version: 0.5.68
+<<<<<<< Updated upstream
             react:
                 specifier: ^19.1.0
                 version: 19.1.0
@@ -89,24 +124,50 @@ importers:
 
 packages:
     "@codemirror/language@https://codeload.github.com/lishid/cm-language/tar.gz/6c1c5f5b677f6f6503d1ca2ec47f62f6406cda67":
+=======
+            svelte:
+                specifier: ^3.57.0
+                version: 3.59.2
+            svelte-preprocess:
+                specifier: ^5.0.3
+                version: 5.1.4(svelte@3.59.2)(typescript@4.7.4)
+            tslib:
+                specifier: 2.4.0
+                version: 2.4.0
+            typescript:
+                specifier: 4.7.4
+                version: 4.7.4
+
+packages:
+    '@codemirror/language@https://codeload.github.com/lishid/cm-language/tar.gz/6c1c5f5b677f6f6503d1ca2ec47f62f6406cda67':
+>>>>>>> Stashed changes
         resolution:
             {
                 tarball: https://codeload.github.com/lishid/cm-language/tar.gz/6c1c5f5b677f6f6503d1ca2ec47f62f6406cda67,
             }
         version: 6.10.8
 
+<<<<<<< Updated upstream
     "@codemirror/state@6.5.2":
+=======
+    '@codemirror/state@6.5.2':
+>>>>>>> Stashed changes
         resolution:
             {
                 integrity: sha512-FVqsPqtPWKVVL3dPSxy8wEF/ymIEuVzF1PK3VbUgrxXpJUSHQWWZz4JMToquRxnkw+36LTamCZG2iua2Ptq0fA==,
             }
 
+<<<<<<< Updated upstream
     "@codemirror/view@6.36.8":
+=======
+    '@codemirror/view@6.36.8':
+>>>>>>> Stashed changes
         resolution:
             {
                 integrity: sha512-yoRo4f+FdnD01fFt4XpfpMCcCAo9QvZOtbrXExn4SqzH32YC6LgzqxfLZw/r6Ge65xyY03mK/UfUqrVw1gFiFg==,
             }
 
+<<<<<<< Updated upstream
     "@cspotcode/source-map-support@0.8.1":
         resolution:
             {
@@ -115,204 +176,383 @@ packages:
         engines: { node: ">=12" }
 
     "@esbuild/android-arm64@0.17.3":
+=======
+    '@esbuild/android-arm64@0.17.3':
+>>>>>>> Stashed changes
         resolution:
             {
                 integrity: sha512-XvJsYo3dO3Pi4kpalkyMvfQsjxPWHYjoX4MDiB/FUM4YMfWcXa5l4VCwFWVYI1+92yxqjuqrhNg0CZg3gSouyQ==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=12" }
         cpu: [arm64]
         os: [android]
 
     "@esbuild/android-arm@0.17.3":
+=======
+        engines: { node: '>=12' }
+        cpu: [arm64]
+        os: [android]
+
+    '@esbuild/android-arm@0.17.3':
+>>>>>>> Stashed changes
         resolution:
             {
                 integrity: sha512-1Mlz934GvbgdDmt26rTLmf03cAgLg5HyOgJN+ZGCeP3Q9ynYTNMn2/LQxIl7Uy+o4K6Rfi2OuLsr12JQQR8gNg==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=12" }
         cpu: [arm]
         os: [android]
 
     "@esbuild/android-x64@0.17.3":
+=======
+        engines: { node: '>=12' }
+        cpu: [arm]
+        os: [android]
+
+    '@esbuild/android-x64@0.17.3':
+>>>>>>> Stashed changes
         resolution:
             {
                 integrity: sha512-nuV2CmLS07Gqh5/GrZLuqkU9Bm6H6vcCspM+zjp9TdQlxJtIe+qqEXQChmfc7nWdyr/yz3h45Utk1tUn8Cz5+A==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=12" }
         cpu: [x64]
         os: [android]
 
     "@esbuild/darwin-arm64@0.17.3":
+=======
+        engines: { node: '>=12' }
+        cpu: [x64]
+        os: [android]
+
+    '@esbuild/darwin-arm64@0.17.3':
+>>>>>>> Stashed changes
         resolution:
             {
                 integrity: sha512-01Hxaaat6m0Xp9AXGM8mjFtqqwDjzlMP0eQq9zll9U85ttVALGCGDuEvra5Feu/NbP5AEP1MaopPwzsTcUq1cw==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=12" }
         cpu: [arm64]
         os: [darwin]
 
     "@esbuild/darwin-x64@0.17.3":
+=======
+        engines: { node: '>=12' }
+        cpu: [arm64]
+        os: [darwin]
+
+    '@esbuild/darwin-x64@0.17.3':
+>>>>>>> Stashed changes
         resolution:
             {
                 integrity: sha512-Eo2gq0Q/er2muf8Z83X21UFoB7EU6/m3GNKvrhACJkjVThd0uA+8RfKpfNhuMCl1bKRfBzKOk6xaYKQZ4lZqvA==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=12" }
         cpu: [x64]
         os: [darwin]
 
     "@esbuild/freebsd-arm64@0.17.3":
+=======
+        engines: { node: '>=12' }
+        cpu: [x64]
+        os: [darwin]
+
+    '@esbuild/freebsd-arm64@0.17.3':
+>>>>>>> Stashed changes
         resolution:
             {
                 integrity: sha512-CN62ESxaquP61n1ZjQP/jZte8CE09M6kNn3baos2SeUfdVBkWN5n6vGp2iKyb/bm/x4JQzEvJgRHLGd5F5b81w==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=12" }
         cpu: [arm64]
         os: [freebsd]
 
     "@esbuild/freebsd-x64@0.17.3":
+=======
+        engines: { node: '>=12' }
+        cpu: [arm64]
+        os: [freebsd]
+
+    '@esbuild/freebsd-x64@0.17.3':
+>>>>>>> Stashed changes
         resolution:
             {
                 integrity: sha512-feq+K8TxIznZE+zhdVurF3WNJ/Sa35dQNYbaqM/wsCbWdzXr5lyq+AaTUSER2cUR+SXPnd/EY75EPRjf4s1SLg==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=12" }
         cpu: [x64]
         os: [freebsd]
 
     "@esbuild/linux-arm64@0.17.3":
+=======
+        engines: { node: '>=12' }
+        cpu: [x64]
+        os: [freebsd]
+
+    '@esbuild/linux-arm64@0.17.3':
+>>>>>>> Stashed changes
         resolution:
             {
                 integrity: sha512-JHeZXD4auLYBnrKn6JYJ0o5nWJI9PhChA/Nt0G4MvLaMrvXuWnY93R3a7PiXeJQphpL1nYsaMcoV2QtuvRnF/g==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=12" }
         cpu: [arm64]
         os: [linux]
 
     "@esbuild/linux-arm@0.17.3":
+=======
+        engines: { node: '>=12' }
+        cpu: [arm64]
+        os: [linux]
+
+    '@esbuild/linux-arm@0.17.3':
+>>>>>>> Stashed changes
         resolution:
             {
                 integrity: sha512-CLP3EgyNuPcg2cshbwkqYy5bbAgK+VhyfMU7oIYyn+x4Y67xb5C5ylxsNUjRmr8BX+MW3YhVNm6Lq6FKtRTWHQ==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=12" }
         cpu: [arm]
         os: [linux]
 
     "@esbuild/linux-ia32@0.17.3":
+=======
+        engines: { node: '>=12' }
+        cpu: [arm]
+        os: [linux]
+
+    '@esbuild/linux-ia32@0.17.3':
+>>>>>>> Stashed changes
         resolution:
             {
                 integrity: sha512-FyXlD2ZjZqTFh0sOQxFDiWG1uQUEOLbEh9gKN/7pFxck5Vw0qjWSDqbn6C10GAa1rXJpwsntHcmLqydY9ST9ZA==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=12" }
         cpu: [ia32]
         os: [linux]
 
     "@esbuild/linux-loong64@0.17.3":
+=======
+        engines: { node: '>=12' }
+        cpu: [ia32]
+        os: [linux]
+
+    '@esbuild/linux-loong64@0.17.3':
+>>>>>>> Stashed changes
         resolution:
             {
                 integrity: sha512-OrDGMvDBI2g7s04J8dh8/I7eSO+/E7nMDT2Z5IruBfUO/RiigF1OF6xoH33Dn4W/OwAWSUf1s2nXamb28ZklTA==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=12" }
         cpu: [loong64]
         os: [linux]
 
     "@esbuild/linux-mips64el@0.17.3":
+=======
+        engines: { node: '>=12' }
+        cpu: [loong64]
+        os: [linux]
+
+    '@esbuild/linux-mips64el@0.17.3':
+>>>>>>> Stashed changes
         resolution:
             {
                 integrity: sha512-DcnUpXnVCJvmv0TzuLwKBC2nsQHle8EIiAJiJ+PipEVC16wHXaPEKP0EqN8WnBe0TPvMITOUlP2aiL5YMld+CQ==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=12" }
         cpu: [mips64el]
         os: [linux]
 
     "@esbuild/linux-ppc64@0.17.3":
+=======
+        engines: { node: '>=12' }
+        cpu: [mips64el]
+        os: [linux]
+
+    '@esbuild/linux-ppc64@0.17.3':
+>>>>>>> Stashed changes
         resolution:
             {
                 integrity: sha512-BDYf/l1WVhWE+FHAW3FzZPtVlk9QsrwsxGzABmN4g8bTjmhazsId3h127pliDRRu5674k1Y2RWejbpN46N9ZhQ==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=12" }
         cpu: [ppc64]
         os: [linux]
 
     "@esbuild/linux-riscv64@0.17.3":
+=======
+        engines: { node: '>=12' }
+        cpu: [ppc64]
+        os: [linux]
+
+    '@esbuild/linux-riscv64@0.17.3':
+>>>>>>> Stashed changes
         resolution:
             {
                 integrity: sha512-WViAxWYMRIi+prTJTyV1wnqd2mS2cPqJlN85oscVhXdb/ZTFJdrpaqm/uDsZPGKHtbg5TuRX/ymKdOSk41YZow==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=12" }
         cpu: [riscv64]
         os: [linux]
 
     "@esbuild/linux-s390x@0.17.3":
+=======
+        engines: { node: '>=12' }
+        cpu: [riscv64]
+        os: [linux]
+
+    '@esbuild/linux-s390x@0.17.3':
+>>>>>>> Stashed changes
         resolution:
             {
                 integrity: sha512-Iw8lkNHUC4oGP1O/KhumcVy77u2s6+KUjieUqzEU3XuWJqZ+AY7uVMrrCbAiwWTkpQHkr00BuXH5RpC6Sb/7Ug==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=12" }
         cpu: [s390x]
         os: [linux]
 
     "@esbuild/linux-x64@0.17.3":
+=======
+        engines: { node: '>=12' }
+        cpu: [s390x]
+        os: [linux]
+
+    '@esbuild/linux-x64@0.17.3':
+>>>>>>> Stashed changes
         resolution:
             {
                 integrity: sha512-0AGkWQMzeoeAtXQRNB3s4J1/T2XbigM2/Mn2yU1tQSmQRmHIZdkGbVq2A3aDdNslPyhb9/lH0S5GMTZ4xsjBqg==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=12" }
         cpu: [x64]
         os: [linux]
 
     "@esbuild/netbsd-x64@0.17.3":
+=======
+        engines: { node: '>=12' }
+        cpu: [x64]
+        os: [linux]
+
+    '@esbuild/netbsd-x64@0.17.3':
+>>>>>>> Stashed changes
         resolution:
             {
                 integrity: sha512-4+rR/WHOxIVh53UIQIICryjdoKdHsFZFD4zLSonJ9RRw7bhKzVyXbnRPsWSfwybYqw9sB7ots/SYyufL1mBpEg==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=12" }
         cpu: [x64]
         os: [netbsd]
 
     "@esbuild/openbsd-x64@0.17.3":
+=======
+        engines: { node: '>=12' }
+        cpu: [x64]
+        os: [netbsd]
+
+    '@esbuild/openbsd-x64@0.17.3':
+>>>>>>> Stashed changes
         resolution:
             {
                 integrity: sha512-cVpWnkx9IYg99EjGxa5Gc0XmqumtAwK3aoz7O4Dii2vko+qXbkHoujWA68cqXjhh6TsLaQelfDO4MVnyr+ODeA==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=12" }
         cpu: [x64]
         os: [openbsd]
 
     "@esbuild/sunos-x64@0.17.3":
+=======
+        engines: { node: '>=12' }
+        cpu: [x64]
+        os: [openbsd]
+
+    '@esbuild/sunos-x64@0.17.3':
+>>>>>>> Stashed changes
         resolution:
             {
                 integrity: sha512-RxmhKLbTCDAY2xOfrww6ieIZkZF+KBqG7S2Ako2SljKXRFi+0863PspK74QQ7JpmWwncChY25JTJSbVBYGQk2Q==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=12" }
         cpu: [x64]
         os: [sunos]
 
     "@esbuild/win32-arm64@0.17.3":
+=======
+        engines: { node: '>=12' }
+        cpu: [x64]
+        os: [sunos]
+
+    '@esbuild/win32-arm64@0.17.3':
+>>>>>>> Stashed changes
         resolution:
             {
                 integrity: sha512-0r36VeEJ4efwmofxVJRXDjVRP2jTmv877zc+i+Pc7MNsIr38NfsjkQj23AfF7l0WbB+RQ7VUb+LDiqC/KY/M/A==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=12" }
         cpu: [arm64]
         os: [win32]
 
     "@esbuild/win32-ia32@0.17.3":
+=======
+        engines: { node: '>=12' }
+        cpu: [arm64]
+        os: [win32]
+
+    '@esbuild/win32-ia32@0.17.3':
+>>>>>>> Stashed changes
         resolution:
             {
                 integrity: sha512-wgO6rc7uGStH22nur4aLFcq7Wh86bE9cOFmfTr/yxN3BXvDEdCSXyKkO+U5JIt53eTOgC47v9k/C1bITWL/Teg==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=12" }
         cpu: [ia32]
         os: [win32]
 
     "@esbuild/win32-x64@0.17.3":
+=======
+        engines: { node: '>=12' }
+        cpu: [ia32]
+        os: [win32]
+
+    '@esbuild/win32-x64@0.17.3':
+>>>>>>> Stashed changes
         resolution:
             {
                 integrity: sha512-FdVl64OIuiKjgXBjwZaJLKp0eaEckifbhn10dXWhysMJkWblg3OEEGKSIyhiD5RSgAya8WzP3DNkngtIg3Nt7g==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=12" }
         cpu: [x64]
         os: [win32]
 
     "@eslint-community/eslint-utils@4.7.0":
+=======
+        engines: { node: '>=12' }
+        cpu: [x64]
+        os: [win32]
+
+    '@eslint-community/eslint-utils@4.7.0':
+>>>>>>> Stashed changes
         resolution:
             {
                 integrity: sha512-dyybb3AcajC7uha6CvhdVRJqaKyn7w2YKqKyAN37NKYgZT36w+iRb0Dymmc5qEJ549c/S31cMMSFd75bteCpCw==,
@@ -321,13 +561,18 @@ packages:
         peerDependencies:
             eslint: ^6.0.0 || ^7.0.0 || >=8.0.0
 
+<<<<<<< Updated upstream
     "@eslint-community/regexpp@4.12.1":
+=======
+    '@eslint-community/regexpp@4.12.1':
+>>>>>>> Stashed changes
         resolution:
             {
                 integrity: sha512-CCZCDJuduB9OUkFkY2IgppNZMi2lBQgD2qzwXkEia16cge2pijY/aXi96CJMquDMn3nJdlPV1A5KrJEXwfLNzQ==,
             }
         engines: { node: ^12.0.0 || ^14.0.0 || >=16.0.0 }
 
+<<<<<<< Updated upstream
     "@eslint/config-array@0.20.1":
         resolution:
             {
@@ -385,10 +630,28 @@ packages:
         engines: { node: ^18.18.0 || ^20.9.0 || >=21.1.0 }
 
     "@google-cloud/local-auth@2.1.1":
+=======
+    '@eslint/eslintrc@2.1.4':
+        resolution:
+            {
+                integrity: sha512-269Z39MS6wVJtsoUl10L60WdkhJVdPG24Q4eZTH3nnF6lpvSShEK3wQjDX9JRWAUPvPh7COouPpU9IrqaZFvtQ==,
+            }
+        engines: { node: ^12.22.0 || ^14.17.0 || >=16.0.0 }
+
+    '@eslint/js@8.57.1':
+        resolution:
+            {
+                integrity: sha512-d9zaMRSTIKDLhctzH12MtXvJKSSUhaHcjV+2Z+GK+EEY7XKpP5yR4x+N3TAcHTcu963nIr+TMcCb4DBCYX1z6Q==,
+            }
+        engines: { node: ^12.22.0 || ^14.17.0 || >=16.0.0 }
+
+    '@google-cloud/local-auth@2.1.1':
+>>>>>>> Stashed changes
         resolution:
             {
                 integrity: sha512-tOJ73TSyPxelUEVN2AdHVzFG857U5i3wZHMUGgm6wRtz9WN4O3D761eYORB9jXfIggA3+v5BUw+VIE5wAKHhkg==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=12.0.0" }
 
     "@humanfs/core@0.19.1":
@@ -406,10 +669,24 @@ packages:
         engines: { node: ">=18.18.0" }
 
     "@humanwhocodes/module-importer@1.0.1":
+=======
+        engines: { node: '>=12.0.0' }
+
+    '@humanwhocodes/config-array@0.13.0':
+        resolution:
+            {
+                integrity: sha512-DZLEEqFWQFiyK6h5YIeynKx7JlvCYWL0cImfSRXZ9l4Sg2efkFGTuFf6vzXjK1cq6IYkU+Eg/JizXw+TD2vRNw==,
+            }
+        engines: { node: '>=10.10.0' }
+        deprecated: Use @eslint/config-array instead
+
+    '@humanwhocodes/module-importer@1.0.1':
+>>>>>>> Stashed changes
         resolution:
             {
                 integrity: sha512-bxveV4V8v5Yb4ncFTT3rPSgZBOpCkjfK0y4oVVVJwIuDVBRMDXrPyXRL988i5ap9m9bnyEEjWfm5WkBmtffLfA==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=12.22" }
 
     "@humanwhocodes/retry@0.3.1":
@@ -434,11 +711,24 @@ packages:
         engines: { node: ">=6.0.0" }
 
     "@jridgewell/sourcemap-codec@1.5.0":
+=======
+        engines: { node: '>=12.22' }
+
+    '@humanwhocodes/object-schema@2.0.3':
+        resolution:
+            {
+                integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==,
+            }
+        deprecated: Use @eslint/object-schema instead
+
+    '@jridgewell/sourcemap-codec@1.5.0':
+>>>>>>> Stashed changes
         resolution:
             {
                 integrity: sha512-gv3ZRaISU3fjPAgNsriBRqGWQL6quFx04YMPW/zD8XMLsU32mhCCbfbO6KZFLjvYpCZ8zyDEgqsgf+PwPaM7GQ==,
             }
 
+<<<<<<< Updated upstream
     "@jridgewell/trace-mapping@0.3.9":
         resolution:
             {
@@ -446,48 +736,80 @@ packages:
             }
 
     "@lezer/common@1.2.3":
+=======
+    '@lezer/common@1.2.3':
+>>>>>>> Stashed changes
         resolution:
             {
                 integrity: sha512-w7ojc8ejBqr2REPsWxJjrMFsA/ysDCFICn8zEOR9mrqzOu2amhITYuLD8ag6XZf0CFXDrhKqw7+tW8cX66NaDA==,
             }
 
+<<<<<<< Updated upstream
     "@lezer/highlight@1.2.1":
+=======
+    '@lezer/highlight@1.2.1':
+>>>>>>> Stashed changes
         resolution:
             {
                 integrity: sha512-Z5duk4RN/3zuVO7Jq0pGLJ3qynpxUVsh7IbUbGj88+uV2ApSAn6kWg2au3iJb+0Zi7kKtqffIESgNcRXWZWmSA==,
             }
 
+<<<<<<< Updated upstream
     "@lezer/lr@1.4.2":
+=======
+    '@lezer/lr@1.4.2':
+>>>>>>> Stashed changes
         resolution:
             {
                 integrity: sha512-pu0K1jCIdnQ12aWNaAVU5bzi7Bd1w54J3ECgANPmYLtQKP0HBj2cE/5coBD66MT10xbtIuUr7tg0Shbsvk0mDA==,
             }
 
+<<<<<<< Updated upstream
     "@marijn/find-cluster-break@1.0.2":
+=======
+    '@marijn/find-cluster-break@1.0.2':
+>>>>>>> Stashed changes
         resolution:
             {
                 integrity: sha512-l0h88YhZFyKdXIFNfSWpyjStDjGHwZ/U7iobcK1cQQD8sejsONdQtTVU+1wVN1PBw40PiiHB1vA5S7VTfQiP9g==,
             }
 
+<<<<<<< Updated upstream
     "@nodelib/fs.scandir@2.1.5":
+=======
+    '@nodelib/fs.scandir@2.1.5':
+>>>>>>> Stashed changes
         resolution:
             {
                 integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">= 8" }
 
     "@nodelib/fs.stat@2.0.5":
+=======
+        engines: { node: '>= 8' }
+
+    '@nodelib/fs.stat@2.0.5':
+>>>>>>> Stashed changes
         resolution:
             {
                 integrity: sha512-RkhPPp2zrqDAQA/2jNhnztcPAlv64XdhIp7a7454A5ovI7Bukxgt7MX7udwAu3zg1DcpPU0rz3VV1SeaqvY4+A==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">= 8" }
 
     "@nodelib/fs.walk@1.2.8":
+=======
+        engines: { node: '>= 8' }
+
+    '@nodelib/fs.walk@1.2.8':
+>>>>>>> Stashed changes
         resolution:
             {
                 integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">= 8" }
 
     "@tsconfig/node10@1.0.11":
@@ -515,29 +837,53 @@ packages:
             }
 
     "@types/codemirror@5.60.8":
+=======
+        engines: { node: '>= 8' }
+
+    '@tsconfig/svelte@3.0.0':
+        resolution:
+            {
+                integrity: sha512-pYrtLtOwku/7r1i9AMONsJMVYAtk3hzOfiGNekhtq5tYBGA7unMve8RvUclKLMT3PrihvJqUmzsRGh0RP84hKg==,
+            }
+
+    '@types/codemirror@5.60.8':
+>>>>>>> Stashed changes
         resolution:
             {
                 integrity: sha512-VjFgDF/eB+Aklcy15TtOTLQeMjTo07k7KAjql8OK5Dirr7a6sJY4T1uVBDuTVG9VEmn1uUsohOpYnVfgC6/jyw==,
             }
 
+<<<<<<< Updated upstream
     "@types/estree@1.0.7":
+=======
+    '@types/estree@1.0.7':
+>>>>>>> Stashed changes
         resolution:
             {
                 integrity: sha512-w28IoSUCJpidD/TGviZwwMJckNESJZXFu7NBZ5YJ4mEUnNraUn9Pm8HSZm/jDF1pDWYKspWE7oVphigUPRakIQ==,
             }
 
+<<<<<<< Updated upstream
     "@types/json-schema@7.0.15":
+=======
+    '@types/json-schema@7.0.15':
+>>>>>>> Stashed changes
         resolution:
             {
                 integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==,
             }
 
+<<<<<<< Updated upstream
     "@types/node@16.18.126":
+=======
+    '@types/node@16.18.126':
+>>>>>>> Stashed changes
         resolution:
             {
                 integrity: sha512-OTcgaiwfGFBKacvfwuHzzn1KLxH/er8mluiy8/uM3sGXHaRe73RrSIj01jow9t4kJEW633Ov+cOexXeiApTyAw==,
             }
 
+<<<<<<< Updated upstream
     "@types/react-dom@19.1.6":
         resolution:
             {
@@ -553,11 +899,21 @@ packages:
             }
 
     "@types/tern@0.23.9":
+=======
+    '@types/pug@2.0.10':
+        resolution:
+            {
+                integrity: sha512-Sk/uYFOBAB7mb74XcpizmH0KOR2Pv3D2Hmrh1Dmy5BmK3MpdSa5kqZcg6EKBdklU0bFXX9gCfzvpnyUehrPIuA==,
+            }
+
+    '@types/tern@0.23.9':
+>>>>>>> Stashed changes
         resolution:
             {
                 integrity: sha512-ypzHFE/wBzh+BlH6rrBgS5I/Z7RD21pGhZ2rltb/+ZrVM1awdZwjx7hE5XfuYgHWk9uvV5HLZN3SloevCAp3Bw==,
             }
 
+<<<<<<< Updated upstream
     "@typescript-eslint/eslint-plugin@8.34.1":
         resolution:
             {
@@ -646,6 +1002,95 @@ packages:
                 integrity: sha512-xoh5rJ+tgsRKoXnkBPFRLZ7rjKM0AfVbC68UZ/ECXoDbfggb9RbEySN359acY1vS3qZ0jVTVWzbtfapwm5ztxw==,
             }
         engines: { node: ^18.18.0 || ^20.9.0 || >=21.1.0 }
+=======
+    '@typescript-eslint/eslint-plugin@5.29.0':
+        resolution:
+            {
+                integrity: sha512-kgTsISt9pM53yRFQmLZ4npj99yGl3x3Pl7z4eA66OuTzAGC4bQB5H5fuLwPnqTKU3yyrrg4MIhjF17UYnL4c0w==,
+            }
+        engines: { node: ^12.22.0 || ^14.17.0 || >=16.0.0 }
+        peerDependencies:
+            '@typescript-eslint/parser': ^5.0.0
+            eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
+            typescript: '*'
+        peerDependenciesMeta:
+            typescript:
+                optional: true
+
+    '@typescript-eslint/parser@5.29.0':
+        resolution:
+            {
+                integrity: sha512-ruKWTv+x0OOxbzIw9nW5oWlUopvP/IQDjB5ZqmTglLIoDTctLlAJpAQFpNPJP/ZI7hTT9sARBosEfaKbcFuECw==,
+            }
+        engines: { node: ^12.22.0 || ^14.17.0 || >=16.0.0 }
+        peerDependencies:
+            eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
+            typescript: '*'
+        peerDependenciesMeta:
+            typescript:
+                optional: true
+
+    '@typescript-eslint/scope-manager@5.29.0':
+        resolution:
+            {
+                integrity: sha512-etbXUT0FygFi2ihcxDZjz21LtC+Eps9V2xVx09zFoN44RRHPrkMflidGMI+2dUs821zR1tDS6Oc9IXxIjOUZwA==,
+            }
+        engines: { node: ^12.22.0 || ^14.17.0 || >=16.0.0 }
+
+    '@typescript-eslint/type-utils@5.29.0':
+        resolution:
+            {
+                integrity: sha512-JK6bAaaiJozbox3K220VRfCzLa9n0ib/J+FHIwnaV3Enw/TO267qe0pM1b1QrrEuy6xun374XEAsRlA86JJnyg==,
+            }
+        engines: { node: ^12.22.0 || ^14.17.0 || >=16.0.0 }
+        peerDependencies:
+            eslint: '*'
+            typescript: '*'
+        peerDependenciesMeta:
+            typescript:
+                optional: true
+
+    '@typescript-eslint/types@5.29.0':
+        resolution:
+            {
+                integrity: sha512-X99VbqvAXOMdVyfFmksMy3u8p8yoRGITgU1joBJPzeYa0rhdf5ok9S56/itRoUSh99fiDoMtarSIJXo7H/SnOg==,
+            }
+        engines: { node: ^12.22.0 || ^14.17.0 || >=16.0.0 }
+
+    '@typescript-eslint/typescript-estree@5.29.0':
+        resolution:
+            {
+                integrity: sha512-mQvSUJ/JjGBdvo+1LwC+GY2XmSYjK1nAaVw2emp/E61wEVYEyibRHCqm1I1vEKbXCpUKuW4G7u9ZCaZhJbLoNQ==,
+            }
+        engines: { node: ^12.22.0 || ^14.17.0 || >=16.0.0 }
+        peerDependencies:
+            typescript: '*'
+        peerDependenciesMeta:
+            typescript:
+                optional: true
+
+    '@typescript-eslint/utils@5.29.0':
+        resolution:
+            {
+                integrity: sha512-3Eos6uP1nyLOBayc/VUdKZikV90HahXE5Dx9L5YlSd/7ylQPXhLk1BYb29SDgnBnTp+jmSZUU0QxUiyHgW4p7A==,
+            }
+        engines: { node: ^12.22.0 || ^14.17.0 || >=16.0.0 }
+        peerDependencies:
+            eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
+
+    '@typescript-eslint/visitor-keys@5.29.0':
+        resolution:
+            {
+                integrity: sha512-Hpb/mCWsjILvikMQoZIE3voc9wtQcS0A9FUw3h8bhr9UxBdtI/tw1ZDZUOXHXLOVMedKCH5NxyzATwnU78bWCQ==,
+            }
+        engines: { node: ^12.22.0 || ^14.17.0 || >=16.0.0 }
+
+    '@ungap/structured-clone@1.3.0':
+        resolution:
+            {
+                integrity: sha512-WmoN8qaIAo7WTYWbAZuG8PYEhn5fkz7dZrqTBZ7dtt//lL2Gwms1IcnQ5yHqjDfX8Ft5j4YzDM23f87zBfDe9g==,
+            }
+>>>>>>> Stashed changes
 
     acorn-jsx@5.3.2:
         resolution:
@@ -655,6 +1100,7 @@ packages:
         peerDependencies:
             acorn: ^6.0.0 || ^7.0.0 || ^8.0.0
 
+<<<<<<< Updated upstream
     acorn-walk@8.3.4:
         resolution:
             {
@@ -662,11 +1108,14 @@ packages:
             }
         engines: { node: ">=0.4.0" }
 
+=======
+>>>>>>> Stashed changes
     acorn@8.14.1:
         resolution:
             {
                 integrity: sha512-OvQ/2pUDKmgfCg++xsTX1wGxfTaszcHVcTctW4UJB4hibJx2HXxxO5UmVgyjMa+ZDsiaf5wWLXYpRWMmBI0QHg==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=0.4.0" }
         hasBin: true
 
@@ -676,6 +1125,9 @@ packages:
                 integrity: sha512-NZyJarBfL7nWwIq+FDL6Zp/yHEhePMNnnJ0y3qfieCrmNvYct8uvtiV41UvlSe6apAfk0fY1FbWx+NwfmpvtTg==,
             }
         engines: { node: ">=0.4.0" }
+=======
+        engines: { node: '>=0.4.0' }
+>>>>>>> Stashed changes
         hasBin: true
 
     agent-base@6.0.2:
@@ -683,7 +1135,18 @@ packages:
             {
                 integrity: sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">= 6.0.0" }
+=======
+        engines: { node: '>= 6.0.0' }
+
+    agent-base@7.1.3:
+        resolution:
+            {
+                integrity: sha512-jRR5wdylq8CkOe6hei19GGZnxM6rBGwFl3Bg0YItGDimvjGtAvdZk4Pu6Cl4u4Igsws4a1fd1Vq3ezrhn4KmFw==,
+            }
+        engines: { node: '>= 14' }
+>>>>>>> Stashed changes
 
     ajv@6.12.6:
         resolution:
@@ -691,11 +1154,22 @@ packages:
                 integrity: sha512-j3fVLgvTo527anyYyJOGTYJbG+vnnQYvE0m5mmkc1TK+nxAppkCLMIL0aZ4dblVCNoGShhm+kzE4ZUykBoMg4g==,
             }
 
+<<<<<<< Updated upstream
+=======
+    ansi-regex@5.0.1:
+        resolution:
+            {
+                integrity: sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ==,
+            }
+        engines: { node: '>=8' }
+
+>>>>>>> Stashed changes
     ansi-styles@4.3.0:
         resolution:
             {
                 integrity: sha512-zbB9rCJAT1rbjiVDb2hqKFHNYLxgtk8NURxZ3IZwD3F6NtxbXZQCnnSi1Lkx+IDohdPlFp222wVALIheZJQSEg==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=8" }
 
     arg@4.1.3:
@@ -703,6 +1177,9 @@ packages:
             {
                 integrity: sha512-58S9QDqG0Xx27YwPSt9fJxivjYl432YCwfDMfZ+71RAqUrZef7LrKQZ3LHLOwCS4FLNBplP533Zx895SeOCHvA==,
             }
+=======
+        engines: { node: '>=8' }
+>>>>>>> Stashed changes
 
     argparse@2.0.1:
         resolution:
@@ -710,6 +1187,7 @@ packages:
                 integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==,
             }
 
+<<<<<<< Updated upstream
     array-buffer-byte-length@1.0.2:
         resolution:
             {
@@ -758,12 +1236,21 @@ packages:
                 integrity: sha512-BNoCY6SXXPQ7gF2opIP4GBE+Xw7U+pHMYKuzjgCN3GwiaIR09UUeKfheyIry77QtrCBlC0KK0q5/TER/tYh3PQ==,
             }
         engines: { node: ">= 0.4" }
+=======
+    array-union@2.1.0:
+        resolution:
+            {
+                integrity: sha512-HGyxoOTYUyCM6stUe6EJgnd4EoewAI7zMdfqO+kGjnlZmBDz/cR5pf8r/cR4Wq60sL/p0IkcjUEEPwS3GFrIyw==,
+            }
+        engines: { node: '>=8' }
+>>>>>>> Stashed changes
 
     arrify@2.0.1:
         resolution:
             {
                 integrity: sha512-3duEwti880xqi4eAMN8AyR4a0ByT90zoYdLlevfrvU43vb0YZwZVfxOgxWrLXXXpyugL0hNZc9G6BiB5B3nUug==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=8" }
 
     async-function@1.0.0:
@@ -772,6 +1259,9 @@ packages:
                 integrity: sha512-hsU18Ae8CDTR6Kgu9DYf0EbCr/a5iGL0rytQDobUcdpYOKokk8LEjVphnXkDkgpi0wYVsqrXuP0bZxJaTqdgoA==,
             }
         engines: { node: ">= 0.4" }
+=======
+        engines: { node: '>=8' }
+>>>>>>> Stashed changes
 
     async-mutex@0.4.1:
         resolution:
@@ -785,6 +1275,7 @@ packages:
                 integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==,
             }
 
+<<<<<<< Updated upstream
     available-typed-arrays@1.0.7:
         resolution:
             {
@@ -792,6 +1283,8 @@ packages:
             }
         engines: { node: ">= 0.4" }
 
+=======
+>>>>>>> Stashed changes
     axios@1.9.0:
         resolution:
             {
@@ -822,18 +1315,32 @@ packages:
                 integrity: sha512-iCuPHDFgrHX7H2vEI/5xpz07zSHB00TpugqhmYtVmMO6518mCuRMoOYFldEBl0g187ufozdaHgWKcYFb61qGiA==,
             }
 
+<<<<<<< Updated upstream
     brace-expansion@2.0.2:
         resolution:
             {
                 integrity: sha512-Jt0vHyM+jmUBqojB7E1NIYadt0vI0Qxjxd2TErW94wDz+E2LAm5vKMXXwg6ZZBTHPuUlDgQHKXvjGBdfcF1ZDQ==,
             }
 
+=======
+>>>>>>> Stashed changes
     braces@3.0.3:
         resolution:
             {
                 integrity: sha512-yQbXgO/OSZVD2IsiLlro+7Hf6Q18EJrKSEsdoMzKePKXct3gvD8oLcOQdIzGupr5Fj+EDe8gO/lxc1BzfMpxvA==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=8" }
+=======
+        engines: { node: '>=8' }
+
+    buffer-crc32@1.0.0:
+        resolution:
+            {
+                integrity: sha512-Db1SbgBS/fg/392AblrMJk97KggmvYhr4pB5ZIMTWtaivCPMWLkmb7m21cJvpvgK+J3nsU2CmmixNBZx4vFj/w==,
+            }
+        engines: { node: '>=8.0.0' }
+>>>>>>> Stashed changes
 
     buffer-equal-constant-time@1.0.1:
         resolution:
@@ -846,13 +1353,18 @@ packages:
             {
                 integrity: sha512-zhaCDicdLuWN5UbN5IMnFqNMhNfo919sH85y2/ea+5Yg9TsTkeZxpL+JLbp6cgYFS4sRLp3YV4S6yDuqVWHYOw==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=6" }
+=======
+        engines: { node: '>=6' }
+>>>>>>> Stashed changes
 
     call-bind-apply-helpers@1.0.2:
         resolution:
             {
                 integrity: sha512-Sp1ablJ0ivDkSzjcaJdxEunN5/XvksFJ2sMBFfq6x0ryhQV/2b/KwFe21cMpmHtPOSij8K99/wSfoEuTObmuMQ==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">= 0.4" }
 
     call-bind@1.0.8:
@@ -861,34 +1373,53 @@ packages:
                 integrity: sha512-oKlSFMcMwpUg2ednkhQ454wfWiU/ul3CkJe/PEHcTKuiX6RpbehUiFMXu13HalGZxfUwCQzZG747YXBn1im9ww==,
             }
         engines: { node: ">= 0.4" }
+=======
+        engines: { node: '>= 0.4' }
+>>>>>>> Stashed changes
 
     call-bound@1.0.4:
         resolution:
             {
                 integrity: sha512-+ys997U96po4Kx/ABpBCqhA9EuxJaQWDQg7295H4hBphv3IZg0boBKuwYpt4YXp6MZ5AmZQnU/tyMTlRpaSejg==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">= 0.4" }
+=======
+        engines: { node: '>= 0.4' }
+>>>>>>> Stashed changes
 
     callsites@3.1.0:
         resolution:
             {
                 integrity: sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=6" }
+=======
+        engines: { node: '>=6' }
+>>>>>>> Stashed changes
 
     chalk@4.1.2:
         resolution:
             {
                 integrity: sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=10" }
+=======
+        engines: { node: '>=10' }
+>>>>>>> Stashed changes
 
     color-convert@2.0.1:
         resolution:
             {
                 integrity: sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=7.0.0" }
+=======
+        engines: { node: '>=7.0.0' }
+>>>>>>> Stashed changes
 
     color-name@1.1.4:
         resolution:
@@ -901,7 +1432,11 @@ packages:
             {
                 integrity: sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">= 0.8" }
+=======
+        engines: { node: '>= 0.8' }
+>>>>>>> Stashed changes
 
     concat-map@0.0.1:
         resolution:
@@ -909,17 +1444,21 @@ packages:
                 integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==,
             }
 
+<<<<<<< Updated upstream
     create-require@1.1.1:
         resolution:
             {
                 integrity: sha512-dcKFX3jn0MpIaXjisoRvexIJVEKzaq7z2rZKxf+MSr9TkdmHmsU4m2lcLojrj/FHl8mk5VxMmYA+ftRkP/3oKQ==,
             }
 
+=======
+>>>>>>> Stashed changes
     cross-spawn@7.0.6:
         resolution:
             {
                 integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">= 8" }
 
     csstype@3.1.3:
@@ -948,6 +1487,9 @@ packages:
                 integrity: sha512-BS8PfmtDGnrgYdOonGZQdLZslWIeCGFP9tpan0hi1Co2Zr2NKADsvGYA8XxuG/4UWgJ6Cjtv+YJnB6MM69QGlQ==,
             }
         engines: { node: ">= 0.4" }
+=======
+        engines: { node: '>= 8' }
+>>>>>>> Stashed changes
 
     dayjs@1.11.13:
         resolution:
@@ -960,9 +1502,15 @@ packages:
             {
                 integrity: sha512-KcKCqiftBJcZr++7ykoDIEwSa3XWowTfNPo92BYxjXiyYEVrUQh2aLyhxBCwww+heortUFxEJYcRzosstTEBYQ==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=6.0" }
         peerDependencies:
             supports-color: "*"
+=======
+        engines: { node: '>=6.0' }
+        peerDependencies:
+            supports-color: '*'
+>>>>>>> Stashed changes
         peerDependenciesMeta:
             supports-color:
                 optional: true
@@ -973,6 +1521,7 @@ packages:
                 integrity: sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ==,
             }
 
+<<<<<<< Updated upstream
     define-data-property@1.1.4:
         resolution:
             {
@@ -987,11 +1536,14 @@ packages:
             }
         engines: { node: ">= 0.4" }
 
+=======
+>>>>>>> Stashed changes
     delayed-stream@1.0.0:
         resolution:
             {
                 integrity: sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=0.4.0" }
 
     diff@4.0.2:
@@ -1007,13 +1559,41 @@ packages:
                 integrity: sha512-35mSku4ZXK0vfCuHEDAwt55dg2jNajHZ1odvF+8SSr82EsZY4QmXfuWso8oEd8zRhVObSN18aM0CjSdoBX7zIw==,
             }
         engines: { node: ">=0.10.0" }
+=======
+        engines: { node: '>=0.4.0' }
+
+    detect-indent@6.1.0:
+        resolution:
+            {
+                integrity: sha512-reYkTUJAZb9gUuZ2RvVCNhVHdg62RHnJ7WJl8ftMi4diZ6NWlciOzQN88pUhSELEwflJht4oQDv0F0BMlwaYtA==,
+            }
+        engines: { node: '>=8' }
+
+    dir-glob@3.0.1:
+        resolution:
+            {
+                integrity: sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA==,
+            }
+        engines: { node: '>=8' }
+
+    doctrine@3.0.0:
+        resolution:
+            {
+                integrity: sha512-yS+Q5i3hBf7GBkd4KG8a7eBNNWNGLTaEwwYWUijIYM7zrlYDM0BFXHjjPWlWZ1Rg7UaddZeIDmi9jF3HmqiQ2w==,
+            }
+        engines: { node: '>=6.0.0' }
+>>>>>>> Stashed changes
 
     dunder-proto@1.0.1:
         resolution:
             {
                 integrity: sha512-KIN/nDJBQRcXw0MLVhZE9iQHmG68qAVIBg9CqmUYjmQIhgij9U5MFvrqkUL5FbtyyzZuOeOt0zdeRe4UY7ct+A==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">= 0.4" }
+=======
+        engines: { node: '>= 0.4' }
+>>>>>>> Stashed changes
 
     ecdsa-sig-formatter@1.0.11:
         resolution:
@@ -1027,6 +1607,7 @@ packages:
                 integrity: sha512-EC+0oUMY1Rqm4O6LLrgjtYDvcVYTy7chDnM4Q7030tP4Kwj3u/pR6gP9ygnp2CJMK5Gq+9Q2oqmrFJAz01DXjw==,
             }
 
+<<<<<<< Updated upstream
     es-abstract@1.24.0:
         resolution:
             {
@@ -1034,18 +1615,25 @@ packages:
             }
         engines: { node: ">= 0.4" }
 
+=======
+>>>>>>> Stashed changes
     es-define-property@1.0.1:
         resolution:
             {
                 integrity: sha512-e3nRfgfUZ4rNGL232gUgX06QNyyez04KdjFrF+LTRoOXmrOgFKDg4BCdsjW8EnT69eqdYGmRpJwiPVYNrCaW3g==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">= 0.4" }
+=======
+        engines: { node: '>= 0.4' }
+>>>>>>> Stashed changes
 
     es-errors@1.3.0:
         resolution:
             {
                 integrity: sha512-Zf5H2Kxt2xjTvbJvP2ZWLEICxA6j+hAmMzIlypy4xcBg1vKVnx89Wy0GbS+kf5cwCVFFzdCFh2XSCFNULS6csw==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">= 0.4" }
 
     es-iterator-helpers@1.2.1:
@@ -1054,19 +1642,27 @@ packages:
                 integrity: sha512-uDn+FE1yrDzyC0pCo961B2IHbdM8y/ACZsKD4dG6WqrjV53BADjwa7D+1aom2rsNVfLyDgU/eigvlJGJ08OQ4w==,
             }
         engines: { node: ">= 0.4" }
+=======
+        engines: { node: '>= 0.4' }
+>>>>>>> Stashed changes
 
     es-object-atoms@1.1.1:
         resolution:
             {
                 integrity: sha512-FGgH2h8zKNim9ljj7dankFPcICIK9Cp5bm+c2gQSYePhpaG5+esrLODihIorn+Pe6FGJzWhXQotPv73jTaldXA==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">= 0.4" }
+=======
+        engines: { node: '>= 0.4' }
+>>>>>>> Stashed changes
 
     es-set-tostringtag@2.1.0:
         resolution:
             {
                 integrity: sha512-j6vWzfrGVfyXxge+O0x5sh6cvxAog0a/4Rdd2K36zCMV5eJ+/+tOAngRO8cODMNWbVRdVlmGZQL2YS3yR8bIUA==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">= 0.4" }
 
     es-shim-unscopables@1.1.0:
@@ -1082,13 +1678,36 @@ packages:
                 integrity: sha512-w+5mJ3GuFL+NjVtJlvydShqE1eN3h3PbI7/5LAsYJP/2qtuMXjfL2LpHSRqo4b4eSF5K/DH1JXKUAHSB2UW50g==,
             }
         engines: { node: ">= 0.4" }
+=======
+        engines: { node: '>= 0.4' }
+
+    es6-promise@3.3.1:
+        resolution:
+            {
+                integrity: sha512-SOp9Phqvqn7jtEUxPWdWfWoLmyt2VaJ6MpvP9Comy1MceMXqE6bxvaTu4iaxpYYPzhny28Lc+M87/c2cPK6lDg==,
+            }
+
+    esbuild-svelte@0.7.4:
+        resolution:
+            {
+                integrity: sha512-d4Vafj5nFTmZPXznW6YL3ZHXiWwNiPLcE8yfq/5oE8nbyrZlIB92ZCVh3JMbMje+vCb4jnKdH+WoV2sLZRdOJA==,
+            }
+        engines: { node: '>=14' }
+        peerDependencies:
+            esbuild: '>=0.9.6'
+            svelte: '>=3.43.0 <5'
+>>>>>>> Stashed changes
 
     esbuild@0.17.3:
         resolution:
             {
                 integrity: sha512-9n3AsBRe6sIyOc6kmoXg2ypCLgf3eZSraWFRpnkto+svt8cZNuKTkb1bhQcitBcvIqjNiK7K0J3KPmwGSfkA8g==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=12" }
+=======
+        engines: { node: '>=12' }
+>>>>>>> Stashed changes
         hasBin: true
 
     escape-string-regexp@4.0.0:
@@ -1096,6 +1715,7 @@ packages:
             {
                 integrity: sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=10" }
 
     eslint-plugin-react@7.37.5:
@@ -1113,6 +1733,39 @@ packages:
                 integrity: sha512-sNXOfKCn74rt8RICKMvJS7XKV/Xk9kA7DyJr8mJik3S7Cwgy3qlkkmyS2uQB3jiJg6VNdZd/pDBJu0nvG2NlTg==,
             }
         engines: { node: ^18.18.0 || ^20.9.0 || >=21.1.0 }
+=======
+        engines: { node: '>=10' }
+
+    eslint-scope@5.1.1:
+        resolution:
+            {
+                integrity: sha512-2NxwbF/hZ0KpepYN0cNbo+FN6XoK7GaHlQhgx/hIZl6Va0bF45RQOOwhLIy8lQDbuCiadSLCBnH2CFYquit5bw==,
+            }
+        engines: { node: '>=8.0.0' }
+
+    eslint-scope@7.2.2:
+        resolution:
+            {
+                integrity: sha512-dOt21O7lTMhDM+X9mB4GX+DZrZtCUJPL/wlcTqxyrx5IvO0IYtILdtrQGQp+8n5S0gwSVmOf9NQrjMOgfQZlIg==,
+            }
+        engines: { node: ^12.22.0 || ^14.17.0 || >=16.0.0 }
+
+    eslint-utils@3.0.0:
+        resolution:
+            {
+                integrity: sha512-uuQC43IGctw68pJA1RgbQS8/NP7rch6Cwd4j3ZBtgo4/8Flj4eGE7ZYSZRN3iq5pVUv6GPdW5Z1RFleo84uLDA==,
+            }
+        engines: { node: ^10.0.0 || ^12.0.0 || >= 14.0.0 }
+        peerDependencies:
+            eslint: '>=5'
+
+    eslint-visitor-keys@2.1.0:
+        resolution:
+            {
+                integrity: sha512-0rSmRBzXgDzIsD6mGdJgevzgezI534Cer5L/vyMX0kHzT/jiB43jRhd9YUlMGYLQy2zprNmoT8qasCGtY+QaKw==,
+            }
+        engines: { node: '>=10' }
+>>>>>>> Stashed changes
 
     eslint-visitor-keys@3.4.3:
         resolution:
@@ -1121,6 +1774,7 @@ packages:
             }
         engines: { node: ^12.22.0 || ^14.17.0 || >=16.0.0 }
 
+<<<<<<< Updated upstream
     eslint-visitor-keys@4.2.1:
         resolution:
             {
@@ -1147,34 +1801,74 @@ packages:
                 integrity: sha512-j6PAQ2uUr79PZhBjP5C5fhl8e39FmRnOjsD5lGnWrFU8i2G776tBK7+nP8KuQUTTyAZUwfQqXAgrVH5MbH9CYQ==,
             }
         engines: { node: ^18.18.0 || ^20.9.0 || >=21.1.0 }
+=======
+    eslint@8.57.1:
+        resolution:
+            {
+                integrity: sha512-ypowyDxpVSYpkXr9WPv2PAZCtNip1Mv5KTW0SCurXv/9iOpcrH9PaqUElksqEB6pChqHGDRCFTyrZlGhnLNGiA==,
+            }
+        engines: { node: ^12.22.0 || ^14.17.0 || >=16.0.0 }
+        deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
+        hasBin: true
+
+    espree@9.6.1:
+        resolution:
+            {
+                integrity: sha512-oruZaFkjorTpF32kDSI5/75ViwGeZginGGy2NoOSg3Q9bnwlnmDm4HLnkl0RE3n+njDXR037aY1+x58Z/zFdwQ==,
+            }
+        engines: { node: ^12.22.0 || ^14.17.0 || >=16.0.0 }
+>>>>>>> Stashed changes
 
     esquery@1.6.0:
         resolution:
             {
                 integrity: sha512-ca9pw9fomFcKPvFLXhBKUK90ZvGibiGOvRJNbjljY7s7uq/5YO4BOzcYtJqExdx99rF6aAcnRxHmcUHcz6sQsg==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=0.10" }
+=======
+        engines: { node: '>=0.10' }
+>>>>>>> Stashed changes
 
     esrecurse@4.3.0:
         resolution:
             {
                 integrity: sha512-KmfKL3b6G+RXvP8N1vr3Tq1kL/oCFgn2NYXEtqP8/L3pKapUA4G8cFVaoF3SU323CD4XypR/ffioHmkti6/Tag==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=4.0" }
+=======
+        engines: { node: '>=4.0' }
+
+    estraverse@4.3.0:
+        resolution:
+            {
+                integrity: sha512-39nnKffWz8xN1BU/2c79n9nB9HDzo0niYUqx6xyqUnyoAnQyyWpOTdZEeiCch8BBu515t4wp9ZmgVfVhn9EBpw==,
+            }
+        engines: { node: '>=4.0' }
+>>>>>>> Stashed changes
 
     estraverse@5.3.0:
         resolution:
             {
                 integrity: sha512-MMdARuVEQziNTeJD8DgMqmhwR11BRQ/cBP+pLtYdSTnf3MIO8fFeiINEbX36ZdNlfU/7A9f3gUw49B3oQsvwBA==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=4.0" }
+=======
+        engines: { node: '>=4.0' }
+>>>>>>> Stashed changes
 
     esutils@2.0.3:
         resolution:
             {
                 integrity: sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=0.10.0" }
+=======
+        engines: { node: '>=0.10.0' }
+>>>>>>> Stashed changes
 
     extend@3.0.2:
         resolution:
@@ -1193,7 +1887,11 @@ packages:
             {
                 integrity: sha512-7MptL8U0cqcFdzIzwOTHoilX9x5BrNqye7Z/LuC7kCMRio1EMSyqRK3BEAUD7sXRq4iT4AzTVuZdhgQ2TCvYLg==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=8.6.0" }
+=======
+        engines: { node: '>=8.6.0' }
+>>>>>>> Stashed changes
 
     fast-json-stable-stringify@2.1.0:
         resolution:
@@ -1219,25 +1917,39 @@ packages:
                 integrity: sha512-GwLTyxkCXjXbxqIhTsMI2Nui8huMPtnxg7krajPJAjnEG/iiOS7i+zCtWGZR9G0NBKbXKh6X9m9UIsYX/N6vvQ==,
             }
 
+<<<<<<< Updated upstream
     file-entry-cache@8.0.0:
         resolution:
             {
                 integrity: sha512-XXTUwCvisa5oacNGRP9SfNtYBNAMi+RPwBFmblZEF7N7swHYQS6/Zfk7SRwx4D5j3CH211YNRco1DEMNVfZCnQ==,
             }
         engines: { node: ">=16.0.0" }
+=======
+    file-entry-cache@6.0.1:
+        resolution:
+            {
+                integrity: sha512-7Gps/XWymbLk2QLYK4NzpMOrYjMhdIxXuIvy2QBsLE6ljuodKvdkWs/cpyJJ3CVIVpH0Oi1Hvg1ovbMzLdFBBg==,
+            }
+        engines: { node: ^10.12.0 || >=12.0.0 }
+>>>>>>> Stashed changes
 
     fill-range@7.1.1:
         resolution:
             {
                 integrity: sha512-YsGpe3WHLK8ZYi4tWDg2Jy3ebRz2rXowDxnld4bkQB00cc/1Zw9AWnC0i9ztDJitivtQvaI9KaLyKrc+hBW0yg==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=8" }
+=======
+        engines: { node: '>=8' }
+>>>>>>> Stashed changes
 
     find-up@5.0.0:
         resolution:
             {
                 integrity: sha512-78/PXT1wlLLDgTzDs7sjq9hzz0vXD+zn+7wypEe4fXQxCmdmqfGsEPQxmiCSQI3ajFV91bVSsvNtrJRiW6nGng==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=10" }
 
     flat-cache@4.0.1:
@@ -1246,6 +1958,16 @@ packages:
                 integrity: sha512-f7ccFPK3SXFHpx15UIGyRJ/FJQctuKZ0zVuN3frBo4HnK3cay9VEW0R6yPYFHC0AgqhukPzKjq22t5DmAyqGyw==,
             }
         engines: { node: ">=16" }
+=======
+        engines: { node: '>=10' }
+
+    flat-cache@3.2.0:
+        resolution:
+            {
+                integrity: sha512-CYcENa+FtcUKLmhhqyctpclsq7QF38pKjZHsGNiSQF5r4FtoKDWabFDl3hzaEQMvT1LHEysw5twgLvpYYb4vbw==,
+            }
+        engines: { node: ^10.12.0 || >=12.0.0 }
+>>>>>>> Stashed changes
 
     flatted@3.3.3:
         resolution:
@@ -1258,13 +1980,20 @@ packages:
             {
                 integrity: sha512-gew4GsXizNgdoRyqmyfMHyAmXsZDk6mHkSxZFCzW9gwlbtOW44CDtYavM+y+72qD/Vq2l550kMF52DT8fOLJqQ==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=4.0" }
         peerDependencies:
             debug: "*"
+=======
+        engines: { node: '>=4.0' }
+        peerDependencies:
+            debug: '*'
+>>>>>>> Stashed changes
         peerDependenciesMeta:
             debug:
                 optional: true
 
+<<<<<<< Updated upstream
     for-each@0.3.5:
         resolution:
             {
@@ -1272,12 +2001,24 @@ packages:
             }
         engines: { node: ">= 0.4" }
 
+=======
+>>>>>>> Stashed changes
     form-data@4.0.2:
         resolution:
             {
                 integrity: sha512-hGfm/slu0ZabnNt4oaRZ6uREyfCj6P4fT/n6A1rGV+Z0VdGXjfOhVUpkn6qVQONHGIFwmveGXyDs75+nr6FM8w==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">= 6" }
+=======
+        engines: { node: '>= 6' }
+
+    fs.realpath@1.0.0:
+        resolution:
+            {
+                integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==,
+            }
+>>>>>>> Stashed changes
 
     function-bind@1.1.2:
         resolution:
@@ -1285,6 +2026,7 @@ packages:
                 integrity: sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==,
             }
 
+<<<<<<< Updated upstream
     function.prototype.name@1.1.8:
         resolution:
             {
@@ -1296,6 +2038,12 @@ packages:
         resolution:
             {
                 integrity: sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==,
+=======
+    functional-red-black-tree@1.0.1:
+        resolution:
+            {
+                integrity: sha512-dsKNQNdj6xA3T+QlADDA7mOSlX0qiMINjn0cgr+eGHGsbSHzTabcIogz2+p/iqP1Xs6EP/sS2SbqH+brGTbq0g==,
+>>>>>>> Stashed changes
             }
 
     gaxios@5.1.3:
@@ -1303,27 +2051,54 @@ packages:
             {
                 integrity: sha512-95hVgBRgEIRQQQHIbnxBXeHbW4TqFk4ZDJW7wmVtvYar72FdhRIo1UGOLS2eRAKCPEdPBWu+M7+A33D9CdX9rA==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=12" }
+=======
+        engines: { node: '>=12' }
+
+    gaxios@6.7.1:
+        resolution:
+            {
+                integrity: sha512-LDODD4TMYx7XXdpwxAVRAIAuB0bzv0s+ywFonY46k126qzQHT9ygyoa9tncmOiQmmDrik65UYsEkv3lbfqQ3yQ==,
+            }
+        engines: { node: '>=14' }
+>>>>>>> Stashed changes
 
     gcp-metadata@5.3.0:
         resolution:
             {
                 integrity: sha512-FNTkdNEnBdlqF2oatizolQqNANMrcqJt6AAYt99B3y1aLLC8Hc5IOBb+ZnnzllodEEf6xMBp6wRcBbc16fa65w==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=12" }
+=======
+        engines: { node: '>=12' }
+
+    gcp-metadata@6.1.1:
+        resolution:
+            {
+                integrity: sha512-a4tiq7E0/5fTjxPAaH4jpjkSv/uCaU2p5KC6HVGrvl0cDjA8iBZv4vv1gyzlmK0ZUKqwpOyQMKzZQe3lTit77A==,
+            }
+        engines: { node: '>=14' }
+>>>>>>> Stashed changes
 
     get-intrinsic@1.3.0:
         resolution:
             {
                 integrity: sha512-9fSjSaos/fRIVIp+xSJlE6lfwhES7LNtKaCBIamHsjr2na1BiABJPo0mOjjz8GJDURarmCPGqaiVg5mfjb98CQ==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">= 0.4" }
+=======
+        engines: { node: '>= 0.4' }
+>>>>>>> Stashed changes
 
     get-proto@1.0.1:
         resolution:
             {
                 integrity: sha512-sTSfBjoXBp89JvIKIefqw7U2CCebsc74kiY6awiGogKtoSGbgjYE/G/+l9sF3MWFPNc9IcoOC4ODfKHfxFmp0g==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">= 0.4" }
 
     get-symbol-description@1.1.0:
@@ -1332,19 +2107,27 @@ packages:
                 integrity: sha512-w9UMqWwJxHNOvoNzSJ2oPF5wvYcvP7jUvYzhp67yEhTi17ZDBBC1z9pTdGuzjD+EFIqLSYRweZjqfiPzQ06Ebg==,
             }
         engines: { node: ">= 0.4" }
+=======
+        engines: { node: '>= 0.4' }
+>>>>>>> Stashed changes
 
     glob-parent@5.1.2:
         resolution:
             {
                 integrity: sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">= 6" }
+=======
+        engines: { node: '>= 6' }
+>>>>>>> Stashed changes
 
     glob-parent@6.0.2:
         resolution:
             {
                 integrity: sha512-XxwI8EOhVQgWp6iDL+3b0r86f4d6AX6zSU55HfB4ydCEuXLXc5FcYeOu+nnGftS4TEju/11rt4KJPTMgbfmv4A==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=10.13.0" }
 
     globals@14.0.0:
@@ -1367,20 +2150,66 @@ packages:
                 integrity: sha512-DpLKbNU4WylpxJykQujfCcwYWiV/Jhm50Goo0wrVILAv5jOr9d+H+UR3PhSCD2rCCEIg0uc+G+muBTwD54JhDQ==,
             }
         engines: { node: ">= 0.4" }
+=======
+        engines: { node: '>=10.13.0' }
+
+    glob@7.2.3:
+        resolution:
+            {
+                integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==,
+            }
+        deprecated: Glob versions prior to v9 are no longer supported
+
+    globals@13.24.0:
+        resolution:
+            {
+                integrity: sha512-AhO5QUcj8llrbG09iWhPU2B204J1xnPeL8kQmVorSsy+Sjj1sk8gIyh6cUocGmH4L0UuhAJy+hJMRA4mgA4mFQ==,
+            }
+        engines: { node: '>=8' }
+
+    globby@11.1.0:
+        resolution:
+            {
+                integrity: sha512-jhIXaOzy1sb8IyocaruWSn1TjmnBVs8Ayhcy83rmxNJ8q2uWKCAj3CnJY+KpGSXCueAPc0i05kVvVKtP1t9S3g==,
+            }
+        engines: { node: '>=10' }
+>>>>>>> Stashed changes
 
     google-auth-library@8.9.0:
         resolution:
             {
                 integrity: sha512-f7aQCJODJFmYWN6PeNKzgvy9LI2tYmXnzpNDHEjG5sDNPgGb2FXQyTBnXeSH+PAtpKESFD+LmHw3Ox3mN7e1Fg==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=12" }
+=======
+        engines: { node: '>=12' }
+
+    google-auth-library@9.15.1:
+        resolution:
+            {
+                integrity: sha512-Jb6Z0+nvECVz+2lzSMt9u98UsoakXxA2HGHMCxh+so3n90XgYWkq5dur19JAJV7ONiJY22yBTyJB1TSkvPq9Ng==,
+            }
+        engines: { node: '>=14' }
+
+    google-logging-utils@0.0.2:
+        resolution:
+            {
+                integrity: sha512-NEgUnEcBiP5HrPzufUkBzJOD/Sxsco3rLNo1F1TNf7ieU8ryUzBhqba8r756CjLX7rn3fHl6iLEwPYuqpoKgQQ==,
+            }
+        engines: { node: '>=14' }
+>>>>>>> Stashed changes
 
     google-p12-pem@4.0.1:
         resolution:
             {
                 integrity: sha512-WPkN4yGtz05WZ5EhtlxNDWPhC4JIic6G8ePitwUWy4l+XPVYec+a0j0Ts47PDtW59y3RwAhUd9/h9ZZ63px6RQ==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=12.0.0" }
+=======
+        engines: { node: '>=12.0.0' }
+>>>>>>> Stashed changes
         deprecated: Package is no longer maintained
         hasBin: true
 
@@ -1389,21 +2218,39 @@ packages:
             {
                 integrity: sha512-m4ErxGE8unR1z0VajT6AYk3s6a9gIMM6EkDZfkPnES8joeOlEtFEJeF8IyZkb0tjPXkktUfYrE4b3Li1DNyOwA==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=12.0.0" }
+=======
+        engines: { node: '>=12.0.0' }
+>>>>>>> Stashed changes
 
     googleapis@105.0.0:
         resolution:
             {
                 integrity: sha512-wH/jU/6QpqwsjTKj4vfKZz97ne7xT7BBbKwzQEwnbsG8iH9Seyw19P+AuLJcxNNrmgblwLqfr3LORg4Okat1BQ==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=12.0.0" }
+=======
+        engines: { node: '>=12.0.0' }
+>>>>>>> Stashed changes
 
     gopd@1.2.0:
         resolution:
             {
                 integrity: sha512-ZUKRh6/kUFoAiTAtTYPZJ3hw9wNxx+BIBOijnlG9PnrJsCcSjs1wyyD6vJpaYtgnzDrKYRSqf3OO6Rfa93xsRg==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">= 0.4" }
+=======
+        engines: { node: '>= 0.4' }
+
+    graceful-fs@4.2.11:
+        resolution:
+            {
+                integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==,
+            }
+>>>>>>> Stashed changes
 
     graphemer@1.4.0:
         resolution:
@@ -1416,6 +2263,7 @@ packages:
             {
                 integrity: sha512-4ccGpzz7YAr7lxrT2neugmXQ3hP9ho2gcaityLVkiUecAiwiy60Ii8gRbZeOsXV19fYaRjgBSshs8kXw+NKCPQ==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=12.0.0" }
 
     has-bigints@1.1.0:
@@ -1424,12 +2272,23 @@ packages:
                 integrity: sha512-R3pbpkcIqv2Pm3dUwgjclDRVmWpTJW2DcMzcIhEXEx1oh/CEMObMm3KLmRJOdvhM7o4uQBnwr8pzRK2sJWIqfg==,
             }
         engines: { node: ">= 0.4" }
+=======
+        engines: { node: '>=12.0.0' }
+
+    gtoken@7.1.0:
+        resolution:
+            {
+                integrity: sha512-pCcEwRi+TKpMlxAQObHDQ56KawURgyAf6jtIY046fJ5tIv3zDe/LEIubckAO8fj6JnAxLdmWkUfNyulQ2iKdEw==,
+            }
+        engines: { node: '>=14.0.0' }
+>>>>>>> Stashed changes
 
     has-flag@4.0.0:
         resolution:
             {
                 integrity: sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=8" }
 
     has-property-descriptors@1.0.2:
@@ -1444,40 +2303,67 @@ packages:
                 integrity: sha512-KIL7eQPfHQRC8+XluaIw7BHUwwqL19bQn4hzNgdr+1wXoU0KKj6rufu47lhY7KbJR2C6T6+PfyN0Ea7wkSS+qQ==,
             }
         engines: { node: ">= 0.4" }
+=======
+        engines: { node: '>=8' }
+>>>>>>> Stashed changes
 
     has-symbols@1.1.0:
         resolution:
             {
                 integrity: sha512-1cDNdwJ2Jaohmb3sg4OmKaMBwuC48sYni5HUw2DvsC8LjGTLK9h+eb1X6RyuOHe4hT0ULCW68iomhjUoKUqlPQ==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">= 0.4" }
+=======
+        engines: { node: '>= 0.4' }
+>>>>>>> Stashed changes
 
     has-tostringtag@1.0.2:
         resolution:
             {
                 integrity: sha512-NqADB8VjPFLM2V0VvHUewwwsw0ZWBaIdgo+ieHtK3hasLz4qeCRjYcqfB6AQrBggRKppKF8L52/VqdVsO47Dlw==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">= 0.4" }
+=======
+        engines: { node: '>= 0.4' }
+>>>>>>> Stashed changes
 
     hasown@2.0.2:
         resolution:
             {
                 integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">= 0.4" }
+=======
+        engines: { node: '>= 0.4' }
+>>>>>>> Stashed changes
 
     https-proxy-agent@5.0.1:
         resolution:
             {
                 integrity: sha512-dFcAjpTQFgoLMzC2VwU+C/CbS7uRL0lWmxDITmqm7C+7F0Odmj6s9l6alZc6AELXhrnggM2CeWSXHGOdX2YtwA==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">= 6" }
+=======
+        engines: { node: '>= 6' }
+
+    https-proxy-agent@7.0.6:
+        resolution:
+            {
+                integrity: sha512-vK9P5/iUfdl95AI+JVyUuIcVtd4ofvtrOr3HNtM2yxC9bnMbEdp3x01OhQNnjb8IJYi38VlTE3mBXwcfvywuSw==,
+            }
+        engines: { node: '>= 14' }
+>>>>>>> Stashed changes
 
     ignore@5.3.2:
         resolution:
             {
                 integrity: sha512-hsBTNUqQTDwkWtcdYI2i06Y/nUBEsNEDJKjWdigLvegy8kDuJAS8uRlpkkcQpyEXL0Z/pjDy5HBmMjRCJ2gq+g==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">= 4" }
 
     ignore@7.0.5:
@@ -1486,6 +2372,9 @@ packages:
                 integrity: sha512-Hs59xBNfUIunMFgWAbGX5cq6893IbWg4KnrjbYwX3tx0ztorVgTDA6B2sxf8ejHJ4wz8BqGUMYlnzNBer5NvGg==,
             }
         engines: { node: ">= 4" }
+=======
+        engines: { node: '>= 4' }
+>>>>>>> Stashed changes
 
     immediate@3.0.6:
         resolution:
@@ -1498,13 +2387,18 @@ packages:
             {
                 integrity: sha512-TR3KfrTZTYLPB6jUjfx6MF9WcWrHL9su5TObK4ZkYgBdWKPOFoSoQIdEuTuR82pmtxH2spWG9h6etwfr1pLBqQ==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=6" }
+=======
+        engines: { node: '>=6' }
+>>>>>>> Stashed changes
 
     imurmurhash@0.1.4:
         resolution:
             {
                 integrity: sha512-JmXMZ6wuvDmLiHEml9ykzqO6lwFbof0GG4IkcGaENdCRDDmMVnny7s5HsIgHCbaq0w2MyPhDqkhTUgS2LU2PHA==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=0.8.19" }
 
     internal-slot@1.1.0:
@@ -1569,13 +2463,33 @@ packages:
                 integrity: sha512-PwwhEakHVKTdRNVOw+/Gyh0+MzlCl4R6qKvkhuvLtPMggI1WAHt9sOwZxQLSGpUaDnrdyDsomoRgNnCfKNSXXg==,
             }
         engines: { node: ">= 0.4" }
+=======
+        engines: { node: '>=0.8.19' }
+
+    inflight@1.0.6:
+        resolution:
+            {
+                integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==,
+            }
+        deprecated: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+
+    inherits@2.0.4:
+        resolution:
+            {
+                integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==,
+            }
+>>>>>>> Stashed changes
 
     is-docker@2.2.1:
         resolution:
             {
                 integrity: sha512-F+i2BKsFrH66iaUFc0woD8sLy8getkwTwtOBjvs56Cx4CgJDeKQeqfz8wAYiSb8JOprWhHH5p77PbmYCvvUuXQ==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=8" }
+=======
+        engines: { node: '>=8' }
+>>>>>>> Stashed changes
         hasBin: true
 
     is-extglob@2.1.1:
@@ -1583,6 +2497,7 @@ packages:
             {
                 integrity: sha512-SbKbANkN603Vi4jEZv49LeVJMn4yGwsbzZworEoyEiutsN3nJYdbO36zfhGJ6QEDpOZIFkDtnq5JRxmvl3jsoQ==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=0.10.0" }
 
     is-finalizationregistry@1.1.1:
@@ -1598,12 +2513,16 @@ packages:
                 integrity: sha512-nPUB5km40q9e8UfN/Zc24eLlzdSf9OfKByBw9CIdw4H1giPMeA0OIJvbchsCu4npfI2QcMVBsGEBHKZ7wLTWmQ==,
             }
         engines: { node: ">= 0.4" }
+=======
+        engines: { node: '>=0.10.0' }
+>>>>>>> Stashed changes
 
     is-glob@4.0.3:
         resolution:
             {
                 integrity: sha512-xelSayHH36ZgE7ZWhli7pW34hNbNl8Ojv5KVmkJD4hBdD3th8Tfk9vYasLM+mXWOZhFkgZfxhLSnrwRr4elSSg==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=0.10.0" }
 
     is-map@2.0.3:
@@ -1626,12 +2545,16 @@ packages:
                 integrity: sha512-lZhclumE1G6VYD8VHe35wFaIif+CTy5SJIi5+3y4psDgWu4wPDoBhF8NxUOinEc7pHgiTsT6MaBb92rKhhD+Xw==,
             }
         engines: { node: ">= 0.4" }
+=======
+        engines: { node: '>=0.10.0' }
+>>>>>>> Stashed changes
 
     is-number@7.0.0:
         resolution:
             {
                 integrity: sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=0.12.0" }
 
     is-regex@1.2.1:
@@ -1654,12 +2577,23 @@ packages:
                 integrity: sha512-ISWac8drv4ZGfwKl5slpHG9OwPNty4jOWPRIhBpxOoD+hqITiwuipOQ2bNthAzwA3B4fIjO4Nln74N0S9byq8A==,
             }
         engines: { node: ">= 0.4" }
+=======
+        engines: { node: '>=0.12.0' }
+
+    is-path-inside@3.0.3:
+        resolution:
+            {
+                integrity: sha512-Fd4gABb+ycGAmKou8eMftCupSir5lRxqf4aD/vd0cD2qc4HL07OjCeuHMr8Ro4CoMaeCKDB0/ECBOVWjTwUvPQ==,
+            }
+        engines: { node: '>=8' }
+>>>>>>> Stashed changes
 
     is-stream@2.0.1:
         resolution:
             {
                 integrity: sha512-hFoiJiTl63nn+kstHGBtewWSKnQLpyb155KHheA1l39uvtO9nWIop1p3udqPcUd/xbF1VLMO4n7OI6p7RbngDg==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=8" }
 
     is-string@1.1.1:
@@ -1703,12 +2637,16 @@ packages:
                 integrity: sha512-mfcwb6IzQyOKTs84CQMrOwW4gQcaTOAWJ0zzJCl2WSPDrWk/OzDaImWFH3djXhb24g4eudZfLRozAvPGw4d9hQ==,
             }
         engines: { node: ">= 0.4" }
+=======
+        engines: { node: '>=8' }
+>>>>>>> Stashed changes
 
     is-wsl@2.2.0:
         resolution:
             {
                 integrity: sha512-fKzAra0rGJUUBwGBgNkHZuToZcn+TtXHpeCgmkMJMMYx1sQDYaCSyjJBSCa2nH1DGm7s3n1oBnohoVTBaN7Lww==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=8" }
 
     isarray@2.0.5:
@@ -1716,6 +2654,9 @@ packages:
             {
                 integrity: sha512-xHjhDr3cNBK0BzdUJSPXZntQUx/mwMS5Rw4A7lPJ90XGAO6ISP/ePDNuo0vhqOZU+UD5JoodwCAAoZQd3FeAKw==,
             }
+=======
+        engines: { node: '>=8' }
+>>>>>>> Stashed changes
 
     isexe@2.0.0:
         resolution:
@@ -1723,6 +2664,7 @@ packages:
                 integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==,
             }
 
+<<<<<<< Updated upstream
     iterator.prototype@1.1.5:
         resolution:
             {
@@ -1736,6 +2678,8 @@ packages:
                 integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==,
             }
 
+=======
+>>>>>>> Stashed changes
     js-yaml@4.1.0:
         resolution:
             {
@@ -1767,6 +2711,7 @@ packages:
                 integrity: sha512-Bdboy+l7tA3OGW6FjyFHWkP5LuByj1Tk33Ljyq0axyzdk9//JSi2u3fP1QSmd1KNwq6VOKYGlAu87CisVir6Pw==,
             }
 
+<<<<<<< Updated upstream
     jsx-ast-utils@3.3.5:
         resolution:
             {
@@ -1774,6 +2719,8 @@ packages:
             }
         engines: { node: ">=4.0" }
 
+=======
+>>>>>>> Stashed changes
     jwa@2.0.1:
         resolution:
             {
@@ -1797,7 +2744,11 @@ packages:
             {
                 integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">= 0.8.0" }
+=======
+        engines: { node: '>= 0.8.0' }
+>>>>>>> Stashed changes
 
     lie@3.1.1:
         resolution:
@@ -1816,7 +2767,11 @@ packages:
             {
                 integrity: sha512-iPZK6eYjbxRu3uB4/WZ3EsEIMJFMqAoopl3R+zuq0UjcAm/MO6KCweDgPfP3elTztoKP3KtnVHxTn2NHBSDVUw==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=10" }
+=======
+        engines: { node: '>=10' }
+>>>>>>> Stashed changes
 
     lodash.merge@4.6.2:
         resolution:
@@ -1824,6 +2779,7 @@ packages:
                 integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==,
             }
 
+<<<<<<< Updated upstream
     loose-envify@1.4.0:
         resolution:
             {
@@ -1831,24 +2787,39 @@ packages:
             }
         hasBin: true
 
+=======
+>>>>>>> Stashed changes
     lru-cache@6.0.0:
         resolution:
             {
                 integrity: sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=10" }
+=======
+        engines: { node: '>=10' }
+>>>>>>> Stashed changes
 
     luxon@3.6.1:
         resolution:
             {
                 integrity: sha512-tJLxrKJhO2ukZ5z0gyjY1zPh3Rh88Ej9P7jNrZiHMUXHae1yvI2imgOZtL1TO8TW6biMMKfTtAOoEJANgtWBMQ==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=12" }
 
     make-error@1.3.6:
         resolution:
             {
                 integrity: sha512-s8UhlNe7vPKomQhC1qFelMokr/Sc3AgNbso3n74mVPA5LTZwkB9NlXf4XPamLxJE8h0gh73rM94xvwRT2CVInw==,
+=======
+        engines: { node: '>=12' }
+
+    magic-string@0.30.17:
+        resolution:
+            {
+                integrity: sha512-sNPKHvyjVf7gyjwS4xGTaW/mCnF8wnjtifKBEhxfZ7E/S8tQ0rssrwGNn6q8JH/ohItJfSQp9mBtQYuTlH5QnA==,
+>>>>>>> Stashed changes
             }
 
     math-intrinsics@1.1.0:
@@ -1856,35 +2827,62 @@ packages:
             {
                 integrity: sha512-/IXtbwEk5HTPyEwyKX6hGkYXxM9nbj64B+ilVJnC/R6B0pH5G4V3b0pVbL7DBj4tkhBAppbQUlf6F6Xl9LHu1g==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">= 0.4" }
+=======
+        engines: { node: '>= 0.4' }
+>>>>>>> Stashed changes
 
     merge2@1.4.1:
         resolution:
             {
                 integrity: sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">= 8" }
+=======
+        engines: { node: '>= 8' }
+>>>>>>> Stashed changes
 
     micromatch@4.0.8:
         resolution:
             {
                 integrity: sha512-PXwfBhYu0hBCPw8Dn0E+WDYb7af3dSLVWKi3HGv84IdF4TyFoC0ysxFd0Goxw7nSv4T/PzEJQxsYsEiFCKo2BA==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=8.6" }
+=======
+        engines: { node: '>=8.6' }
+>>>>>>> Stashed changes
 
     mime-db@1.52.0:
         resolution:
             {
                 integrity: sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">= 0.6" }
+=======
+        engines: { node: '>= 0.6' }
+>>>>>>> Stashed changes
 
     mime-types@2.1.35:
         resolution:
             {
                 integrity: sha512-ZDY+bPm5zTTF+YpCrAU9nK0UgICYPT0QtT1NZWFv4s++TNkcgVaT0g6+4R2uI4MjQjzysHB1zxuWL50hzaeXiw==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">= 0.6" }
+=======
+        engines: { node: '>= 0.6' }
+
+    min-indent@1.0.1:
+        resolution:
+            {
+                integrity: sha512-I9jwMn07Sy/IwOj3zVkVik2JTvgpaykDZEigL6Rx6N9LbMywwUSMtxET+7lVoDLLd3O3IXwJwvuuns8UB/HeAg==,
+            }
+        engines: { node: '>=4' }
+>>>>>>> Stashed changes
 
     minimatch@3.1.2:
         resolution:
@@ -1892,12 +2890,27 @@ packages:
                 integrity: sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==,
             }
 
+<<<<<<< Updated upstream
     minimatch@9.0.5:
         resolution:
             {
                 integrity: sha512-G6T0ZX48xgozx7587koeX9Ys2NYy6Gmv//P89sEte9V9whIapMNF4idKxnW2QtCcLiTWlb/wfCabAtAFWhhBow==,
             }
         engines: { node: ">=16 || 14 >=14.17" }
+=======
+    minimist@1.2.8:
+        resolution:
+            {
+                integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==,
+            }
+
+    mkdirp@0.5.6:
+        resolution:
+            {
+                integrity: sha512-FP+p8RB8OWpF3YZBCrP5gtADmtXApB5AMLn+vdyA+PyxCjrCs00mjyUozssO33cwDeT3wNGdLxJ5M//YqtHAJw==,
+            }
+        hasBin: true
+>>>>>>> Stashed changes
 
     moment@2.29.4:
         resolution:
@@ -1934,6 +2947,7 @@ packages:
             {
                 integrity: sha512-dPEtOeMvF9VMcYV/1Wb8CPoVAXtp6MKMlcbAt4ddqmGqUJ6fQZFXkNZNkNlfevtNkGtaSoXf/vNNNSvgrdXwtA==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">= 6.13.0" }
 
     object-assign@4.1.1:
@@ -1942,12 +2956,16 @@ packages:
                 integrity: sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==,
             }
         engines: { node: ">=0.10.0" }
+=======
+        engines: { node: '>= 6.13.0' }
+>>>>>>> Stashed changes
 
     object-inspect@1.13.4:
         resolution:
             {
                 integrity: sha512-W67iLl4J2EXEGTbfeHCffrjDfitvLANg0UlX3wFUUSTx92KXRFegMHUVgSqE+wvhAbi4WqjGg9czysTV2Epbew==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">= 0.4" }
 
     object-keys@1.1.1:
@@ -1984,6 +3002,9 @@ packages:
                 integrity: sha512-gXah6aZrcUxjWg2zR2MwouP2eHlCBzdV4pygudehaKXSGW4v2AsRQUK+lwwXhii6KFZcunEnmSUoYp5CXibxtA==,
             }
         engines: { node: ">= 0.4" }
+=======
+        engines: { node: '>= 0.4' }
+>>>>>>> Stashed changes
 
     obsidian-calendar-ui@0.3.12:
         resolution:
@@ -2010,8 +3031,13 @@ packages:
                 integrity: sha512-h4bWwNFAGRXlMlMAzdEiIM2ppTGlrh7uGOJS6w4gClrsjc+ei/3YAtU2VdFUlCiPuTHpY4aBpFJJW75S1Tl/JA==,
             }
         peerDependencies:
+<<<<<<< Updated upstream
             "@codemirror/state": ^6.0.0
             "@codemirror/view": ^6.0.0
+=======
+            '@codemirror/state': ^6.0.0
+            '@codemirror/view': ^6.0.0
+>>>>>>> Stashed changes
 
     obsidian@https://codeload.github.com/obsidianmd/obsidian-api/tar.gz/103ff76a0712a02dd0da28646b5a6b0ba6686d66:
         resolution:
@@ -2020,21 +3046,37 @@ packages:
             }
         version: 1.8.7
         peerDependencies:
+<<<<<<< Updated upstream
             "@codemirror/state": ^6.0.0
             "@codemirror/view": ^6.0.0
+=======
+            '@codemirror/state': ^6.0.0
+            '@codemirror/view': ^6.0.0
+
+    once@1.4.0:
+        resolution:
+            {
+                integrity: sha512-lNaJgI+2Q5URQBkccEKHTQOPaXdUxnZZElQTZY0MFUAuaEqe1E+Nyvgdz/aIyNi6Z9MzO5dv1H8n58/GELp3+w==,
+            }
+>>>>>>> Stashed changes
 
     open@7.4.2:
         resolution:
             {
                 integrity: sha512-MVHddDVweXZF3awtlAS+6pgKLlm/JgxZ90+/NBurBoQctVOOB/zDdVjcyPzQ+0laDGbsWgrRkflI65sQeOgT9Q==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=8" }
+=======
+        engines: { node: '>=8' }
+>>>>>>> Stashed changes
 
     optionator@0.9.4:
         resolution:
             {
                 integrity: sha512-6IpQ7mKUxRcZNLIObR0hz7lxsapSSIYNZJwXPGeF0mTVqGKFIXj1DQcMoT22S3ROcLyY/rz0PWaWZ9ayWmad9g==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">= 0.8.0" }
 
     own-keys@1.0.1:
@@ -2043,20 +3085,31 @@ packages:
                 integrity: sha512-qFOyK5PjiWZd+QQIh+1jhdb9LpxTF0qs7Pm8o5QHYZ0M3vKqSqzsZaEB6oWlxZ+q2sJBMI/Ktgd2N5ZwQoRHfg==,
             }
         engines: { node: ">= 0.4" }
+=======
+        engines: { node: '>= 0.8.0' }
+>>>>>>> Stashed changes
 
     p-limit@3.1.0:
         resolution:
             {
                 integrity: sha512-TYOanM3wGwNGsZN2cVTYPArw454xnXj5qmWF1bEoAc4+cU/ol7GVh7odevjp1FNHduHc3KZMcFduxU5Xc6uJRQ==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=10" }
+=======
+        engines: { node: '>=10' }
+>>>>>>> Stashed changes
 
     p-locate@5.0.0:
         resolution:
             {
                 integrity: sha512-LaNjtRWUBY++zB5nE/NwcaoMylSPk+S+ZHNB1TzdbMJMny6dynpAGt7X/tl/QYq3TIeE6nxHppbo2LGymrG5Pw==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=10" }
+=======
+        engines: { node: '>=10' }
+>>>>>>> Stashed changes
 
     papaparse@5.5.3:
         resolution:
@@ -2069,7 +3122,11 @@ packages:
             {
                 integrity: sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=6" }
+=======
+        engines: { node: '>=6' }
+>>>>>>> Stashed changes
 
     parsimmon@1.18.1:
         resolution:
@@ -2082,13 +3139,25 @@ packages:
             {
                 integrity: sha512-ak9Qy5Q7jYb2Wwcey5Fpvg2KoAc/ZIhLSLOSBmRmygPsGwkVVt0fZa0qrtMz+m6tJTAHfZQ8FnmB4MG4LWy7/w==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=8" }
+=======
+        engines: { node: '>=8' }
+
+    path-is-absolute@1.0.1:
+        resolution:
+            {
+                integrity: sha512-AVbw3UJ2e9bq64vSaS9Am0fje1Pa8pbGqTTsmXfaIiMpnr5DlDhfJOuLj9Sf95ZPVDAUerDfEk88MPmPe7UCQg==,
+            }
+        engines: { node: '>=0.10.0' }
+>>>>>>> Stashed changes
 
     path-key@3.1.1:
         resolution:
             {
                 integrity: sha512-ojmeN0qd+y0jszEtoY48r0Peq5dwMEkIlCOu6Q5f41lfkswXuKtYrhgoTpLnyIcHm24Uhqx+5Tqm2InSwLhE6Q==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=8" }
 
     path-parse@1.0.7:
@@ -2096,12 +3165,23 @@ packages:
             {
                 integrity: sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==,
             }
+=======
+        engines: { node: '>=8' }
+
+    path-type@4.0.0:
+        resolution:
+            {
+                integrity: sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==,
+            }
+        engines: { node: '>=8' }
+>>>>>>> Stashed changes
 
     picomatch@2.3.1:
         resolution:
             {
                 integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=8.6" }
 
     possible-typed-array-names@1.1.0:
@@ -2110,6 +3190,9 @@ packages:
                 integrity: sha512-/+5VFTchJDoVj3bhoqi6UeymcD00DAwb1nJwamzPvHEszJ4FpF6SNNbUbOS8yI56qHzdV8eK0qEfOSiodkTdxg==,
             }
         engines: { node: ">= 0.4" }
+=======
+        engines: { node: '>=8.6' }
+>>>>>>> Stashed changes
 
     preact@10.26.7:
         resolution:
@@ -2122,6 +3205,7 @@ packages:
             {
                 integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">= 0.8.0" }
 
     prettier@3.5.3:
@@ -2137,6 +3221,9 @@ packages:
             {
                 integrity: sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==,
             }
+=======
+        engines: { node: '>= 0.8.0' }
+>>>>>>> Stashed changes
 
     proxy-from-env@1.1.0:
         resolution:
@@ -2149,14 +3236,22 @@ packages:
             {
                 integrity: sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=6" }
+=======
+        engines: { node: '>=6' }
+>>>>>>> Stashed changes
 
     qs@6.14.0:
         resolution:
             {
                 integrity: sha512-YWWTjgABSKcvs/nWBi9PycY/JiPJqOD4JA6o9Sej2AtvSGarXxKC3OQSk4pAarbdQlKAh5D4FCQkJNkW+GAn3w==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=0.6" }
+=======
+        engines: { node: '>=0.6' }
+>>>>>>> Stashed changes
 
     queue-microtask@1.2.3:
         resolution:
@@ -2164,6 +3259,7 @@ packages:
                 integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==,
             }
 
+<<<<<<< Updated upstream
     react-dom@19.1.0:
         resolution:
             {
@@ -2198,6 +3294,14 @@ packages:
                 integrity: sha512-dYqgNSZbDwkaJ2ceRd9ojCGjBq+mOm9LmtXnAnEGyHhN/5R7iDW2TRw3h+o/jCFxus3P2LfWIIiwowAjANm7IA==,
             }
         engines: { node: ">= 0.4" }
+=======
+    regexpp@3.2.0:
+        resolution:
+            {
+                integrity: sha512-pq2bWo9mVD43nbts2wGv17XLiNLya+GklZ8kaDLV2Z08gDCsGpnKn9BFMepvWuHCbyVvY7J5o5+BVvoQbmlJLg==,
+            }
+        engines: { node: '>=8' }
+>>>>>>> Stashed changes
 
     remove-markdown@0.5.5:
         resolution:
@@ -2210,6 +3314,7 @@ packages:
             {
                 integrity: sha512-pb/MYmXstAkysRFx8piNI1tGFNQIFA3vkE3Gq4EuA1dF6gHp/+vgZqsCGJapvy8N3Q+4o7FwvquPJcnZ7RYy4g==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=4" }
 
     resolve@2.0.0-next.5:
@@ -2218,13 +3323,36 @@ packages:
                 integrity: sha512-U7WjGVG9sH8tvjW5SmGbQuui75FiyjAX72HX15DwBBwF9dNiQZRQAg9nnPhYy+TUnE0+VcrttuvNI8oSxZcocA==,
             }
         hasBin: true
+=======
+        engines: { node: '>=4' }
+>>>>>>> Stashed changes
 
     reusify@1.1.0:
         resolution:
             {
                 integrity: sha512-g6QUff04oZpHs0eG5p83rFLhHeV00ug/Yf9nZM6fLeUrPguBTkTQOdpAWWspMh55TZfVQDPaN3NQJfbVRAxdIw==,
             }
+<<<<<<< Updated upstream
         engines: { iojs: ">=1.0.0", node: ">=0.10.0" }
+=======
+        engines: { iojs: '>=1.0.0', node: '>=0.10.0' }
+
+    rimraf@2.7.1:
+        resolution:
+            {
+                integrity: sha512-uWjbaKIK3T1OSVptzX7Nl6PvQ3qAGtKEtVRjRuazjfL3Bx5eI409VZSqgND+4UNnmzLVdPj9FqFJNPqBZFve4w==,
+            }
+        deprecated: Rimraf versions prior to v4 are no longer supported
+        hasBin: true
+
+    rimraf@3.0.2:
+        resolution:
+            {
+                integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==,
+            }
+        deprecated: Rimraf versions prior to v4 are no longer supported
+        hasBin: true
+>>>>>>> Stashed changes
 
     run-parallel@1.2.0:
         resolution:
@@ -2238,6 +3366,7 @@ packages:
                 integrity: sha512-dhKf903U/PQZY6boNNtAGdWbG85WAbjT/1xYoZIC7FAY0yWapOBQVsVrDl58W86//e1VpMNBtRV4MaXfdMySFA==,
             }
 
+<<<<<<< Updated upstream
     safe-array-concat@1.1.3:
         resolution:
             {
@@ -2245,12 +3374,15 @@ packages:
             }
         engines: { node: ">=0.4" }
 
+=======
+>>>>>>> Stashed changes
     safe-buffer@5.2.1:
         resolution:
             {
                 integrity: sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==,
             }
 
+<<<<<<< Updated upstream
     safe-push-apply@1.0.0:
         resolution:
             {
@@ -2277,13 +3409,24 @@ packages:
                 integrity: sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==,
             }
         hasBin: true
+=======
+    sander@0.5.1:
+        resolution:
+            {
+                integrity: sha512-3lVqBir7WuKDHGrKRDn/1Ye3kwpXaDOMsiRP1wd6wpZW56gJhsbp5RqQpA6JG/P+pkXizygnr1dKR8vzWaVsfA==,
+            }
+>>>>>>> Stashed changes
 
     semver@7.7.2:
         resolution:
             {
                 integrity: sha512-RF0Fw+rO5AMf9MAyaRXI4AV0Ulj5lMHqVxxdSgiVbixSCXoEmmX/jk0CuJw4+3SqroYO9VoUh+HcuJivvtJemA==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=10" }
+=======
+        engines: { node: '>=10' }
+>>>>>>> Stashed changes
         hasBin: true
 
     server-destroy@1.0.1:
@@ -2292,6 +3435,7 @@ packages:
                 integrity: sha512-rb+9B5YBIEzYcD6x2VKidaa+cqYBJQKnU4oe4E3ANwRRN56yk/ua1YCJT1n21NTS8w6CcOclAKNP3PhdCXKYtQ==,
             }
 
+<<<<<<< Updated upstream
     set-function-length@1.2.2:
         resolution:
             {
@@ -2313,46 +3457,69 @@ packages:
             }
         engines: { node: ">= 0.4" }
 
+=======
+>>>>>>> Stashed changes
     shebang-command@2.0.0:
         resolution:
             {
                 integrity: sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=8" }
+=======
+        engines: { node: '>=8' }
+>>>>>>> Stashed changes
 
     shebang-regex@3.0.0:
         resolution:
             {
                 integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=8" }
+=======
+        engines: { node: '>=8' }
+>>>>>>> Stashed changes
 
     side-channel-list@1.0.0:
         resolution:
             {
                 integrity: sha512-FCLHtRD/gnpCiCHEiJLOwdmFP+wzCmDEkc9y7NsYxeF4u7Btsn1ZuwgwJGxImImHicJArLP4R0yX4c2KCrMrTA==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">= 0.4" }
+=======
+        engines: { node: '>= 0.4' }
+>>>>>>> Stashed changes
 
     side-channel-map@1.0.1:
         resolution:
             {
                 integrity: sha512-VCjCNfgMsby3tTdo02nbjtM/ewra6jPHmpThenkTYh8pG9ucZ/1P8So4u4FGBek/BjpOVsDCMoLA/iuBKIFXRA==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">= 0.4" }
+=======
+        engines: { node: '>= 0.4' }
+>>>>>>> Stashed changes
 
     side-channel-weakmap@1.0.2:
         resolution:
             {
                 integrity: sha512-WPS/HvHQTYnHisLo9McqBHOJk2FkHO/tlpvldyrnem4aeQp4hai3gythswg6p01oSoTl58rcpiFAjF2br2Ak2A==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">= 0.4" }
+=======
+        engines: { node: '>= 0.4' }
+>>>>>>> Stashed changes
 
     side-channel@1.1.0:
         resolution:
             {
                 integrity: sha512-ZX99e6tRweoUXqR+VBrslhda51Nh5MTQwou5tnUDgbtyM0dBgmhEDtWGP/xbKn6hqfPRHujUNwz5fy/wbbhnpw==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">= 0.4" }
 
     stop-iteration-iterator@1.1.0:
@@ -2395,13 +3562,48 @@ packages:
                 integrity: sha512-UXSH262CSZY1tfu3G3Secr6uGLCFVPMhIqHjlgCUtCCcgihYc/xKs9djMTMUOb2j1mVSeU8EU6NWc/iQKU6Gfg==,
             }
         engines: { node: ">= 0.4" }
+=======
+        engines: { node: '>= 0.4' }
+
+    slash@3.0.0:
+        resolution:
+            {
+                integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==,
+            }
+        engines: { node: '>=8' }
+
+    sorcery@0.11.1:
+        resolution:
+            {
+                integrity: sha512-o7npfeJE6wi6J9l0/5LKshFzZ2rMatRiCDwYeDQaOzqdzRJwALhX7mk/A/ecg6wjMu7wdZbmXfD2S/vpOg0bdQ==,
+            }
+        hasBin: true
+
+    strip-ansi@6.0.1:
+        resolution:
+            {
+                integrity: sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==,
+            }
+        engines: { node: '>=8' }
+
+    strip-indent@3.0.0:
+        resolution:
+            {
+                integrity: sha512-laJTa3Jb+VQpaC6DseHhF7dXVqHTfJPCRDaEbid/drOhgitgYku/letMUqOXFoWV0zIIUbjpdH2t+tYj4bQMRQ==,
+            }
+        engines: { node: '>=8' }
+>>>>>>> Stashed changes
 
     strip-json-comments@3.1.1:
         resolution:
             {
                 integrity: sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=8" }
+=======
+        engines: { node: '>=8' }
+>>>>>>> Stashed changes
 
     style-mod@4.1.2:
         resolution:
@@ -2414,6 +3616,7 @@ packages:
             {
                 integrity: sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=8" }
 
     supports-preserve-symlinks-flag@1.0.0:
@@ -2422,20 +3625,84 @@ packages:
                 integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==,
             }
         engines: { node: ">= 0.4" }
+=======
+        engines: { node: '>=8' }
+
+    svelte-preprocess@5.1.4:
+        resolution:
+            {
+                integrity: sha512-IvnbQ6D6Ao3Gg6ftiM5tdbR6aAETwjhHV+UKGf5bHGYR69RQvF1ho0JKPcbUON4vy4R7zom13jPjgdOWCQ5hDA==,
+            }
+        engines: { node: '>= 16.0.0' }
+        peerDependencies:
+            '@babel/core': ^7.10.2
+            coffeescript: ^2.5.1
+            less: ^3.11.3 || ^4.0.0
+            postcss: ^7 || ^8
+            postcss-load-config: ^2.1.0 || ^3.0.0 || ^4.0.0 || ^5.0.0
+            pug: ^3.0.0
+            sass: ^1.26.8
+            stylus: ^0.55.0
+            sugarss: ^2.0.0 || ^3.0.0 || ^4.0.0
+            svelte: ^3.23.0 || ^4.0.0-next.0 || ^4.0.0 || ^5.0.0-next.0
+            typescript: '>=3.9.5 || ^4.0.0 || ^5.0.0'
+        peerDependenciesMeta:
+            '@babel/core':
+                optional: true
+            coffeescript:
+                optional: true
+            less:
+                optional: true
+            postcss:
+                optional: true
+            postcss-load-config:
+                optional: true
+            pug:
+                optional: true
+            sass:
+                optional: true
+            stylus:
+                optional: true
+            sugarss:
+                optional: true
+            typescript:
+                optional: true
+>>>>>>> Stashed changes
 
     svelte@3.35.0:
         resolution:
             {
                 integrity: sha512-gknlZkR2sXheu/X+B7dDImwANVvK1R0QGQLd8CNIfxxGPeXBmePnxfzb6fWwTQRsYQG7lYkZXvpXJvxvpsoB7g==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">= 8" }
+=======
+        engines: { node: '>= 8' }
+
+    svelte@3.59.2:
+        resolution:
+            {
+                integrity: sha512-vzSyuGr3eEoAtT/A6bmajosJZIUWySzY2CzB3w2pgPvnkUjGqlDnsNnA0PMO+mMAhuyMul6C2uuZzY6ELSkzyA==,
+            }
+        engines: { node: '>= 8' }
+
+    text-table@0.2.0:
+        resolution:
+            {
+                integrity: sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==,
+            }
+>>>>>>> Stashed changes
 
     to-regex-range@5.0.1:
         resolution:
             {
                 integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=8.0" }
+=======
+        engines: { node: '>=8.0' }
+>>>>>>> Stashed changes
 
     tr46@0.0.3:
         resolution:
@@ -2443,6 +3710,7 @@ packages:
                 integrity: sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==,
             }
 
+<<<<<<< Updated upstream
     ts-api-utils@2.1.0:
         resolution:
             {
@@ -2468,6 +3736,13 @@ packages:
                 optional: true
             "@swc/wasm":
                 optional: true
+=======
+    tslib@1.14.1:
+        resolution:
+            {
+                integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==,
+            }
+>>>>>>> Stashed changes
 
     tslib@2.1.0:
         resolution:
@@ -2475,17 +3750,36 @@ packages:
                 integrity: sha512-hcVC3wYEziELGGmEEXue7D75zbwIIVUMWAVbHItGPx0ziyXxrOMQx4rQEVEV45Ut/1IotuEvwqPopzIOkDMf0A==,
             }
 
+<<<<<<< Updated upstream
     tslib@2.8.1:
         resolution:
             {
                 integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==,
             }
 
+=======
+    tslib@2.4.0:
+        resolution:
+            {
+                integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==,
+            }
+
+    tsutils@3.21.0:
+        resolution:
+            {
+                integrity: sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==,
+            }
+        engines: { node: '>= 6' }
+        peerDependencies:
+            typescript: '>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta'
+
+>>>>>>> Stashed changes
     type-check@0.4.0:
         resolution:
             {
                 integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">= 0.8.0" }
 
     typed-array-buffer@1.0.3:
@@ -2541,6 +3835,25 @@ packages:
             }
         engines: { node: ">= 0.4" }
 
+=======
+        engines: { node: '>= 0.8.0' }
+
+    type-fest@0.20.2:
+        resolution:
+            {
+                integrity: sha512-Ne+eE4r0/iWnpAxD852z3A+N0Bt5RN//NjJwRd2VFHEmrywxf5vsZlh4R6lixl6B+wz/8d+maTSAkN1FIkI3LQ==,
+            }
+        engines: { node: '>=10' }
+
+    typescript@4.7.4:
+        resolution:
+            {
+                integrity: sha512-C0WQT0gezHuw6AdY1M2jxUO83Rjf0HP7Sk1DtXj6j1EwkQNZrHAg2XPWlq62oqEhYvONq5pkC2Y9oPljWToLmQ==,
+            }
+        engines: { node: '>=4.2.0' }
+        hasBin: true
+
+>>>>>>> Stashed changes
     uri-js@4.4.1:
         resolution:
             {
@@ -2560,12 +3873,15 @@ packages:
             }
         hasBin: true
 
+<<<<<<< Updated upstream
     v8-compile-cache-lib@3.0.1:
         resolution:
             {
                 integrity: sha512-wa7YjyUGfNZngI/vtK0UHAN+lgDCxBPCylVXGp0zu59Fz5aiGtNXaq3DhIov063MorB+VfufLh3JlF2KdTK3xg==,
             }
 
+=======
+>>>>>>> Stashed changes
     w3c-keyname@2.2.8:
         resolution:
             {
@@ -2584,6 +3900,7 @@ packages:
                 integrity: sha512-saE57nupxk6v3HY35+jzBwYa0rKSy0XR8JSxZPwgLr7ys0IBzhGviA1/TUGJLmSVqs8pb9AnvICXEuOHLprYTw==,
             }
 
+<<<<<<< Updated upstream
     which-boxed-primitive@1.1.1:
         resolution:
             {
@@ -2612,12 +3929,18 @@ packages:
             }
         engines: { node: ">= 0.4" }
 
+=======
+>>>>>>> Stashed changes
     which@2.0.2:
         resolution:
             {
                 integrity: sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">= 8" }
+=======
+        engines: { node: '>= 8' }
+>>>>>>> Stashed changes
         hasBin: true
 
     word-wrap@1.2.5:
@@ -2625,7 +3948,17 @@ packages:
             {
                 integrity: sha512-BN22B5eaMMI9UMtjrGd5g5eCYPpCPDUy0FJXbYsaT5zYxjFOckS53SQDE3pWkVoWpHXVb3BrYcEN4Twa55B5cA==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=0.10.0" }
+=======
+        engines: { node: '>=0.10.0' }
+
+    wrappy@1.0.2:
+        resolution:
+            {
+                integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==,
+            }
+>>>>>>> Stashed changes
 
     yallist@4.0.0:
         resolution:
@@ -2638,6 +3971,7 @@ packages:
             {
                 integrity: sha512-4lLa/EcQCB0cJkyts+FpIRx5G/llPxfP6VQU5KByHEhLxY3IJCH0f0Hy1MHI8sClTvsIb8qwRJ6R/ZdlDJ/leQ==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">= 14.6" }
         hasBin: true
 
@@ -2648,11 +3982,17 @@ packages:
             }
         engines: { node: ">=6" }
 
+=======
+        engines: { node: '>= 14.6' }
+        hasBin: true
+
+>>>>>>> Stashed changes
     yocto-queue@0.1.0:
         resolution:
             {
                 integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==,
             }
+<<<<<<< Updated upstream
         engines: { node: ">=10" }
 
 snapshots:
@@ -2755,10 +4095,137 @@ snapshots:
     "@eslint/config-array@0.20.1":
         dependencies:
             "@eslint/object-schema": 2.1.6
+=======
+        engines: { node: '>=10' }
+
+snapshots:
+    '@codemirror/language@https://codeload.github.com/lishid/cm-language/tar.gz/6c1c5f5b677f6f6503d1ca2ec47f62f6406cda67':
+        dependencies:
+            '@codemirror/state': 6.5.2
+            '@codemirror/view': 6.36.8
+            '@lezer/common': 1.2.3
+            '@lezer/highlight': 1.2.1
+            '@lezer/lr': 1.4.2
+            style-mod: 4.1.2
+
+    '@codemirror/state@6.5.2':
+        dependencies:
+            '@marijn/find-cluster-break': 1.0.2
+
+    '@codemirror/view@6.36.8':
+        dependencies:
+            '@codemirror/state': 6.5.2
+            style-mod: 4.1.2
+            w3c-keyname: 2.2.8
+
+    '@esbuild/android-arm64@0.17.3':
+        optional: true
+
+    '@esbuild/android-arm@0.17.3':
+        optional: true
+
+    '@esbuild/android-x64@0.17.3':
+        optional: true
+
+    '@esbuild/darwin-arm64@0.17.3':
+        optional: true
+
+    '@esbuild/darwin-x64@0.17.3':
+        optional: true
+
+    '@esbuild/freebsd-arm64@0.17.3':
+        optional: true
+
+    '@esbuild/freebsd-x64@0.17.3':
+        optional: true
+
+    '@esbuild/linux-arm64@0.17.3':
+        optional: true
+
+    '@esbuild/linux-arm@0.17.3':
+        optional: true
+
+    '@esbuild/linux-ia32@0.17.3':
+        optional: true
+
+    '@esbuild/linux-loong64@0.17.3':
+        optional: true
+
+    '@esbuild/linux-mips64el@0.17.3':
+        optional: true
+
+    '@esbuild/linux-ppc64@0.17.3':
+        optional: true
+
+    '@esbuild/linux-riscv64@0.17.3':
+        optional: true
+
+    '@esbuild/linux-s390x@0.17.3':
+        optional: true
+
+    '@esbuild/linux-x64@0.17.3':
+        optional: true
+
+    '@esbuild/netbsd-x64@0.17.3':
+        optional: true
+
+    '@esbuild/openbsd-x64@0.17.3':
+        optional: true
+
+    '@esbuild/sunos-x64@0.17.3':
+        optional: true
+
+    '@esbuild/win32-arm64@0.17.3':
+        optional: true
+
+    '@esbuild/win32-ia32@0.17.3':
+        optional: true
+
+    '@esbuild/win32-x64@0.17.3':
+        optional: true
+
+    '@eslint-community/eslint-utils@4.7.0(eslint@8.57.1)':
+        dependencies:
+            eslint: 8.57.1
+            eslint-visitor-keys: 3.4.3
+
+    '@eslint-community/regexpp@4.12.1': {}
+
+    '@eslint/eslintrc@2.1.4':
+        dependencies:
+            ajv: 6.12.6
+            debug: 4.4.1
+            espree: 9.6.1
+            globals: 13.24.0
+            ignore: 5.3.2
+            import-fresh: 3.3.1
+            js-yaml: 4.1.0
+            minimatch: 3.1.2
+            strip-json-comments: 3.1.1
+        transitivePeerDependencies:
+            - supports-color
+
+    '@eslint/js@8.57.1': {}
+
+    '@google-cloud/local-auth@2.1.1':
+        dependencies:
+            arrify: 2.0.1
+            google-auth-library: 8.9.0
+            open: 7.4.2
+            server-destroy: 1.0.1
+        transitivePeerDependencies:
+            - encoding
+            - supports-color
+
+    '@humanwhocodes/config-array@0.13.0':
+        dependencies:
+            '@humanwhocodes/object-schema': 2.0.3
+>>>>>>> Stashed changes
             debug: 4.4.1
             minimatch: 3.1.2
         transitivePeerDependencies:
             - supports-color
+<<<<<<< Updated upstream
 
     "@eslint/config-helpers@0.2.3": {}
 
@@ -3944,6 +5411,810 @@ snapshots:
             "@codemirror/language": https://codeload.github.com/lishid/cm-language/tar.gz/6c1c5f5b677f6f6503d1ca2ec47f62f6406cda67
             "@codemirror/state": 6.5.2
             "@codemirror/view": 6.36.8
+=======
+
+    '@humanwhocodes/module-importer@1.0.1': {}
+
+    '@humanwhocodes/object-schema@2.0.3': {}
+
+    '@jridgewell/sourcemap-codec@1.5.0': {}
+
+    '@lezer/common@1.2.3': {}
+
+    '@lezer/highlight@1.2.1':
+        dependencies:
+            '@lezer/common': 1.2.3
+
+    '@lezer/lr@1.4.2':
+        dependencies:
+            '@lezer/common': 1.2.3
+
+    '@marijn/find-cluster-break@1.0.2': {}
+
+    '@nodelib/fs.scandir@2.1.5':
+        dependencies:
+            '@nodelib/fs.stat': 2.0.5
+            run-parallel: 1.2.0
+
+    '@nodelib/fs.stat@2.0.5': {}
+
+    '@nodelib/fs.walk@1.2.8':
+        dependencies:
+            '@nodelib/fs.scandir': 2.1.5
+            fastq: 1.19.1
+
+    '@tsconfig/svelte@3.0.0': {}
+
+    '@types/codemirror@5.60.8':
+        dependencies:
+            '@types/tern': 0.23.9
+
+    '@types/estree@1.0.7': {}
+
+    '@types/json-schema@7.0.15': {}
+
+    '@types/node@16.18.126': {}
+
+    '@types/pug@2.0.10': {}
+
+    '@types/tern@0.23.9':
+        dependencies:
+            '@types/estree': 1.0.7
+
+    '@typescript-eslint/eslint-plugin@5.29.0(@typescript-eslint/parser@5.29.0(eslint@8.57.1)(typescript@4.7.4))(eslint@8.57.1)(typescript@4.7.4)':
+        dependencies:
+            '@typescript-eslint/parser': 5.29.0(eslint@8.57.1)(typescript@4.7.4)
+            '@typescript-eslint/scope-manager': 5.29.0
+            '@typescript-eslint/type-utils': 5.29.0(eslint@8.57.1)(typescript@4.7.4)
+            '@typescript-eslint/utils': 5.29.0(eslint@8.57.1)(typescript@4.7.4)
+            debug: 4.4.1
+            eslint: 8.57.1
+            functional-red-black-tree: 1.0.1
+            ignore: 5.3.2
+            regexpp: 3.2.0
+            semver: 7.7.2
+            tsutils: 3.21.0(typescript@4.7.4)
+        optionalDependencies:
+            typescript: 4.7.4
+        transitivePeerDependencies:
+            - supports-color
+
+    '@typescript-eslint/parser@5.29.0(eslint@8.57.1)(typescript@4.7.4)':
+        dependencies:
+            '@typescript-eslint/scope-manager': 5.29.0
+            '@typescript-eslint/types': 5.29.0
+            '@typescript-eslint/typescript-estree': 5.29.0(typescript@4.7.4)
+            debug: 4.4.1
+            eslint: 8.57.1
+        optionalDependencies:
+            typescript: 4.7.4
+        transitivePeerDependencies:
+            - supports-color
+
+    '@typescript-eslint/scope-manager@5.29.0':
+        dependencies:
+            '@typescript-eslint/types': 5.29.0
+            '@typescript-eslint/visitor-keys': 5.29.0
+
+    '@typescript-eslint/type-utils@5.29.0(eslint@8.57.1)(typescript@4.7.4)':
+        dependencies:
+            '@typescript-eslint/utils': 5.29.0(eslint@8.57.1)(typescript@4.7.4)
+            debug: 4.4.1
+            eslint: 8.57.1
+            tsutils: 3.21.0(typescript@4.7.4)
+        optionalDependencies:
+            typescript: 4.7.4
+        transitivePeerDependencies:
+            - supports-color
+
+    '@typescript-eslint/types@5.29.0': {}
+
+    '@typescript-eslint/typescript-estree@5.29.0(typescript@4.7.4)':
+        dependencies:
+            '@typescript-eslint/types': 5.29.0
+            '@typescript-eslint/visitor-keys': 5.29.0
+            debug: 4.4.1
+            globby: 11.1.0
+            is-glob: 4.0.3
+            semver: 7.7.2
+            tsutils: 3.21.0(typescript@4.7.4)
+        optionalDependencies:
+            typescript: 4.7.4
+        transitivePeerDependencies:
+            - supports-color
+
+    '@typescript-eslint/utils@5.29.0(eslint@8.57.1)(typescript@4.7.4)':
+        dependencies:
+            '@types/json-schema': 7.0.15
+            '@typescript-eslint/scope-manager': 5.29.0
+            '@typescript-eslint/types': 5.29.0
+            '@typescript-eslint/typescript-estree': 5.29.0(typescript@4.7.4)
+            eslint: 8.57.1
+            eslint-scope: 5.1.1
+            eslint-utils: 3.0.0(eslint@8.57.1)
+        transitivePeerDependencies:
+            - supports-color
+            - typescript
+
+    '@typescript-eslint/visitor-keys@5.29.0':
+        dependencies:
+            '@typescript-eslint/types': 5.29.0
+            eslint-visitor-keys: 3.4.3
+
+    '@ungap/structured-clone@1.3.0': {}
+
+    acorn-jsx@5.3.2(acorn@8.14.1):
+        dependencies:
+            acorn: 8.14.1
+
+    acorn@8.14.1: {}
+
+    agent-base@6.0.2:
+        dependencies:
+            debug: 4.4.1
+        transitivePeerDependencies:
+            - supports-color
+
+    agent-base@7.1.3: {}
+
+    ajv@6.12.6:
+        dependencies:
+            fast-deep-equal: 3.1.3
+            fast-json-stable-stringify: 2.1.0
+            json-schema-traverse: 0.4.1
+            uri-js: 4.4.1
+
+    ansi-regex@5.0.1: {}
+
+    ansi-styles@4.3.0:
+        dependencies:
+            color-convert: 2.0.1
+
+    argparse@2.0.1: {}
+
+    array-union@2.1.0: {}
+
+    arrify@2.0.1: {}
+
+    async-mutex@0.4.1:
+        dependencies:
+            tslib: 2.4.0
+
+    asynckit@0.4.0: {}
+
+    axios@1.9.0:
+        dependencies:
+            follow-redirects: 1.15.9
+            form-data: 4.0.2
+            proxy-from-env: 1.1.0
+        transitivePeerDependencies:
+            - debug
+
+    balanced-match@1.0.2: {}
+
+    base64-js@1.5.1: {}
+
+    bignumber.js@9.3.0: {}
+
+    brace-expansion@1.1.11:
+        dependencies:
+            balanced-match: 1.0.2
+            concat-map: 0.0.1
+
+    braces@3.0.3:
+        dependencies:
+            fill-range: 7.1.1
+
+    buffer-crc32@1.0.0: {}
+
+    buffer-equal-constant-time@1.0.1: {}
+
+    builtin-modules@3.3.0: {}
+
+    call-bind-apply-helpers@1.0.2:
+        dependencies:
+            es-errors: 1.3.0
+            function-bind: 1.1.2
+
+    call-bound@1.0.4:
+        dependencies:
+            call-bind-apply-helpers: 1.0.2
+            get-intrinsic: 1.3.0
+
+    callsites@3.1.0: {}
+
+    chalk@4.1.2:
+        dependencies:
+            ansi-styles: 4.3.0
+            supports-color: 7.2.0
+
+    color-convert@2.0.1:
+        dependencies:
+            color-name: 1.1.4
+
+    color-name@1.1.4: {}
+
+    combined-stream@1.0.8:
+        dependencies:
+            delayed-stream: 1.0.0
+
+    concat-map@0.0.1: {}
+
+    cross-spawn@7.0.6:
+        dependencies:
+            path-key: 3.1.1
+            shebang-command: 2.0.0
+            which: 2.0.2
+
+    dayjs@1.11.13: {}
+
+    debug@4.4.1:
+        dependencies:
+            ms: 2.1.3
+
+    deep-is@0.1.4: {}
+
+    delayed-stream@1.0.0: {}
+
+    detect-indent@6.1.0: {}
+
+    dir-glob@3.0.1:
+        dependencies:
+            path-type: 4.0.0
+
+    doctrine@3.0.0:
+        dependencies:
+            esutils: 2.0.3
+
+    dunder-proto@1.0.1:
+        dependencies:
+            call-bind-apply-helpers: 1.0.2
+            es-errors: 1.3.0
+            gopd: 1.2.0
+
+    ecdsa-sig-formatter@1.0.11:
+        dependencies:
+            safe-buffer: 5.2.1
+
+    emoji-regex@10.4.0: {}
+
+    es-define-property@1.0.1: {}
+
+    es-errors@1.3.0: {}
+
+    es-object-atoms@1.1.1:
+        dependencies:
+            es-errors: 1.3.0
+
+    es-set-tostringtag@2.1.0:
+        dependencies:
+            es-errors: 1.3.0
+            get-intrinsic: 1.3.0
+            has-tostringtag: 1.0.2
+            hasown: 2.0.2
+
+    es6-promise@3.3.1: {}
+
+    esbuild-svelte@0.7.4(esbuild@0.17.3)(svelte@3.59.2):
+        dependencies:
+            esbuild: 0.17.3
+            svelte: 3.59.2
+
+    esbuild@0.17.3:
+        optionalDependencies:
+            '@esbuild/android-arm': 0.17.3
+            '@esbuild/android-arm64': 0.17.3
+            '@esbuild/android-x64': 0.17.3
+            '@esbuild/darwin-arm64': 0.17.3
+            '@esbuild/darwin-x64': 0.17.3
+            '@esbuild/freebsd-arm64': 0.17.3
+            '@esbuild/freebsd-x64': 0.17.3
+            '@esbuild/linux-arm': 0.17.3
+            '@esbuild/linux-arm64': 0.17.3
+            '@esbuild/linux-ia32': 0.17.3
+            '@esbuild/linux-loong64': 0.17.3
+            '@esbuild/linux-mips64el': 0.17.3
+            '@esbuild/linux-ppc64': 0.17.3
+            '@esbuild/linux-riscv64': 0.17.3
+            '@esbuild/linux-s390x': 0.17.3
+            '@esbuild/linux-x64': 0.17.3
+            '@esbuild/netbsd-x64': 0.17.3
+            '@esbuild/openbsd-x64': 0.17.3
+            '@esbuild/sunos-x64': 0.17.3
+            '@esbuild/win32-arm64': 0.17.3
+            '@esbuild/win32-ia32': 0.17.3
+            '@esbuild/win32-x64': 0.17.3
+
+    escape-string-regexp@4.0.0: {}
+
+    eslint-scope@5.1.1:
+        dependencies:
+            esrecurse: 4.3.0
+            estraverse: 4.3.0
+
+    eslint-scope@7.2.2:
+        dependencies:
+            esrecurse: 4.3.0
+            estraverse: 5.3.0
+
+    eslint-utils@3.0.0(eslint@8.57.1):
+        dependencies:
+            eslint: 8.57.1
+            eslint-visitor-keys: 2.1.0
+
+    eslint-visitor-keys@2.1.0: {}
+
+    eslint-visitor-keys@3.4.3: {}
+
+    eslint@8.57.1:
+        dependencies:
+            '@eslint-community/eslint-utils': 4.7.0(eslint@8.57.1)
+            '@eslint-community/regexpp': 4.12.1
+            '@eslint/eslintrc': 2.1.4
+            '@eslint/js': 8.57.1
+            '@humanwhocodes/config-array': 0.13.0
+            '@humanwhocodes/module-importer': 1.0.1
+            '@nodelib/fs.walk': 1.2.8
+            '@ungap/structured-clone': 1.3.0
+            ajv: 6.12.6
+            chalk: 4.1.2
+            cross-spawn: 7.0.6
+            debug: 4.4.1
+            doctrine: 3.0.0
+            escape-string-regexp: 4.0.0
+            eslint-scope: 7.2.2
+            eslint-visitor-keys: 3.4.3
+            espree: 9.6.1
+            esquery: 1.6.0
+            esutils: 2.0.3
+            fast-deep-equal: 3.1.3
+            file-entry-cache: 6.0.1
+            find-up: 5.0.0
+            glob-parent: 6.0.2
+            globals: 13.24.0
+            graphemer: 1.4.0
+            ignore: 5.3.2
+            imurmurhash: 0.1.4
+            is-glob: 4.0.3
+            is-path-inside: 3.0.3
+            js-yaml: 4.1.0
+            json-stable-stringify-without-jsonify: 1.0.1
+            levn: 0.4.1
+            lodash.merge: 4.6.2
+            minimatch: 3.1.2
+            natural-compare: 1.4.0
+            optionator: 0.9.4
+            strip-ansi: 6.0.1
+            text-table: 0.2.0
+        transitivePeerDependencies:
+            - supports-color
+
+    espree@9.6.1:
+        dependencies:
+            acorn: 8.14.1
+            acorn-jsx: 5.3.2(acorn@8.14.1)
+            eslint-visitor-keys: 3.4.3
+
+    esquery@1.6.0:
+        dependencies:
+            estraverse: 5.3.0
+
+    esrecurse@4.3.0:
+        dependencies:
+            estraverse: 5.3.0
+
+    estraverse@4.3.0: {}
+
+    estraverse@5.3.0: {}
+
+    esutils@2.0.3: {}
+
+    extend@3.0.2: {}
+
+    fast-deep-equal@3.1.3: {}
+
+    fast-glob@3.3.3:
+        dependencies:
+            '@nodelib/fs.stat': 2.0.5
+            '@nodelib/fs.walk': 1.2.8
+            glob-parent: 5.1.2
+            merge2: 1.4.1
+            micromatch: 4.0.8
+
+    fast-json-stable-stringify@2.1.0: {}
+
+    fast-levenshtein@2.0.6: {}
+
+    fast-text-encoding@1.0.6: {}
+
+    fastq@1.19.1:
+        dependencies:
+            reusify: 1.1.0
+
+    file-entry-cache@6.0.1:
+        dependencies:
+            flat-cache: 3.2.0
+
+    fill-range@7.1.1:
+        dependencies:
+            to-regex-range: 5.0.1
+
+    find-up@5.0.0:
+        dependencies:
+            locate-path: 6.0.0
+            path-exists: 4.0.0
+
+    flat-cache@3.2.0:
+        dependencies:
+            flatted: 3.3.3
+            keyv: 4.5.4
+            rimraf: 3.0.2
+
+    flatted@3.3.3: {}
+
+    follow-redirects@1.15.9: {}
+
+    form-data@4.0.2:
+        dependencies:
+            asynckit: 0.4.0
+            combined-stream: 1.0.8
+            es-set-tostringtag: 2.1.0
+            mime-types: 2.1.35
+
+    fs.realpath@1.0.0: {}
+
+    function-bind@1.1.2: {}
+
+    functional-red-black-tree@1.0.1: {}
+
+    gaxios@5.1.3:
+        dependencies:
+            extend: 3.0.2
+            https-proxy-agent: 5.0.1
+            is-stream: 2.0.1
+            node-fetch: 2.7.0
+        transitivePeerDependencies:
+            - encoding
+            - supports-color
+
+    gaxios@6.7.1:
+        dependencies:
+            extend: 3.0.2
+            https-proxy-agent: 7.0.6
+            is-stream: 2.0.1
+            node-fetch: 2.7.0
+            uuid: 9.0.1
+        transitivePeerDependencies:
+            - encoding
+            - supports-color
+
+    gcp-metadata@5.3.0:
+        dependencies:
+            gaxios: 5.1.3
+            json-bigint: 1.0.0
+        transitivePeerDependencies:
+            - encoding
+            - supports-color
+
+    gcp-metadata@6.1.1:
+        dependencies:
+            gaxios: 6.7.1
+            google-logging-utils: 0.0.2
+            json-bigint: 1.0.0
+        transitivePeerDependencies:
+            - encoding
+            - supports-color
+
+    get-intrinsic@1.3.0:
+        dependencies:
+            call-bind-apply-helpers: 1.0.2
+            es-define-property: 1.0.1
+            es-errors: 1.3.0
+            es-object-atoms: 1.1.1
+            function-bind: 1.1.2
+            get-proto: 1.0.1
+            gopd: 1.2.0
+            has-symbols: 1.1.0
+            hasown: 2.0.2
+            math-intrinsics: 1.1.0
+
+    get-proto@1.0.1:
+        dependencies:
+            dunder-proto: 1.0.1
+            es-object-atoms: 1.1.1
+
+    glob-parent@5.1.2:
+        dependencies:
+            is-glob: 4.0.3
+
+    glob-parent@6.0.2:
+        dependencies:
+            is-glob: 4.0.3
+
+    glob@7.2.3:
+        dependencies:
+            fs.realpath: 1.0.0
+            inflight: 1.0.6
+            inherits: 2.0.4
+            minimatch: 3.1.2
+            once: 1.4.0
+            path-is-absolute: 1.0.1
+
+    globals@13.24.0:
+        dependencies:
+            type-fest: 0.20.2
+
+    globby@11.1.0:
+        dependencies:
+            array-union: 2.1.0
+            dir-glob: 3.0.1
+            fast-glob: 3.3.3
+            ignore: 5.3.2
+            merge2: 1.4.1
+            slash: 3.0.0
+
+    google-auth-library@8.9.0:
+        dependencies:
+            arrify: 2.0.1
+            base64-js: 1.5.1
+            ecdsa-sig-formatter: 1.0.11
+            fast-text-encoding: 1.0.6
+            gaxios: 5.1.3
+            gcp-metadata: 5.3.0
+            gtoken: 6.1.2
+            jws: 4.0.0
+            lru-cache: 6.0.0
+        transitivePeerDependencies:
+            - encoding
+            - supports-color
+
+    google-auth-library@9.15.1:
+        dependencies:
+            base64-js: 1.5.1
+            ecdsa-sig-formatter: 1.0.11
+            gaxios: 6.7.1
+            gcp-metadata: 6.1.1
+            gtoken: 7.1.0
+            jws: 4.0.0
+        transitivePeerDependencies:
+            - encoding
+            - supports-color
+
+    google-logging-utils@0.0.2: {}
+
+    google-p12-pem@4.0.1:
+        dependencies:
+            node-forge: 1.3.1
+
+    googleapis-common@6.0.4:
+        dependencies:
+            extend: 3.0.2
+            gaxios: 5.1.3
+            google-auth-library: 8.9.0
+            qs: 6.14.0
+            url-template: 2.0.8
+            uuid: 9.0.1
+        transitivePeerDependencies:
+            - encoding
+            - supports-color
+
+    googleapis@105.0.0:
+        dependencies:
+            google-auth-library: 8.9.0
+            googleapis-common: 6.0.4
+        transitivePeerDependencies:
+            - encoding
+            - supports-color
+
+    gopd@1.2.0: {}
+
+    graceful-fs@4.2.11: {}
+
+    graphemer@1.4.0: {}
+
+    gtoken@6.1.2:
+        dependencies:
+            gaxios: 5.1.3
+            google-p12-pem: 4.0.1
+            jws: 4.0.0
+        transitivePeerDependencies:
+            - encoding
+            - supports-color
+
+    gtoken@7.1.0:
+        dependencies:
+            gaxios: 6.7.1
+            jws: 4.0.0
+        transitivePeerDependencies:
+            - encoding
+            - supports-color
+
+    has-flag@4.0.0: {}
+
+    has-symbols@1.1.0: {}
+
+    has-tostringtag@1.0.2:
+        dependencies:
+            has-symbols: 1.1.0
+
+    hasown@2.0.2:
+        dependencies:
+            function-bind: 1.1.2
+
+    https-proxy-agent@5.0.1:
+        dependencies:
+            agent-base: 6.0.2
+            debug: 4.4.1
+        transitivePeerDependencies:
+            - supports-color
+
+    https-proxy-agent@7.0.6:
+        dependencies:
+            agent-base: 7.1.3
+            debug: 4.4.1
+        transitivePeerDependencies:
+            - supports-color
+
+    ignore@5.3.2: {}
+
+    immediate@3.0.6: {}
+
+    import-fresh@3.3.1:
+        dependencies:
+            parent-module: 1.0.1
+            resolve-from: 4.0.0
+
+    imurmurhash@0.1.4: {}
+
+    inflight@1.0.6:
+        dependencies:
+            once: 1.4.0
+            wrappy: 1.0.2
+
+    inherits@2.0.4: {}
+
+    is-docker@2.2.1: {}
+
+    is-extglob@2.1.1: {}
+
+    is-glob@4.0.3:
+        dependencies:
+            is-extglob: 2.1.1
+
+    is-number@7.0.0: {}
+
+    is-path-inside@3.0.3: {}
+
+    is-stream@2.0.1: {}
+
+    is-wsl@2.2.0:
+        dependencies:
+            is-docker: 2.2.1
+
+    isexe@2.0.0: {}
+
+    js-yaml@4.1.0:
+        dependencies:
+            argparse: 2.0.1
+
+    json-bigint@1.0.0:
+        dependencies:
+            bignumber.js: 9.3.0
+
+    json-buffer@3.0.1: {}
+
+    json-schema-traverse@0.4.1: {}
+
+    json-stable-stringify-without-jsonify@1.0.1: {}
+
+    jwa@2.0.1:
+        dependencies:
+            buffer-equal-constant-time: 1.0.1
+            ecdsa-sig-formatter: 1.0.11
+            safe-buffer: 5.2.1
+
+    jws@4.0.0:
+        dependencies:
+            jwa: 2.0.1
+            safe-buffer: 5.2.1
+
+    keyv@4.5.4:
+        dependencies:
+            json-buffer: 3.0.1
+
+    levn@0.4.1:
+        dependencies:
+            prelude-ls: 1.2.1
+            type-check: 0.4.0
+
+    lie@3.1.1:
+        dependencies:
+            immediate: 3.0.6
+
+    localforage@1.10.0:
+        dependencies:
+            lie: 3.1.1
+
+    locate-path@6.0.0:
+        dependencies:
+            p-locate: 5.0.0
+
+    lodash.merge@4.6.2: {}
+
+    lru-cache@6.0.0:
+        dependencies:
+            yallist: 4.0.0
+
+    luxon@3.6.1: {}
+
+    magic-string@0.30.17:
+        dependencies:
+            '@jridgewell/sourcemap-codec': 1.5.0
+
+    math-intrinsics@1.1.0: {}
+
+    merge2@1.4.1: {}
+
+    micromatch@4.0.8:
+        dependencies:
+            braces: 3.0.3
+            picomatch: 2.3.1
+
+    mime-db@1.52.0: {}
+
+    mime-types@2.1.35:
+        dependencies:
+            mime-db: 1.52.0
+
+    min-indent@1.0.1: {}
+
+    minimatch@3.1.2:
+        dependencies:
+            brace-expansion: 1.1.11
+
+    minimist@1.2.8: {}
+
+    mkdirp@0.5.6:
+        dependencies:
+            minimist: 1.2.8
+
+    moment@2.29.4: {}
+
+    ms@2.1.3: {}
+
+    natural-compare@1.4.0: {}
+
+    node-fetch@2.7.0:
+        dependencies:
+            whatwg-url: 5.0.0
+
+    node-forge@1.3.1: {}
+
+    object-inspect@1.13.4: {}
+
+    obsidian-calendar-ui@0.3.12(@codemirror/state@6.5.2)(@codemirror/view@6.36.8):
+        dependencies:
+            obsidian-daily-notes-interface: 0.8.4(@codemirror/state@6.5.2)(@codemirror/view@6.36.8)
+            svelte: 3.35.0
+            tslib: 2.1.0
+        transitivePeerDependencies:
+            - '@codemirror/state'
+            - '@codemirror/view'
+
+    obsidian-daily-notes-interface@0.8.4(@codemirror/state@6.5.2)(@codemirror/view@6.36.8):
+        dependencies:
+            obsidian: https://codeload.github.com/obsidianmd/obsidian-api/tar.gz/103ff76a0712a02dd0da28646b5a6b0ba6686d66(@codemirror/state@6.5.2)(@codemirror/view@6.36.8)
+            tslib: 2.1.0
+        transitivePeerDependencies:
+            - '@codemirror/state'
+            - '@codemirror/view'
+
+    obsidian-dataview@0.5.68:
+        dependencies:
+            '@codemirror/language': https://codeload.github.com/lishid/cm-language/tar.gz/6c1c5f5b677f6f6503d1ca2ec47f62f6406cda67
+            '@codemirror/state': 6.5.2
+            '@codemirror/view': 6.36.8
+>>>>>>> Stashed changes
             emoji-regex: 10.4.0
             localforage: 1.10.0
             luxon: 3.6.1
@@ -3955,18 +6226,36 @@ snapshots:
 
     obsidian@1.8.7(@codemirror/state@6.5.2)(@codemirror/view@6.36.8):
         dependencies:
+<<<<<<< Updated upstream
             "@codemirror/state": 6.5.2
             "@codemirror/view": 6.36.8
             "@types/codemirror": 5.60.8
+=======
+            '@codemirror/state': 6.5.2
+            '@codemirror/view': 6.36.8
+            '@types/codemirror': 5.60.8
+>>>>>>> Stashed changes
             moment: 2.29.4
 
     obsidian@https://codeload.github.com/obsidianmd/obsidian-api/tar.gz/103ff76a0712a02dd0da28646b5a6b0ba6686d66(@codemirror/state@6.5.2)(@codemirror/view@6.36.8):
         dependencies:
+<<<<<<< Updated upstream
             "@codemirror/state": 6.5.2
             "@codemirror/view": 6.36.8
             "@types/codemirror": 5.60.8
             moment: 2.29.4
 
+=======
+            '@codemirror/state': 6.5.2
+            '@codemirror/view': 6.36.8
+            '@types/codemirror': 5.60.8
+            moment: 2.29.4
+
+    once@1.4.0:
+        dependencies:
+            wrappy: 1.0.2
+
+>>>>>>> Stashed changes
     open@7.4.2:
         dependencies:
             is-docker: 2.2.1
@@ -3981,12 +6270,15 @@ snapshots:
             type-check: 0.4.0
             word-wrap: 1.2.5
 
+<<<<<<< Updated upstream
     own-keys@1.0.1:
         dependencies:
             get-intrinsic: 1.3.0
             object-keys: 1.1.1
             safe-push-apply: 1.0.0
 
+=======
+>>>>>>> Stashed changes
     p-limit@3.1.0:
         dependencies:
             yocto-queue: 0.1.0
@@ -4005,6 +6297,7 @@ snapshots:
 
     path-exists@4.0.0: {}
 
+<<<<<<< Updated upstream
     path-key@3.1.1: {}
 
     path-parse@1.0.7: {}
@@ -4013,10 +6306,21 @@ snapshots:
 
     possible-typed-array-names@1.1.0: {}
 
+=======
+    path-is-absolute@1.0.1: {}
+
+    path-key@3.1.1: {}
+
+    path-type@4.0.0: {}
+
+    picomatch@2.3.1: {}
+
+>>>>>>> Stashed changes
     preact@10.26.7: {}
 
     prelude-ls@1.2.1: {}
 
+<<<<<<< Updated upstream
     prettier@3.5.3: {}
 
     prop-types@15.8.1:
@@ -4025,6 +6329,8 @@ snapshots:
             object-assign: 4.1.1
             react-is: 16.13.1
 
+=======
+>>>>>>> Stashed changes
     proxy-from-env@1.1.0: {}
 
     punycode@2.3.1: {}
@@ -4035,6 +6341,7 @@ snapshots:
 
     queue-microtask@1.2.3: {}
 
+<<<<<<< Updated upstream
     react-dom@19.1.0(react@19.1.0):
         dependencies:
             react: 19.1.0
@@ -4063,11 +6370,15 @@ snapshots:
             get-proto: 1.0.1
             gopd: 1.2.0
             set-function-name: 2.0.2
+=======
+    regexpp@3.2.0: {}
+>>>>>>> Stashed changes
 
     remove-markdown@0.5.5: {}
 
     resolve-from@4.0.0: {}
 
+<<<<<<< Updated upstream
     resolve@2.0.0-next.5:
         dependencies:
             is-core-module: 2.16.1
@@ -4076,12 +6387,25 @@ snapshots:
 
     reusify@1.1.0: {}
 
+=======
+    reusify@1.1.0: {}
+
+    rimraf@2.7.1:
+        dependencies:
+            glob: 7.2.3
+
+    rimraf@3.0.2:
+        dependencies:
+            glob: 7.2.3
+
+>>>>>>> Stashed changes
     run-parallel@1.2.0:
         dependencies:
             queue-microtask: 1.2.3
 
     rxjs@7.8.2:
         dependencies:
+<<<<<<< Updated upstream
             tslib: 2.8.1
 
     safe-array-concat@1.1.3:
@@ -4108,11 +6432,24 @@ snapshots:
     scheduler@0.26.0: {}
 
     semver@6.3.1: {}
+=======
+            tslib: 2.4.0
+
+    safe-buffer@5.2.1: {}
+
+    sander@0.5.1:
+        dependencies:
+            es6-promise: 3.3.1
+            graceful-fs: 4.2.11
+            mkdirp: 0.5.6
+            rimraf: 2.7.1
+>>>>>>> Stashed changes
 
     semver@7.7.2: {}
 
     server-destroy@1.0.1: {}
 
+<<<<<<< Updated upstream
     set-function-length@1.2.2:
         dependencies:
             define-data-property: 1.1.4
@@ -4135,6 +6472,8 @@ snapshots:
             es-errors: 1.3.0
             es-object-atoms: 1.1.1
 
+=======
+>>>>>>> Stashed changes
     shebang-command@2.0.0:
         dependencies:
             shebang-regex: 3.0.0
@@ -4169,6 +6508,7 @@ snapshots:
             side-channel-map: 1.0.1
             side-channel-weakmap: 1.0.2
 
+<<<<<<< Updated upstream
     stop-iteration-iterator@1.1.0:
         dependencies:
             es-errors: 1.3.0
@@ -4217,6 +6557,24 @@ snapshots:
             call-bind: 1.0.8
             define-properties: 1.2.1
             es-object-atoms: 1.1.1
+=======
+    slash@3.0.0: {}
+
+    sorcery@0.11.1:
+        dependencies:
+            '@jridgewell/sourcemap-codec': 1.5.0
+            buffer-crc32: 1.0.0
+            minimist: 1.2.8
+            sander: 0.5.1
+
+    strip-ansi@6.0.1:
+        dependencies:
+            ansi-regex: 5.0.1
+
+    strip-indent@3.0.0:
+        dependencies:
+            min-indent: 1.0.1
+>>>>>>> Stashed changes
 
     strip-json-comments@3.1.1: {}
 
@@ -4226,16 +6584,37 @@ snapshots:
         dependencies:
             has-flag: 4.0.0
 
+<<<<<<< Updated upstream
     supports-preserve-symlinks-flag@1.0.0: {}
 
     svelte@3.35.0: {}
 
+=======
+    svelte-preprocess@5.1.4(svelte@3.59.2)(typescript@4.7.4):
+        dependencies:
+            '@types/pug': 2.0.10
+            detect-indent: 6.1.0
+            magic-string: 0.30.17
+            sorcery: 0.11.1
+            strip-indent: 3.0.0
+            svelte: 3.59.2
+        optionalDependencies:
+            typescript: 4.7.4
+
+    svelte@3.35.0: {}
+
+    svelte@3.59.2: {}
+
+    text-table@0.2.0: {}
+
+>>>>>>> Stashed changes
     to-regex-range@5.0.1:
         dependencies:
             is-number: 7.0.0
 
     tr46@0.0.3: {}
 
+<<<<<<< Updated upstream
     ts-api-utils@2.1.0(typescript@5.8.3):
         dependencies:
             typescript: 5.8.3
@@ -4261,11 +6640,24 @@ snapshots:
     tslib@2.1.0: {}
 
     tslib@2.8.1: {}
+=======
+    tslib@1.14.1: {}
+
+    tslib@2.1.0: {}
+
+    tslib@2.4.0: {}
+
+    tsutils@3.21.0(typescript@4.7.4):
+        dependencies:
+            tslib: 1.14.1
+            typescript: 4.7.4
+>>>>>>> Stashed changes
 
     type-check@0.4.0:
         dependencies:
             prelude-ls: 1.2.1
 
+<<<<<<< Updated upstream
     typed-array-buffer@1.0.3:
         dependencies:
             call-bound: 1.0.4
@@ -4317,6 +6709,11 @@ snapshots:
             has-bigints: 1.1.0
             has-symbols: 1.1.0
             which-boxed-primitive: 1.1.1
+=======
+    type-fest@0.20.2: {}
+
+    typescript@4.7.4: {}
+>>>>>>> Stashed changes
 
     uri-js@4.4.1:
         dependencies:
@@ -4326,8 +6723,11 @@ snapshots:
 
     uuid@9.0.1: {}
 
+<<<<<<< Updated upstream
     v8-compile-cache-lib@3.0.1: {}
 
+=======
+>>>>>>> Stashed changes
     w3c-keyname@2.2.8: {}
 
     webidl-conversions@3.0.1: {}
@@ -4337,6 +6737,7 @@ snapshots:
             tr46: 0.0.3
             webidl-conversions: 3.0.1
 
+<<<<<<< Updated upstream
     which-boxed-primitive@1.1.1:
         dependencies:
             is-bigint: 1.1.0
@@ -4378,16 +6779,26 @@ snapshots:
             gopd: 1.2.0
             has-tostringtag: 1.0.2
 
+=======
+>>>>>>> Stashed changes
     which@2.0.2:
         dependencies:
             isexe: 2.0.0
 
     word-wrap@1.2.5: {}
 
+<<<<<<< Updated upstream
+=======
+    wrappy@1.0.2: {}
+
+>>>>>>> Stashed changes
     yallist@4.0.0: {}
 
     yaml@2.8.0: {}
 
+<<<<<<< Updated upstream
     yn@3.1.1: {}
 
+=======
+>>>>>>> Stashed changes
     yocto-queue@0.1.0: {}

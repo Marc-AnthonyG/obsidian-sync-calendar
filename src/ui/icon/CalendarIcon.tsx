@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 export const CalendarIcon: React.FC = () => {
 	return (
@@ -14,5 +14,5 @@ export const CalendarIcon: React.FC = () => {
 				clipRule="evenodd"
 			/>
 		</svg>
-	);
-};
+	)
+}

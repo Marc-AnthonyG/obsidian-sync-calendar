@@ -1,14 +1,14 @@
-import React from "react";
-import { logger } from "src/util/Logger";
+import React from 'react'
+import { logger } from 'src/util/Logger'
 
 interface ErrorDisplayProps {
-	error: Error | null;
+	error: Error | null
 }
 
 const ErrorDisplay: React.FC<ErrorDisplayProps> = ({ error }) => {
-	logger.log("ErrorDisplay", `error=${error}`);
+	logger.log('ErrorDisplay', `error=${error}`)
 	if (!error) {
-		return null;
+		return null
 	}
 
 	return (
@@ -16,7 +16,7 @@ const ErrorDisplay: React.FC<ErrorDisplayProps> = ({ error }) => {
 			<p>Oh no, something went wrong!</p>
 			<pre>{error.toString()}</pre>
 		</div>
-	);
-};
+	)
+}
 
-export default ErrorDisplay;
+export default ErrorDisplay

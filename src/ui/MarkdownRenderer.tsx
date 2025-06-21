@@ -1,69 +1,80 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from 'react'
 import {
 	MarkdownRenderer as ObsidianMarkdownRenderer,
 	Component,
-} from "obsidian";
-import { contentStore } from "./ContentStore";
+} from 'obsidian'
+import { contentStore } from './ContentStore'
 
 interface MarkdownRendererProps {
-	eventId: string;
-	className?: string;
+	eventId: string
+	className?: string
 }
 
 const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
 	eventId,
 	className,
 }) => {
-	const containerRef = useRef<HTMLDivElement>(null);
+	const containerRef = useRef<HTMLDivElement>(null)
 	const [content, setContent] = useState<string>(
+<<<<<<< Updated upstream
 		() => contentStore.get(eventId) ?? "None",
 	);
+=======
+		() => contentStore.get(eventId) ?? 'None'
+	)
+>>>>>>> Stashed changes
 
 	useEffect(() => {
 		const renderMarkdown = async () => {
-			if (!containerRef.current) return;
-			containerRef.current.innerHTML = "";
+			if (!containerRef.current) return
+			containerRef.current.innerHTML = ''
 
 			await ObsidianMarkdownRenderer.renderMarkdown(
 				content,
 				containerRef.current,
+<<<<<<< Updated upstream
 				"",
 				new Component(),
 			);
+=======
+				'',
+				new Component()
+			)
+>>>>>>> Stashed changes
 
 			if (containerRef.current.childElementCount > 1) {
-				return;
+				return
 			}
-			const markdownContent = containerRef.current.querySelector("p");
+			const markdownContent = containerRef.current.querySelector('p')
 			if (markdownContent) {
-				markdownContent.parentElement?.removeChild(markdownContent);
-				containerRef.current.innerHTML = markdownContent.innerHTML;
+				markdownContent.parentElement?.removeChild(markdownContent)
+				containerRef.current.innerHTML = markdownContent.innerHTML
 			}
-		};
+		}
 
-		renderMarkdown();
-	}, [content]);
+		renderMarkdown()
+	}, [content])
 
 	useEffect(() => {
 		const unsubscribe = contentStore.subscribe(eventId, (newContent) => {
-			setContent(newContent);
-		});
+			setContent(newContent)
+		})
 
 		if (contentStore.has(eventId)) {
-			const currentContent = contentStore.get(eventId);
+			const currentContent = contentStore.get(eventId)
 			if (currentContent) {
-				setContent(currentContent);
+				setContent(currentContent)
 			}
 		} else {
-			setContent("None");
+			setContent('None')
 		}
 
 		return () => {
-			unsubscribe();
-		};
-	}, [eventId]);
+			unsubscribe()
+		}
+	}, [eventId])
 
-	return <div ref={containerRef} className={className} />;
-};
+	return <div ref={containerRef} className={className} />
+}
 
-export default MarkdownRenderer;
+export default MarkdownRenderer

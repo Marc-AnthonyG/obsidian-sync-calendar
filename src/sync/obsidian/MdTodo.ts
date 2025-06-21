@@ -1,9 +1,16 @@
+<<<<<<< Updated upstream
 import { type STask } from "obsidian-dataview";
 import type { Todo } from "src/sync/Todo";
 
 export type MdTodo = STask;
+=======
+import { type STask } from 'obsidian-dataview'
+import type { Todo } from 'src/sync/Todo'
 
-type Writeable<T> = { -readonly [P in keyof T]: T[P] };
+export type MdTodo = STask
+>>>>>>> Stashed changes
+
+type Writeable<T> = { -readonly [P in keyof T]: T[P] }
 
 /**
  * A subset of fields of {@link Todo} that can be parsed from the textual
@@ -14,6 +21,7 @@ type Writeable<T> = { -readonly [P in keyof T]: T[P] };
 export type TodoDetails = Writeable<
 	Pick<
 		Todo,
+<<<<<<< Updated upstream
 		| "blockId"
 		| "content"
 		| "tags"
@@ -23,3 +31,14 @@ export type TodoDetails = Writeable<
 		| "isAllDay"
 	>
 >;
+=======
+		| 'blockId'
+		| 'content'
+		| 'tags'
+		| 'startDateTime'
+		| 'dueDateTime'
+		| 'doneDateTime'
+		| 'isAllDay'
+	>
+>
+>>>>>>> Stashed changes

@@ -202,7 +202,11 @@ p.sync-calendar-setting-header-title {
 	margin: 0;
 	margin-top: 13.5px;
 	font-size: 1.3em;
+<<<<<<< Updated upstream
 	font-family: "Segoe UI Emoji", "Noto Color Emoji";
+=======
+	font-family: 'Segoe UI Emoji', 'Noto Color Emoji';
+>>>>>>> Stashed changes
 }
 
 p.sync-calendar-setting-header-description {
@@ -211,7 +215,11 @@ p.sync-calendar-setting-header-description {
 	margin-top: 2px;
 	margin-bottom: 2px;
 	font-size: 0.8em;
+<<<<<<< Updated upstream
 	font-family: "Segoe UI Emoji", "Noto Color Emoji";
+=======
+	font-family: 'Segoe UI Emoji', 'Noto Color Emoji';
+>>>>>>> Stashed changes
 }
 
 .todo-metadata {

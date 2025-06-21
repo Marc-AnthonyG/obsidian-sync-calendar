@@ -1,15 +1,15 @@
-import React from "react";
-import { logger } from "src/util/Logger";
+import React from 'react'
+import { logger } from 'src/util/Logger'
 
 interface RefreshSpinnerProps {
-	fetching: boolean;
+	fetching: boolean
 }
 
 export const RefreshSpinner: React.FC<RefreshSpinnerProps> = ({ fetching }) => {
-	logger.log("RefreshSpinner", `fetching=${fetching}`);
+	logger.log('RefreshSpinner', `fetching=${fetching}`)
 	return (
 		<svg
-			className={fetching ? "todo-list-refresh-spin" : ""}
+			className={fetching ? 'todo-list-refresh-spin' : ''}
 			width="20px"
 			height="20px"
 			viewBox="0 0 20 20"
@@ -22,5 +22,5 @@ export const RefreshSpinner: React.FC<RefreshSpinnerProps> = ({ fetching }) => {
 				clipRule="evenodd"
 			/>
 		</svg>
-	);
-};
+	)
+}

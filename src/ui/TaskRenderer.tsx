@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from "react";
-import MarkdownRenderer from "./MarkdownRenderer";
+import React, { useState, useEffect } from 'react'
+import MarkdownRenderer from './MarkdownRenderer'
 
-import { contentStore } from "./ContentStore";
+import { contentStore } from './ContentStore'
 
-import { InternalGoogleTodo, Todo } from "../sync/Todo";
-import type { SyncCalendarPluginSettings } from "../../main";
-import { logger } from "src/util/Logger";
-import moment from "moment";
-import { CalendarIcon } from "./icon/CalendarIcon";
+import { InternalGoogleTodo, Todo } from '../sync/Todo'
+import type { SyncCalendarPluginSettings } from '../../main'
+import { logger } from 'src/util/Logger'
+import moment from 'moment'
+import { CalendarIcon } from './icon/CalendarIcon'
 
 interface TaskRendererProps {
-	settings: SyncCalendarPluginSettings;
-	todo: InternalGoogleTodo;
-	patchTodoToDone: (todo: InternalGoogleTodo) => void;
+	settings: SyncCalendarPluginSettings
+	todo: InternalGoogleTodo
+	patchTodoToDone: (todo: InternalGoogleTodo) => void
 }
 
 const TaskRenderer: React.FC<TaskRendererProps> = ({
@@ -20,31 +20,31 @@ const TaskRenderer: React.FC<TaskRendererProps> = ({
 	todo,
 	patchTodoToDone,
 }) => {
-	logger.log("TaskRenderer", `todo=${todo}`);
-	const [disabled, setDisabled] = useState(false);
+	logger.log('TaskRenderer', `todo=${todo}`)
+	const [disabled, setDisabled] = useState(false)
 
 	useEffect(() => {
-		contentStore.set(todo.eventId, todo.content);
-	}, [todo]);
+		contentStore.set(todo.eventId, todo.content)
+	}, [todo])
 
 	function getPriorityClass(priority: null | undefined | string): string {
-		if (priority === null || priority === undefined || priority === " ") {
-			return "todo-list-p4";
+		if (priority === null || priority === undefined || priority === ' ') {
+			return 'todo-list-p4'
 		}
-		if (priority === "🔽") {
-			return "todo-list-p3";
+		if (priority === '🔽') {
+			return 'todo-list-p3'
 		}
-		if (priority === "🔼") {
-			return "todo-list-p2";
+		if (priority === '🔼') {
+			return 'todo-list-p2'
 		}
-		if (priority === "⏫") {
-			return "todo-list-p1";
+		if (priority === '⏫') {
+			return 'todo-list-p1'
 		}
-		return "todo-list-p4";
+		return 'todo-list-p4'
 	}
 
 	async function onClickTask(todo: InternalGoogleTodo) {
-		patchTodoToDone(todo);
+		patchTodoToDone(todo)
 	}
 
 	return (
@@ -52,7 +52,7 @@ const TaskRenderer: React.FC<TaskRendererProps> = ({
 			className={`
         todo-list-item
         has-time
-        ${todo.isOverdue() ? "todo-overdue" : ""}
+        ${todo.isOverdue() ? 'todo-overdue' : ''}
       `}
 		>
 			<div>
@@ -61,25 +61,25 @@ const TaskRenderer: React.FC<TaskRendererProps> = ({
 					className="todo-list-item-checkbox"
 					type="checkbox"
 					onClick={async () => {
-						setDisabled(true);
-						await onClickTask(todo);
+						setDisabled(true)
+						await onClickTask(todo)
 					}}
 				/>
 				<MarkdownRenderer
 					className="todo-list-todo-content"
-					eventId={todo.eventId ?? ""}
+					eventId={todo.eventId ?? ''}
 				/>
 			</div>
 			<div className="todo-metadata">
 				<div
 					className={`todo-date ${
-						todo.isOverdue() ? "todo-overdue" : ""
+						todo.isOverdue() ? 'todo-overdue' : ''
 					}`}
 				>
 					<CalendarIcon />
 					{todo.isAllDay
-						? moment(todo.startDateTime).format("YYYY-MM-DD")
-						: moment(todo.startDateTime).format("YYYY-MM-DD HH:mm")}
+						? moment(todo.startDateTime).format('YYYY-MM-DD')
+						: moment(todo.startDateTime).format('YYYY-MM-DD HH:mm')}
 				</div>
 				{todo.tags && todo.tags.length > 0 && (
 					<div className="todo-labels">
@@ -114,7 +114,7 @@ const TaskRenderer: React.FC<TaskRendererProps> = ({
 				)}
 			</div>
 		</li>
-	);
-};
+	)
+}
 
-export default TaskRenderer;
+export default TaskRenderer
