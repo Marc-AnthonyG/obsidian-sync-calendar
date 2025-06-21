@@ -64,7 +64,7 @@ const CalendarQuery: React.FC<CalendarQueryProps> = ({
 
 		logger.log(
 			"CalendarQuery",
-			`fetchEventLists: startMoment=${startMoment}, endMoment=${endMoment}`
+			`fetchEventLists: startMoment=${startMoment}, endMoment=${endMoment}`,
 		);
 		try {
 			const timeoutPromise = new Promise<never>((_, reject) =>
@@ -72,11 +72,11 @@ const CalendarQuery: React.FC<CalendarQueryProps> = ({
 					() =>
 						reject(
 							new Error(
-								"Timeout occurred when fetching from Google Calendar!\nCheck your connection and proxy settings, then restart Obsidian."
-							)
+								"Timeout occurred when fetching from Google Calendar!\nCheck your connection and proxy settings, then restart Obsidian.",
+							),
 						),
-					10000
-				)
+					10000,
+				),
 			);
 
 			const newTodos = await Promise.race([
@@ -84,7 +84,7 @@ const CalendarQuery: React.FC<CalendarQueryProps> = ({
 					startMoment,
 					endMoment,
 					settings.fetchMaximumEvents,
-					path
+					path,
 				),
 				timeoutPromise,
 			]);
@@ -94,7 +94,7 @@ const CalendarQuery: React.FC<CalendarQueryProps> = ({
 			setErrorInfo(null);
 			logger.log(
 				"CalendarQuery",
-				`fetchEventLists: newTodos=${JSON.stringify(newTodos)}`
+				`fetchEventLists: newTodos=${JSON.stringify(newTodos)}`,
 			);
 		} catch (err: unknown) {
 			logger.log("CalendarQuery", "fetchEventLists: error", err);

@@ -1,42 +1,42 @@
 type Listener = (content: string) => void;
 
 class ContentStore {
-  private store = new Map<string, string>();
-  private listeners = new Map<string, Set<Listener>>();
+	private store = new Map<string, string>();
+	private listeners = new Map<string, Set<Listener>>();
 
-  get(eventId: string): string | undefined {
-    return this.store.get(eventId);
-  }
+	get(eventId: string): string | undefined {
+		return this.store.get(eventId);
+	}
 
-  set(eventId: string, content: string): void {
-    this.store.set(eventId, content);
-    this.notify(eventId);
-  }
+	set(eventId: string, content: string): void {
+		this.store.set(eventId, content);
+		this.notify(eventId);
+	}
 
-  has(eventId: string): boolean {
-    return this.store.has(eventId);
-  }
+	has(eventId: string): boolean {
+		return this.store.has(eventId);
+	}
 
-  subscribe(eventId: string, listener: Listener): () => void {
-    if (!this.listeners.has(eventId)) {
-      this.listeners.set(eventId, new Set());
-    }
-    this.listeners.get(eventId)?.add(listener);
+	subscribe(eventId: string, listener: Listener): () => void {
+		if (!this.listeners.has(eventId)) {
+			this.listeners.set(eventId, new Set());
+		}
+		this.listeners.get(eventId)?.add(listener);
 
-    // Unsubscribe function
-    return () => {
-      this.listeners.get(eventId)?.delete(listener);
-    };
-  }
+		// Unsubscribe function
+		return () => {
+			this.listeners.get(eventId)?.delete(listener);
+		};
+	}
 
-  private notify(eventId: string): void {
-    const content = this.store.get(eventId);
-    if (content === undefined) return;
+	private notify(eventId: string): void {
+		const content = this.store.get(eventId);
+		if (content === undefined) return;
 
-    this.listeners.get(eventId)?.forEach(listener => {
-      listener(content);
-    });
-  }
+		this.listeners.get(eventId)?.forEach((listener) => {
+			listener(content);
+		});
+	}
 }
 
 export const contentStore = new ContentStore();

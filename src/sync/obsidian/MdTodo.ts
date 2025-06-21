@@ -1,7 +1,7 @@
 import { type STask } from "obsidian-dataview";
-import type { Todo } from 'src/sync/Todo';
+import type { Todo } from "src/sync/Todo";
 
-export type MdTodo = STask; 
+export type MdTodo = STask;
 
 type Writeable<T> = { -readonly [P in keyof T]: T[P] };
 
@@ -12,14 +12,14 @@ type Writeable<T> = { -readonly [P in keyof T]: T[P] };
  * All fields are writeable for convenience.
  */
 export type TodoDetails = Writeable<
-  Pick<
-    Todo,
-    | 'blockId'
-    | 'content'
-    | 'tags'
-    | 'startDateTime'
-    | 'dueDateTime'
-    | 'doneDateTime'
-    | 'isAllDay'
-  >
+	Pick<
+		Todo,
+		| "blockId"
+		| "content"
+		| "tags"
+		| "startDateTime"
+		| "dueDateTime"
+		| "doneDateTime"
+		| "isAllDay"
+	>
 >;

@@ -1,9 +1,9 @@
 {
-  "id": "google-calendar-sync-mindfull",
-  "name": "Google Calendar Sync Mindfull",
-  "version": "1.0.0",
-  "minAppVersion": "0.15.0",
-  "description": "Synchronize events from Google Calendar and manage them like tasks.",
-  "author": "Marc-Anthony Girard",
-  "isDesktopOnly": true
+	"id": "google-calendar-sync-mindfull",
+	"name": "Google Calendar Sync Mindfull",
+	"version": "1.0.0",
+	"minAppVersion": "0.15.0",
+	"description": "Synchronize events from Google Calendar and manage them like tasks.",
+	"author": "Marc-Anthony Girard",
+	"isDesktopOnly": true
 }

@@ -26,7 +26,7 @@ export default class QueryInjector {
 	onNewBlock(
 		source: string,
 		el: HTMLElement,
-		ctx: MarkdownPostProcessorContext
+		ctx: MarkdownPostProcessorContext,
 	) {
 		const pendingQuery = {
 			source: source,
@@ -57,7 +57,7 @@ export default class QueryInjector {
 							path={pendingQuery.ctx.sourcePath}
 						/>
 					);
-				}
+				},
 			);
 		} catch (err) {
 			logger.log("QueryInjector", "query error", err);
@@ -66,7 +66,7 @@ export default class QueryInjector {
 				pendingQuery.target,
 				(root: HTMLElement) => {
 					return <ErrorDisplay error={err} />;
-				}
+				},
 			);
 		}
 
@@ -86,7 +86,7 @@ class InjectedQuery extends MarkdownRenderChild {
 
 	constructor(
 		container: HTMLElement,
-		createComp: (root: HTMLElement) => React.ReactElement
+		createComp: (root: HTMLElement) => React.ReactElement,
 	) {
 		super(container);
 		this.containerEl = container;

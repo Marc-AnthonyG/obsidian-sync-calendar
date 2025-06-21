@@ -16,7 +16,7 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
 }) => {
 	const containerRef = useRef<HTMLDivElement>(null);
 	const [content, setContent] = useState<string>(
-		() => contentStore.get(eventId) ?? "None"
+		() => contentStore.get(eventId) ?? "None",
 	);
 
 	useEffect(() => {
@@ -28,7 +28,7 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
 				content,
 				containerRef.current,
 				"",
-				new Component()
+				new Component(),
 			);
 
 			if (containerRef.current.childElementCount > 1) {
